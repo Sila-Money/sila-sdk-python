@@ -43,7 +43,9 @@ setup(
    
     install_requires=['requests'],
 
-   
+    zap_safe=False,
+    
+    include_package_data=True,
 
     extras_require={},
 
