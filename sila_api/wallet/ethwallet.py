@@ -1,9 +1,10 @@
 from web3.auto import w3
 
 
-def createEthWallet(pass_phrase):
+def createEthWallet():
     
-    account=w3.eth.account.create(pass_phrase)
+    account=w3.eth.account.create()
     
-    return {"private_key":account.privateKey,"eth_address":account.address}
+    return ("This is not the recommended way to create your ethereum wallet",
+            {"private_key":account.privateKey.hex(),"eth_address":account.address})
     

@@ -10,7 +10,7 @@ setup(
     name='sila_api_wrapper',
 
 
-    version='1.0',
+    version='0.1.1',
 
     description='Sila Python library for message signing and api wrapper',
 
@@ -36,7 +36,7 @@ setup(
 
     ],
 
-    keywords='Sila v1.0 Rest API',
+    keywords='Sila v0.1.1 Rest API',
 
     packages=["sila_api"],
 
