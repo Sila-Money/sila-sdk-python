@@ -7,7 +7,7 @@ from os import path
 
 
 setup(
-    name='sila_api_wrapper',
+    name='sila_api',
 
 
     version='0.1.1',
