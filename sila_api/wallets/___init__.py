@@ -1,1 +1,0 @@
-from wallets.ethwallet import *
