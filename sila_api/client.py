@@ -1,7 +1,7 @@
 import requests
 
 class Client():
-    url = "https://api.silamoney.com/"
+    url = ""
     
     
     @classmethod
