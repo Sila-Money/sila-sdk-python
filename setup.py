@@ -38,7 +38,7 @@ setup(
 
     keywords='Sila v0.1.1 Rest API',
 
-    packages=["sila_api.wallets","sila_api.api"],
+    packages=["sila_api"],
 
    
     install_requires=['requests'],
