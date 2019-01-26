@@ -1,5 +1,6 @@
 
 from setuptools import setup, find_packages
+import setuptools
 
 from codecs import open
 from os import path
@@ -14,7 +15,7 @@ setup(
 
     description='Sila Python library for message signing and api wrapper',
 
-    url='https://github.com/Sila-Money/Sila-Python',
+    url="https://github.com/Sila-Money/Sila-Python/tree/master",
 
     author='Sila',
     author_email='support@silamoney.com',

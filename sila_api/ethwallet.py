@@ -2,6 +2,7 @@ from web3.auto import w3
 from eth_account.messages import defunct_hash_message
 
 
+# Create an ethereum public private-key pair, sign the message and verify signatures for etheruem address
 
 class EthWallet():
 
