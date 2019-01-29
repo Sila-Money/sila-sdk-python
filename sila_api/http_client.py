@@ -24,8 +24,10 @@ class HttpClient():
 
 
 		response = self.session.post(url, data=data)
+
+        output=yaml.load(json.dumps(response.json()))
 		
-        return response
+        return output
 
 
     def get(self,path,payload,**kwargs):
@@ -34,4 +36,6 @@ class HttpClient():
 		
         response = self.session.get(url, params=payload)
 
-		return response
+        output=yaml.load(json.dumps(response.json()))
+
+        return output
