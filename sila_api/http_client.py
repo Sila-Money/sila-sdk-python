@@ -26,3 +26,12 @@ class HttpClient():
 		response = self.session.post(url, data=data)
 		
         return response
+
+
+    def get(self,path,payload,**kwargs):
+
+		url = self.base_url + path
+		
+        response = self.session.get(url, params=payload)
+
+		return response
