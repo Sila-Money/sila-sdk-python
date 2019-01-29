@@ -9,8 +9,8 @@ from .transactions import Transactions
 class Client():
     
     
-    def  __init__(self,base_url):
+    def  __init__(self,url):
 
         self.http=HttpClient(
-            self.base_url=base_url
+            self.base_url=url
         )
