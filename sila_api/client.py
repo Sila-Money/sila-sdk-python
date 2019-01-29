@@ -1,10 +1,16 @@
 import requests
 
+from .http_client import HttpClient
+import requests
+import logging
+from .user import User
+from .transactions import Transactions
+
 class Client():
-    url = ""
     
     
-    @classmethod
-    def setTier(cls,tier):
-            cls.url = url+str(tier)
-            return cls.url
+    def  __init__(self,base_url):
+
+        self.http=HttpClient(
+            self.base_url=base_url
+        )

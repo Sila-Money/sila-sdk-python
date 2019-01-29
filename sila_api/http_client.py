@@ -1,5 +1,6 @@
 import json 
 import requests
+import client
 
 
 
@@ -9,12 +10,12 @@ class HttpClient():
 
     def __init__(self,base_url):
        
-        self.base_url=base_url
         self.session=requests.Session()
+        self.base_url=base_url
 
 
     
-    def post(self, path, payload, **kwargs):
+    def post(self, path,payload,**kwargs):
 
 		url = self.base_url + path
 
@@ -24,4 +25,4 @@ class HttpClient():
 
 		response = self.session.post(url, data=data)
 		
-        return self.parse_response(response)
+        return response
