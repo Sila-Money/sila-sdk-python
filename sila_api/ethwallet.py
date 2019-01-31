@@ -7,9 +7,9 @@ from eth_account.messages import defunct_hash_message
 class EthWallet():
 
 
-            def create():
+            def create(entropy):
 
-                    account=w3.eth.account.create()
+                    account=w3.eth.account.create(entropy)
                     return ("This is not the recommended way to create your ethereum wallet",
                             {"private_key":account.privateKey.hex(),"eth_address":account.address})
 
@@ -20,7 +20,7 @@ class EthWallet():
                     message_hash = defunct_hash_message(text=str(msg))
                     signed_message = w3.eth.account.signHash(message_hash, private_key=private_key)
                     sig_hx=signed_message.signature.hex()
-                    return sig_hx.replace("0x","")
+                    return str(sig_hx.replace("0x",""))
 
             
             def verifySignature(msg,sign):

@@ -1,6 +1,6 @@
 path={
     "createEntity"     : "/create_entity",
-    "verifyAccount"    : "/verify_account",
+    "checkKyc"          : "/check_kyc",
     "issueSila"        : "/issue_sila",
     "redeemSila"       : "/redeem_sila",
     "transferSila"     : "/transfer_sila",
