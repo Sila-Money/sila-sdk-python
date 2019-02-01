@@ -9,8 +9,7 @@ import logging
 
 class   HttpClient():
 
-    def __init__(self):
-        pass
+  
 
     # post request for the http client using requests library
 

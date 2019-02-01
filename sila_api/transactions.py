@@ -1,11 +1,10 @@
-from .http_client import httpClient
+from .http_client import HttpClient
+from .endpoints import endPoints
 
 
 
 class Transaction():
 
-    def __init__(self):
-        pass
     
 
     def issueSila(payload,header):
@@ -38,7 +37,7 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         
-        path=endPoints["issueSila"]
+        path=endPoints["redeemSila"]
             
         response=HttpClient.post(path,payload,header)
 
@@ -47,7 +46,7 @@ class Transaction():
 
 
     def transferSila(payload,header):
-         """ transfer sila from one ethereum address to another
+        """ transfer sila from one ethereum address to another using sila api
            the handle address signatures need to be verified
         Args:
             payload : user handle and amount
