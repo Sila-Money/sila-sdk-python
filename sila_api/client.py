@@ -1,7 +1,9 @@
+from .user import User
+
 class Client():
 
     url = " "
-    
+
     
     @classmethod
     def setProvider(cls,url):

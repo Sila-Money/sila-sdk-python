@@ -1,9 +1,13 @@
-from .endpoints import path
+from .endpoints import endPoints
 from .http_client import HttpClient
 
 
 
 class User():
+
+
+    def __init__(self):
+        pass
 
     def createEntity(payload,header):
         
@@ -15,9 +19,9 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        ext= path["createEntity"]
+        path= endPoints["createEntity"]
 
-        response=HttpClient.post(ext,payload,header)
+        response=HttpClient.post(path,payload,header)
 
         return response
         
@@ -26,7 +30,7 @@ class User():
         
     def checkKyc(payload,header):
 
-         """check if the user has been kyced.
+        """check if the user has been kyced.
            The used will be checked if the they have been kyced
         Args:
             payload : includes 
@@ -34,9 +38,9 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        ext=path["checkKyc"]
+        path=endPoints["checkKyc"]
             
-        response=HttpClient.post(ext,payload,header)
+        response=HttpClient.post(path,payload,header)
 
         return response
 
@@ -51,9 +55,9 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        ext=path["addCrypto"]
+        path=endPoints["addCrypto"]
             
-        response=HttpClient.post(ext,payload,header)
+        response=HttpClient.post(path,payload,header)
 
         return response
 
@@ -67,11 +71,64 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        ext=path["addIdentity"]
+        path=endPoints["addIdentity"]
             
-        response=HttpClient.post(ext,payload,header)
+        response=HttpClient.post(path,payload,header)
 
         return response
+
+    
+    def  createBond(payload,header):
+        """bond a user handle to an app
+           The user will be checked if the they have been kyced, alonf with app
+        Args:
+            payload : includes information to be edited and user handle
+            header: signature in the header used for ethereum address being sent
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path=endPoints["createBond"]
+            
+        response=HttpClient.post(path,payload,header)
+
+        return response
+
+
+    def checkhandle(payload,header):
+        """check if the user handle is taken
+           The user handle will be checked if it has been taken
+        Args:
+            payload : includes information to be edited and user handle
+            header: signature in the header used for ethereum address being sent
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path=endPoints["checkHandle"]
+            
+        response=HttpClient.post(path,payload,header)
+
+        return response
+    
+
+    def verifyAccount(payload,header):
+        """verify the users account
+        Args:
+            payload : includes information to be edited and user handle
+            header: signature in the header used for ethereum address being sent
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path=endPoints["verifyAccount"]
+            
+        response=HttpClient.post(path,payload,header)
+
+        return response
+
+    
+
+
+    
+
         
         
 

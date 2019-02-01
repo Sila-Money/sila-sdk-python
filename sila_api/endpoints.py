@@ -1,12 +1,11 @@
-path={
+endPoints={
     "createEntity"     : "/create_entity",
-    "checkKyc"          : "/check_kyc",
+    "checkKyc"         : "/check_kyc",
     "issueSila"        : "/issue_sila",
     "redeemSila"       : "/redeem_sila",
     "transferSila"     : "/transfer_sila",
     "addCrypto"        : "/add_crypto",
     "addIdentity"      : "/add_identity",
-    "createApp"        : "/create_app",
     "createBond"       : "/create_bond",
     "checkHandle"      : "/check_handle",
     "getAccounts"      : "/get_accounts",
