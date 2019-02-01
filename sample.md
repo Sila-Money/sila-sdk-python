@@ -1,6 +1,6 @@
 
 
-## 1.Required tools 
+## 1. Required tools 
 
 Tools and frame works needed:
   - Python >= 3.6
@@ -8,12 +8,12 @@ Tools and frame works needed:
 
 
 
-## 2.Installation
+## 2. Installation
 
 pip install sila_api:
 
 
-## 3.Usage
+## 3. Usage
 
    - Wallet Methods
 
