@@ -37,6 +37,8 @@ EthWallet.verifySignature("My Message",signature)
 
    
    - User Methods (Api calls)
+   
+   - Create new user
 
 ```
 message={
@@ -79,6 +81,9 @@ message={
             }
         }
 
+
+from sila_api import EthWallet
+
 usersignature= EthWallet.signMessage(message,user_private_key)
 appsinature= EthWallet.signMessage(message,app_private_key)
 
@@ -88,7 +93,7 @@ header={
     "usersignature": usersignature,
     "appsignature":  appsignature
 }
-# create a new user
+
 
 from sila_api import User
 
