@@ -63,6 +63,7 @@ class User():
 
 
     def addIdentity(payload,header):
+        
         """change the info about user like change ssn, email ,etc.
            The used will be checked if the they have been kyced
         Args:
@@ -79,6 +80,7 @@ class User():
 
     
     def  createBond(payload,header):
+        
         """bond a user handle to an app
            The user will be checked if the they have been kyced, alonf with app
         Args:
@@ -95,6 +97,7 @@ class User():
 
 
     def checkhandle(payload,header):
+        
         """check if the user handle is taken
            The user handle will be checked if it has been taken
         Args:
@@ -111,6 +114,7 @@ class User():
     
 
     def verifyAccount(payload,header):
+        
         """verify the users account
         Args:
             payload : includes information to be edited and user handle
