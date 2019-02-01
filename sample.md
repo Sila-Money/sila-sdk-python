@@ -36,7 +36,7 @@ EthWallet.verifySignature("My Message",signature)
 "0x328525f96B7b6AF7abfCF14E8930b1dA314044Fb"
 
    
-   - User (Api calls)
+   - User Methods (Api calls)
 
 ```
 message={
