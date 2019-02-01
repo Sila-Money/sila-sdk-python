@@ -15,6 +15,8 @@ pip install sila_api:
 
 ## 3.Usage
 
+   - Wallet Methods
+
 ```
 from sila_api import EthWallet
 
