@@ -40,7 +40,7 @@ EthWallet.verifySignature("My Message",signature)
 ```
 from sila_api import Client
 
-sila_api.Client("link to the the sila tier")
+Client.setProvider("link to the the sila tier")
  
  ````
 
