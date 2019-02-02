@@ -35,6 +35,16 @@ EthWallet.verifySignature("My Message",signature)
 ```
 "0x328525f96B7b6AF7abfCF14E8930b1dA314044Fb"
 
+   - Set Provider
+
+```
+from sila_api import Client
+
+sila_api.Client("link to the the sila tier")
+ 
+ ````
+
+
    
    - User Methods (Api calls)
    
