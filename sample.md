@@ -111,5 +111,37 @@ User.createEntity(message,header)
 
 ```
 
+    2. VerifyAccount
+
+```
+message=  {
+        "data": {
+            "public_token": "public-development-0dc5f214-56a2-4b69-8968-f27202477d3f",
+            "account_name": "default",
+            "header": {
+                "reference": "none",
+                "created": 1234567890,
+                "user_handle": "end2end.silamoney.eth",
+                "auth_handle": "end2end.silamoney.eth",
+                "version": "v1_1",
+                "crypto": "ETH"
+            },
+            "message": "link_account_msg"
+        }
+
+header={
+
+    'Content-Type': 'application/json',
+    "usersignature": usersignature,
+    "appsignature":  appsignature
+}
+
+User.verifyAccount(message,header)
+
+```
+
+
+
+
 
 
