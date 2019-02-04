@@ -125,6 +125,44 @@ class User():
         response=HttpClient.post(path,payload,header)
 
         return response
+    
+
+    def linkAccount(payload,header):
+        
+        """link bank account of a new user.
+           This will link account using plad
+        Args:
+            payload : info about user like  ethereum handle abd bank account info
+            header: signature in the header using for ethereum key being sent
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path= endPoints["linkAccount"]
+
+        response=HttpClient.post(path,payload,header)
+
+        return response
+    
+
+    def registerOperator(payload,header):
+        
+        """register developer as an account oprator for ethereum to make transactions on users behalf 
+           This will register the operator
+        Args:
+            payload : ethereum handles
+            header: signature in the header using for ethereum key being sent from developer and user
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path= endPoints["registerOperator"]
+
+        response=HttpClient.post(path,payload,header)
+
+        return response
+    
+    
+    
+        
 
     
 
