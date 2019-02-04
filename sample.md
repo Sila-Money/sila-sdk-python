@@ -48,7 +48,7 @@ Client.setProvider("link to the the sila tier")
    
    - User Methods (Api calls)
    
-   - Create new user
+   1. Create new user
 
 ```
 message={
