@@ -158,6 +158,29 @@ header={
 User.checkKyc(message,header)
 
 ```
+    4. createApp
+
+
+```
+message={
+
+
+}
+
+header={
+
+    'Content-Type': 'application/json',
+    "usersignature": usersignature,
+    "appsignature":  appsignature
+}
+
+User.checkKyc(message,header)
+
+```
+
+
+
+
 
 
 
