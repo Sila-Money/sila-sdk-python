@@ -140,6 +140,29 @@ User.verifyAccount(message,header)
 
 ```
 
+    3. checkKyc
+
+```
+message={
+
+
+}
+
+header={
+
+    'Content-Type': 'application/json',
+    "usersignature": usersignature,
+    "appsignature":  appsignature
+}
+
+User.checkKyc(message,header)
+
+```
+
+
+
+
+
 
 
 
