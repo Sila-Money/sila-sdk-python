@@ -174,7 +174,7 @@ header={
     "appsignature":  appsignature
 }
 
-User.checkKyc(message,header)
+User.createApp(message,header)
 
 ```
 
