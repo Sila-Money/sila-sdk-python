@@ -178,6 +178,52 @@ User.createApp(message,header)
 
 ```
 
+    5. createBond
+
+
+```
+message={
+
+
+}
+
+header={
+
+    'Content-Type': 'application/json',
+    "usersignature": usersignature,
+    "appsignature":  appsignature
+}
+
+User.createBond(message,header)
+
+```
+
+    6. checkHandle
+
+```
+message={
+
+
+}
+
+header={
+
+    'Content-Type': 'application/json',
+    "usersignature": usersignature,
+    "appsignature":  appsignature
+}
+
+User.checkHandle(message,header)
+
+```
+
+
+
+
+
+
+
+
 
 
 
