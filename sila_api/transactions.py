@@ -5,6 +5,10 @@ from .endpoints import endPoints
 
 class Transaction():
 
+
+    def __init__(self):
+        pass
+
     
 
     def issueSila(payload,header):

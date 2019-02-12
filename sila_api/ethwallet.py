@@ -6,8 +6,11 @@ from eth_account.messages import defunct_hash_message
 
 class EthWallet():
 
-        #  provide some entropy for randomness
-        
+        def __init__(self):
+                pass
+
+        #  provide some entropy for randomness and create eth wallet
+
         def create(entropy):
 
                 account=w3.eth.account.create(entropy)

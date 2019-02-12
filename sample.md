@@ -217,6 +217,25 @@ User.checkHandle(message,header)
 
 ```
 
+    8. registerOperator
+
+```
+message={
+
+
+}
+
+header={
+
+    'Content-Type': 'application/json',
+    "usersignature": usersignature,
+    "appsignature":  appsignature
+}
+
+User.registerOperator(message,header)
+
+```
+
 
 
 

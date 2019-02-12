@@ -1,13 +1,19 @@
+from .http_client import HttpClient
 
-class Client():
 
-    url = " "
+
+class Client(HttpClient):
+
+    def __init__(self,url,developer_key,user_key):
+        
+        self.url=url
+        self.developer_key=developer_key
+        self.user_key=user_key
+        self.httpClient=HttpClient()
+
+
 
     
-    @classmethod
-    def setProvider(cls,url):
-            cls.url = url
-            return cls.url
 
 
    
