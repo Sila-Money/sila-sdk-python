@@ -42,7 +42,7 @@ setup(
     packages=["sila_api"],
 
    
-    install_requires=['requests'],
+    install_requires=['requests','web3>=4.8.1','PyYAML>=3.13'],
 
     zip_safe=False,
     

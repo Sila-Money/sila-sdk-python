@@ -1,6 +1,5 @@
-from .http_client import HttpClient
 from .endpoints import endPoints
-
+from .client import App
 
 
 class Transaction():
@@ -8,10 +7,9 @@ class Transaction():
 
     def __init__(self):
         pass
-
     
 
-    def issueSila(payload,header):
+    def issueSila(payload,user_private_key):
         """issues sila erc20token for dollar amount on ethereum blockchain to kyced ethereum addresses (price one cent per token)
            the handle address signatures need to be verified
         Args:
@@ -20,7 +18,7 @@ class Transaction():
         Returns:
             dict: response body (a confirmation message)
         """
-        
+        header=HttpClient.setHeader(user_private_key)
         path=endPoints["issueSila"]
             
         response=HttpClient.post(path,payload,header)
