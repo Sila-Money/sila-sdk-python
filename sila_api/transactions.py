@@ -1,6 +1,6 @@
 from .endpoints import endPoints
 from .client import App
-
+from .message import Message
 
 class Transaction():
 
@@ -9,7 +9,7 @@ class Transaction():
         pass
     
 
-    def issueSila(payload,user_private_key):
+    def issueSila(self,payload,user_private_key):
         """issues sila erc20token for dollar amount on ethereum blockchain to kyced ethereum addresses (price one cent per token)
            the handle address signatures need to be verified
         Args:

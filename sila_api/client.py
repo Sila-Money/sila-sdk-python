@@ -50,7 +50,7 @@ class   App():
         return output
 
     
-
+    # automatically set the header for requests
 
     def setHeader(self,user_private_key,msg):
 

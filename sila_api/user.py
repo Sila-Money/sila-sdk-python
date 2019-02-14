@@ -1,5 +1,6 @@
 from .endpoints import endPoints
 from .http_client import HttpClient
+from .message import Message
 
 
 
@@ -11,7 +12,7 @@ class User():
 
 
 
-    def createEntity(payload,header):
+    def createEntity(self,payload,user_private_key):
         
         """Register a new user.
            This user will be kyced and ethereum address will be registered with sila 
@@ -21,7 +22,11 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
+        header=HttpClient.setHeader(user_private_key)
+        
         path= endPoints["createEntity"]
+
+
 
         response=HttpClient.post(path,payload,header)
 
