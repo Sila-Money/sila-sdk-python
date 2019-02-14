@@ -1,6 +1,7 @@
 endPoints={
-    "createEntity"     : "/create_entity",
+    "register"         : "/create_entity",
     "checkKyc"         : "/check_kyc",
+    "checkHandle"      : "/check_handle",
     "issueSila"        : "/issue_sila",
     "redeemSila"       : "/redeem_sila",
     "transferSila"     : "/transfer_sila",

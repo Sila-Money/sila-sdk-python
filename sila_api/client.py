@@ -11,11 +11,12 @@ from .ethwallet import EthWallet
 class   App():
     
     
-    def __init__(self,url,app_private_key):
+    def __init__(self,url,app_private_key,app_handle):
 
         self.session=requests.Session()
         self.url=url
         self.app_private_key=app_private_key
+        self.app_handle=app_handle
 
         
     # post request for the http client using requests library
@@ -28,11 +29,11 @@ class   App():
 
         response = self.session.post(endpoint,data=data,headers=header)
 
-        # if response.status_code==requests.codes.ok:
+        if response.status_code==requests.codes.ok:
             
-        output=yaml.load(json.dumps(response.json()))
+            output=yaml.load(json.dumps(response.json()))
 
-        return output
+            return output
 
 
     # get request for the http client using requests library
@@ -43,11 +44,11 @@ class   App():
 
         response =self.session.get(endpoint,headers=header)
 
-        # if response.status_code==requests.codes.ok:
+        if response.status_code==requests.codes.ok:
 
-        output=yaml.load(json.dumps(response.json()))
+            output=yaml.load(json.dumps(response.json()))
 
-        return output
+            return output
 
     
     # automatically set the header for requests

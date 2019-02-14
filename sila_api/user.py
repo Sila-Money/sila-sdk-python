@@ -1,6 +1,7 @@
 from .endpoints import endPoints
 from .http_client import HttpClient
 from .message import Message
+import time
 
 
 
@@ -12,23 +13,40 @@ class User():
 
 
 
-    def createEntity(self,payload,user_private_key):
+    def checkHandle(self,user_handle):
+         """Check if the user handle is available.
+            These endpoint returns the validity of a user handle
+        Args:
+            payload : Required user_handle to check if its available
+        Returns:
+            dict: response body (a confirmation message)
+        """
+       path=endPoints["checkHandle"]
+       data=Message.getSchema(path)
+       data["header"]["user_handle"]=user_handle
+       data["header"]["auth_handle"]=self.app_handle
+       reponse=HttpClient.post(path,data,header)
+       if response["status"]=="SUCCESS":
+           return True
+
+
+
+
+    def register(self,payload,user_private_key):
         
         """Register a new user.
            This user will be kyced and ethereum address will be registered with sila 
         Args:
-            payload : info about user like ssn, dob,ethereum address, ethereum handle
+            payload : info about user like name,ssn, dob,ethereum address, ethereum handle etc
             header: signature in the header using for ethereum key being sent
         Returns:
             dict: response body (a confirmation message)
         """
         header=HttpClient.setHeader(user_private_key)
+        path = endPoints["createEntity"]
         
-        path= endPoints["createEntity"]
-
-
-
-        response=HttpClient.post(path,payload,header)
+        
+        reponse=HttpClient.post(path,data,header)
 
         return response
         
