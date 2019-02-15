@@ -44,10 +44,24 @@ class User():
         """
         header=HttpClient.setHeader(user_private_key)
         path = endPoints["createEntity"]
-        data=Message.createMessage(self,payload,)
-
+        data=Message.createMessage(self,payload,path)
         reponse=HttpClient.post(path,data,header)
-
+        return response
+    
+    def linkAccount(self,payload,user_private_key):
+        
+        """link the bank account of user using plad
+           This users bank account will be linked  
+        Args:
+            payload : need user handle and plad token
+            header: signature in the header using for ethereum key being sent
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        header=HttpClient.setHeader(user_private_key)
+        path = endPoints["linkAccount"]
+        data=Message.createMessage(self,payload,path)
+        reponse=HttpClient.post(path,data,header)
         return response
         
        
