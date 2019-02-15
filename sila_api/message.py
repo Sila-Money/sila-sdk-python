@@ -13,7 +13,6 @@ class Message():
         """
         endpoint=endPoints["schemaUrl"]
         response =self.get(endpoint)
-
         for i in response:
             if i["_test_uri"]==path:
                 return i["data"]
@@ -35,11 +34,14 @@ class Message():
         Args:
             payload:customer message
         """
+        payload.update({"auth_handle":str(self.app_handle)})
         inpt= getSchema(self,path)
         data=lower_keys(payload)
         for i in inpt:
-            if isinstance(inpt[i],dict):
-                for key,value in inpt[i].items():
+            if i in inpt1.keys():
+                inpt[i]=data[i]
+            elif isinstance(inpt[i],dict):
+                for key in inpt[i].keys():
                     if key in data.keys():
                         inpt[i][key]=data[key]
         return inpt

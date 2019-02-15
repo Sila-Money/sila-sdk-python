@@ -45,7 +45,7 @@ class User():
         header=HttpClient.setHeader(user_private_key)
         path = endPoints["createEntity"]
         
-        
+
         reponse=HttpClient.post(path,data,header)
 
         return response
