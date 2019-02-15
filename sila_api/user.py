@@ -13,22 +13,20 @@ class User():
 
 
 
-    def checkHandle(self,user_handle):
-         """Check if the user handle is available.
-            These endpoint returns the validity of a user handle
+    def checkHandle(self,payload):
+        """Check if the user handle is available.
+        These endpoint returns the validity of a user handle
         Args:
-            payload : Required user_handle to check if its available
+        payload : Required user_handle to check if its available
         Returns:
-            dict: response body (a confirmation message)
+        dict: response body (a confirmation message)
         """
-       path=endPoints["checkHandle"]
-       data=Message.getSchema(path)
-       data["header"]["user_handle"]=user_handle
-       data["header"]["auth_handle"]=self.app_handle
-       reponse=HttpClient.post(path,data,header)
-       if response["status"]=="SUCCESS":
-           return True
-
+        path=endPoints["checkHandle"]
+        data=Message.createMessage(self,payload,path)
+        header=HttpClient.setHeader(self,user_private_key,data)
+        reponse=HttpClient.post(path,data,header)
+        if response["status"]="SUCCESS":
+            return True
 
 
 
@@ -42,9 +40,9 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        header=HttpClient.setHeader(user_private_key)
         path = endPoints["createEntity"]
         data=Message.createMessage(self,payload,path)
+        header=HttpClient.setHeader(self,user_private_key,data)
         reponse=HttpClient.post(path,data,header)
         return response
     
