@@ -1,0 +1,19 @@
+{
+    "_test_uri": "/create_entity",
+    "country": "US",
+    "city": "Portland",
+    "address_alias": "default",
+    "street_address_1": "920 SW 6th Av",
+    "state": "OR",
+    "postal_code": "97204-1239",
+    "identity_alias": "SSN",
+    "identity_value": "2222",
+    "phone": "571-245-5906",
+    "contact_alias": "default",
+    "email": "bob@silamoney.com",
+    "created": 1234567890,
+    "user_handle": "end2end.silamoney.eth",
+    "auth_handle": "end2end.silamoney.eth",
+    "version": "v1_1",
+    "crypto_address": "0x88DDBA46ddBc57a5fCbBdfa528999426993fA5aF"
+    }
