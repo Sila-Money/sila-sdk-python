@@ -18,19 +18,17 @@ class Transaction():
         Returns:
             dict: response body (a confirmation message)
         """
-        header=HttpClient.setHeader(user_private_key)
         path=endPoints["issueSila"]
-        
-            
-        response=HttpClient.post(path,payload,header)
-
+        data=Message.createMessage(self,payload,path)
+        header=HttpClient.setHeader(self,user_private_key,data)
+        reponse=HttpClient.post(self,path,data,header)
         return response
-
+    
 
 
     
 
-    def redeemSila(payload,header):
+    def redeemSila(self,payload,user_private_key):
         """redeems sila erc20token for dollar amount on ethereum blockchain to kyced ethereum addresses (price one cent per token)
            the handle address signatures need to be verified
         Args:
@@ -39,16 +37,15 @@ class Transaction():
         Returns:
             dict: response body (a confirmation message)
         """
-        
         path=endPoints["redeemSila"]
-            
-        response=HttpClient.post(path,payload,header)
-
+        data=Message.createMessage(self,payload,path)
+        header=HttpClient.setHeader(self,user_private_key,data)
+        reponse=HttpClient.post(self,path,data,header)
         return response
-
-
-
-    def transferSila(payload,header):
+    
+            
+       
+    def transferSila(self,payload,user_private_key):
         """ transfer sila from one ethereum address to another using sila api
            the handle address signatures need to be verified
         Args:
@@ -57,9 +54,10 @@ class Transaction():
         Returns:
             dict: response body (a confirmation message)
         """
-        
         path=endPoints["transferSila"]
             
-        response=HttpClient.post(path,payload,header)
-
+        data=Message.createMessage(self,payload,path)
+        header=HttpClient.setHeader(self,user_private_key,data)
+        reponse=HttpClient.post(self,path,data,header)
         return response
+    
