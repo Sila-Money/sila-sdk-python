@@ -1,6 +1,5 @@
 from .endpoints import endPoints
-from .http_client import HttpClient
-from .message import Message
+from sila_api import message
 import time
 
 
@@ -22,14 +21,19 @@ class User():
         dict: response body (a confirmation message)
         """
         path=endPoints["checkHandle"]
-        data=Message.getSchema(path)
+        data=message.getMessage(self,path)
         data["header"]["user_handle"]=user_handle
         data["header"]["auth_handle"]=self.app_handle
-        reponse=HttpClient.post(self,path,data,header)
+        header={
+            'Content-Type': 'application/json',
+            "usersignature": "usersignature",
+            "appsignature":  "appsignature"
+        }
+        response=self.post(path,data,header)
         if response["status"]=="SUCCESS":
-                    return True
-
-
+            return True
+        else:
+            return False
 
 
     def register(self,payload,user_private_key):
@@ -43,9 +47,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["createEntity"]
-        data=Message.createMessage(self,payload,path)
-        header=HttpClient.setHeader(self,user_private_key,data)
-        reponse=HttpClient.post(self,path,data,header)
+        data=message.createMessage(self,payload,path)
+        header=self.setHeader(user_private_key,data)
+        response=self.post(path,data,header)
         return response
     
     def linkAccount(self,payload,user_private_key):

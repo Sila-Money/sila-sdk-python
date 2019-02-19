@@ -6,7 +6,7 @@ from .errors import silaApiError
 from .ethwallet import EthWallet
 
 
-# basic cleint for making http requests like post,get etc
+# basic client for making http requests like post,get etc
 
 class   App():
     
@@ -38,11 +38,11 @@ class   App():
 
     # get request for the http client using requests library
 
-    def get(self,path,payload,header):
+    def get(self,path):
 
-        endpoint = self.url + path
+        endpoint = path
 
-        response =self.session.get(endpoint,headers=header)
+        response =self.session.get(endpoint)
 
         if response.status_code==requests.codes.ok:
 

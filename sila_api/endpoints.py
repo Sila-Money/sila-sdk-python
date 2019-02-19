@@ -1,5 +1,5 @@
 endPoints={
-    "register"         : "/create_entity",
+    "createEntity"     : "/create_entity",
     "checkKyc"         : "/check_kyc",
     "checkHandle"      : "/check_handle",
     "issueSila"        : "/issue_sila",
@@ -14,7 +14,7 @@ endPoints={
     "getProfile"       : "/get_profile",
     "getUsers"         : "/get_users",
     "registerOperator" : "/register_operator",
-    "linkAccount"      : "/link_account"
+    "linkAccount"      : "/link_account",
     "schemaUrl"        : "https://api.silamoney.com/PROD/getschema?schema=MessageFactory"
     
 
