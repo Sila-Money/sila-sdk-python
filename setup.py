@@ -15,7 +15,7 @@ setup(
 
     description='Sila Python library for message signing and api wrapper',
 
-    url="https://github.com/Sila-Money/Sila-Python/tree/master",
+    url="https://github.com/Sila-Money/Sila-Python.git",
 
     author='Sila',
     author_email='support@silamoney.com',
