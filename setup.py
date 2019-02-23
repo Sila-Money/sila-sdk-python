@@ -8,7 +8,7 @@ from os import path
 
 
 setup(
-    name='sila_api',
+    name='silasdk',
 
 
     version='0.1.1',
@@ -39,7 +39,7 @@ setup(
 
     keywords='Sila v0.1.1 Rest API',
 
-    packages=["sila_api"],
+    packages=["silasdk"],
 
    
     install_requires=['requests','web3>=4.8.1','PyYAML>=3.13'],

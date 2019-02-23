@@ -4,6 +4,7 @@ import yaml
 import logging 
 from .errors import silaApiError
 from .ethwallet import EthWallet
+from .endpoints import endPoints
 
 
 # basic client for making http requests like post,get etc
@@ -11,35 +12,66 @@ from .ethwallet import EthWallet
 class   App():
     
     
-    def __init__(self,url,app_private_key,app_handle):
-
+    def __init__(self,tier,app_private_key,app_handle):
+        
+        """Initalize the application 
+           This lets users initialize the application by providing the tier, application privatekey and application handle
+        Args:
+            tier  : TEST,PROD etc
+            app_private_key : ethereum privat key for the application
+            app_handle  : application sila handle (app.silamoney.eth)
+        """
         self.session=requests.Session()
-        self.url=url
+        self.tier=tier
         self.app_private_key=app_private_key
         self.app_handle=app_handle
 
+
+    def getUrl(self):
+         """construct the url endpoint to make api calls
+        Args:
+            app: the initialized applications
+        """
+
+        apiurl=endPoints["apiUrl"]+str(self.tier)
+        return apiurl
+
         
-    # post request for the http client using requests library
 
     def post(self,path,payload,header):
-
-        endpoint = self.url + path
-
+        
+        """makes a post request to the sila_apis
+        Args:
+            path : path to the endpoint being called
+            payload : json msg to be posted 
+            header  : contains the usersignature and authsignature
+        """
+        url = self.getUrl() 
+        
+        endpoint=url + path
+        
         data = json.dumps(payload)
 
         response = self.session.post(endpoint,data=data,headers=header)
+        
+        try:
+            if response.status_code==requests.codes.ok:
+                
+                output=yaml.load(json.dumps(response.json()))
 
-        if response.status_code==requests.codes.ok:
-            
-            output=yaml.load(json.dumps(response.json()))
-
-            return output
+                return output
+        except:
+                return {"error_msg":"something_went_wrong"}
 
 
-    # get request for the http client using requests library
 
     def get(self,path):
-
+        
+        """make a get request usign this fucntions
+        Args:
+            path : path to the endpoint
+        """
+        
         endpoint = path
 
         response =self.session.get(endpoint)
@@ -51,10 +83,14 @@ class   App():
             return output
 
     
-    # automatically set the header for requests
 
     def setHeader(self,user_private_key,msg):
-
+        
+        """set the application header with usersignature and authsignature
+        Args:
+            user_private_key : ethereum privat key for the user
+            msg : message being sent should be signed by user
+        """
         usersignature=EthWallet.signMessage(msg,user_private_key)
         appsignature=EthWallet.signMessage(msg,self.app_private_key)
         header={

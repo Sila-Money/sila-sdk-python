@@ -41,7 +41,16 @@ def createMessage(self,payload,path):
             for key in inpt[i].keys():
                 if key in data.keys():
                     inpt[i][key]=data[key]
+    inpt["header"]["created"]=int(time.time())
     return inpt
+
+
+
+    
+   
+
+
+
 
     
 

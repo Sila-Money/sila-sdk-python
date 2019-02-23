@@ -1,5 +1,6 @@
 from .endpoints import endPoints
 from sila_api import message
+from .ethwallet import EthWallet
 import time
 
 
@@ -7,7 +8,7 @@ import time
 class User():
 
 
-    def __init__(self):
+    def __init__(self,user_private_key):
         pass
 
 
@@ -27,7 +28,7 @@ class User():
         header={
             'Content-Type': 'application/json',
             "usersignature": "usersignature",
-            "appsignature":  "appsignature"
+            "authsignature":  "auth_signature"
         }
         response=self.post(path,data,header)
         if response["status"]=="SUCCESS":
@@ -36,7 +37,7 @@ class User():
             return False
 
 
-    def register(self,payload,user_private_key):
+    def register(self,payload):
         
         """Register a new user.
            This user will be kyced and ethereum address will be registered with sila 
@@ -48,7 +49,12 @@ class User():
         """
         path = endPoints["createEntity"]
         data=message.createMessage(self,payload,path)
-        header=self.setHeader(user_private_key,data)
+        authsignature=EthWallet.signMessage(data,self.app_private_key)
+        header={
+            'Content-Type': 'application/json',
+            "usersignature": "usersignature",
+            "authsignature":  authsignature
+        }
         response=self.post(path,data,header)
         return response
     
@@ -63,9 +69,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["linkAccount"]
-        data=Message.createMessage(self,payload,path)
-        header=HttpClient.setHeader(self,user_private_key,data)
-        reponse=HttpClient.post(self,path,data,header)
+        data=message.createMessage(self,payload,path)
+        header=self.setHeader(user_private_key,data)
+        response=self.post(path,data,header)
         return response
        
 
@@ -80,9 +86,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["checkKyc"]
-        data=Message.createMessage(self,payload,path)
-        header=HttpClient.setHeader(self,user_private_key,data)
-        reponse=HttpClient.post(self,path,data,header)
+        data=message.createMessage(self,payload,path)
+        header=self.setHeader(user_private_key,data)
+        response=self.post(path,data,header)
         return response
 
     
@@ -97,9 +103,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["addCrypto"]
-        data=Message.createMessage(self,payload,path)
-        header=HttpClient.setHeader(self,user_private_key,data)
-        reponse=HttpClient.post(self,path,data,header)
+        data=message.createMessage(self,payload,path)
+        header=self.setHeader(user_private_key,data)
+        response=self.post(path,data,header)
         return response
 
 
@@ -114,9 +120,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["addIdentity"]
-        data=Message.createMessage(self,payload,path)
-        header=HttpClient.setHeader(self,user_private_key,data)
-        reponse=HttpClient.post(self,path,data,header)
+        data=message.createMessage(self,payload,path)
+        header=self.setHeader(user_private_key,data)
+        response=self.post(path,data,header)
         return response
 
     
@@ -131,9 +137,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["createBond"]
-        data=Message.createMessage(self,payload,path)
-        header=HttpClient.setHeader(self,user_private_key,data)
-        reponse=HttpClient.post(self,path,data,header)
+        data=message.createMessage(self,payload,path)
+        header=self.setHeader(user_private_key,data)
+        response=self.post(path,data,header)
         return response
 
     def verifyAccount(self,payload,user_private_key):
@@ -146,9 +152,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["verifyAccount"]
-        data=Message.createMessage(self,payload,path)
-        header=HttpClient.setHeader(self,user_private_key,data)
-        reponse=HttpClient.post(self,path,data,header)
+        data=message.createMessage(self,payload,path)
+        header=self.setHeader(user_private_key,data)
+        response=self.post(path,data,header)
         return response
     
 
@@ -163,9 +169,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path= endPoints["registerOperator"]
-        data=Message.createMessage(self,payload,path)
-        header=HttpClient.setHeader(self,user_private_key,data)
-        reponse=HttpClient.post(self,path,data,header)
+        data=message.createMessage(self,payload,path)
+        header=self.setHeader(user_private_key,data)
+        response=self.post(path,data,header)
         return response
     
     

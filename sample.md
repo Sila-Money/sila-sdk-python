@@ -10,7 +10,7 @@ Tools and frameworks needed:
 
 ## 2. Installation
 
-pip install sila_api:
+pip install silasdk
 
 
 ## 3. Usage
@@ -38,10 +38,9 @@ EthWallet.verifySignature("My Message",signature)
    - Set Provider
 
 ```
-from sila_api import Client
+from sila_api import App
 
-Client.setProvider("link to the the sila tier")
- 
+app=App(tier,app_handle,app_private_key) 
  ````
 
 
@@ -94,15 +93,6 @@ message={
 
 from sila_api import EthWallet
 
-usersignature= EthWallet.signMessage(message,user_private_key)
-appsinature= EthWallet.signMessage(message,app_private_key)
-
-header={
-
-    'Content-Type': 'application/json',
-    "usersignature": usersignature,
-    "appsignature":  appsignature
-}
 
 
 from sila_api import User
