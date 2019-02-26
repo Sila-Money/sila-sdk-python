@@ -5,6 +5,7 @@ import logging
 # from .errors import silaApiError
 from .ethwallet import EthWallet
 from .endpoints import endPoints
+from .errors import Errors
 
 
 # basic client for making http requests like post,get etc
@@ -50,19 +51,9 @@ class   App():
         endpoint=url + path
 
         data = json.dumps(payload)
-
         response = self.session.post(endpoint,data=data,headers=header)
-
-        try:
-            if response.status_code==requests.codes.ok:
-                
-                output=yaml.load(json.dumps(response.json()))
-                print (response.status_code)
-
-                return output
-        except:
-                return {"error_msg":"something_went_wrong"}
-
+        output=self.checkResponse(response)
+        return output
 
 
     def get(self,path):
@@ -73,14 +64,10 @@ class   App():
         """
 
         endpoint = path
-
+        
         response =self.session.get(endpoint)
-
-        if response.status_code==requests.codes.ok:
-
-            output=yaml.load(json.dumps(response.json()))
-
-            return output
+        output=self.checkResponse(response)
+        return ouput
 
     
 
@@ -106,28 +93,27 @@ class   App():
         
 
     
-    def checkResponse(self, resp):
+    def checkResponse(self, response):
         """	checkResponse(self, resp)
             
             Takes the returned JSON result from sila pais and checks it for odd errors, returning the response
             if everything checks out alright. There's only a few we actually have to check against; we dodge the others 
             by virtue of using a library.
             Parameters:
-                resp: A JSON object returned from Authentic Jobs.
+                resp: A JSON object returned from Authentic Jobs or n error
         # """
-        # if resp["status"] == "ok":
-        # 	return resp
-        # elif resp["status"] == "fail":
-        # 	if resp["code"] == 0:
-        # 		raise silaApiError("The sila_api is currently undergoing maintenance. Try again in a bit!")
-        # 	elif resp["code"] == 2:
-        # 		raise slaApiError("It would seem that your API key is disabled. Have you been doing something you shouldn't have? ;)")
-        # 	else:
-        # 		raise silaApiError("There's something wrong with your API key; it can't be recognized. Check it, and try again.")
-        # else:
-        # 	raise silaApiError("Something went  wrong. Check all your calls and try again!")
-
-        pass
+        if response.status_code == 200:
+            output=yaml.load(json.dumps(response.json()))
+            
+            return output
+        
+        else:
+            try:
+                for k,v in Errors.items():
+                    if response.status_code==k:
+                        return {"error_msg":str(v)}
+            except:
+                return {"error_msg":"something_went_wrong"}
 
 
 
