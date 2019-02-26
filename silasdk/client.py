@@ -67,7 +67,7 @@ class   App():
         
         response =self.session.get(endpoint)
         output=self.checkResponse(response)
-        return ouput
+        return output
 
     
 
