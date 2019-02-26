@@ -23,7 +23,7 @@ class   App():
             app_handle  : application sila handle (app.silamoney.eth)
         """
         self.session=requests.Session()
-        self.tier=tier.upper()
+        self.tier=tier.lower()
         self.app_private_key=app_private_key
         self.app_handle=app_handle
 
@@ -33,7 +33,9 @@ class   App():
         Args:
             app: the initialized applications
         """
-        apiurl=endPoints["apiUrl"]+str(self.tier)
+        url=endPoints["apiUrl"]
+        tier=str(self.tier)
+        apiurl=url[:8] + tier + url[8:]
         return apiurl
 
         
@@ -90,9 +92,6 @@ class   App():
 
 
 
-        
-
-    
     def checkResponse(self, response):
         """	checkResponse(self, resp)
             
@@ -101,7 +100,7 @@ class   App():
             by virtue of using a library.
             Parameters:
                 resp: A JSON object returned from Authentic Jobs or n error
-        # """
+        """
         if response.status_code == 200:
             output=yaml.load(json.dumps(response.json()))
             

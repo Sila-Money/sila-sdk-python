@@ -8,10 +8,6 @@ import time
 class User():
 
 
-    def __init__(self,user_private_key):
-        pass
-
-
 
     def checkHandle(self,user_handle):
         """Check if the user handle is available.
