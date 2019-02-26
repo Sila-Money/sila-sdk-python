@@ -2,7 +2,7 @@ import json
 import requests
 import yaml
 import logging 
-from .errors import silaApiError
+# from .errors import silaApiError
 from .ethwallet import EthWallet
 from .endpoints import endPoints
 
@@ -15,24 +15,23 @@ class   App():
     def __init__(self,tier,app_private_key,app_handle):
         
         """Initalize the application 
-           This lets users initialize the application by providing the tier, application privatekey and application handle
+            This lets users initialize the application by providing the tier, application privatekey and application handle
         Args:
             tier  : TEST,PROD etc
             app_private_key : ethereum privat key for the application
             app_handle  : application sila handle (app.silamoney.eth)
         """
         self.session=requests.Session()
-        self.tier=tier
+        self.tier=tier.upper()
         self.app_private_key=app_private_key
         self.app_handle=app_handle
 
 
     def getUrl(self):
-         """construct the url endpoint to make api calls
+        """construct the url endpoint to make api calls
         Args:
             app: the initialized applications
         """
-
         apiurl=endPoints["apiUrl"]+str(self.tier)
         return apiurl
 
@@ -47,17 +46,18 @@ class   App():
             header  : contains the usersignature and authsignature
         """
         url = self.getUrl() 
-        
+
         endpoint=url + path
-        
+
         data = json.dumps(payload)
 
         response = self.session.post(endpoint,data=data,headers=header)
-        
+
         try:
             if response.status_code==requests.codes.ok:
                 
                 output=yaml.load(json.dumps(response.json()))
+                print (response.status_code)
 
                 return output
         except:
@@ -71,7 +71,7 @@ class   App():
         Args:
             path : path to the endpoint
         """
-        
+
         endpoint = path
 
         response =self.session.get(endpoint)

@@ -1,5 +1,5 @@
 from .endpoints import endPoints
-from sila_api import message
+from silasdk import message
 from .ethwallet import EthWallet
 import time
 
@@ -31,10 +31,7 @@ class User():
             "authsignature":  "auth_signature"
         }
         response=self.post(path,data,header)
-        if response["status"]=="SUCCESS":
-            return True
-        else:
-            return False
+        return response
 
 
     def register(self,payload):
@@ -76,7 +73,7 @@ class User():
        
 
         
-    def checkKyc(self,payload,user_private_key):
+    def checkKyc(self,user_handle,user_private_key):
         """check if the user has been kyced.
            The used will be checked if the they have been kyced
         Args:
@@ -86,7 +83,10 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["checkKyc"]
-        data=message.createMessage(self,payload,path)
+        data=message.getMessage(self,path)
+        data["header"]["user_handle"]=user_handle
+        data["header"]["created"]=int(time.time())
+        data["header"]["auth_handle"]=self.app_handle
         header=self.setHeader(user_private_key,data)
         response=self.post(path,data,header)
         return response
@@ -142,38 +142,77 @@ class User():
         response=self.post(path,data,header)
         return response
 
-    def verifyAccount(self,payload,user_private_key):
+    # def verifyAccount(self,payload,user_private_key):
         
-        """verify the users account
+    #     """verify the users account
+    #     Args:
+    #         payload : includes information to be edited and user handle
+    #         header: signature in the header used for ethereum address being sent
+    #     Returns:
+    #         dict: response body (a confirmation message)
+    #     """
+    #     path=endPoints["verifyAccount"]
+    #     data=message.createMessage(self,payload,path)
+    #     header=self.setHeader(user_private_key,data)
+    #     response=self.post(path,data,header)
+    #     return response
+    
+
+    # def registerOperator(self,payload,user_private_key):
+        
+    #     """register developer as an account oprator for ethereum to make transactions on users behalf 
+    #        This will register the operator
+    #     Args:
+    #         payload : ethereum handles
+    #         header: signature in the header using for ethereum key being sent from developer and user
+    #     Returns:
+    #         dict: response body (a confirmation message)
+    #     """
+    #     path= endPoints["registerOperator"]
+    #     data=message.createMessage(self,payload,path)
+    #     header=self.setHeader(user_private_key,data)
+    #     response=self.post(path,data,header)
+    #     return response
+
+
+    def  getAccounts(self,user_handle,user_private_key):
+        
+        """get the accounts of users registered with sila
+           The user will be checked if they have been kyced, along with app
         Args:
-            payload : includes information to be edited and user handle
-            header: signature in the header used for ethereum address being sent
+            user_hanlde: users handle registered with app
+            user_private_key: user private key asscoicated with crypto address
         Returns:
             dict: response body (a confirmation message)
         """
-        path=endPoints["verifyAccount"]
-        data=message.createMessage(self,payload,path)
+        path=endPoints["getAccounts"]
+        data=message.getMessage(self,path)
+        data["header"]["user_handle"]=user_handle
+        data["header"]["created"]=int(time.time())
+        data["header"]["auth_handle"]=self.app_handle
         header=self.setHeader(user_private_key,data)
         response=self.post(path,data,header)
         return response
     
 
-    def registerOperator(self,payload,user_private_key):
+
+    def  getUsers(self):
         
-        """register developer as an account oprator for ethereum to make transactions on users behalf 
-           This will register the operator
+        """get the users registered with ur app
+           The user will be checked if they have been kyced, along with app
         Args:
-            payload : ethereum handles
-            header: signature in the header using for ethereum key being sent from developer and user
+            user_hanlde: users handle registered with app
+            user_private_key: user private key asscoicated with crypto address
         Returns:
             dict: response body (a confirmation message)
         """
-        path= endPoints["registerOperator"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(user_private_key,data)
+        path=endPoints["getAccounts"]
+        data=message.getMessage(self,path)
+        data["header"]["created"]=int(time.time())
+        data["header"]["auth_handle"]=self.app_handle
+        header=self.setHeader("pass",data)
         response=self.post(path,data,header)
         return response
-    
     
     
         

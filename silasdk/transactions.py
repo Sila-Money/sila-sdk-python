@@ -1,6 +1,6 @@
 from .endpoints import endPoints
 from .client import App
-from sila_api import message
+from silasdk import message
 
 class Transaction():
 
