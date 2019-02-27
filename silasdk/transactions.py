@@ -55,7 +55,6 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         path=endPoints["transferSila"]
-            
         data=Message.createMessage(self,payload,path)
         header=HttpClient.setHeader(self,user_private_key,data)
         reponse=HttpClient.post(self,path,data,header)

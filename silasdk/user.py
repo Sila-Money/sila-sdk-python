@@ -27,7 +27,6 @@ class User():
 
 
     def register(self,payload):
-        
         """Register a new user.
            This user will be kyced and ethereum address will be registered with sila 
         Args:
@@ -43,7 +42,6 @@ class User():
         return response
     
     def linkAccount(self,payload,user_private_key):
-        
         """link the bank account of user using plad
            This users bank account will be linked  
         Args:
@@ -80,7 +78,6 @@ class User():
 
     
     def addCrypto(self,payload,user_private_key):
-
         """check if the user has been kyced.
            The used will be checked if the they have been kyced
         Args:
@@ -97,7 +94,6 @@ class User():
 
 
     def addIdentity(self,payload,user_private_key):
-        
         """change the info about user like change ssn, email ,etc.
            The used will be checked if the they have been kyced
         Args:
@@ -114,7 +110,6 @@ class User():
 
     
     def  createBond(self,payload,user_private_key):
-        
         """bond a user handle to an app
            The user will be checked if the they have been kyced, alonf with app
         Args:
@@ -163,7 +158,6 @@ class User():
 
 
     def  getAccounts(self,user_handle,user_private_key):
-        
         """get the accounts of users registered with sila
            The user will be checked if they have been kyced, along with app
         Args:

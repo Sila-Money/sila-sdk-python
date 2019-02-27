@@ -13,7 +13,6 @@ class   App():
     
     
     def __init__(self,tier,app_private_key,app_handle):
-        
         """Initalize the application 
             This lets users initialize the application by providing the tier, application privatekey and application handle
         Args:
@@ -40,7 +39,6 @@ class   App():
         
 
     def post(self,path,payload,header):
-        
         """makes a post request to the sila_apis
         Args:
             path : path to the endpoint being called
@@ -56,7 +54,6 @@ class   App():
 
 
     def get(self,path):
-        
         """make a get request usign this fucntions
         Args:
             path : path to the endpoint
@@ -69,7 +66,6 @@ class   App():
     
 
     def setHeader(self,msg,*args):
-        
         """set the application header with usersignature and authsignature
         Args:
             *args : ethereum private key for the user
