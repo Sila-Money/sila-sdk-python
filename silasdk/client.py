@@ -2,7 +2,6 @@ import json
 import requests
 import yaml
 import logging 
-# from .errors import silaApiError
 from .ethwallet import EthWallet
 from .endpoints import endPoints
 from .errors import Errors
@@ -73,22 +72,31 @@ class   App():
 
     
 
-    def setHeader(self,user_private_key,msg):
+    def setHeader(self,msg,*args):
         
         """set the application header with usersignature and authsignature
         Args:
-            user_private_key : ethereum privat key for the user
+            *args : ethereum private key for the user
             msg : message being sent should be signed by user
         """
-        usersignature=EthWallet.signMessage(msg,user_private_key)
-        appsignature=EthWallet.signMessage(msg,self.app_private_key)
-        header={
-            'Content-Type': 'application/json',
-            "usersignature": usersignature,
-            "appsignature":  appsignature
-        }
+        for arg in args:
+            usersignature=EthWallet.signMessage(msg,arg)
+            appsignature=EthWallet.signMessage(msg,self.app_private_key)
+            header={
+                'Content-Type': 'application/json',
+                "usersignature": usersignature,
+                "authsignature":  appsignature
+            }
 
-        return header
+            return header
+        if not args:
+            appsignature=EthWallet.signMessage(msg,self.app_private_key)
+            header={
+                'Content-Type': 'application/json',
+                "authsignature":  appsignature
+            }
+            return header
+           
 
 
 

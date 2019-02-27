@@ -21,11 +21,7 @@ class User():
         data=message.getMessage(self,path)
         data["header"]["user_handle"]=user_handle
         data["header"]["auth_handle"]=self.app_handle
-        header={
-            'Content-Type': 'application/json',
-            "usersignature": "usersignature",
-            "authsignature":  "auth_signature"
-        }
+        header=self.setHeader(data)
         response=self.post(path,data,header)
         return response
 
@@ -42,12 +38,7 @@ class User():
         """
         path = endPoints["createEntity"]
         data=message.createMessage(self,payload,path)
-        authsignature=EthWallet.signMessage(data,self.app_private_key)
-        header={
-            'Content-Type': 'application/json',
-            "usersignature": "usersignature",
-            "authsignature":  authsignature
-        }
+        header=self.setHeader(data)
         response=self.post(path,data,header)
         return response
     
