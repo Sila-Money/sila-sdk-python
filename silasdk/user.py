@@ -61,7 +61,7 @@ class User():
         
     def checkKyc(self,user_handle):
         """check if the user has been kyced.
-           The user will be checked if the they have been kyced
+            The user will be checked if the they have been kyced
         Args:
             payload : includes 
             header: signature in the header using for ethereum key being sent
@@ -80,7 +80,7 @@ class User():
     
     def addCrypto(self,payload,user_private_key):
         """check if the user has been kyced.
-           The used will be checked if the they have been kyced
+            The used will be checked if the they have been kyced
         Args:
             payload : includes the crypto adddress, handle etc that need to be added
             header: signature in the header using for ethereum address being sent
@@ -96,7 +96,7 @@ class User():
 
     def addIdentity(self,payload,user_private_key):
         """change the info about user like change ssn, email ,etc.
-           The used will be checked if the they have been kyced
+            The used will be checked if the they have been kyced
         Args:
             payload : includes information to be edited and usee handle
             header: signature in the header using for ethereum address being sent
@@ -113,7 +113,7 @@ class User():
    
     def  getAccounts(self,user_handle,user_private_key):
         """get the accounts of users registered with sila
-           The user will be checked if they have been kyced, along with app
+            The user will be checked if they have been kyced, along with app
         Args:
             user_hanlde: users handle registered with app
             user_private_key: user private key asscoicated with crypto address
@@ -128,11 +128,11 @@ class User():
         header=self.setHeader(user_private_key,data)
         response=self.post(path,data,header)
         return response
-    
+
 
 
     def  getTransactions(self,user_handle,user_private_key):
-        """get the users registered with ur app
+        """get the users transactions registered with ur app
            The user will be checked if they have been kyced, along with app
         Args:
             user_hanlde: users handle registered with app
@@ -150,24 +150,7 @@ class User():
         return response
     
     
-     def checkKyc(self,user_handle):
-        """check if the user has been kyced.
-           The user will be checked if the they have been kyced
-        Args:
-            payload : includes 
-            header: signature in the header using for ethereum key being sent
-        Returns:
-            dict: response body (a confirmation message)
-        """
-        path=endPoints["runKyc"]
-        data=message.getMessage(self,path)
-        data["header"]["user_handle"]=user_handle
-        data["header"]["created"]=int(time.time())
-        data["header"]["auth_handle"]=self.app_handle
-        header=self.setHeader(data)
-        response=self.post(path,data,header)
-        return response
-
+     
     
 
 

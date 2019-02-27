@@ -7,7 +7,7 @@ class Transaction():
 
     def issueSila(self,payload,user_private_key):
         """issues sila erc20token for dollar amount on ethereum blockchain to kyced ethereum addresses (price one cent per token)
-           the handle address signatures need to be verified
+            the handle address signatures need to be verified
         Args:
             payload : includes user handle and amount
             header: signature in the header used for ethereum address being sent
@@ -26,7 +26,7 @@ class Transaction():
 
     def redeemSila(self,payload,user_private_key):
         """redeems sila erc20token for dollar amount on ethereum blockchain to kyced ethereum addresses (price one cent per token)
-           the handle address signatures need to be verified
+            the handle address signatures need to be verified
         Args:
             payload : user handle and amount
             header: signature in the header used for ethereum address being sent
@@ -43,7 +43,7 @@ class Transaction():
        
     def transferSila(self,payload,user_private_key):
         """ transfer sila from one ethereum address to another using sila api
-           the handle address signatures need to be verified
+            the handle address signatures need to be verified
         Args:
             payload : user handle and amount
             header: signature in the header used for ethereum address being sent
@@ -56,6 +56,6 @@ class Transaction():
         response=self.post(path,data,header)
         return response
 
-        
+
 
     
