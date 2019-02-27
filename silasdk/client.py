@@ -48,9 +48,7 @@ class   App():
             header  : contains the usersignature and authsignature
         """
         url = self.getUrl() 
-
         endpoint=url + path
-
         data = json.dumps(payload)
         response = self.session.post(endpoint,data=data,headers=header)
         output=self.checkResponse(response)
@@ -63,9 +61,7 @@ class   App():
         Args:
             path : path to the endpoint
         """
-
         endpoint = path
-        
         response =self.session.get(endpoint)
         output=self.checkResponse(response)
         return output
