@@ -10,11 +10,10 @@ endPoints={
     "createBond"       : "/create_bond",
     "checkHandle"      : "/check_handle",
     "getAccounts"      : "/get_accounts",
-    "getApps"          : "/get_apps",
-    "getProfile"       : "/get_profile",
-    "getUsers"         : "/get_users",
+    "getTransactions"  : "/get_transactions",
     "registerOperator" : "/register_operator",
     "linkAccount"      : "/link_account",
+    "runKyc"           : "/run_kyc",
     "schemaUrl"        : "https://test.api.silamoney.com/0.1/getschema?schema=MessageFactory",
     "apiUrl"           : "https://.api.silamoney.com/0.1/"
     

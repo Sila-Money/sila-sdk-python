@@ -21,6 +21,7 @@ class User():
         data=message.getMessage(self,path)
         data["header"]["user_handle"]=user_handle
         data["header"]["auth_handle"]=self.app_handle
+        data["header"]["created"]=int(time.time())
         header=self.setHeader(data)
         response=self.post(path,data,header)
         return response
@@ -52,15 +53,15 @@ class User():
         """
         path = endPoints["linkAccount"]
         data=message.createMessage(self,payload,path)
-        header=self.setHeader(user_private_key,data)
+        header=self.setHeader(data,user_private_key)
         response=self.post(path,data,header)
         return response
        
 
         
-    def checkKyc(self,user_handle,user_private_key):
+    def checkKyc(self,user_handle):
         """check if the user has been kyced.
-           The used will be checked if the they have been kyced
+           The user will be checked if the they have been kyced
         Args:
             payload : includes 
             header: signature in the header using for ethereum key being sent
@@ -72,7 +73,7 @@ class User():
         data["header"]["user_handle"]=user_handle
         data["header"]["created"]=int(time.time())
         data["header"]["auth_handle"]=self.app_handle
-        header=self.setHeader(user_private_key,data)
+        header=self.setHeader(data)
         response=self.post(path,data,header)
         return response
 
@@ -88,7 +89,7 @@ class User():
         """
         path=endPoints["addCrypto"]
         data=message.createMessage(self,payload,path)
-        header=self.setHeader(user_private_key,data)
+        header=self.setHeader(data,user_private_key)
         response=self.post(path,data,header)
         return response
 
@@ -104,59 +105,12 @@ class User():
         """
         path=endPoints["addIdentity"]
         data=message.createMessage(self,payload,path)
-        header=self.setHeader(user_private_key,data)
+        header=self.setHeader(data,user_private_key)
         response=self.post(path,data,header)
         return response
-
-    
-    def  createBond(self,payload,user_private_key):
-        """bond a user handle to an app
-           The user will be checked if the they have been kyced, alonf with app
-        Args:
-            payload : includes information to be edited and user handle
-            header: signature in the header used for ethereum address being sent
-        Returns:
-            dict: response body (a confirmation message)
-        """
-        path=endPoints["createBond"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(user_private_key,data)
-        response=self.post(path,data,header)
-        return response
-
-    # def verifyAccount(self,payload,user_private_key):
-        
-    #     """verify the users account
-    #     Args:
-    #         payload : includes information to be edited and user handle
-    #         header: signature in the header used for ethereum address being sent
-    #     Returns:
-    #         dict: response body (a confirmation message)
-    #     """
-    #     path=endPoints["verifyAccount"]
-    #     data=message.createMessage(self,payload,path)
-    #     header=self.setHeader(user_private_key,data)
-    #     response=self.post(path,data,header)
-    #     return response
     
 
-    # def registerOperator(self,payload,user_private_key):
-        
-    #     """register developer as an account oprator for ethereum to make transactions on users behalf 
-    #        This will register the operator
-    #     Args:
-    #         payload : ethereum handles
-    #         header: signature in the header using for ethereum key being sent from developer and user
-    #     Returns:
-    #         dict: response body (a confirmation message)
-    #     """
-    #     path= endPoints["registerOperator"]
-    #     data=message.createMessage(self,payload,path)
-    #     header=self.setHeader(user_private_key,data)
-    #     response=self.post(path,data,header)
-    #     return response
-
-
+   
     def  getAccounts(self,user_handle,user_private_key):
         """get the accounts of users registered with sila
            The user will be checked if they have been kyced, along with app
@@ -177,8 +131,7 @@ class User():
     
 
 
-    def  getUsers(self):
-        
+    def  getTransactions(self,user_handle,user_private_key):
         """get the users registered with ur app
            The user will be checked if they have been kyced, along with app
         Args:
@@ -187,16 +140,33 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        path=endPoints["getAccounts"]
+        path=endPoints["getTransactions"]
         data=message.getMessage(self,path)
+        data["header"]["user_handle"]=user_handle
         data["header"]["created"]=int(time.time())
         data["header"]["auth_handle"]=self.app_handle
-        header=self.setHeader("pass",data)
+        header=self.setHeader(data,user_private_key)
         response=self.post(path,data,header)
         return response
     
     
-        
+     def checkKyc(self,user_handle):
+        """check if the user has been kyced.
+           The user will be checked if the they have been kyced
+        Args:
+            payload : includes 
+            header: signature in the header using for ethereum key being sent
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path=endPoints["runKyc"]
+        data=message.getMessage(self,path)
+        data["header"]["user_handle"]=user_handle
+        data["header"]["created"]=int(time.time())
+        data["header"]["auth_handle"]=self.app_handle
+        header=self.setHeader(data)
+        response=self.post(path,data,header)
+        return response
 
     
 
