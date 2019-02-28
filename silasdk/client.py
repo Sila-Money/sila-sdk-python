@@ -1,5 +1,6 @@
 import json
 import requests
+import os
 import yaml
 import logging 
 from .ethwallet import EthWallet
@@ -54,7 +55,7 @@ class   App():
 
 
     def get(self,path):
-        """make a get request usign this fucntions
+        """make a get request using this function
         Args:
             path : path to the endpoint
         """
@@ -68,7 +69,7 @@ class   App():
     def setHeader(self,msg,key=None):
         """set the application header with usersignature and authsignature
         Args:
-            *args : ethereum private key for the user
+            key : ethereum private key for the user
             msg : message being sent should be signed by user
         """
         appsignature=EthWallet.signMessage(msg,self.app_private_key)
@@ -91,13 +92,11 @@ class   App():
 
 
     def checkResponse(self, response):
-        """	checkResponse(self, resp)
-            
-            Takes the returned JSON result from sila pais and checks it for odd errors, returning the response
+        """	Takes the returned JSON result from sila apis and checks it for odd errors, returning the response
             if everything checks out alright. There's only a few we actually have to check against; we dodge the others 
             by virtue of using a library.
             Parameters:
-                resp: A JSON object returned from Authentic Jobs or n error
+                response: A JSON object returned from Authentic Jobs or n error
         """
         if response.status_code == 200:
             output=yaml.safe_load(json.dumps(response.json()))

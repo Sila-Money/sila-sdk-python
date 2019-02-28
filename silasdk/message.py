@@ -18,7 +18,7 @@ def getMessage(self,path):
 def lower_keys(x):
     """converts the payload dict keys to all lowercase to match schema
     Args:
-        payload:payload
+        x:payload
     """
     if isinstance(x, dict):
         return dict((k.lower(),v) for k, v in x.items())
@@ -48,6 +48,8 @@ def postRequest(self,path,payload,key=None):
     """post the message and return resposne
     Args:
         payload:customer message
+        path : endpoint
+        key :user_private_key
     """
     data=createMessage(self,payload,path)
     if key:
