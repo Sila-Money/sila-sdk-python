@@ -27,7 +27,6 @@ class User():
            This user will be kyced and ethereum address will be registered with sila 
         Args:
             payload : info about user like name,ssn, dob,ethereum address, ethereum handle etc
-            header: signature in the header using for ethereum key being sent
         Returns:
             dict: response body (a confirmation message)
         """
@@ -40,7 +39,7 @@ class User():
            This users bank account will be linked  
         Args:
             payload : need user handle and plad token
-            header: signature in the header using for ethereum key being sent
+            user_private_key: users ethereum private key 
         Returns:
             dict: response body (a confirmation message)
         """
@@ -50,12 +49,11 @@ class User():
        
 
         
-    def checkKyc(self,user_handle):
+    def checkKyc(self,payload):
         """check if the user has been kyced.
             The user will be checked if the they have been kyced
         Args:
             payload : includes 
-            header: signature in the header using for ethereum key being sent
         Returns:
             dict: response body (a confirmation message)
         """
@@ -69,7 +67,7 @@ class User():
             The used will be checked if the they have been kyced
         Args:
             payload : includes the crypto adddress, handle etc that need to be added
-            header: signature in the header using for ethereum address being sent
+            user_private_key: users ethereum private key 
         Returns:
             dict: response body (a confirmation message)
         """
@@ -83,7 +81,7 @@ class User():
             The used will be checked if the they have been kyced
         Args:
             payload : includes information to be edited and usee handle
-            header: signature in the header using for ethereum address being sent
+            user_private_key: users ethereum private key 
         Returns:
             dict: response body (a confirmation message)
         """
@@ -93,7 +91,7 @@ class User():
     
 
    
-    def  getAccounts(self,user_handle,user_private_key):
+    def  getAccounts(self,payload,user_private_key):
         """get the accounts of users registered with sila
             The user will be checked if they have been kyced, along with app
         Args:
@@ -108,7 +106,7 @@ class User():
 
 
 
-    def  getTransactions(self,user_handle,user_private_key):
+    def  getTransactions(self,payload,user_private_key):
         """get the users transactions registered with ur app
            The user will be checked if they have been kyced, along with app
         Args:

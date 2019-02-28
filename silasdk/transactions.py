@@ -10,7 +10,7 @@ class Transaction():
             the handle address signatures need to be verified
         Args:
             payload : includes user handle and amount
-            header: signature in the header used for ethereum address being sent
+            user_private_key: users ethereum private key 
         Returns:
             dict: response body (a confirmation message)
         """
@@ -25,7 +25,7 @@ class Transaction():
             the handle address signatures need to be verified
         Args:
             payload : user handle and amount
-            header: signature in the header used for ethereum address being sent
+            user_private_key: users ethereum private key 
         Returns:
             dict: response body (a confirmation message)
         """
@@ -40,7 +40,7 @@ class Transaction():
             the handle address signatures need to be verified
         Args:
             payload : user handle and amount
-            header: signature in the header used for ethereum address being sent
+            user_private_key: users ethereum private key 
         Returns:
             dict: response body (a confirmation message)
         """
