@@ -44,6 +44,20 @@ def createMessage(self,payload,path):
     inpt["header"]["created"]=int(time.time())
     return inpt
 
+def postRequest(self,path,payload,key=None):
+    """post the message and return resposne
+    Args:
+        payload:customer message
+    """
+    data=createMessage(self,payload,path)
+    if key:
+            header=self.setHeader(data,key)
+    elif not key:
+            header=self.setHeader(data)
+    response=self.post(path,data,header)
+    return response
+
+
 
 
     

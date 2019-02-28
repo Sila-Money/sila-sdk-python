@@ -15,14 +15,10 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         path=endPoints["issueSila"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(data,user_private_key)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload,user_private_key)        
         return response
 
 
-
-    
 
     def redeemSila(self,payload,user_private_key):
         """redeems sila erc20token for dollar amount on ethereum blockchain to kyced ethereum addresses (price one cent per token)
@@ -34,9 +30,7 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         path=endPoints["redeemSila"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(data,user_private_key)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload,user_private_key)        
         return response
 
             
@@ -51,9 +45,7 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         path=endPoints["transferSila"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(data,user_private_key)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload,user_private_key)        
         return response
 
 

@@ -9,7 +9,7 @@ class User():
 
 
 
-    def checkHandle(self,user_handle):
+    def checkHandle(self,payload):
         """Check if the user handle is available.
         These endpoint returns the validity of a user handle
         Args:
@@ -18,12 +18,7 @@ class User():
         dict: response body (a confirmation message)
         """
         path=endPoints["checkHandle"]
-        data=message.getMessage(self,path)
-        data["header"]["user_handle"]=user_handle
-        data["header"]["auth_handle"]=self.app_handle
-        data["header"]["created"]=int(time.time())
-        header=self.setHeader(data)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload)        
         return response
 
 
@@ -37,9 +32,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["createEntity"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(data)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload)        
         return response
     
     def linkAccount(self,payload,user_private_key):
@@ -52,9 +45,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["linkAccount"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(data,user_private_key)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload,user_private_key)        
         return response
        
 
@@ -69,12 +60,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["checkKyc"]
-        data=message.getMessage(self,path)
-        data["header"]["user_handle"]=user_handle
-        data["header"]["created"]=int(time.time())
-        data["header"]["auth_handle"]=self.app_handle
-        header=self.setHeader(data)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload)        
         return response
 
     
@@ -88,9 +74,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["addCrypto"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(data,user_private_key)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload,user_private_key)        
         return response
 
 
@@ -104,9 +88,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["addIdentity"]
-        data=message.createMessage(self,payload,path)
-        header=self.setHeader(data,user_private_key)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload,user_private_key)        
         return response
     
 
@@ -121,12 +103,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["getAccounts"]
-        data=message.getMessage(self,path)
-        data["header"]["user_handle"]=user_handle
-        data["header"]["created"]=int(time.time())
-        data["header"]["auth_handle"]=self.app_handle
-        header=self.setHeader(user_private_key,data)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload,user_private_key)        
         return response
 
 
@@ -141,12 +118,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["getTransactions"]
-        data=message.getMessage(self,path)
-        data["header"]["user_handle"]=user_handle
-        data["header"]["created"]=int(time.time())
-        data["header"]["auth_handle"]=self.app_handle
-        header=self.setHeader(data,user_private_key)
-        response=self.post(path,data,header)
+        response=message.postRequest(self,path,payload,user_private_key)        
         return response
     
     

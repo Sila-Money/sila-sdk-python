@@ -65,24 +65,22 @@ class   App():
 
     
 
-    def setHeader(self,msg,*args):
+    def setHeader(self,msg,key=None):
         """set the application header with usersignature and authsignature
         Args:
             *args : ethereum private key for the user
             msg : message being sent should be signed by user
         """
-        for arg in args:
-            usersignature=EthWallet.signMessage(msg,arg)
-            appsignature=EthWallet.signMessage(msg,self.app_private_key)
+        appsignature=EthWallet.signMessage(msg,self.app_private_key)
+        if key:
+            usersignature=EthWallet.signMessage(msg,key)
             header={
                 'Content-Type': 'application/json',
                 "usersignature": usersignature,
                 "authsignature":  appsignature
             }
-
             return header
-        if not args:
-            appsignature=EthWallet.signMessage(msg,self.app_private_key)
+        elif not key:
             header={
                 'Content-Type': 'application/json',
                 "authsignature":  appsignature
@@ -102,7 +100,7 @@ class   App():
                 resp: A JSON object returned from Authentic Jobs or n error
         """
         if response.status_code == 200:
-            output=yaml.load(json.dumps(response.json()))
+            output=yaml.safe_load(json.dumps(response.json()))
             
             return output
         
