@@ -19,7 +19,7 @@ class EthWallet():
 
 
         
-        def signMessage(msg,*args):
+        def signMessage(msg,key=None):
                 """Sign the message using an ethereum private key
                 This method signs the message for the user authentication mechanism
                 Args:
@@ -29,11 +29,11 @@ class EthWallet():
                 string: a signed message
                 """
                 message_hash = defunct_hash_message(text=str(msg))
-                for arg in args:
-                        signed_message = w3.eth.account.signHash(message_hash, private_key=arg)
+                if key:
+                        signed_message = w3.eth.account.signHash(message_hash, private_key=key)
                         sig_hx=signed_message.signature.hex()
                         return str(sig_hx.replace("0x",""))
-                if not args:
+                if not key:
                         return " "
 
 
