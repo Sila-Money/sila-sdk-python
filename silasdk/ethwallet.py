@@ -15,8 +15,7 @@ class EthWallet():
                 tuple: response body with ethereum address and private key
                 """
                 account=w3.eth.account.create(entropy)
-                return ("This is not the recommended way to create your ethereum wallet",
-                {"private_key":account.privateKey.hex(),"eth_address":account.address})
+                return {"eth_private_key":account.privateKey.hex(),"eth_address":account.address}
 
 
         
