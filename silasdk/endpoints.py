@@ -14,7 +14,7 @@ endPoints={
     "registerOperator" : "/register_operator",
     "linkAccount"      : "/link_account",
     "runKyc"           : "/run_kyc",
-    "schemaUrl"        : "https://test.api.silamoney.com/0.1/getschema?schema=MessageFactory",
-    "apiUrl"           : "https://.api.silamoney.com/0.1/"
+    "schemaUrl"        : "https://test.api.silamoney.com/0.1.1/getschema?schema=MessageFactory",
+    "apiUrl"           : "https://.api.silamoney.com/0.1.1/"
     
 }
