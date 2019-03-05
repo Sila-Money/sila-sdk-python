@@ -1,6 +1,6 @@
-from web3.auto import w3
-from eth_account.messages import defunct_hash_message
-
+from eth_account import Account
+import sha3
+import json
 
 class EthWallet():
 
@@ -14,7 +14,7 @@ class EthWallet():
                 Returns:
                 tuple: response body with ethereum address and private key
                 """
-                account=w3.eth.account.create(entropy)
+                account=Account.create(entropy)
                 return {"eth_private_key":account.privateKey.hex(),"eth_address":account.address}
 
 
@@ -28,16 +28,19 @@ class EthWallet():
                 Returns:
                 string: a signed message
                 """
-                message_hash = defunct_hash_message(text=str(msg))
+                k= sha3.keccak_256()
+                encoded_message=json.dumps(msg,separators=(",", ":")).encode("utf-8")
+                k.update(encoded_message)
+                message_hash=k.hexdigest()
                 if key:
-                        signed_message = w3.eth.account.signHash(message_hash, private_key=key)
+                        signed_message=Account.signHash(message_hash,key)
                         sig_hx=signed_message.signature.hex()
                         return str(sig_hx.replace("0x",""))
                 if not key:
                         return " "
 
 
-        
+
         def verifySignature(msg,sign):
                 """Verify the message signature 
                 This method signs the message for the user authentication mechanism
@@ -47,8 +50,7 @@ class EthWallet():
                 Returns:
                 string: returns the ethereum address corresponding to the private key the message was signed with
                 """
-                message_hash = defunct_hash_message(text=str(msg))
-                return w3.eth.account.recoverHash(message_hash,signature=sign)
+                return Account.recoverHash(message_hash,signature=sign)
 
 
 

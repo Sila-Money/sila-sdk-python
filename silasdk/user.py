@@ -30,9 +30,22 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        path = endPoints["createEntity"]
+        path = endPoints["register"]
         response=message.postRequest(self,path,payload)        
         return response
+
+    def requestKyc(self,payload):
+        """Request kyc for a user by handle
+           This user will be kyced and ethereum address will be registered with sila 
+        Args:
+            payload : info about user like name,ssn, dob,ethereum address, ethereum handle etc
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["request_kyc"]
+        response=message.postRequest(self,path,payload)        
+        return response
+    
     
     def linkAccount(self,payload,user_private_key):
         """link the bank account of user using plad
