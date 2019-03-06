@@ -35,8 +35,9 @@ class EthWallet():
                 if key:
                         signed_message=Account.signHash(message_hash,key)
                         sig_hx=signed_message.signature.hex()
+                        print (str(sig_hx.replace("0x","")))
                         return str(sig_hx.replace("0x",""))
-                if not key:
+                else:
                         return " "
 
 

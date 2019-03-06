@@ -1,6 +1,7 @@
 from .client  import App
 from .endpoints import endPoints
 import time
+import uuid
 
     
 def getMessage(self,path):
@@ -32,6 +33,7 @@ def createMessage(self,payload,path):
         payload:customer message
     """
     payload.update({"auth_handle":str(self.app_handle)})
+    payload.update({"reference":str(uuid.uuid4())})
     inpt= getMessage(self,path)
     data=lower_keys(payload)
     for i in inpt:
@@ -52,10 +54,13 @@ def postRequest(self,path,payload,key=None):
         key :user_private_key
     """
     data=createMessage(self,payload,path)
-    if key:
+    print(payload)
+    print(data)
+    if key!=None:
             header=self.setHeader(data,key)
-    elif not key:
+    else:
             header=self.setHeader(data)
+    print (header)
     response=self.post(path,data,header)
     return response
 

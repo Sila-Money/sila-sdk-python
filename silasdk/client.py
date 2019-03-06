@@ -73,7 +73,7 @@ class   App():
             msg : message being sent should be signed by user
         """
         appsignature=EthWallet.signMessage(msg,self.app_private_key)
-        if key:
+        if key!=None:
             usersignature=EthWallet.signMessage(msg,key)
             header={
                 'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ class   App():
                 "authsignature":  appsignature
             }
             return header
-        elif not key:
+        else:
             header={
                 'Content-Type': 'application/json',
                 "authsignature":  appsignature
