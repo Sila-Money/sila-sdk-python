@@ -34,6 +34,7 @@ class User():
         response=message.postRequest(self,path,payload)        
         return response
 
+
     def requestKyc(self,payload):
         """Request kyc for a user by handle
            This user will be kyced and ethereum address will be registered with sila 

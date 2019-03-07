@@ -2,6 +2,7 @@ from .client  import App
 from .endpoints import endPoints
 import time
 import uuid
+import json
 
     
 def getMessage(self,path):
@@ -54,7 +55,7 @@ def postRequest(self,path,payload,key=None):
         key :user_private_key
     """
     data=createMessage(self,payload,path)
-    print(payload)
+    print (payload)
     print(data)
     if key!=None:
             header=self.setHeader(data,key)

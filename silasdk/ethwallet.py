@@ -32,7 +32,8 @@ class EthWallet():
                 encoded_message=json.dumps(msg,separators=(",", ":")).encode("utf-8")
                 k.update(encoded_message)
                 message_hash=k.hexdigest()
-                if key:
+                print(message_hash)
+                if key!=None:
                         signed_message=Account.signHash(message_hash,key)
                         sig_hx=signed_message.signature.hex()
                         print (str(sig_hx.replace("0x","")))

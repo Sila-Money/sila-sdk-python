@@ -48,8 +48,10 @@ class   App():
         """
         url = self.getUrl() 
         endpoint=url + path
-        data = json.dumps(payload)
-        response = self.session.post(endpoint,data=data,headers=header)
+        print(data)
+        print(type(data))
+        print(type(header))
+        response = self.session.post(endpoint,data=json.dumps(payload),headers=header)
         output=self.checkResponse(response)
         return output
 
