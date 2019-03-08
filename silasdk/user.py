@@ -43,8 +43,22 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        path = endPoints["request_kyc"]
-        response=message.postRequest(self,path,payload)        
+        user_handle=payload["user_handle"]
+        auth_handle=self.app_handle
+        data={
+            "header": {
+                "reference": "none",
+                "created": 1234567890,
+                "user_handle":user_handle ,
+                "auth_handle": auth_handle,
+                "version": "0.1.1",
+                "crypto": "ETH"
+            },
+            "message": "header_msg"
+        }
+        header={'Content-Type': 'application/json', 'authsignature': '5a7e53ce0710ec1e6d5ae9e3010c96f6227760e797a139a6315d9c20cc6bfc3c65ef345a404eee02ee32e6d3b154c238aab6b63792bbeb7ee5858a82c1c0111b1c'}
+        path = endPoints["requestKyc"]
+        response=self.post(path,data,header)        
         return response
     
     
@@ -71,8 +85,22 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
-        path=endPoints["checkKyc"]
-        response=message.postRequest(self,path,payload)        
+        user_handle=payload["user_handle"]
+        auth_handle=self.app_handle
+        data={
+            "header": {
+                "reference": "none",
+                "created": 1234567890,
+                "user_handle":user_handle ,
+                "auth_handle": auth_handle,
+                "version": "0.1.1",
+                "crypto": "ETH"
+            },
+            "message": "header_msg"
+        }
+        header={'Content-Type': 'application/json', 'authsignature': '5a7e53ce0710ec1e6d5ae9e3010c96f6227760e797a139a6315d9c20cc6bfc3c65ef345a404eee02ee32e6d3b154c238aab6b63792bbeb7ee5858a82c1c0111b1c'}
+        path = endPoints["checkKyc"]
+        response=self.post(path,data,header)        
         return response
 
     

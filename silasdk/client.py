@@ -35,6 +35,7 @@ class   App():
         url=endPoints["apiUrl"]
         tier=str(self.tier)
         apiurl=url[:8] + tier + url[8:]
+        print(apiurl)
         return apiurl
 
         
@@ -48,12 +49,18 @@ class   App():
         """
         url = self.getUrl() 
         endpoint=url + path
-        print(data)
-        print(type(data))
+        print(endpoint)
+        data1=json.dumps(payload)
+        print(data1)
+        print(type(data1))
         print(type(header))
-        response = self.session.post(endpoint,data=json.dumps(payload),headers=header)
+        response = self.session.post(
+                endpoint,
+                data=data1,
+                headers=header)
         output=self.checkResponse(response)
-        return output
+        return (output)
+
 
 
     def get(self,path):
@@ -63,7 +70,7 @@ class   App():
         """
         endpoint = path
         response =self.session.get(endpoint)
-        output=self.checkResponse(response)
+        output=yaml.safe_load(json.dumps(response.json()))
         return output
 
     
@@ -100,12 +107,18 @@ class   App():
             Parameters:
                 response: A JSON object returned from Authentic Jobs or n error
         """
-        if response.status_code == 200:
-            output=yaml.safe_load(json.dumps(response.json()))
+        output=yaml.safe_load(json.dumps(response.json()))
+
+        if response.status_code == 200 and output["status"]=="SUCCESS":
             
             return output
-        
+
+        elif output["status"]=="FAILURE":
+            
+            return output
+
         else:
+            print(response.status_code)
             try:
                 for k,v in Errors.items():
                     if response.status_code==k:
