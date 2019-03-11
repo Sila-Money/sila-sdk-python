@@ -3,6 +3,7 @@ from .endpoints import endPoints
 import time
 import uuid
 import json
+from .schema import Schema
 
     
 def getMessage(self,path):
@@ -10,9 +11,9 @@ def getMessage(self,path):
     Args:
         path : enpoint path
     """
-    endpoint=endPoints["schemaUrl"]
-    response =self.get(endpoint)
-    for i in response:
+    # endpoint=endPoints["schemaUrl"]
+    # response =self.get(endpoint)
+    for i in Schema:
         if i["_test_uri"]==path:
             return i["data"]
             break
