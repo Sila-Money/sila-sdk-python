@@ -62,7 +62,6 @@ target/
 .idea
 
 .DS_Store
-*.html
 
 venv
 

@@ -29,7 +29,8 @@ class EthWallet():
                 string: a signed message
                 """
                 k= sha3.keccak_256()
-                encoded_message=json.dumps(msg,separators=(",", ":")).encode("utf-8")
+                message=str(msg)
+                encoded_message=msg.encode("utf-8")
                 k.update(encoded_message)
                 message_hash=k.hexdigest()
                 print(message_hash)

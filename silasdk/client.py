@@ -81,9 +81,9 @@ class   App():
             key : ethereum private key for the user
             msg : message being sent should be signed by user
         """
-        appsignature=EthWallet.signMessage(msg,self.app_private_key)
+        appsignature=EthWallet.signMessage(msg,self.app_private_key.lower())
         if key!=None:
-            usersignature=EthWallet.signMessage(msg,key)
+            usersignature=EthWallet.signMessage(msg,key.lower())
             header={
                 'Content-Type': 'application/json',
                 "usersignature": usersignature,

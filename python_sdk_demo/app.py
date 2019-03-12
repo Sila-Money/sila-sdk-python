@@ -8,7 +8,7 @@ from silasdk import App
 from silasdk import User
 from silasdk import Transaction
 
-app1=App("TEST",'86671bda5b2d72146722ea6c00732a53626faf5230fb1e75bb554f824b6694ef',"tyagi.silamoney.eth")
+app1=App("TEST",'18B580BF02D42742D5D102CCB7E30DC15FF09D48046FF4B37EAFF3C30D5DBE6B',"tyagi1.silamoney.eth")
 
 app = Flask(__name__)
 
@@ -48,23 +48,28 @@ def checkKyc():
     result = json.dumps(User.checkKyc(app1,data))
     return result
 
-
+#Never transmit private keys over the network
 
 @app.route('/linkAccount', methods = ['POST'])
 def linkAccount():
     # read json + reply
     data = request.data
-    data1=json.dumps(data)
+    data1=json.dumps(data.decode("utf-8"))
     result = json.dumps(User.linkAccount(app1,data,data1["private_key"]))
     return result
 
+#Never transmit private key over the network
 
 @app.route('/getAccounts', methods = ['POST'])
 def getAccounts():
     # read json + reply
     data = request.json
-    result = json.dumps(User.getAccounts(app1,data))
+    private_key=data["private_key"]
+    print(private_key)
+    result = json.dumps(User.getAccounts(app1,data,private_key))
     return result
+
+
 
 @app.route('/getTransactions', methods = ['POST'])
 def getTransactions():
