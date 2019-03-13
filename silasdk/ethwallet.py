@@ -1,4 +1,6 @@
 from eth_account import Account
+from web3.auto import w3
+from eth_account.messages import defunct_hash_message
 import sha3
 import json
 
@@ -28,17 +30,13 @@ class EthWallet():
                 Returns:
                 string: a signed message
                 """
-                k= sha3.keccak_256()
-                message=str(msg)
-                encoded_message=msg.encode("utf-8")
-                k.update(encoded_message)
-                message_hash=k.hexdigest()
-                print(message_hash)
+                message=json.dumps(msg,separators=(",", ":"))
+                message_hash = defunct_hash_message(text=str(msg))
                 if key!=None:
-                        signed_message=Account.signHash(message_hash,key)
+                        signed_message = w3.eth.account.signHash(message_hash, private_key=key)
                         sig_hx=signed_message.signature.hex()
-                        print (str(sig_hx.replace("0x","")))
-                        return str(sig_hx.replace("0x",""))
+                        print (str(signed_message.r)+str(signed_message.s)+str(signed_message.v))
+                        return str(signed_message.r)+str(signed_message.s)+str(signed_message.v)
                 else:
                         return " "
 
