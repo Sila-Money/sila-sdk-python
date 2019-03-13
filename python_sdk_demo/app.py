@@ -8,6 +8,8 @@ from silasdk import App
 from silasdk import User
 from silasdk import Transaction
 
+#App private key,ENV and handle can be set as env variables if required
+
 app1=App("TEST",'18B580BF02D42742D5D102CCB7E30DC15FF09D48046FF4B37EAFF3C30D5DBE6B',"tyagi1.silamoney.eth")
 
 app = Flask(__name__)
@@ -48,21 +50,29 @@ def checkKyc():
     result = json.dumps(User.checkKyc(app1,data))
     return result
 
-#Never transmit private keys over the network
+
 
 @app.route('/linkAccount', methods = ['POST'])
 def linkAccount():
-    # read json + reply
+    '''SECURITY ALERT
+    Never transmit private keys over the network in the request body
+    You see a private key in request body here as this is intended for testing linkaccount and other endpoints locally
+    Refer to documentation for how to manage your private keys and how it is used by our sdks locally to sign a transaction 
+    '''
     data = request.json
     data1=json.dumps(data.decode("utf-8"))
     result = json.dumps(User.linkAccount(app1,data,data1["private_key"]))
     return result
 
-#Never transmit private key over the network
+#Never transmit private keys over the network in the request body
 
 @app.route('/getAccounts', methods = ['POST'])
 def getAccounts():
-    # read json + reply
+    '''SECURITY ALERT
+    Never transmit private keys over the network in the request body
+    You see a private key in request body here as this is intended for testing linkaccount and other endpoints locally
+    Refer to documentation for how to manage your private keys and how it is used by our sdks locally to sign a transaction 
+    '''
     data = request.json
     private_key=data["private_key"]
     print(private_key)
@@ -73,7 +83,11 @@ def getAccounts():
 
 @app.route('/getTransactions', methods = ['POST'])
 def getTransactions():
-    # read json + reply
+    '''SECURITY ALERT
+    Never transmit private keys over the network in the request body
+    You see a private key in request body here as this is intended for testing linkaccount and other endpoints locally
+    Refer to documentation for how to manage your private keys and how it is used by our sdks locally to sign a transaction 
+    '''
     data = request.json
     private_key=data["private_key"]
     result = json.dumps(User.getTransactions(app1,data,private_key))
@@ -82,7 +96,11 @@ def getTransactions():
 
 @app.route('/issueSila', methods = ['POST'])
 def issueSila():
-    # read json + reply
+    '''SECURITY ALERT
+    Never transmit private keys over the network in the request body
+    You see a private key in request body here as this is intended for testing linkaccount and other endpoints locally
+    Refer to documentation for how to manage your private keys and how it is used by our sdks locally to sign a transaction 
+    '''
     data = request.json
     private_key=data["private_key"]
     result = json.dumps(Transaction.issueSila(app1,data,private_key))
@@ -91,7 +109,11 @@ def issueSila():
 
 @app.route('/redeemSila', methods = ['POST'])
 def redeemSila():
-    # read json + reply
+    '''SECURITY ALERT
+    Never transmit private keys over the network in the request body
+    You see a private key in request body here as this is intended for testing linkaccount and other endpoints locally
+    Refer to documentation for how to manage your private keys and how it is used by our sdks locally to sign a transaction 
+    '''
     data = request.json
     private_key=data["private_key"]
     result = json.dumps(Transaction.redeemSila(app1,data,private_key))
@@ -101,7 +123,11 @@ def redeemSila():
 
 @app.route('/transferSila', methods = ['POST'])
 def transferSila():
-    # read json + reply
+    '''SECURITY ALERT
+    Never transmit private keys over the network in the request body
+    You see a private key in request body here as this is intended for testing linkaccount and other endpoints locally
+    Refer to documentation for how to manage your private keys and how it is used by our sdks locally to sign a transaction 
+    '''
     data = request.json
     private_key=data["private_key"]
     result = json.dumps(Transaction.transferSila(app1,data,private_key))
