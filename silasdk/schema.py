@@ -158,7 +158,7 @@ Schema=[   {
        
     },
     {
-        "_test_uri": "/get_users",
+        "_test_uri": "/get_transactions",
         "data": {
             "header": {
                 "reference": "none",

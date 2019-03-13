@@ -30,13 +30,15 @@ class EthWallet():
                 Returns:
                 string: a signed message
                 """
-                message=json.dumps(msg,separators=(",", ":"))
-                message_hash = defunct_hash_message(text=str(msg))
+                k= sha3.keccak_256()
+                encoded_message=(json.dumps(msg)).encode("utf-8")
+                k.update(encoded_message)
+                message_hash=k.hexdigest()
                 if key!=None:
-                        signed_message = w3.eth.account.signHash(message_hash, private_key=key)
+                        signed_message=Account.signHash(message_hash,key)
                         sig_hx=signed_message.signature.hex()
-                        print (str(signed_message.r)+str(signed_message.s)+str(signed_message.v))
-                        return str(signed_message.r)+str(signed_message.s)+str(signed_message.v)
+                        return (str(sig_hx.replace("0x","")))
+
                 else:
                         return " "
 
@@ -51,6 +53,10 @@ class EthWallet():
                 Returns:
                 string: returns the ethereum address corresponding to the private key the message was signed with
                 """
+                k= sha3.keccak_256()
+                encoded_message=str(msg).encode("utf-8")
+                k.update(encoded_message)
+                message_hash=k.hexdigest()
                 return Account.recoverHash(message_hash,signature=sign)
 
 

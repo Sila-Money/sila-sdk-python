@@ -75,7 +75,8 @@ def getAccounts():
 def getTransactions():
     # read json + reply
     data = request.json
-    result = json.dumps(User.getTransactions(app1,data))
+    private_key=data["private_key"]
+    result = json.dumps(User.getTransactions(app1,data,private_key))
     return result
 
 
