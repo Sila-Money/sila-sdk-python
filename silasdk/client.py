@@ -59,8 +59,8 @@ class   App():
                 data=data1,
                 headers=header)
         
-        # output=self.checkResponse(response)
-        return (json.dumps(response.json()))
+        output=self.checkResponse(response)
+        return output
 
 
 
@@ -111,11 +111,7 @@ class   App():
         """
         output=yaml.safe_load(json.dumps(response.json()))
 
-        if response.status_code == 200 and output["status"]=="SUCCESS":
-            
-            return output
-
-        elif output["status"]=="FAILURE":
+        if response.status_code == 200:
             
             return output
 

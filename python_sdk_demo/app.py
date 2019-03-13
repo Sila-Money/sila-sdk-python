@@ -53,7 +53,7 @@ def checkKyc():
 @app.route('/linkAccount', methods = ['POST'])
 def linkAccount():
     # read json + reply
-    data = request.data
+    data = request.json
     data1=json.dumps(data.decode("utf-8"))
     result = json.dumps(User.linkAccount(app1,data,data1["private_key"]))
     return result
@@ -84,7 +84,8 @@ def getTransactions():
 def issueSila():
     # read json + reply
     data = request.json
-    result = json.dumps(Transaction.issueSila(app1,data))
+    private_key=data["private_key"]
+    result = json.dumps(Transaction.issueSila(app1,data,private_key))
     return result
 
 
@@ -92,7 +93,8 @@ def issueSila():
 def redeemSila():
     # read json + reply
     data = request.json
-    result = json.dumps(Transaction.redeemSila(app1,data))
+    private_key=data["private_key"]
+    result = json.dumps(Transaction.redeemSila(app1,data,private_key))
     return result
 
 
@@ -101,7 +103,8 @@ def redeemSila():
 def transferSila():
     # read json + reply
     data = request.json
-    result = json.dumps(Transaction.transferSila(app1,data))
+    private_key=data["private_key"]
+    result = json.dumps(Transaction.transferSila(app1,data,private_key))
     return result
 
 
