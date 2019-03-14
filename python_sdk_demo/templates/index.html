@@ -39,10 +39,27 @@
 				 "user_handle": $('#handle').val(),
 				 "private_key": $('#key').val(),
 			});
-			$.post('/linkAccount', {
-				 "public_token": public_token,
-				 "user_handle": $('#handle').val(),
-				 "private_key": $('#key').val(),
+			// $.post('/linkAccount', {
+			// 	 "public_token": public_token,
+			// 	 "user_handle": $('#handle').val(),
+			// 	 "private_key": $('#key').val(),
+			// });
+			$.ajax({
+				type: 'POST',
+				url: '/linkAccount',
+				data: {
+					public_token: public_token,
+					user_handle: $('#handle').val(),
+					private_key: $('#key').val(),
+				},
+				dataType: 'json',
+				contentType: 'application/json',
+				success: function(res) {
+					console.log('success');
+				},
+				failure: function(err) {
+					console.log('error');
+				},
 			});
 			},
 			onExit: function(err, metadata) {
