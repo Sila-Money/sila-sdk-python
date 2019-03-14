@@ -65,7 +65,6 @@ def linkAccount():
     data={"public_token":public_token,"user_handle":user_handle}
     print('*** Request Data: ***')
     print(data)
-    private_key=data["private_key"]
     print (data1)
     result = json.dumps(User.linkAccount(app1,data,private_key))
     return result
