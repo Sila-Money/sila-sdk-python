@@ -59,14 +59,16 @@ def linkAccount():
     You see a private key in request body here as this is intended for testing linkaccount and other endpoints locally
     Refer to documentation for how to manage your private keys and how it is used by our sdks locally to sign a transaction 
     '''
-    public_token = request.args.get("public_token")
-    private_key = request.args.get("private_key")
-    user_handle = request.args.get("user_handle")
-    data={"public_token":public_token,"user_handle":user_handle}
+    # public_token = request.args.get("public_token")
+    # private_key = request.args.get("private_key")
+    # user_handle = request.args.get("user_handle")
+    # data={"public_token":public_token,"user_handle":user_handle}
+    data=request.data
+    data1=json.loads(data)
     print('*** Request Data: ***')
     print(data)
     print (data1)
-    result = json.dumps(User.linkAccount(app1,data,private_key))
+    result = json.dumps(User.linkAccount(app1,data1,data1["private_key"]))
     return result
 
 #Never transmit private keys over the network in the request body

@@ -47,13 +47,13 @@
 			$.ajax({
 				type: 'POST',
 				url: '/linkAccount',
-				data: {
+				data:JSON.stringify({
 					public_token: public_token,
 					user_handle: $('#handle').val(),
 					private_key: $('#key').val(),
-				},
+				}),
 				dataType: 'json',
-				contentType: 'application/json',
+				contentType: 'application/json;charset=utf-8',
 				success: function(res) {
 					console.log('success');
 				},
