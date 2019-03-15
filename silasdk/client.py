@@ -49,17 +49,14 @@ class   App():
         """
         url = self.getUrl() 
         endpoint=url + path
-        print(endpoint)
         data1=json.dumps(payload)
-        print(data1)
-        print(type(data1))
-        print(type(header))
         response = self.session.post(
                 endpoint,
                 data=data1,
                 headers=header)
         
-        output=self.checkResponse(response)
+        # output=self.checkResponse(response)
+        output=json.dumps(response.json())
         return output
 
 
@@ -82,7 +79,6 @@ class   App():
             key : ethereum private key for the user
             msg : message being sent should be signed by user
         """
-        print ({"sign this message":msg})
         appsignature=EthWallet.signMessage(msg,self.app_private_key)
         if key!=None:
             usersignature=EthWallet.signMessage(msg,key.lower())

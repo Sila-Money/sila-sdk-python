@@ -56,13 +56,10 @@ def postRequest(self,path,payload,key=None):
         key :user_private_key
     """
     data=createMessage(self,payload,path)
-    print (payload)
-    print(data)
     if key!=None:
             header=self.setHeader(data,key)
     else:
             header=self.setHeader(data)
-    print (header)
     response=self.post(path,data,header)
     return response
 

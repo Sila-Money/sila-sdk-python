@@ -1,4 +1,4 @@
-Schema=[   {
+Schema=[{
         "_test_uri": "/register",
         "data": {
             "address": {
@@ -45,13 +45,13 @@ Schema=[   {
     {
         "_test_uri": "/link_account",
         "data": {
-            "public_token": "public-development-0dc5f214-56a2-4b69-8968-f27202477d3f",
+            "public_token": "",
             "account_name": "default",
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "end2end.silamoney.eth",
-                "auth_handle": "end2end.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -61,13 +61,13 @@ Schema=[   {
     {
         "_test_uri": "/issue_sila",
         "data": {
-            "amount": 1,
+            "amount": 0 ,
             "account_name": "default",
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "avery.silamoney.eth",
-                "auth_handle": "avery.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -80,15 +80,15 @@ Schema=[   {
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "end2end.silamoney.eth",
-                "auth_handle": "end2end.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
             "crypto_entry": {
                 "crypto_alias": "default",
                 "crypto_status": "active",
-                "crypto_address": "0x88DDBA46ddBc57a5fCbBdfa528999426993fA5aF",
+                "crypto_address": "",
                 "crypto_code": "ETH"
             },
             "message": "crypto_msg"
@@ -97,13 +97,13 @@ Schema=[   {
     {
         "_test_uri": "/transfer_sila",
         "data": {
-            "amount": 1.2,
+            "amount": 0,
             "destination": "bree.silamoney.xlm",
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "end2end.silamoney.eth",
-                "auth_handle": "end2end.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -114,13 +114,13 @@ Schema=[   {
     {
         "_test_uri": "/redeem_sila",
         "data": {
-            "amount": 1.2,
+            "amount": 0,
             "account_name": "default",
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "end2end.silamoney.eth",
-                "auth_handle": "end2end.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -134,8 +134,8 @@ Schema=[   {
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "test.silamoney.eth",
-                "auth_handle": "test.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -148,8 +148,8 @@ Schema=[   {
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "shamir.silamoney.eth",
-                "auth_handle": "shamir.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -163,8 +163,8 @@ Schema=[   {
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "shamir.silamoney.eth",
-                "auth_handle": "shamir.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -178,8 +178,8 @@ Schema=[   {
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "test.silamoney.eth",
-                "auth_handle": "test.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -192,8 +192,8 @@ Schema=[   {
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "test.silamoney.eth",
-                "auth_handle": "test.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
@@ -206,15 +206,15 @@ Schema=[   {
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "end2end.silamoney.eth",
-                "auth_handle": "end2end.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
             "crypto_entry": {
                 "crypto_alias": "default",
                 "crypto_status": "active",
-                "crypto_address": "0x88DDBA46ddBc57a5fCbBdfa528999426993fA5aF",
+                "crypto_address": "",
                 "crypto_code": "ETH"
             },
             "message": "crypto_msg"
@@ -227,21 +227,21 @@ Schema=[   {
             "country": "US",
             "identity": {
                 "identity_alias": "SSN",
-                "identity_value": "2222"
+                "identity_value": ""
             },
             "header": {
                 "reference": "none",
                 "created": 1234567890,
-                "user_handle": "end2end.silamoney.eth",
-                "auth_handle": "end2end.silamoney.eth",
+                "user_handle": "",
+                "auth_handle": "",
                 "version": "0.1.1",
                 "crypto": "ETH"
             },
             "message": "identity_msg",
             "entity": {
-                "last_name": "silver",
-                "relationship": "user",
-                "first_name": "Bob"
+                "last_name": "",
+                "relationship": "",
+                "first_name": ""
             }
         }
     }]
