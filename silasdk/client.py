@@ -18,7 +18,7 @@ class   App():
         """Initalize the application 
             This lets users initialize the application by providing the tier, application privatekey and application handle
         Args:
-            tier  : TEST,PROD etc
+            tier  : SANDBOX,PROD etc
             app_private_key : ethereum privat key for the application
             app_handle  : application sila handle (app.silamoney.eth)
         """
@@ -37,7 +37,7 @@ class   App():
             None
         """
         endpoint=endPoints["schemaUrl"]
-        message=["header","issue","redeem","transfer","entity","identity","crypto"]
+        message=["header","issue","redeem","transfer","entity","identity","crypto","linkAccount"]
         for i in message:
             response=self.get(
                     endpoint %i)

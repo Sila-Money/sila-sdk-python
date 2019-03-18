@@ -60,7 +60,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["linkAccount"]
-        msg_type="header_msg"
+        msg_type="link_account_msg"
         response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
        
