@@ -11,8 +11,11 @@ def getMessage(self,msg_type):
     Args:
         path : endpoint path
     """
-    response =self.get(endpoint %msg_type)
-    return response
+    for i in Schema:
+        for key,value in i.items():
+            if key=="message" and value==msg_type:
+                return i
+
 
 
 def lower_keys(x):
@@ -33,6 +36,7 @@ def createMessage(self,payload,msg_type):
     """
     payload.update({"auth_handle":str(self.app_handle)})
     payload.update({"reference":str(uuid.uuid4())})
+    payload.update({"crypto_code":"ETH"})
     inpt= getMessage(self,msg_type)
     data=lower_keys(payload)
     for i in inpt:

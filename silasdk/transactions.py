@@ -15,7 +15,8 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         path=endPoints["issueSila"]
-        response=message.postRequest(self,path,payload,user_private_key)        
+        msg_type="issue_msg"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
 
 
@@ -30,7 +31,8 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         path=endPoints["redeemSila"]
-        response=message.postRequest(self,path,payload,user_private_key)        
+        msg_type="redeem_msg"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
 
             
@@ -45,7 +47,8 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         path=endPoints["transferSila"]
-        response=message.postRequest(self,path,payload,user_private_key)        
+        msg_type="transfer_msg"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
 
 

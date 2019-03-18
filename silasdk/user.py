@@ -18,7 +18,7 @@ class User():
         dict: response body (a confirmation message)
         """
         path=endPoints["checkHandle"]
-        msg_type="header"
+        msg_type="header_msg"
         response=message.postRequest(self,path,msg_type,payload)        
         return response
 
@@ -32,12 +32,12 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["register"]
-        msg_type="entity"
+        msg_type="entity_msg"
         response=message.postRequest(self,path,msg_type,payload)        
         return response
 
 
-    def requestKyc(self,payload):
+    def requestKyc(self,payload,user_private_key):
         """Request kyc for a user by handle
            This user will be kyced and ethereum address will be registered with sila 
         Args:
@@ -46,8 +46,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["requestKyc"]
-        msg_type="header"
-        response=message.postRequest(self,path,msg_type,payload)        
+        msg_type="header_msg"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
     
     def linkAccount(self,payload,user_private_key):
@@ -60,13 +60,13 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["linkAccount"]
-        msg_type="header"
+        msg_type="header_msg"
         response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
        
 
         
-    def checkKyc(self,payload):
+    def checkKyc(self,payload,user_private_key):
         """check if the user has been kyced.
             The user will be checked if the they have been kyced
         Args:
@@ -75,8 +75,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["checkKyc"]
-        msg_type="header"
-        response=message.postRequest(self,path,msg_type,payload)        
+        msg_type="header_msg"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
     
     def addCrypto(self,payload,user_private_key):
@@ -89,7 +89,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["addCrypto"]
-        msg_type="crypto"
+        msg_type="crypto_msg"
         response=message.postRequest(self,path,crypto,payload,user_private_key)        
         return response
 
@@ -104,7 +104,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["addIdentity"]
-        msg_type="identity"
+        msg_type="identity_msg"
         response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
     
@@ -120,7 +120,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["getAccounts"]
-        msg_type="getAccounts"
+        msg_type="header_msg"
         response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
 
@@ -136,7 +136,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["getTransactions"]
-        msg_type="header"
+        msg_type="header_msg"
         response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
     

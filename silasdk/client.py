@@ -6,6 +6,7 @@ import logging
 from .ethwallet import EthWallet
 from .endpoints import endPoints
 from .errors import Errors
+from .schema import Schema
 
 
 # basic client for making http requests like post,get etc
@@ -25,8 +26,25 @@ class   App():
         self.tier=tier.lower()
         self.app_private_key=app_private_key
         self.app_handle=app_handle
+        self.updateSchema()
+
+        
+    
+    def updateSchema(self):
+        """update schema.py on initialization of app
+            This lets users initialize the schema into schema.py for ease of use
+        Args:
+            None
+        """
+        endpoint=endPoints["schemaUrl"]
+        message=["header","issue","redeem","transfer","entity","identity","crypto"]
+        for i in message:
+            response=self.get(
+                    endpoint %i)
+            Schema.append(response)
 
 
+          
     def getUrl(self):
         """construct the url endpoint to make api calls
         Args:
@@ -57,8 +75,8 @@ class   App():
                 data=data1,
                 headers=header)
         
-        # output=self.checkResponse(response)
-        output=yaml.safe_load(json.dumps(response.json()))
+        output=self.checkResponse(response)
+        # output=yaml.safe_load(json.dumps(response.json()))
         return output
 
 

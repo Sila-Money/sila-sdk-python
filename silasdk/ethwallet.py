@@ -1,5 +1,4 @@
 from eth_account import Account
-from web3.auto import w3
 from eth_account.messages import defunct_hash_message
 import sha3
 import json
@@ -54,7 +53,7 @@ class EthWallet():
                 string: returns the ethereum address corresponding to the private key the message was signed with
                 """
                 k= sha3.keccak_256()
-                encoded_message=str(msg).encode("utf-8")
+                encoded_message=(json.dumps(msg)).encode("utf-8")
                 k.update(encoded_message)
                 message_hash=k.hexdigest()
                 return Account.recoverHash(message_hash,signature=sign)
