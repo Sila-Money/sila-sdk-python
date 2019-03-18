@@ -18,7 +18,8 @@ class User():
         dict: response body (a confirmation message)
         """
         path=endPoints["checkHandle"]
-        response=message.postRequest(self,path,payload)        
+        msg_type="header"
+        response=message.postRequest(self,path,msg_type,payload)        
         return response
 
 
@@ -31,7 +32,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["register"]
-        response=message.postRequest(self,path,payload)        
+        msg_type="entity"
+        response=message.postRequest(self,path,msg_type,payload)        
         return response
 
 
@@ -44,7 +46,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["requestKyc"]
-        response=message.postRequest(self,path,payload)        
+        msg_type="header"
+        response=message.postRequest(self,path,msg_type,payload)        
         return response
     
     def linkAccount(self,payload,user_private_key):
@@ -57,7 +60,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["linkAccount"]
-        response=message.postRequest(self,path,payload,user_private_key)        
+        msg_type="header"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
        
 
@@ -71,7 +75,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["checkKyc"]
-        response=message.postRequest(self,path,payload)        
+        msg_type="header"
+        response=message.postRequest(self,path,msg_type,payload)        
         return response
     
     def addCrypto(self,payload,user_private_key):
@@ -84,7 +89,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["addCrypto"]
-        response=message.postRequest(self,path,payload,user_private_key)        
+        msg_type="crypto"
+        response=message.postRequest(self,path,crypto,payload,user_private_key)        
         return response
 
 
@@ -98,7 +104,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["addIdentity"]
-        response=message.postRequest(self,path,payload,user_private_key)        
+        msg_type="identity"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
     
 
@@ -113,7 +120,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["getAccounts"]
-        response=message.postRequest(self,path,payload,user_private_key)        
+        msg_type="getAccounts"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
 
 
@@ -128,7 +136,8 @@ class User():
             dict: response body (a confirmation message)
         """
         path=endPoints["getTransactions"]
-        response=message.postRequest(self,path,payload,user_private_key)        
+        msg_type="header"
+        response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
     
     

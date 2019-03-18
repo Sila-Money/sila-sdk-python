@@ -6,17 +6,14 @@ import json
 from .schema import Schema
 
     
-def getMessage(self,path):
+def getMessage(self,msg_type):
     """gets the message from schema 
     Args:
-        path : enpoint path
+        path : endpoint path
     """
-    # endpoint=endPoints["schemaUrl"]
-    # response =self.get(endpoint)
-    for i in Schema:
-        if i["_test_uri"]==path:
-            return i["data"]
-            break
+    response =self.get(endpoint %msg_type)
+    return response
+
 
 def lower_keys(x):
     """converts the payload dict keys to all lowercase to match schema
@@ -29,14 +26,14 @@ def lower_keys(x):
         return "msg_fromat_incorrect"
 
 
-def createMessage(self,payload,path):
+def createMessage(self,payload,msg_type):
     """creates the message to be sent based on payload from customer
     Args:
         payload:customer message
     """
     payload.update({"auth_handle":str(self.app_handle)})
     payload.update({"reference":str(uuid.uuid4())})
-    inpt= getMessage(self,path)
+    inpt= getMessage(self,msg_type)
     data=lower_keys(payload)
     for i in inpt:
         if i in data.keys():
@@ -48,14 +45,14 @@ def createMessage(self,payload,path):
     inpt["header"]["created"]=int(time.time())
     return inpt
 
-def postRequest(self,path,payload,key=None):
+def postRequest(self,path,msg_type,payload,key=None):
     """post the message and return resposne
     Args:
         payload:customer message
         path : endpoint
         key :user_private_key
     """
-    data=createMessage(self,payload,path)
+    data=createMessage(self,payload,msg_type)
     if key!=None:
             header=self.setHeader(data,key)
     else:

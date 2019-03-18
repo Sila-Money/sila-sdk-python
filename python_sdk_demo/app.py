@@ -10,7 +10,7 @@ from silasdk import Transaction
 
 #App private key,ENV and handle can be set as env variables if required
 
-app1=App("TEST",'18B580BF02D42742D5D102CCB7E30DC15FF09D48046FF4B37EAFF3C30D5DBE6B',"tyagi1.silamoney.eth")
+app1=App("TEST.api",'18B580BF02D42742D5D102CCB7E30DC15FF09D48046FF4B37EAFF3C30D5DBE6B',"tyagi1.silamoney.eth")
 
 app = Flask(__name__)
 

@@ -14,7 +14,7 @@ endPoints={
     "getTransactions"  : "/get_transactions",
     "registerOperator" : "/register_operator",
     "linkAccount"      : "/link_account",
-    "schemaUrl"        : "https://test.api.silamoney.com/0.1.1/getschema?schema=MessageFactory",
-    "apiUrl"           : "https://.api.silamoney.com/0.2"
+    "schemaUrl"        : "https://api.silamoney.com/0.2/getmessage?emptymessage=%sTestMessage",
+    "apiUrl"           : "https://%s.silamoney.com/0.2"
     
 }

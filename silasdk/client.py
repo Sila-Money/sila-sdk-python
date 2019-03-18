@@ -33,9 +33,11 @@ class   App():
             app: the initialized applications
         """
         url=endPoints["apiUrl"]
-        tier=str(self.tier)
-        apiurl=url[:8] + tier + url[8:]
-        print(apiurl)
+        if self.tier=="prod":
+            apiurl=url %"api"
+        else:
+            apiurl=url %self.tier
+
         return apiurl
 
         
@@ -56,7 +58,7 @@ class   App():
                 headers=header)
         
         # output=self.checkResponse(response)
-        output=json.dumps(response.json())
+        output=yaml.safe_load(json.dumps(response.json()))
         return output
 
 
