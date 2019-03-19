@@ -37,6 +37,7 @@ def createMessage(self,payload,msg_type):
     payload.update({"auth_handle":str(self.app_handle)})
     payload.update({"reference":str(uuid.uuid4())})
     payload.update({"crypto_code":"ETH"})
+    payload.update({"relationship":"user"})
     inpt= getMessage(self,msg_type)
     data=lower_keys(payload)
     for i in inpt:

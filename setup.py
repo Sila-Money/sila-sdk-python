@@ -27,7 +27,7 @@ setup(
         # How stable is your project? 
         #   3 - Alpha, 4 - Beta,5 - Production/Stable
 
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         'Intended Audience :: Developers',
 
@@ -42,7 +42,7 @@ setup(
     packages=["silasdk"],
 
    
-    install_requires=['requests','web3>=4.8.1','PyYAML>=3.13'],
+    install_requires=["requests","web3>=4.8.1","PyYAML>=3.13","eth-account==0.3.0"],
 
     zip_safe=False,
     
