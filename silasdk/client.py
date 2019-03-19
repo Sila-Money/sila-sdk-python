@@ -3,7 +3,7 @@ import requests
 import os
 import yaml
 import logging 
-from .ethwallet import EthWallet
+from .ethwallet import ethWallet
 from .endpoints import endPoints
 from .errors import Errors
 from .schema import Schema
@@ -11,7 +11,7 @@ from .schema import Schema
 
 # basic client for making http requests like post,get etc
 
-class   App():
+class   app():
     
     
     def __init__(self,tier,app_private_key,app_handle):
@@ -101,9 +101,9 @@ class   App():
             key : ethereum private key for the user
             msg : message being sent should be signed by user
         """
-        appsignature=EthWallet.signMessage(msg,self.app_private_key)
+        appsignature=ethWallet.signMessage(msg,self.app_private_key)
         if key!=None:
-            usersignature=EthWallet.signMessage(msg,key.lower())
+            usersignature=ethWallet.signMessage(msg,key.lower())
             header={
                 'Content-Type': 'application/json',
                 "usersignature": usersignature,

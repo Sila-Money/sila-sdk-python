@@ -1,11 +1,11 @@
 from .endpoints import endPoints
 from silasdk import message
-from .ethwallet import EthWallet
+from .ethwallet import ethWallet
 import time
 
 
 
-class User():
+class user():
 
 
 

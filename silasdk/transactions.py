@@ -1,8 +1,8 @@
 from .endpoints import endPoints
-from .client import App
+from .client import app
 from silasdk import message
 
-class Transaction():
+class transaction():
 
 
     def issueSila(self,payload,user_private_key):

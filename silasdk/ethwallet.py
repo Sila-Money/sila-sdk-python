@@ -3,7 +3,7 @@ from eth_account.messages import defunct_hash_message
 import sha3
 import json
 
-class EthWallet():
+class ethWallet():
 
 
         def create(entropy):
