@@ -2,7 +2,7 @@
 
 This lists the full functionality available in the Python SDK, Version 0.2,requires python version >=3.6.This sdk abstracts the signature piece for signing the messages locally using user private keys.
 
-###Usage
+## Usage
 
 ### Installation
 
