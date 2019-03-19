@@ -19,7 +19,7 @@ import os
 from silasdk import app
 from silasdk import user
 from silasdk import transaction
-silApp=app("SANDBOX",app_private_key,app_handle)
+silaApp=app("SANDBOX",app_private_key,app_handle)
 
 ```
 Sets up the app private key and handle for the SDK to use for signing subsequent request. The other SDK functionality will not be available until this configuration is completed. The SDK does not store this information outside of the instance that is configured. Information like private keys etc is never transmitted over the network or stored outside the scope of this instance.
