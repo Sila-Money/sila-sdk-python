@@ -2,8 +2,7 @@ import json
 import requests
 import os
 import yaml
-import logging 
-from .ethwallet import ethWallet
+from .ethwallet import EthWallet
 from .endpoints import endPoints
 from .errors import Errors
 from .schema import Schema
@@ -11,7 +10,7 @@ from .schema import Schema
 
 # basic client for making http requests like post,get etc
 
-class   app():
+class App():
     
     
     def __init__(self,tier,app_private_key,app_handle):
@@ -31,7 +30,7 @@ class   app():
         
     
     def updateSchema(self):
-        """update schema.py on initialization of app
+        """updates schema.py on initialization of app
             This lets users initialize the schema into schema.py for ease of use
         Args:
             None
@@ -77,8 +76,8 @@ class   app():
                 data=data1,
                 headers=header)
         
-        output=self.checkResponse(response)
-        # output=yaml.safe_load(json.dumps(response.json()))
+        # output=self.checkResponse(response)
+        output=yaml.safe_load(json.dumps(response.json()))
         return output
 
 
@@ -101,9 +100,9 @@ class   app():
             key : ethereum private key for the user
             msg : message being sent should be signed by user
         """
-        appsignature=ethWallet.signMessage(msg,self.app_private_key)
+        appsignature=EthWallet.signMessage(msg,self.app_private_key)
         if key!=None:
-            usersignature=ethWallet.signMessage(msg,key.lower())
+            usersignature=EthWallet.signMessage(msg,key.lower())
             header={
                 'Content-Type': 'application/json',
                 "usersignature": usersignature,

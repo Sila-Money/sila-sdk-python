@@ -1,12 +1,11 @@
 from eth_account import Account
-from eth_account.messages import defunct_hash_message
 import sha3
 import json
 
-class ethWallet():
+class EthWallet():
 
 
-        def create(entropy):
+        def createEthWallet(entropy):
                 """create an ethereum wallet for user
                 This will generate a private key and ethereum address, that can be used for trasaction,
                 however this not a recommended way to create your wallets

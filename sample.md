@@ -16,10 +16,10 @@ pip3 install silasdk
 
 ```python
 import os
-from silasdk import app
-from silasdk import user
-from silasdk import transaction
-silaApp=app("SANDBOX",app_private_key,app_handle)
+from silasdk import App
+from silasdk import User
+from silasdk import Transaction
+silaApp=App("SANDBOX",app_private_key,app_handle)
 
 ```
 Sets up the app private key and handle for the SDK to use for signing subsequent request. The other SDK functionality will not be available until this configuration is completed. The SDK does not store this information outside of the instance that is configured. Information like private keys etc is never transmitted over the network or stored outside the scope of this instance.
@@ -37,7 +37,7 @@ payload={
         "user_handle": "user.silamoney.eth"    #Required
     }
 
-user.checkHandle(silaApp,payload)
+User.checkHandle(silaApp,payload)
 
 ```
 ***Make sure to check the availability of user_handle before trying to register the user***
@@ -80,7 +80,7 @@ payload={
             "birthdate":"1990-05-19",                           # Required
             }
 
-user.register(silaApp,payload)
+User.register(silaApp,payload)
 
 ```
 ### Success Response Object
@@ -110,7 +110,7 @@ payload={
         "user_handle": "user.silamoney.eth"    #Required
     }
 
-user.checkKyc(silaApp,payload)
+User.requestKyc(silaApp,payload)
 
 ```
 
@@ -144,7 +144,7 @@ payload={
         "user_handle": "user.silamoney.eth"    #Required
     }
 
-user.checkKyc(silaApp,payload,user_private_key)
+User.checkKyc(silaApp,payload,user_private_key)
 
 ```
 
@@ -177,10 +177,9 @@ payload={
             "user_handle": "user.silamoney.eth"                                         # Required
         }
 
-user.linkAccount(silaApp,payload,user_private_key)
+User.linkAccount(silaApp,payload,user_private_key)
 
 ```
-***User private key is never transmitted over the network***
 
 
 
@@ -210,10 +209,9 @@ payload={
         "user_handle":    "user.silamoney.eth"
         }
 
-user.addCrypto(silaApp,payload,user_private_key)                              
+User.addCrypto(silaApp,payload,user_private_key)                              
 
 ```
-***User private key is never transmitted over the network***
 
 
 
@@ -244,10 +242,9 @@ payload={
         "user_handle":   "user.silamoney.eth"
         }
 
-user.addIdentity(silaApp,payload,user_private_key)                              
+User.addIdentity(silaApp,payload,user_private_key)                              
 
 ```
-***User private key is never transmitted over the network***
 
 
 
@@ -276,10 +273,9 @@ payload={
         "user_handle": "user.silamoney.eth"    #Required
     }
 
-user.getAccounts(silaApp,payload,user_private_key)            # users_private_key (256 bits) associated with ethereum address                  
+User.getAccounts(silaApp,payload,user_private_key)            # users_private_key (256 bits) associated with ethereum address                  
 
 ```
-***User private key is never transmitted over the network***
 
 
 
@@ -308,10 +304,9 @@ payload={
         "user_handle": "user.silamoney.eth"    #Required
     }
 
-user.getTransactions(silaApp,payload,user_private_key)        #Requires 256 bit ethereum private key                      
+User.getTransactions(silaApp,payload,user_private_key)        #Requires 256 bit ethereum private key                      
 
 ```
-***User private key is never transmitted over the network***
 
 
 
@@ -342,10 +337,9 @@ payload={
         "user_handle":   "user.silamoney.eth"
         }
 
-transaction.issueSila(silaApp,payload,user_private_key)                              
+Transaction.issueSila(silaApp,payload,user_private_key)                              
 
 ```
-***User private key is never transmitted over the network*** 
 
 
 
@@ -374,10 +368,9 @@ payload={
         "user_handle":   "user.silamoney.eth"
         }
 
-transaction.redeemSila(silaApp,payload,user_private_key)                              
+Transaction.redeemSila(silaApp,payload,user_private_key)                              
 
 ```
-***User private key is never transmitted over the network***
 
 
 ### Success Response Object
@@ -405,7 +398,7 @@ payload={
         "destination":  "donald.silamoney.eth"
         }
 
-transaction.transferSila(silaApp,payload,user_private_key)                              
+Transaction.transferSila(silaApp,payload,user_private_key)                              
 
 ```
 ***User private key is never transmitted over the network***
@@ -433,9 +426,9 @@ transaction.transferSila(silaApp,payload,user_private_key)
 ### Create Wallet
 
 ```python
-from silasdk import ethWallet
+from silasdk import EthWallet
 
-ethWallet.create("provide some entropy for randomness")
+EthWallet.create("provide some entropy for randomness")
 ```
 ***Use hd (heirarchical deterministic) wallets if you are managing users ethereum private keys***
 
@@ -452,7 +445,7 @@ ethWallet.create("provide some entropy for randomness")
 
 ```python
 
-ethWallet.signMessage("my_message","private_key")
+EthWallet.signMessage("my_message","private_key")
 
 ```
 
@@ -460,7 +453,7 @@ ethWallet.signMessage("my_message","private_key")
 
 ```python
 
-ethWallet.verifySignature("my_message",signature)
+EthWallet.verifySignature("my_message",signature)
 
 ```
 

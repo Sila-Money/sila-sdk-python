@@ -1,11 +1,14 @@
 from .endpoints import endPoints
 from silasdk import message
-from .ethwallet import ethWallet
+from .ethwallet import EthWallet
 import time
+import json
+import requests
+import yaml
 
 
 
-class user():
+class User():
 
 
 
@@ -139,6 +142,27 @@ class user():
         msg_type="header_msg"
         response=message.postRequest(self,path,msg_type,payload,user_private_key)        
         return response
+    
+    def silaBalance(self,address):
+        """get sila balance of the addresses registered with sila
+           The user will be checked if they have been kyced, along with app
+        Args:
+            address: requires valid ethereum address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        data=json.dumps({"address":str(address)})
+        header={'content-type': 'application/json'}
+        if self.tier=="prod":
+            endpoint=endPoints["silaBalanceProd"]
+        elif self.tier=="sandbox":
+            endpoint=endPoints["silaBalanceSandbox"]
+        response=requests.post(endpoint,data=data,headers=header)
+        return (yaml.safe_load(json.dumps(response.json())))
+
+
+
+
     
     
      

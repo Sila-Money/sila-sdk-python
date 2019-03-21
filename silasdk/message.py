@@ -1,4 +1,4 @@
-from .client  import app
+from .client  import App
 from .endpoints import endPoints
 import time
 import uuid
@@ -34,10 +34,7 @@ def createMessage(self,payload,msg_type):
     Args:
         payload:customer message
     """
-    payload.update({"auth_handle":str(self.app_handle)})
-    payload.update({"reference":str(uuid.uuid4())})
-    payload.update({"crypto_code":"ETH"})
-    payload.update({"relationship":"user"})
+    payload.update({"auth_handle":str(self.app_handle),"reference":str(uuid.uuid4()),"crypto_code":"ETH","relationship":"user"})
     inpt= getMessage(self,msg_type)
     data=lower_keys(payload)
     for i in inpt:

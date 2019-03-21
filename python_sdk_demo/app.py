@@ -4,12 +4,12 @@ import sys
 
 from flask import Flask, render_template, request, redirect, Response
 import random, json
-from silasdk import app
-from silasdk import user
-from silasdk import transaction
+from silasdk import App
+from silasdk import User
+from silasdk import Transaction
 
 
-app1=app("prod",'26230D5916D1BD6BDB9CF04FAA48123F80BE1B883A61ED94884F0D6A763619F4',"tyagi1.silamoney.eth")
+app1=App("sandbox",'26230D5916D1BD6BDB9CF04FAA48123F80BE1B883A61ED94884F0D6A763619F4',"tyagi1.silamoney.eth")
 
 app = Flask(__name__)
 
@@ -21,14 +21,14 @@ def output():
 @app.route('/checkHandle', methods = ['POST'])
 def checkHandle():
     data = request.json
-    result = json.dumps(user.checkHandle(app1,data))
+    result = json.dumps(User.checkHandle(app1,data))
     return result
 
 @app.route('/register', methods = ['POST'])
 def register():
     # read json + reply
     data = request.json
-    result = json.dumps(user.register(app1,data))
+    result = json.dumps(User.register(app1,data))
     return result
 
 
@@ -40,7 +40,7 @@ def requestKyc():
     Refer to documentation for how to manage your private keys and how it is used by our sdks locally to sign a transaction 
     '''
     data = request.json
-    result = json.dumps(user.requestKyc(app1,data,data["private_key"]))
+    result = json.dumps(User.requestKyc(app1,data,data["private_key"]))
     return result
 
 
@@ -54,7 +54,7 @@ def checkKyc():
         '''
         # read json + reply
         data = request.json
-        result = json.dumps(user.checkKyc(app1,data,data["private_key"]))
+        result = json.dumps(User.checkKyc(app1,data,data["private_key"]))
         return result
 
 
@@ -68,7 +68,7 @@ def linkAccount():
     '''
     data=request.data
     data1=json.loads(data)
-    result = json.dumps(user.linkAccount(app1,data1,data1["private_key"]))
+    result = json.dumps(User.linkAccount(app1,data1,data1["private_key"]))
     return result
 
 
@@ -81,7 +81,7 @@ def getAccounts():
     '''
     data = request.json
     private_key=data["private_key"]
-    result = json.dumps(user.getAccounts(app1,data,private_key))
+    result = json.dumps(User.getAccounts(app1,data,private_key))
     return result
 
 
@@ -95,7 +95,7 @@ def getTransactions():
     '''
     data = request.json
     private_key=data["private_key"]
-    result = json.dumps(user.getTransactions(app1,data,private_key))
+    result = json.dumps(User.getTransactions(app1,data,private_key))
     return result
 
 
@@ -108,7 +108,7 @@ def issueSila():
     '''
     data = request.json
     private_key=data["private_key"]
-    result = json.dumps(transaction.issueSila(app1,data,private_key))
+    result = json.dumps(Transaction.issueSila(app1,data,private_key))
     return result
 
 
@@ -121,7 +121,7 @@ def redeemSila():
     '''
     data = request.json
     private_key=data["private_key"]
-    result = json.dumps(transaction.redeemSila(app1,data,private_key))
+    result = json.dumps(Transaction.redeemSila(app1,data,private_key))
     return result
 
 
@@ -135,7 +135,7 @@ def transferSila():
     '''
     data = request.json
     private_key=data["private_key"]
-    result = json.dumps(transaction.transferSila(app1,data,private_key))
+    result = json.dumps(Transaction.transferSila(app1,data,private_key))
     return result
 
 
