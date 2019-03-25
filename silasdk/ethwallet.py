@@ -5,7 +5,7 @@ import json
 class EthWallet():
 
 
-        def createEthWallet(entropy):
+        def create(entropy):
                 """create an ethereum wallet for user
                 This will generate a private key and ethereum address, that can be used for trasaction,
                 however this not a recommended way to create your wallets

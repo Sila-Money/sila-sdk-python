@@ -11,16 +11,16 @@ setup(
     name='silasdk',
 
 
-    version='0.1.1',
+    version='0.2',
 
     description='Sila Python library for message signing and api wrapper',
 
-    url="https://github.com/Sila-Money/Sila-Python.git",
+    url="https://github.com/Sila-Money/Sila-Python",
 
     author='Sila',
     author_email='support@silamoney.com',
 
-    license='MIT',
+    license='Apache',
 
     classifiers=[
         
@@ -37,7 +37,7 @@ setup(
 
     ],
 
-    keywords='Sila v0.1.1 Rest API',
+    keywords='Sila v0.2 Rest API',
 
     packages=["silasdk"],
 
