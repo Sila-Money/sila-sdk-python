@@ -69,6 +69,7 @@ payload={
             "user_handle": 'user1234.silamoney.eth',            # Required: Must not be already in use
             "first_name": 'First',                              # Required
             "last_name": 'Last',                                # Required
+            "email":"xxx@silamoney.com",                        # Required
             "entity_name": 'Last Family Trust',                 # Required
             "identity_value": your ssn,                         # Required
             "phone": 1234567890,                                # Required: Must be a valid phone number (format not enforced)
