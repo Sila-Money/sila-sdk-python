@@ -111,7 +111,7 @@ payload={
         "user_handle": "user.silamoney.eth"    #Required
     }
 
-User.requestKyc(silaApp,payload)
+User.requestKyc(silaApp,payload,user_private_key)
 
 ```
 
