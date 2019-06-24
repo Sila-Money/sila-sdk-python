@@ -72,11 +72,11 @@ payload={
             "email":"xxx@silamoney.com",                        # Required
             "entity_name": 'Last Family Trust',                 # Required
             "identity_value": your ssn,                         # Required
-            "phone": 1234567890,                                # Required: Must be a valid phone number (format not enforced)
+            "phone": "1234567890",                              # Required: Must be a valid phone number (format not enforced)
             "street_address_1": '123 Main St',                  # Required:  Must be a valid USPS mailing address
             "city": 'Anytown',                                  # Required:  Must be a valid US City matching the zip
             "state": 'OR',                                      # Required:  Must be a 2 character US State abbr.
-            "postal_code": 12345,                               # Required:  Must be a valid US Postal Code
+            "postal_code": "12345",                             # Required:  Must be a valid US Postal Code
             "crypto_address": '0x123...890',                    # Required:  Must be a valid ethereum 20 byte address starting with 0x
             "birthdate":"1990-05-19",                           # Required
             }
