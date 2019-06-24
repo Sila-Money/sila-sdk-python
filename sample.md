@@ -66,13 +66,13 @@ User.checkHandle(silaApp,payload)
 
 payload={
             "country": "US",
-            "user_handle": 'user1234.silamoney.eth',            # Required: Must not be already in use
+            "user_handle": 'user1234.silamoney.eth',            # Required:  Must not be already in use
             "first_name": 'First',                              # Required
             "last_name": 'Last',                                # Required
             "email":"xxx@silamoney.com",                        # Required
             "entity_name": 'Last Family Trust',                 # Required
-            "identity_value": your ssn,                         # Required
-            "phone": "1234567890",                              # Required: Must be a valid phone number (format not enforced)
+            "identity_value": "123452222",                      # Required:  Must in in 2222 in the sandbox
+            "phone": "1234567890",                              # Required:  Must be a valid phone number (format not enforced)
             "street_address_1": '123 Main St',                  # Required:  Must be a valid USPS mailing address
             "city": 'Anytown',                                  # Required:  Must be a valid US City matching the zip
             "state": 'OR',                                      # Required:  Must be a 2 character US State abbr.
