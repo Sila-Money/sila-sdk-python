@@ -4,7 +4,7 @@ This lists the full functionality available in the Python SDK, Version 0.2,requi
 
 ## Usage
 
-### Installation
+### Ins tallation
 
 ```python
 
@@ -19,6 +19,7 @@ import os
 from silasdk import App
 from silasdk import User
 from silasdk import Transaction
+from silasdk import Wallet
 silaApp=App("SANDBOX",app_private_key,app_handle)
 
 ```
@@ -45,10 +46,10 @@ User.checkHandle(silaApp,payload)
 ### Success Response Object _200 OK_
 
 ```python
-    {
-        status: 'SUCCESS',
-        message: "user.silamoney.eth is available",
-    }
+{
+    status: 'SUCCESS',
+    message: "user.silamoney.eth is available",
+}
 ```
 
 ### Failure Response Object _200 OK_
@@ -60,6 +61,7 @@ User.checkHandle(silaApp,payload)
 }
 ```
 
+##
 ### Register a user
 
 ```python
@@ -84,13 +86,14 @@ payload={
 User.register(silaApp,payload)
 
 ```
+
 ### Success Response Object
 
 ```python
-    {
-        status: 'SUCCESS',
-        message: 'user.silamoney.eth has been submitted to KYC queue.',
-    }
+{
+    status: 'SUCCESS',
+    message: 'user.silamoney.eth has been submitted to KYC queue.',
+}
 ```
 
 ### Failure Response Object
@@ -102,7 +105,8 @@ User.register(silaApp,payload)
 }
 ```
 
-### requestKyc
+##
+### Request Kyc
 
 ```python
 
@@ -111,7 +115,20 @@ payload={
         "user_handle": "user.silamoney.eth"    #Required
     }
 
-User.requestKyc(silaApp,payload,user_private_key)
+User.requestKyc(silaApp,payload,user_private_key, use_kyc_level=False)
+
+```
+
+### Custom request Kyc
+
+```python
+
+payload={
+
+        "user_handle": "user.silamoney.eth"    #Required
+    }
+
+User.requestKyc(silaApp,payload,user_private_key, use_kyc_level=True)
 
 ```
 
@@ -136,6 +153,7 @@ User.requestKyc(silaApp,payload,user_private_key)
 ***SECURITY ALERT***
 : :***This sdk never transmits private keys over the network,it is advised to use a secure way for managing user private keys***
 
+##
 ### CheckKyc
 
 ```python
@@ -152,10 +170,10 @@ User.checkKyc(silaApp,payload,user_private_key)
 ### Success Response Object
 
 ```python
-    {
-        status: 'SUCCESS',
-        message: 'Kyc passed for user.silamoney.eth',
-    }
+{
+    status: 'SUCCESS',
+    message: 'Kyc passed for user.silamoney.eth',
+}
 ```
 
 ### Failure Response Object
@@ -169,7 +187,8 @@ User.checkKyc(silaApp,payload,user_private_key)
 
 ***The python demo app in the Sila-Python github repository (https://github.com/Sila-Money/Sila-Python) shows how to use plaid plugin and get a public token to make this request***
 
-### Linkaccount
+##
+### Link Account
 
 ```python
 
@@ -182,7 +201,22 @@ User.linkAccount(silaApp,payload,user_private_key)
 
 ```
 
+### Link Account Plaid
 
+```python
+
+payload={
+            "public_token": "public-development-0dc5f214-56a2-4b69-8968-f27202477d3f",  # Required token from plaid
+            "user_handle": "user.silamoney.eth",                                       # Required
+            "account_number": "123456789012",
+            "routing_number": "123456789",
+            "account_type": "CHECKING",
+            "account_name": "Custom Account Name"
+        }
+
+User.linkAccount(silaApp,payload,user_private_key, Plaid=True)
+
+```
 
 ### Success Response Object
 
@@ -200,8 +234,8 @@ User.linkAccount(silaApp,payload,user_private_key)
 }
 ```
 
-
-### addCrypto
+##
+### Add Crypto
 
 ```python
 
@@ -214,8 +248,6 @@ User.addCrypto(silaApp,payload,user_private_key)
 
 ```
 
-
-
 ### Success Response Object
 
 ```python
@@ -232,7 +264,8 @@ User.addCrypto(silaApp,payload,user_private_key)
 }
 ```
 
-### addIdentity
+##
+### Add Identity
 
 ```python
 
@@ -247,8 +280,6 @@ User.addIdentity(silaApp,payload,user_private_key)
 
 ```
 
-
-
 ### Success Response Object
 
 ```python
@@ -265,7 +296,8 @@ User.addIdentity(silaApp,payload,user_private_key)
 }
 ```
 
-### getAccounts
+##
+### Get Accounts
 
 ```python
 
@@ -278,8 +310,6 @@ User.getAccounts(silaApp,payload,user_private_key)            # users_private_ke
 
 ```
 
-
-
 ### Success Response Object
 
 ```python
@@ -296,7 +326,8 @@ User.getAccounts(silaApp,payload,user_private_key)            # users_private_ke
 }
 ```
 
-### getTransactions
+##
+### Get Transactions
 
 ```python
 
@@ -309,8 +340,6 @@ User.getTransactions(silaApp,payload,user_private_key)        #Requires 256 bit 
 
 ```
 
-
-
 ### Success Response Object
 
 ```python
@@ -327,9 +356,101 @@ User.getTransactions(silaApp,payload,user_private_key)        #Requires 256 bit 
 }
 ```
 
-## Transaction methods
+##
+### Get Sila balance
 
-### IssueSila
+```python
+silaBalance = User.silaBalance(app, eth_address)
+```
+
+### Success Response Object
+
+```python
+{
+  "success": true,
+  "address": "0x...",
+  "sila_balance": 100.0
+}
+```
+
+### Failure Response Object
+
+```python
+{
+  "success": false
+}
+```
+
+##
+### Get account balance
+
+```python
+payload = {
+    "user_handle": "user.silamoney.eth",
+    "account_name": "default"
+}
+
+response = User.getAccountBalance(app, payload, user_private_key)
+```
+
+### Success Response Object
+
+```python
+{
+    "success": True,
+    "available_balance": 100,
+    "current_balance": 110,
+    "masked_account_number": "0000",
+    "routing_number": 123456789,
+    "account_name": "default"
+
+}
+```
+
+### Failure Response Object
+
+```python
+{
+    "success": False,
+    "message": "Error message"
+}
+```
+
+
+## Transaction methods
+### Plaid same day auth
+
+```python
+payload = {
+    "user_handle": "user.silamoney.eth",
+    "account_name": "default_plaid"
+}
+
+response = Transaction.plaidSamedayAuth(app, payload, user_private_key)
+```
+
+### Success Response Object
+
+```python
+{
+  "status": "SUCCESS",
+  "public_token": String,
+  "message": "Plaid public token successfully created."
+}
+```
+
+### Failure Response Object
+
+```python
+{
+  "status": "FAILURE",
+  "public_token": String,
+  "message": "Message error"
+}
+```
+
+##
+### Issue Sila
 
 ```python
 
@@ -342,8 +463,6 @@ Transaction.issueSila(silaApp,payload,user_private_key)
 
 ```
 
-
-
 ### Success Response Object
 
 ```python
@@ -360,7 +479,8 @@ Transaction.issueSila(silaApp,payload,user_private_key)
 }
 ```
 
-### RedeemSila
+##
+### Redeem Sila
 
 ```python
 
@@ -373,7 +493,6 @@ Transaction.redeemSila(silaApp,payload,user_private_key)
 
 ```
 
-
 ### Success Response Object
 
 ```python
@@ -389,7 +508,9 @@ Transaction.redeemSila(silaApp,payload,user_private_key)
     status: 'FAILURE'
 }
 ```
-### TransferSila
+
+##
+### Transfer Sila
 
 ```python
 
@@ -404,8 +525,6 @@ Transaction.transferSila(silaApp,payload,user_private_key)
 ```
 ***User private key is never transmitted over the network***
 
-
-
 ### Success Response Object
 
 ```python
@@ -422,8 +541,8 @@ Transaction.transferSila(silaApp,payload,user_private_key)
 }
 ```
 
-## Ethereum Wallet methods
 
+## Ethereum Wallet methods
 ### Create Wallet
 
 ```python
@@ -432,7 +551,6 @@ from silasdk import EthWallet
 EthWallet.create("provide some entropy for randomness")
 ```
 ***Use hd (heirarchical deterministic) wallets if you are managing users ethereum private keys***
-
 
 ### Response Object
 
@@ -458,3 +576,207 @@ EthWallet.verifySignature("my_message",signature)
 
 ```
 
+
+## Multiple wallets
+### Register Wallet
+
+```python
+payload = {
+    "user_handle": "user.silamoney.eth",
+    "wallet_verification_signature": "verification_signature",
+    "wallet": {
+        "blockchain_address": '0x123...890',
+        "blockchain_network": "ETH",
+        "nickname": "wallet_python_new"
+    }
+}
+
+response = Wallet.registerWallet(app, payload, user_private_key)
+```
+
+### Success Response Object
+
+```python
+{
+  "reference": "ref",
+  "message": "Blockchain address [address] registered.",
+  "success": True,
+  "wallet_nickname": "new_wallet_nickname-123erf"
+}
+```
+
+### Failure Response Object
+
+```python
+{
+  "reference": "ref",
+  "message": "Error message",
+  "success": False
+}
+```
+
+##
+### Get Wallets
+
+```python
+payload = {
+    "user_handle": "user.silamoney.eth",
+    "search_filters": {
+        "page": 1,
+        "per_page": 20,
+        "sort_ascending": False,
+        "blockchain_network": "ETH",
+        "blockchain_address": '0x123...890',
+        "nickname": "wallet_python"
+    }
+}
+
+response = Wallet.getWallets(app, payload, user_private_key)
+```
+
+### Success Response Object
+```python
+{
+  "success": True,
+  "wallets": [
+    {
+      "blockchain_address": "",
+      "blockchain_network": "ETH",
+      "default": false,
+      "frozen": false,
+      "nickname": ""
+    },
+    "page": 1,
+    "returned_count": 1,
+    "total_count": 1,
+    "total_page_count": 1
+  ]
+}
+```
+
+### Failure Response Object
+
+```python
+{
+  "success": True,
+  "wallets": []
+}
+```
+
+##
+### Get Wallet
+
+```python
+payload = {
+    "user_handle": "user.silamoney.eth"
+}
+
+response = Wallet.getWallet(app, payload, user_private_key)
+```
+
+### Success Response Object
+
+```python
+{
+    "success": True,
+    "reference": "ref",
+    "wallet": {
+        "nickname": "my_wallet_nickname",
+        "default": False,
+        "blockchain_address": "0x...",
+        "blockchain_network": "ETH"
+    },
+    "is_whitelisted": True,
+    "sila_balance": 300.0
+}
+```
+
+### Failure Response Object
+
+```python
+{
+    "success": False,
+    "reference": "ref",
+    "message": "Error message"
+}
+```
+
+##
+### Update Wallet
+
+```python
+payload = {
+    "user_handle": "user.silamoney.eth",
+    "nickname": "wallet_python_updated",
+    "default": True
+}
+
+response = Wallet.updateWallet(app, payload, user_private_key)
+```
+
+### Success Response Object
+
+```python
+{
+  "message": "Wallet updated.",
+  "success": True,
+  "wallet": {
+    "blockchain_address": "(address)",
+    "blockchain_network": "ETH",
+    "nickname": "new_wallet_nickname",
+    "default": True
+  },
+  "changes": [
+    {
+      "attribute": "nickname",
+      "old_value": "",
+      "new_value": "new_wallet_nickname"
+    },
+    {
+      "attribute": "default",
+      "old_value": False,
+      "new_value": True
+    }
+  ]
+}
+```
+
+### Failure Response Object
+
+```python
+{
+    "message": "Wallet updated.",
+    "success": True
+}
+```
+
+##
+### Delete Wallet
+
+```python
+payload = {
+    "user_handle": "user.silamoney.eth"
+}
+
+response = Wallet.deleteWallet(app, payload, user_private_key)
+```
+
+### Success Response Object
+
+```python
+{
+  "message": "Address [address] deleted; can no longer be used to sign user requests through the API.",
+  "success": True,
+  "reference": "ref"
+}
+```
+
+### Failure Response Object
+
+```python
+{
+  "message": "Error message",
+  "success": False,
+  "reference": "ref"
+}
+```
