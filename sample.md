@@ -710,7 +710,7 @@ payload = {
     "default": True
 }
 
-response = Wallet.getWallet(app, payload, user_private_key)
+response = Wallet.updateWallet(app, payload, user_private_key)
 ```
 
 ### Success Response Object
@@ -757,7 +757,7 @@ payload = {
     "user_handle": "user.silamoney.eth"
 }
 
-response = Wallet.getWallet(app, payload, user_private_key)
+response = Wallet.deleteWallet(app, payload, user_private_key)
 ```
 
 ### Success Response Object

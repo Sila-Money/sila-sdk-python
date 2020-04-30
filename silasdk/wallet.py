@@ -2,8 +2,6 @@ from .endpoints import endPoints
 from silasdk import message
 import json
 import requests
-import yaml
-
 
 class Wallet():
     def registerWallet(self, payload, user_private_key):

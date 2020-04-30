@@ -19,7 +19,7 @@ app_private_key = "0xe60a5c57130f4e82782cbdb498943f31fe8f92ab96daac2cc13cbbbf9c0
 user_handle = strng + ".silamoney.eth"
 user_handle_2 = strng_2 + ".silamoney.eth"
 
-#
+#import os
 app = App("SANDBOX", app_private_key, app_hanlde)
 
 #

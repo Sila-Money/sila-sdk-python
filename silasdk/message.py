@@ -2,7 +2,6 @@ import time
 import uuid
 from .schema import Schema
 
-
 def getMessage(self, msg_type):
     """gets the message from schema 
     Args:
@@ -13,7 +12,6 @@ def getMessage(self, msg_type):
             if key == msg_type:
                 return i[msg_type]
 
-
 def lower_keys(x):
     """converts the payload dict keys to all lowercase to match schema
     Args:
@@ -23,7 +21,6 @@ def lower_keys(x):
         return dict((k.lower(), v) for k, v in x.items())
     else:
         return "msg_fromat_incorrect"
-
 
 def createMessage(self, payload, msg_type):
     """creates the message to be sent based on payload from customer
@@ -48,9 +45,7 @@ def createMessage(self, payload, msg_type):
                 if key in data.keys():
                     inpt[i][key] = data[key]
     inpt["header"]["created"] = int(time.time())
-
     return inpt
-
 
 def postRequest(self, path, msg_type, payload, key=None):
     """post the message and return resposne
@@ -60,20 +55,9 @@ def postRequest(self, path, msg_type, payload, key=None):
         key :user_private_key
     """
     data = createMessage(self, payload, msg_type)
-
     if key is not None:
         header = self.setHeader(data, key)
     else:
         header = self.setHeader(data)
     response = self.post(path, data, header)
-
-    print("-")
-    print("============================= test headers ===============================")
-    print(header)
-    print("============================= test request ===============================")
-    print(data)
-    print("============================= test response ==============================")
-    print(response)
-    print("==========================================================================")
-
     return response

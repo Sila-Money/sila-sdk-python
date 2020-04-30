@@ -2,8 +2,6 @@ from .endpoints import endPoints
 from silasdk import message
 import json
 import requests
-import yaml
-
 
 class User():
     def checkHandle(self, payload):
@@ -71,20 +69,6 @@ class User():
         msg_type = "header_msg"
         response = message.postRequest(self, path, msg_type, payload, user_private_key)
         return response
-
-    # def addCrypto(self, payload, user_private_key):
-    #     """check if the user has been kyced.
-    #         The used will be checked if the they have been kyced
-    #     Args:
-    #         payload : includes the crypto adddress, handle etc that need to be added
-    #         user_private_key: users ethereum private key
-    #     Returns:
-    #         dict: response body (a confirmation message)
-    #     """
-    #     path = endPoints["addCrypto"]
-    #     msg_type = "crypto_msg"
-    #     response = message.postRequest(self, path, crypto, payload, user_private_key)
-    #     return response
 
     def addIdentity(self, payload, user_private_key):
         """change the info about user like change ssn, email ,etc.
@@ -156,4 +140,4 @@ class User():
         elif self.tier == "sandbox":
             endpoint = endPoints["silaBalanceSandbox"]
         response = requests.post(endpoint, data=data, headers=header)
-        return yaml.safe_load(json.dumps(response.json()))
+        return response.json()
