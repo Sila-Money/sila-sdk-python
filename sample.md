@@ -19,6 +19,7 @@ import os
 from silasdk import App
 from silasdk import User
 from silasdk import Transaction
+from silasdk import Wallet
 silaApp=App("SANDBOX",app_private_key,app_handle)
 
 ```

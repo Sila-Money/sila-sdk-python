@@ -1,7 +1,5 @@
 #!flask/bin/python
-
 import sys
-
 from flask import Flask, render_template, request, redirect, Response
 import random, json
 from silasdk import App
@@ -9,7 +7,7 @@ from silasdk import User
 from silasdk import Transaction
 
 
-app1=App("prod",'26230D591***********',"tyagi1.silamoney.eth")
+app1=App("sandbox",'db71b2e568572c42f864dfc375f399eebc2834cc08f7ed59e251be0d87418d5a',"test1791.silamoney.eth")
 
 app = Flask(__name__)
 
@@ -68,9 +66,8 @@ def linkAccount():
     '''
     data=request.data
     data1=json.loads(data)
-    result = json.dumps(User.linkAccount(app1,data1,data1["private_key"]))
+    result = json.dumps(User.linkAccount(app1,data1,data1["private_key"],plaid=True))
     return result
-
 
 @app.route('/getAccounts', methods = ['POST'])
 def getAccounts():

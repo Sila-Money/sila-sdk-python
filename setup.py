@@ -1,11 +1,7 @@
-
-from setuptools import setup, find_packages
 import setuptools
-
+from setuptools import setup, find_packages
 from codecs import open
 from os import path
-
-
 
 setup(
     name='silasdk',
@@ -37,11 +33,10 @@ setup(
 
     ],
 
-    keywords='Sila v0.2 Rest API',
+    keywords='Sila v0.2.7 Rest API',
 
     packages=["silasdk"],
 
-   
     install_requires=["requests>=2.20.0","pyaml>=15.8.2","eth-account==0.3.0","uuid==1.30","pysha3==1.0.2"],
 
     zip_safe=False,

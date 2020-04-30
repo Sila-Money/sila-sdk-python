@@ -24,6 +24,6 @@ endPoints = {
     "getSilaBalance": "get_sila_balance",
     "schemaUrl": "https://api.silamoney.com/0.2/getmessage?emptymessage=%sTestMessage",
     "apiUrl": "https://%s.silamoney.com/0.2",
-    "silaBalanceProd": "https://silatokenapi.silamoney.com/get_sila_balance",
-    "silaBalanceSandbox": "https://sandbox.silatokenapi.silamoney.com/get_sila_balance"
+    "silaBalanceProd": "https://silatokenapi.silamoney.com/silaBalance",
+    "silaBalanceSandbox": "https://sandbox.silatokenapi.silamoney.com/silaBalance"
 }
