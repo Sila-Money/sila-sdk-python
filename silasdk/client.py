@@ -32,6 +32,7 @@ class App():
         Args:
             None
         """
+        Schema.clear()
         endpoint = endPoints["schemaUrl"]
         message = ["header", "issue", "redeem", "transfer", "entity", "identity", "crypto", "linkAccount"]
         for i in message:
