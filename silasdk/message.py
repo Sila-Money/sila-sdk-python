@@ -1,6 +1,9 @@
 import time
 import uuid
+from copy import deepcopy
+from typing import Dict
 from .schema import Schema
+
 
 def getMessage(self, msg_type):
     """gets the message from schema 
@@ -10,7 +13,7 @@ def getMessage(self, msg_type):
     for i in Schema:
         for key, value in i.items():
             if key == msg_type:
-                return i[msg_type]
+                return deepcopy(i[msg_type])
 
 def lower_keys(x):
     """converts the payload dict keys to all lowercase to match schema
@@ -21,6 +24,17 @@ def lower_keys(x):
         return dict((k.lower(), v) for k, v in x.items())
     else:
         return "msg_fromat_incorrect"
+
+
+def cull_null_values(data: Dict) -> Dict:
+    for k, v in list(data.items()):
+        if isinstance(v, dict):
+            data[k] = cull_null_values(v)
+        elif v == '':
+            del data[k]
+
+    return data
+
 
 def createMessage(self, payload, msg_type):
     """creates the message to be sent based on payload from customer
@@ -45,6 +59,9 @@ def createMessage(self, payload, msg_type):
                 if key in data.keys():
                     inpt[i][key] = data[key]
     inpt["header"]["created"] = int(time.time())
+
+    inpt = cull_null_values(inpt)
+
     return inpt
 
 def postRequest(self, path, msg_type, payload, key=None):

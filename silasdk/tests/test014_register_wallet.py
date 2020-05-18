@@ -1,6 +1,6 @@
 import unittest
 
-from silasdk.stellarwallet import Wallet
+from silasdk.wallet import Wallet
 from silasdk.tests.test_config import *
 
 
