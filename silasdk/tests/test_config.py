@@ -37,5 +37,5 @@ eth_private_key_2 = eth_2["eth_private_key"]
 wallet = EthWallet.create()
 wallet_address = wallet["eth_address"]
 wallet_private_key = wallet["eth_private_key"]
-verification_signature = EthWallet.signMessageAddress(wallet_address, wallet_private_key)
+verification_signature = EthWallet.signMessage(wallet_address, wallet_private_key)
 wallet_address_signed_verified = EthWallet.verifySignature(wallet_address, verification_signature)
