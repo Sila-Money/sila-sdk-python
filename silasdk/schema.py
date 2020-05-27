@@ -49,7 +49,7 @@ Schema = [
         },
         "account_name": ""
     }},
-    {"transfer_msg_address": {
+    {"transfer_msg": {
         "header": {
             "created": "",
             "auth_handle": "",
@@ -58,10 +58,44 @@ Schema = [
             "crypto": "ETH",
             "reference": ""
         },
-        "message": "transfer_msg_address",
-        "amount": 13,
+        "message": "transfer_msg",
+        "amount": "",
         "destination": "",
-        "destination_address": ""
+        "destination_handle": "",
+        "destination_wallet": "",
+        "destination_address": "",
+        "business_uuid": "",
+        "descriptor": ""
+    }},
+    {"issue_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": ""
+        },
+        "message": "issue_msg",
+        "amount": "",
+        "account_name": "",
+        "business_uuid": "",
+        "descriptor": ""
+    }},
+    {"redeem_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": ""
+        },
+        "message": "redeem_msg",
+        "amount": "",
+        "account_name": "",
+        "business_uuid": "",
+        "descriptor": ""
     }},
     {"no_content_msg": {
         "header": {

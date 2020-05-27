@@ -43,7 +43,7 @@ class Transaction():
             dict: response body (a confirmation message)
         """
         path = endPoints["transferSila"]
-        msg_type = ("transfer_msg" if (use_destination_address is False) else "transfer_msg_address")
+        msg_type = "transfer_msg"
         response = message.postRequest(self, path, msg_type, payload, user_private_key)
         return response
 
