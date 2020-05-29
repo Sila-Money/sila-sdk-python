@@ -2,113 +2,147 @@ Schema = [
     {"header_msg_kyc_level": {
         "header": {
             "reference": "",
-            "created": 1587419132,
+            "created": "",
             "user_handle": "",
             "auth_handle": "",
             "version": "0.2",
             "crypto": "ETH"
         },
-        "message": "header_msg_kyc_level",
-        "kyc_level": "CUSTOM_KYC_FLOW_NAME"
-    }},
-    {"link_account_msg": {
-        "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
-            "version": "0.2",
-            "crypto": "ETH",
-            "reference": "ref"
-        },
-        "message": "link_account_msg",
-        "public_token": "public-xxx-xxx",
-        "account_name": "Custom Account Name",
-        "selected_account_id": "optional_selected_account_id"
+        "message": "header_msg",
+        "kyc_level": ""
     }},
     {"link_account_msg_plaid": {
         "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
-            "reference": "ref"
+            "reference": ""
         },
-        "message": "link_account_msg_plaid",
-        "account_number": "123456789012",
-        "routing_number": "123456789",
-        "account_type": "CHECKING",
-        "account_name": "Custom Account Name",
-        "selected_account_id": "0"
+        "message": "link_account_msg",
+        "public_token": "",
+        "account_name": "",
+        "selected_account_id": ""
+    }},
+    {"link_account_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": ""
+        },
+        "message": "link_account_msg",
+        "account_number": "",
+        "routing_number": "",
+        "account_type": "",
+        "account_name": "",
+        "selected_account_id": ""
     }},
     {"account_name_msg": {
         "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
         },
-        "account_name": "Custom Account Name"
+        "account_name": ""
     }},
-    {"transfer_msg_address": {
+    {"transfer_msg": {
         "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
-            "reference": "ref"
+            "reference": ""
         },
-        "message": "transfer_msg_address",
-        "amount": 13,
-        "destination": "user2.silamoney.eth",
-        "destination_address": "user2.silamoney.eth"
+        "message": "transfer_msg",
+        "amount": "",
+        "destination": "",
+        "destination_handle": "",
+        "destination_wallet": "",
+        "destination_address": "",
+        "business_uuid": "",
+        "descriptor": ""
+    }},
+    {"issue_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": ""
+        },
+        "message": "issue_msg",
+        "amount": "",
+        "account_name": "",
+        "business_uuid": "",
+        "descriptor": ""
+    }},
+    {"redeem_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": ""
+        },
+        "message": "redeem_msg",
+        "amount": "",
+        "account_name": "",
+        "business_uuid": "",
+        "descriptor": ""
     }},
     {"no_content_msg": {
         "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
-            "reference": "ref"
+            "reference": ""
         }
     }},
     {"update_wallet_msg": {
         "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
-            "reference": "ref"
+            "reference": ""
         },
-        "nickname": "new_wallet_nickname",
-        "default": True
+        "nickname": "",
+        "default": False
     }},
     {"register_wallet_msg": {
         "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
-            "reference": "ref"
+            "reference": ""
         },
-        "wallet_verification_signature": "(signature generated from signing address as the message)",
+        "wallet_verification_signature": "",
         "wallet": {
-            "blockchain_address": "(address to register to user_handle)",
+            "blockchain_address": "",
             "blockchain_network": "ETH",
-            "nickname": "new_wallet_nickname"
+            "nickname": ""
         }
     }},
     {"get_wallets_msg": {
         "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
-            "reference": "ref"
+            "reference": ""
         },
         "search_filters": {
             "page": 1,
@@ -121,16 +155,16 @@ Schema = [
     }},
     {"get_accounts_msg": {
         "header": {
-            "created": 1234567890,
-            "auth_handle": "handle.silamoney.eth",
-            "user_handle": "user.silamoney.eth",
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
-            "reference": "ref"
+            "reference": ""
         },
         "message": "get_accounts_msg"
     }},
     {"sila_balance_msg": {
-        "address": "0x0000"
+        "address": ""
     }}
 ]

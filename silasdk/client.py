@@ -28,7 +28,7 @@ class App():
             None
         """
         endpoint = endPoints["schemaUrl"]
-        message = ["header", "issue", "redeem", "transfer", "entity", "identity", "crypto", "linkAccount"]
+        message = ["header", "entity", "identity", "crypto", "linkAccount"]
         for i in message:
             response = self.get(
                 endpoint % i)
