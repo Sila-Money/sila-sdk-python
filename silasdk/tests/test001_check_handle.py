@@ -4,7 +4,7 @@ from silasdk.tests.test_config import *
 from silasdk.users import User
 
 
-class CheckHandleTest(unittest.TestCase):
+class Test001CheckHandleTest(unittest.TestCase):
     def test_check_handle_200(self):
         payload = {
             "user_handle": user_handle

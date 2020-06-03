@@ -60,6 +60,7 @@ target/
 
 # IDE generated files
 .idea
+.vscode
 
 .DS_Store
 

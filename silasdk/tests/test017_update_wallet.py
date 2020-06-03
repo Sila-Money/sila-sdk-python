@@ -4,7 +4,7 @@ from silasdk.wallet import Wallet
 from silasdk.tests.test_config import *
 
 
-class UpdateWalletTest(unittest.TestCase):
+class Test017UpdateWalletTest(unittest.TestCase):
     def test_update_wallet_200(self):
         payload = {
             "user_handle": user_handle,

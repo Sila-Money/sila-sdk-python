@@ -4,7 +4,7 @@ from silasdk.users import User
 from silasdk.tests.test_config import *
 
 
-class LinkAccountTest(unittest.TestCase):
+class Test006LinkAccountTest(unittest.TestCase):
     def test_link_account_200(self):
         options = {
             "public_key": "fa9dd19eb40982275785b09760ab79",
@@ -20,8 +20,9 @@ class LinkAccountTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "account_name": "default",
-            "public_token": plaid_response["public_token"],
-            "selected_account_id": plaid_response["accounts"][0]["account_id"],
+            "account_number": "123456789012",
+            "routing_number": "123456789",
+            "account_type": "CHECKING",
         }
 
         response = User.linkAccount(app, payload, eth_private_key, False)

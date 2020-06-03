@@ -7,7 +7,7 @@ setup(
     name='silasdk',
 
 
-    version='0.2.7.post2',
+    version='0.2.8.post2',
 
     description='Sila Python library for message signing and api wrapper',
 

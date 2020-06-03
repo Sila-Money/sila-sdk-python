@@ -4,7 +4,7 @@ from silasdk.tests.test_config import *
 from silasdk.users import User
 
 
-class RegisterTest(unittest.TestCase):
+class Test002RegisterTest(unittest.TestCase):
     def test_register_200(self):
         payload = {
             "country": "US",
