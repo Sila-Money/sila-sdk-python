@@ -15,7 +15,7 @@ strng_2 = ''.join(random.choice(letters) for i in range(10))
 
 #
 app_hanlde = "digital_geko_e2e.silamoney.eth"
-app_private_key = "0xe60a5c57130f4e82782cbdb498943f31fe8f92ab96daac2cc13cbbbf9c0b4d9e"
+app_private_key = ""
 user_handle = strng + ".silamoney.eth"
 user_handle_2 = strng_2 + ".silamoney.eth"
 business_uuid = "9f280665-629f-45bf-a694-133c86bffd5e"
