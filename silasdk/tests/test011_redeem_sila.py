@@ -17,6 +17,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
         response = Transaction.redeemSila(app, payload, eth_private_key)
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["descriptor"], "test descriptor")
+        self.assertIsNotNone(response["transaction_id"])
 
     def test_redeem_sila_400(self):
         payload = {

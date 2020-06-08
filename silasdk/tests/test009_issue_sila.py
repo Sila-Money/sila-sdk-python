@@ -18,6 +18,7 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = Transaction.issueSila(app, payload, eth_private_key)
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["descriptor"], "test descriptor")
+        self.assertIsNotNone(response["transaction_id"])
 
     def test_issue_sila_400(self):
         payload = {
