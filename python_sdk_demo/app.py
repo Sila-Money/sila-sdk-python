@@ -7,7 +7,7 @@ from silasdk import User
 from silasdk import Transaction
 
 
-app1=App("sandbox",'db71b2e568572c42f864dfc375f399eebc2834cc08f7ed59e251be0d87418d5a',"test1791.silamoney.eth")
+app1=App("sandbox",'',"test1791.silamoney.eth")
 
 app = Flask(__name__)
 
