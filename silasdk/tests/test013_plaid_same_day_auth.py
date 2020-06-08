@@ -4,7 +4,7 @@ from silasdk.transactions import Transaction
 from silasdk.tests.test_config import *
 
 
-class PlaidSameDayAuthTest(unittest.TestCase):
+class Test013PlaidSameDayAuthTest(unittest.TestCase):
     # def test_plaid_same_day_auth_200(self):
     #     payload = {
     #         "user_handle": user_handle,

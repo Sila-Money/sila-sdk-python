@@ -4,7 +4,7 @@ from silasdk.users import User
 from silasdk.tests.test_config import *
 
 
-class GetAccountsTest(unittest.TestCase):
+class Test007GetAccountsTest(unittest.TestCase):
     def test_get_accounts_200(self):
         payload = {
             "user_handle": user_handle

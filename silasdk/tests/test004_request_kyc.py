@@ -4,7 +4,7 @@ from silasdk.users import User
 from silasdk.tests.test_config import *
 
 
-class RequestKycTest(unittest.TestCase):
+class Test004RequestKycTest(unittest.TestCase):
     def test_register_kyc_200(self):
         payload = {
             "user_handle": user_handle

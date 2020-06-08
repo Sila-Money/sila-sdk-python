@@ -456,7 +456,9 @@ response = Transaction.plaidSamedayAuth(app, payload, user_private_key)
 
 payload={
         "amount": 100000000000000000000000,                                        
-        "user_handle":   "user.silamoney.eth"
+        "user_handle":   "user.silamoney.eth",
+        "descriptor": "Transaction Descriptor",
+        "business_uuid": "UUID of a business with an approved ACH name"
         }
 
 Transaction.issueSila(silaApp,payload,user_private_key)                              
@@ -486,7 +488,9 @@ Transaction.issueSila(silaApp,payload,user_private_key)
 
 payload={
         "amount": 100000000000000000000000,                                        
-        "user_handle":   "user.silamoney.eth"
+        "user_handle":   "user.silamoney.eth",
+        "descriptor": "Transaction Descriptor",
+        "business_uuid": "UUID of a business with an approved ACH name"
         }
 
 Transaction.redeemSila(silaApp,payload,user_private_key)                              
@@ -517,7 +521,9 @@ Transaction.redeemSila(silaApp,payload,user_private_key)
 payload={
         "amount": 100000000000000000000000,                                        
         "user_handle":  "user.silamoney.eth",
-        "destination":  "donald.silamoney.eth"
+        "destination_handle":  "donald.silamoney.eth",
+        "descriptor": "Transaction Descriptor",
+        "business_uuid": "UUID of a business with an approved ACH name"
         }
 
 Transaction.transferSila(silaApp,payload,user_private_key)                              
