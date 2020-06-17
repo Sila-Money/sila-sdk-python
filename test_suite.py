@@ -1,4 +1,7 @@
+import coverage
+import os
 import unittest
+import xmlrunner
 
 from silasdk.tests.test001_check_handle import Test001CheckHandleTest
 from silasdk.tests.test002_register import Test002RegisterTest
@@ -31,28 +34,38 @@ def create_suite(classes):
 
 
 def run_unit_tests():
-    runner = unittest.TextTestRunner()
-    classes = [
-        Test001CheckHandleTest,
-        Test002RegisterTest,
-        Test003CheckHandleFailTest,
-        Test004RequestKycTest,
-        Test005CheckKycTest,
-        Test006LinkAccountTest,
-        Test007GetAccountsTest,
-        Test008GetAccountBalanceTest,
-        Test009IssueSilaTest,
-        Test010TrasferSilaTest,
-        Test011RedeemSilaTest,
-        Test012GetTransactionsTest,
-        Test013PlaidSameDayAuthTest,
-        Test014RegisterWalletTest,
-        Test015GetWalletsTest,
-        Test016GetWalletTest,
-        Test017UpdateWalletTest,
-        Test018DeleteWalletTest
-    ]
-    runner.run(create_suite(classes))
+    cov = coverage.Coverage()
+    cov.start()
+    results = os.path.abspath('./test-results.xml')
+    print(results)
+    print('test')
+    with open(results, 'wb') as output:
+        runner=xmlrunner.XMLTestRunner(output=output, buffer=False)
+        classes = [
+            Test001CheckHandleTest,
+            Test002RegisterTest,
+            Test003CheckHandleFailTest,
+            Test004RequestKycTest,
+            Test005CheckKycTest,
+            Test006LinkAccountTest,
+            Test007GetAccountsTest,
+            Test008GetAccountBalanceTest,
+            Test009IssueSilaTest,
+            Test010TrasferSilaTest,
+            Test011RedeemSilaTest,
+            Test012GetTransactionsTest,
+            Test013PlaidSameDayAuthTest,
+            Test014RegisterWalletTest,
+            Test015GetWalletsTest,
+            Test016GetWalletTest,
+            Test017UpdateWalletTest,
+            Test018DeleteWalletTest
+        ]
+        runner.run(create_suite(classes))
+    cov.stop()
+    cov.save()
+
+    cov.xml_report()
 
 
 if __name__ == "__main__":

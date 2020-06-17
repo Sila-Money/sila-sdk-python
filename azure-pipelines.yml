@@ -23,20 +23,22 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
+    pip install -r requirements.text
+  displayName: 'Install dependencies $(python.version)'
 
 - script: |
     pip install coverage unittest-xml-reporting
     python test_suite.py
-  displayName: 'pytest'
+  displayName: 'test $(python.version)'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/test-*.xml'
+  displayName: 'Publish test results $(python.version)'
 
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '**/coverage.xml'
+  displayName: 'Publish code coverage $(python.version)'
