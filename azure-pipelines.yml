@@ -30,6 +30,8 @@ steps:
     pip install coverage unittest-xml-reporting
     python test_suite.py
   displayName: 'test $(python.version)'
+  env:
+    SILA_PRIVATE_KEY: $(silaPrivateKey)
 
 - task: PublishTestResults@2
   inputs:
