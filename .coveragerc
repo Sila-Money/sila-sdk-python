@@ -1,0 +1,6 @@
+[run]
+omit =
+    # omit test suite file
+    test_suite.py
+    # omit test files
+    silasdk/tests/*
