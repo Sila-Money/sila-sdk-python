@@ -14,6 +14,7 @@ strategy:
       python.version: '3.6'
     Python37:
       python.version: '3.7'
+      executeSonar: true
 
 steps:
 - task: UsePythonVersion@0
@@ -26,19 +27,40 @@ steps:
     pip install -r requirements.text
   displayName: 'Install dependencies $(python.version)'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'silamoney'
+    scannerMode: 'CLI'
+    configMode: 'file'
+  displayName: 'Prepare Sonar analysis'
+  condition: and(succeeded(), eq(variables['executeSonar'], true))
+
 - script: |
     pip install coverage unittest-xml-reporting
     python test_suite.py
   displayName: 'test $(python.version)'
+  env:
+    SILA_PRIVATE_KEY: $(silaPrivateKey)
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/test-*.xml'
   displayName: 'Publish test results $(python.version)'
+  condition: succeededOrFailed()
 
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '**/coverage.xml'
   displayName: 'Publish code coverage $(python.version)'
+  condition: succeededOrFailed()
+
+- task: SonarCloudAnalyze@1
+  condition: and(succeededOrFailed(), eq(variables['executeSonar'], true))
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+  condition: and(succeeded(), eq(variables['executeSonar'], true))
