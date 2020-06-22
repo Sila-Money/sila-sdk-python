@@ -1,10 +1,10 @@
 # Full Documentation
 
-This lists the full functionality available in the Python SDK, Version 0.2,requires python version >=3.6.This sdk abstracts the signature piece for signing the messages locally using user private keys.
+This lists the full functionality available in the Python SDK, Version 0.2. Requires python version >=3.6. This sdk abstracts the signature piece for signing the messages locally using user private keys.
 
 ## Usage
 
-### Ins tallation
+### Installation
 
 ```python
 
@@ -188,33 +188,33 @@ User.checkKyc(silaApp,payload,user_private_key)
 ***The python demo app in the Sila-Python github repository (https://github.com/Sila-Money/Sila-Python) shows how to use plaid plugin and get a public token to make this request***
 
 ##
-### Link Account
+### Link Account (Plaid flow)
 
 ```python
 
 payload={
             "public_token": "public-development-0dc5f214-56a2-4b69-8968-f27202477d3f",  # Required token from plaid
             "user_handle": "user.silamoney.eth"                                         # Required
+            "account_name": "User's First Financial Checking"                           # Optional bank account name/identifier
         }
 
-User.linkAccount(silaApp,payload,user_private_key)
+User.linkAccount(silaApp, payload, user_private_key, plaid=True)
 
 ```
 
-### Link Account Plaid
+### Link Account (Direct account linking flow)
 
 ```python
 
 payload={
-            "public_token": "public-development-0dc5f214-56a2-4b69-8968-f27202477d3f",  # Required token from plaid
             "user_handle": "user.silamoney.eth",                                       # Required
-            "account_number": "123456789012",
-            "routing_number": "123456789",
-            "account_type": "CHECKING",
-            "account_name": "Custom Account Name"
+            "account_number": "123456789012",                                          # Required
+            "routing_number": "123456789",                                             # Required
+            "account_type": "CHECKING",                                                # Optional (only CHECKING is currently supported)
+            "account_name": "Custom Account Name"                                      # Optional
         }
 
-User.linkAccount(silaApp,payload,user_private_key, Plaid=True)
+User.linkAccount(silaApp, payload, user_private_key, plaid=False)
 
 ```
 
