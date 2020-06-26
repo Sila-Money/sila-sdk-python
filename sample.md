@@ -458,7 +458,8 @@ payload={
         "amount": 100000000000000000000000,                                        
         "user_handle":   "user.silamoney.eth",
         "descriptor": "Transaction Descriptor",
-        "business_uuid": "UUID of a business with an approved ACH name"
+        "business_uuid": "UUID of a business with an approved ACH name",
+        "account_name": "accound name"
         }
 
 Transaction.issueSila(silaApp,payload,user_private_key)                              
@@ -490,7 +491,8 @@ payload={
         "amount": 100000000000000000000000,                                        
         "user_handle":   "user.silamoney.eth",
         "descriptor": "Transaction Descriptor",
-        "business_uuid": "UUID of a business with an approved ACH name"
+        "business_uuid": "UUID of a business with an approved ACH name",
+        "account_name": "accound name"
         }
 
 Transaction.redeemSila(silaApp,payload,user_private_key)                              
