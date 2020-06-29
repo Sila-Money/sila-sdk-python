@@ -1,4 +1,5 @@
 import string
+import os
 import random
 
 from silasdk import EthWallet
@@ -15,7 +16,7 @@ strng_2 = ''.join(random.choice(letters) for i in range(10))
 
 #
 app_hanlde = "digital_geko_e2e.silamoney.eth"
-app_private_key = ""
+app_private_key = os.environ.get("SILA_PRIVATE_KEY")
 user_handle = strng + ".silamoney.eth"
 user_handle_2 = strng_2 + ".silamoney.eth"
 business_uuid = "9f280665-629f-45bf-a694-133c86bffd5e"
