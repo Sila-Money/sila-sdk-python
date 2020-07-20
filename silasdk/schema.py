@@ -167,22 +167,67 @@ Schema = [
     {"sila_balance_msg": {
         "address": ""
     }},
-    {"business_types_msg":{
+    {"business_types_msg": {
         "header": {
             "created": "",
             "auth_handle": ""
         }
     }},
-    {"business_roles_msg":{
+    {"business_roles_msg": {
         "header": {
             "created": "",
             "auth_handle": ""
         }
     }},
-    {"naics_categories_msg":{
+    {"naics_categories_msg": {
         "header": {
             "created": "",
             "auth_handle": ""
         }
     }},
+    {"entity_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": ""
+        },
+        "message": "entity_msg",
+        "address": {
+            "address_alias": "default",
+            "street_address_1": "",
+            "city": "",
+            "state": "",
+            "country": "",
+            "postal_code": ""
+        },
+        "identity": {
+            "identity_alias": "SSN",
+            "identity_value": ""
+        },
+        "contact": {
+            "contact_alias": "default",
+            "phone": "",
+            "email": ""
+        },
+        "crypto_entry": {
+            "crypto_alias": "default",
+            "crypto_code": "ETH",
+            "crypto_address": ""
+        },
+        "entity": {
+            "first_name": "",
+            "last_name": "",
+            "entity_name": "",
+            "birthdate": "",
+            "relationship": "",
+            "type": "",
+            "business_type": "",
+            "business_website": "",
+            "doing_business_as": "",
+            "naics_code": ""
+        }
+    }}
 ]
