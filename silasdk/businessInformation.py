@@ -16,3 +16,15 @@ class BusinessInformation():
         payload = {}
         response = message.postRequest(self, path, msg_type, payload)
         return response
+
+    def getBusinessRoles(self):
+        """Retrieves the list of pre-defined business roles.
+        Args:
+        Returns:
+            dict: response body (business roles)
+        """
+        path = endPoints["getBusinessRoles"]
+        msg_type = "business_roles_msg"
+        payload = {}
+        response = message.postRequest(self, path, msg_type, payload)
+        return response

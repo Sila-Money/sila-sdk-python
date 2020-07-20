@@ -173,4 +173,10 @@ Schema = [
             "auth_handle": ""
         }
     }},
+    {"business_roles_msg":{
+        "header": {
+            "created": "",
+            "auth_handle": ""
+        }
+    }},
 ]

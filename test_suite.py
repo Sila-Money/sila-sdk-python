@@ -5,6 +5,7 @@ import xmlrunner
 
 from silasdk.tests.test001_check_handle import Test001CheckHandleTest
 from silasdk.tests.test001_get_business_types import Test001GetBusinessTypesTest
+from silasdk.tests.test001_get_business_roles import Test001GetBusinessRolesTest
 from silasdk.tests.test002_register import Test002RegisterTest
 from silasdk.tests.test003_check_handle_failure import Test003CheckHandleFailTest
 from silasdk.tests.test004_request_kyc import Test004RequestKycTest
@@ -43,6 +44,7 @@ def run_unit_tests():
         classes = [
             Test001CheckHandleTest,
             Test001GetBusinessTypesTest,
+            Test001GetBusinessRolesTest,
             Test002RegisterTest,
             Test003CheckHandleFailTest,
             Test004RequestKycTest,
