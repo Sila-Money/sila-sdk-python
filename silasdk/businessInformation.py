@@ -28,3 +28,15 @@ class BusinessInformation():
         payload = {}
         response = message.postRequest(self, path, msg_type, payload)
         return response
+
+    def getNaicsCategories(self):
+        """
+        Args:
+        Returns:
+            dict: response body (business roles)
+        """
+        path = endPoints["getNaicsCategories"]
+        msg_type = "naics_categories_msg"
+        payload = {}
+        response = message.postRequest(self, path, msg_type, payload)
+        return response

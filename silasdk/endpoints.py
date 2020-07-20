@@ -28,4 +28,5 @@ endPoints = {
     "silaBalanceSandbox": "https://sandbox.silatokenapi.silamoney.com/silaBalance",
     "getBusinessTypes": "/get_business_types",
     "getBusinessRoles": "/get_business_roles",
+    "getNaicsCategories" : "/get_naics_categories",
 }

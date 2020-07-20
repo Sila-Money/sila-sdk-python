@@ -179,4 +179,10 @@ Schema = [
             "auth_handle": ""
         }
     }},
+    {"naics_categories_msg":{
+        "header": {
+            "created": "",
+            "auth_handle": ""
+        }
+    }},
 ]
