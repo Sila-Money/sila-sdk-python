@@ -25,5 +25,6 @@ endPoints = {
     "schemaUrl": "https://api.silamoney.com/0.2/getmessage?emptymessage=%sTestMessage",
     "apiUrl": "https://%s.silamoney.com/0.2",
     "silaBalanceProd": "https://silatokenapi.silamoney.com/silaBalance",
-    "silaBalanceSandbox": "https://sandbox.silatokenapi.silamoney.com/silaBalance"
+    "silaBalanceSandbox": "https://sandbox.silatokenapi.silamoney.com/silaBalance",
+    "getBusinessTypes": "/get_business_types",
 }

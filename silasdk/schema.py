@@ -166,5 +166,11 @@ Schema = [
     }},
     {"sila_balance_msg": {
         "address": ""
-    }}
+    }},
+    {"business_types_msg":{
+        "header": {
+            "created": "",
+            "auth_handle": ""
+        }
+    }},
 ]
