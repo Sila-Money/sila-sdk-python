@@ -257,5 +257,15 @@ Schema = [
             "auth_handle": "",
             "user_handle": ""
         }
+    }},
+    {"certify_beneficial_owner_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "business_handle": ""
+        },
+        "member_handle": "",
+        "certification_token": ""
     }}
 ]

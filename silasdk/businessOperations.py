@@ -32,3 +32,17 @@ class BusinessOperations():
         msg_type = "unlink_business_member_msg"
         response = message.postRequest(self, path, msg_type, payload, user_private_key, business_private_key)
         return response
+
+    def certifyBeneficialOwner(self, payload, user_private_key, business_private_key):
+        """
+        Args:
+            payload: includes member information.
+            user_private_key:
+            business_private_key:
+        Returns:
+            dict: response body (confirmation message)
+        """
+        path = endPoints["certifyBeneficialOwner"]
+        msg_type = "certify_beneficial_owner_msg"
+        response = message.postRequest(self, path, msg_type, payload, user_private_key, business_private_key)
+        return response

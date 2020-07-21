@@ -20,6 +20,13 @@ class Test004RequestKycTest(unittest.TestCase):
         response = User.requestKyc(app, payload, eth_private_key_2)
         self.assertEqual(response["status"], "SUCCESS")
 
+        payload = {
+            "user_handle": business_handle
+        }
+
+        response = User.requestKyc(app, payload, eth_private_key_3)
+        self.assertEqual(response["status"], "SUCCESS")
+
     def test_register_kyc_custom_403(self):
         payload = {
             "user_handle": user_handle,

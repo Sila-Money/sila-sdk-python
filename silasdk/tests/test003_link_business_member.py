@@ -15,12 +15,33 @@ class Test003LinkBusinessMemberTest(unittest.TestCase):
         response = BusinessOperations.linkBusinessMember(app, payload, eth_private_key, eth_private_key_3)
         self.assertTrue(response["success"])
 
+    def test_link_business_member_controlling_officer_200(self):
+        payload = {
+            "user_handle": user_handle,
+            "business_handle": business_handle,
+            "role": "controlling_officer",
+            "details": "this is the controlling officer"
+        }
+        response = BusinessOperations.linkBusinessMember(app, payload, eth_private_key, eth_private_key_3)
+        self.assertTrue(response["success"])
+
     def test_link_business_member_administrator_2_200(self):
         payload = {
             "user_handle": user_handle_2,
             "business_handle": business_handle,
             "role": "administrator",
             "details": "this is the business administrator"
+        }
+        response = BusinessOperations.linkBusinessMember(app, payload, eth_private_key_2, eth_private_key_3)
+        self.assertTrue(response["success"])
+
+    def test_link_business_member_beneficial_owner_200(self):
+        payload = {
+            "user_handle": user_handle_2,
+            "business_handle": business_handle,
+            "role": "beneficial_owner",
+            "details": "this is the beneficial owner",
+            "ownership_stake": 0.66
         }
         response = BusinessOperations.linkBusinessMember(app, payload, eth_private_key_2, eth_private_key_3)
         self.assertTrue(response["success"])

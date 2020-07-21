@@ -33,4 +33,5 @@ endPoints = {
     "unlinkBusinessMember": "/unlink_business_member",
     "getEntities": "/get_entities?",
     "getEntity": "/get_entity",
+    "certifyBeneficialOwner": "/certify_beneficial_owner",
 }
