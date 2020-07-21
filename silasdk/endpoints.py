@@ -30,5 +30,6 @@ endPoints = {
     "getBusinessRoles": "/get_business_roles",
     "getNaicsCategories": "/get_naics_categories",
     "linkBusinessMember": "/link_business_member",
+    "unlinkBusinessMember": "/unlink_business_member",
     "getEntities": "/get_entities?",
 }

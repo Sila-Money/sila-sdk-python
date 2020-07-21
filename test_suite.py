@@ -11,6 +11,7 @@ from silasdk.tests.test002_get_entities import Test002GetEntitiesTest
 from silasdk.tests.test002_register import Test002RegisterTest
 from silasdk.tests.test003_check_handle_failure import Test003CheckHandleFailTest
 from silasdk.tests.test003_link_business_member import Test003LinkBusinessMemberTest
+from silasdk.tests.test003_unlink_business_member import Test003UnlinkBusinessMemberTest
 from silasdk.tests.test004_request_kyc import Test004RequestKycTest
 from silasdk.tests.test005_check_kyc import Test005CheckKycTest
 from silasdk.tests.test006_link_account import Test006LinkAccountTest
@@ -53,6 +54,7 @@ def run_unit_tests():
             Test002RegisterTest,
             Test003CheckHandleFailTest,
             Test003LinkBusinessMemberTest,
+            Test003UnlinkBusinessMemberTest,
             Test004RequestKycTest,
             Test005CheckKycTest,
             Test006LinkAccountTest,

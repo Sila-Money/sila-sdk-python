@@ -242,4 +242,13 @@ Schema = [
         "details": "",
         "ownership_stake": ""
     }},
+    {"unlink_business_member_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "business_handle": ""
+        },
+        "role": ""
+    }}
 ]
