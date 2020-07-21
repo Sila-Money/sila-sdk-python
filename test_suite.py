@@ -7,8 +7,10 @@ from silasdk.tests.test001_check_handle import Test001CheckHandleTest
 from silasdk.tests.test001_get_business_types import Test001GetBusinessTypesTest
 from silasdk.tests.test001_get_business_roles import Test001GetBusinessRolesTest
 from silasdk.tests.test001_get_naics_categories import Test001GetNaicsCategoriesTest
+from silasdk.tests.test002_get_entities import Test002GetEntitiesTest
 from silasdk.tests.test002_register import Test002RegisterTest
 from silasdk.tests.test003_check_handle_failure import Test003CheckHandleFailTest
+from silasdk.tests.test003_link_business_member import Test003LinkBusinessMemberTest
 from silasdk.tests.test004_request_kyc import Test004RequestKycTest
 from silasdk.tests.test005_check_kyc import Test005CheckKycTest
 from silasdk.tests.test006_link_account import Test006LinkAccountTest
@@ -47,8 +49,10 @@ def run_unit_tests():
             Test001GetBusinessTypesTest,
             Test001GetBusinessRolesTest,
             Test001GetNaicsCategoriesTest,
+            Test002GetEntitiesTest,
             Test002RegisterTest,
             Test003CheckHandleFailTest,
+            Test003LinkBusinessMemberTest,
             Test004RequestKycTest,
             Test005CheckKycTest,
             Test006LinkAccountTest,

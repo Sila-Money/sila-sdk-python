@@ -1,5 +1,5 @@
 Schema = [
-    {"header_msg_kyc_level": {
+    {"header_msg": {
         "header": {
             "reference": "",
             "created": "",
@@ -9,7 +9,8 @@ Schema = [
             "crypto": "ETH"
         },
         "message": "header_msg",
-        "kyc_level": ""
+        "kyc_level": "",
+        "entity_type": ""
     }},
     {"link_account_msg_plaid": {
         "header": {
@@ -229,5 +230,16 @@ Schema = [
             "doing_business_as": "",
             "naics_code": ""
         }
-    }}
+    }},
+    {"link_business_member_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "business_handle": ""
+        },
+        "role": "",
+        "details": "",
+        "ownership_stake": ""
+    }},
 ]
