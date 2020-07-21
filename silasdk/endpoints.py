@@ -32,4 +32,5 @@ endPoints = {
     "linkBusinessMember": "/link_business_member",
     "unlinkBusinessMember": "/unlink_business_member",
     "getEntities": "/get_entities?",
+    "getEntity": "/get_entity",
 }

@@ -250,5 +250,12 @@ Schema = [
             "business_handle": ""
         },
         "role": ""
+    }},
+    {"get_entity_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": ""
+        }
     }}
 ]

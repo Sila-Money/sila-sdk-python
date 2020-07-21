@@ -166,3 +166,17 @@ class User():
         response = message.postRequest(
             self, path, msg_type, payload)
         return response
+
+    def getEntity(self, payload, user_private_key):
+        """
+        Args:
+            payload: filters information
+            user_private_key
+        Returns:
+            dict: response body (entity information)
+        """
+        path = endPoints["getEntity"]
+        msg_type = "get_entity_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
