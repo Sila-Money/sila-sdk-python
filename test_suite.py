@@ -16,6 +16,7 @@ from silasdk.tests.test004_request_kyc import Test004RequestKycTest
 from silasdk.tests.test005_check_kyc import Test005CheckKycTest
 from silasdk.tests.test005_get_entity import Test005GetEntityTest
 from silasdk.tests.test006_certify_beneficial_owner import Test006CertifyBeneficialOwnerTest
+from silasdk.tests.test006_certify_business import Test006CertifyBusinessTest
 from silasdk.tests.test006_link_account import Test006LinkAccountTest
 from silasdk.tests.test007_get_accounts import Test007GetAccountsTest
 from silasdk.tests.test008_get_account_balance import Test008GetAccountBalanceTest
@@ -60,6 +61,7 @@ def run_unit_tests():
             Test004RequestKycTest,
             Test005CheckKycTest,
             Test006CertifyBeneficialOwnerTest,
+            Test006CertifyBusinessTest,
             Test006LinkAccountTest,
             Test007GetAccountsTest,
             Test008GetAccountBalanceTest,

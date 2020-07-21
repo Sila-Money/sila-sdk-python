@@ -267,5 +267,13 @@ Schema = [
         },
         "member_handle": "",
         "certification_token": ""
+    }},
+    {"certify_business_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "business_handle": ""
+        }
     }}
 ]
