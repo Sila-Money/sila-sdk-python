@@ -1,6 +1,5 @@
-import unittest
+import unittest, silasdk
 
-from silasdk.transactions import Transaction
 from silasdk.tests.test_config import *
 
 
@@ -11,7 +10,7 @@ class Test013PlaidSameDayAuthTest(unittest.TestCase):
     #         "account_name": "default_plaid"
     #     }
     #
-    #     response = Transaction.plaidSamedayAuth(app, payload, eth_private_key)
+    #     response = silasdk.Transaction.plaidSamedayAuth(app, payload, eth_private_key)
     #     self.assertEqual(response["status"], "SUCCESS")
 
     def test_plaid_same_day_auth_400(self):
@@ -20,7 +19,7 @@ class Test013PlaidSameDayAuthTest(unittest.TestCase):
             "account_name": "default"
         }
 
-        response = Transaction.plaidSamedayAuth(app, payload, eth_private_key)
+        response = silasdk.Transaction.plaidSamedayAuth(app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
     def test_plaid_same_day_auth_404(self):
@@ -29,7 +28,7 @@ class Test013PlaidSameDayAuthTest(unittest.TestCase):
             "account_name": "notFound"
         }
 
-        response = Transaction.plaidSamedayAuth(app, payload, eth_private_key)
+        response = silasdk.Transaction.plaidSamedayAuth(app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
 

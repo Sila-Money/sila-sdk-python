@@ -1,7 +1,4 @@
-import unittest
-
-from silasdk.users import User
-from silasdk.businessOperations import BusinessOperations
+import unittest, silasdk
 from silasdk.tests.test_config import *
 
 
@@ -11,7 +8,7 @@ class Test006CertifyBeneficialOwnerTest(unittest.TestCase):
             "user_handle": user_handle_2
         }
 
-        entity = User.getEntity(app, payload, eth_private_key_2)
+        entity = silasdk.User.getEntity(app, payload, eth_private_key_2)
 
         payload = {
             "user_handle": user_handle,
@@ -20,7 +17,7 @@ class Test006CertifyBeneficialOwnerTest(unittest.TestCase):
             "certification_token": entity["memberships"][0]["certification_token"]
         }
 
-        response = BusinessOperations.certifyBeneficialOwner(app, payload, eth_private_key, eth_private_key_3)
+        response = silasdk.BusinessOperations.certifyBeneficialOwner(app, payload, eth_private_key, eth_private_key_3)
         self.assertTrue(response["success"])
 
 if __name__ == '__main__':

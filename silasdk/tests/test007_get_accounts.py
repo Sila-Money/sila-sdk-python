@@ -1,8 +1,6 @@
-import unittest
+import unittest, silasdk
 
-from silasdk.users import User
 from silasdk.tests.test_config import *
-
 
 class Test007GetAccountsTest(unittest.TestCase):
     def test_get_accounts_200(self):
@@ -10,7 +8,7 @@ class Test007GetAccountsTest(unittest.TestCase):
             "user_handle": user_handle
         }
 
-        response = User.getAccounts(app, payload, eth_private_key)
+        response = silasdk.User.getAccounts(app, payload, eth_private_key)
         self.assertGreater(len(response), 0)
 
     def test_get_accounts_400(self):
@@ -18,7 +16,7 @@ class Test007GetAccountsTest(unittest.TestCase):
             "user_handle": "none.silamoney.eth"
         }
 
-        response = User.getAccounts(app, payload, eth_private_key)
+        response = silasdk.User.getAccounts(app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
 

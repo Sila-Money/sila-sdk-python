@@ -1,8 +1,6 @@
-import unittest
+import unittest, silasdk
 
-from silasdk.users import User
 from silasdk.tests.test_config import *
-
 
 class Test006LinkAccountTest(unittest.TestCase):
     def test_link_account_200(self):
@@ -25,7 +23,7 @@ class Test006LinkAccountTest(unittest.TestCase):
             "account_type": "CHECKING",
         }
 
-        response = User.linkAccount(app, payload, eth_private_key, False)
+        response = silasdk.User.linkAccount(app, payload, eth_private_key, False)
         self.assertEqual(response["status"], "SUCCESS")
 
     def test_link_account_plaid_200(self):
@@ -48,7 +46,7 @@ class Test006LinkAccountTest(unittest.TestCase):
             "message": "link_account_msg"
         }
 
-        response = User.linkAccount(app, payload, eth_private_key, True)
+        response = silasdk.User.linkAccount(app, payload, eth_private_key, True)
         self.assertEqual(response["status"], "SUCCESS")
 
     def test_link_account_400(self):
@@ -69,7 +67,7 @@ class Test006LinkAccountTest(unittest.TestCase):
             "selected_account_id": plaid_response["accounts"][0]["account_id"]
         }
 
-        response = User.linkAccount(app, payload, eth_private_key)
+        response = silasdk.User.linkAccount(app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
 

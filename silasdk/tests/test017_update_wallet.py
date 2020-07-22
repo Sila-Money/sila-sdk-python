@@ -1,8 +1,6 @@
-import unittest
+import unittest, silasdk
 
-from silasdk.wallet import Wallet
 from silasdk.tests.test_config import *
-
 
 class Test017UpdateWalletTest(unittest.TestCase):
     def test_update_wallet_200(self):
@@ -13,7 +11,7 @@ class Test017UpdateWalletTest(unittest.TestCase):
             "default": True
         }
 
-        response = Wallet.getWallet(app, payload, eth_private_key)
+        response = silasdk.Wallet.getWallet(app, payload, eth_private_key)
         self.assertTrue(response["success"])
 
     def test_update_wallet_400(self):
@@ -25,7 +23,7 @@ class Test017UpdateWalletTest(unittest.TestCase):
             "blockchain_address": "0x00000"
         }
 
-        response = Wallet.getWallet(app, payload, eth_private_key)
+        response = silasdk.Wallet.getWallet(app, payload, eth_private_key)
         self.assertFalse(response["success"])
 
     def test_update_wallet_401(self):
@@ -36,7 +34,7 @@ class Test017UpdateWalletTest(unittest.TestCase):
             "default": True
         }
 
-        response = Wallet.getWallet(app, payload, eth_private_key)
+        response = silasdk.Wallet.getWallet(app, payload, eth_private_key)
         self.assertFalse(response["success"])
 
 

@@ -1,8 +1,6 @@
-import unittest
+import unittest, silasdk
 
 from silasdk.tests.test_config import *
-from silasdk.users import User
-
 
 class Test002RegisterTest(unittest.TestCase):
     def test_register_200(self):
@@ -63,13 +61,13 @@ class Test002RegisterTest(unittest.TestCase):
             "naics_code": 721
         }
 
-        response = User.register(app, payload)
+        response = silasdk.User.register(app, payload)
         self.assertEqual(response["status"], "SUCCESS")
 
-        response_2 = User.register(app, payload_2)
+        response_2 = silasdk.User.register(app, payload_2)
         self.assertEqual(response_2["status"], "SUCCESS")
 
-        response_3 = User.register(app, business)
+        response_3 = silasdk.User.register(app, business)
         self.assertEqual(response_3["status"], "SUCCESS")
 
     def test_register_400(self):
@@ -91,7 +89,7 @@ class Test002RegisterTest(unittest.TestCase):
             "birthdate": "1990-05-19"
         }
 
-        response = User.register(app, payload)
+        response = silasdk.User.register(app, payload)
         self.assertEqual(response["status"], "FAILURE")
 
 
