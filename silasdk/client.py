@@ -5,6 +5,7 @@ from .endpoints import endPoints
 from .errors import Errors
 from .schema import Schema
 
+
 class App():
 
     def __init__(self, tier, app_private_key, app_handle):
@@ -20,7 +21,7 @@ class App():
         self.app_private_key = app_private_key
         self.app_handle = app_handle
         self.updateSchema()
-        
+
     def updateSchema(self):
         """updates schema.py on initialization of app
             This lets users initialize the schema into schema.py for ease of use
@@ -91,24 +92,20 @@ class App():
         output = response.json()
         return output
 
-    def setHeader(self, msg, key=None):
+    def setHeader(self, msg, key=None, business_key=None):
         """set the application header with usersignature and authsignature
         Args:
             key : ethereum private key for the user
             msg : message being sent should be signed by user
         """
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
-        if key != None:
-            usersignature = EthWallet.signMessage(msg, key.lower())
-            header = {
-                'Content-Type': 'application/json',
-                "usersignature": usersignature,
-                "authsignature": appsignature
-            }
-            return header
-        else:
-            header = {
-                'Content-Type': 'application/json',
-                "authsignature": appsignature
-            }
-            return header
+        header = {
+            'Content-Type': 'application/json',
+            "authsignature": appsignature
+        }
+        if key is not None:
+            header["usersignature"] = EthWallet.signMessage(msg, key.lower())
+        if business_key is not None:
+            header["businesssignature"] = EthWallet.signMessage(msg, business_key.lower())
+
+        return header

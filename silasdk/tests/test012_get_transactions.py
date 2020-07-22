@@ -1,8 +1,6 @@
-import unittest
+import unittest, silasdk
 
-from silasdk.users import User
 from silasdk.tests.test_config import *
-
 
 class Test012GetTransactionsTest(unittest.TestCase):
     def test_get_transactions_200(self):
@@ -10,7 +8,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
             "user_handle": user_handle
         }
 
-        response = User.getTransactions(app, payload, eth_private_key)
+        response = silasdk.User.getTransactions(app, payload, eth_private_key)
         self.assertTrue(response["success"])
 
     def test_get_transactions_403(self):
@@ -18,7 +16,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
             "user_handle": ""
         }
 
-        response = User.getTransactions(app, payload, eth_private_key)
+        response = silasdk.User.getTransactions(app, payload, eth_private_key)
         self.assertFalse(response["success"])
 
 

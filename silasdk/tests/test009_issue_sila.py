@@ -1,8 +1,6 @@
-import unittest
+import unittest, silasdk
 
-from silasdk.transactions import Transaction
 from silasdk.tests.test_config import *
-
 
 class Test009IssueSilaTest(unittest.TestCase):
 
@@ -15,7 +13,7 @@ class Test009IssueSilaTest(unittest.TestCase):
             "business_uuid": business_uuid
         }
 
-        response = Transaction.issueSila(app, payload, eth_private_key)
+        response = silasdk.Transaction.issueSila(app, payload, eth_private_key)
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
@@ -26,7 +24,7 @@ class Test009IssueSilaTest(unittest.TestCase):
             "amount": "-1"
         }
 
-        response = Transaction.issueSila(app, payload, eth_private_key)
+        response = silasdk.Transaction.issueSila(app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
 

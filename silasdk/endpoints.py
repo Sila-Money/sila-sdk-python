@@ -25,5 +25,14 @@ endPoints = {
     "schemaUrl": "https://api.silamoney.com/0.2/getmessage?emptymessage=%sTestMessage",
     "apiUrl": "https://%s.silamoney.com/0.2",
     "silaBalanceProd": "https://silatokenapi.silamoney.com/silaBalance",
-    "silaBalanceSandbox": "https://sandbox.silatokenapi.silamoney.com/silaBalance"
+    "silaBalanceSandbox": "https://sandbox.silatokenapi.silamoney.com/silaBalance",
+    "getBusinessTypes": "/get_business_types",
+    "getBusinessRoles": "/get_business_roles",
+    "getNaicsCategories": "/get_naics_categories",
+    "linkBusinessMember": "/link_business_member",
+    "unlinkBusinessMember": "/unlink_business_member",
+    "getEntities": "/get_entities?",
+    "getEntity": "/get_entity",
+    "certifyBeneficialOwner": "/certify_beneficial_owner",
+    "certifyBusiness": "/certify_business",
 }

@@ -64,7 +64,7 @@ def createMessage(self, payload, msg_type):
 
     return inpt
 
-def postRequest(self, path, msg_type, payload, key=None):
+def postRequest(self, path, msg_type, payload, key=None, business_key=None):
     """post the message and return resposne
     Args:
         payload:customer message
@@ -72,9 +72,6 @@ def postRequest(self, path, msg_type, payload, key=None):
         key :user_private_key
     """
     data = createMessage(self, payload, msg_type)
-    if key is not None:
-        header = self.setHeader(data, key)
-    else:
-        header = self.setHeader(data)
+    header = self.setHeader(data, key, business_key)
     response = self.post(path, data, header)
     return response

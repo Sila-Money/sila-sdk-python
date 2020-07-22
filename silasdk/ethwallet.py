@@ -1,5 +1,5 @@
 from eth_account import Account
-import sha3
+import sha3, _pysha3
 import json
 
 from typing import Dict, Union
@@ -32,7 +32,7 @@ class EthWallet:
         Returns:
         string: a signed message
         """
-        k = sha3.keccak_256()
+        k = _pysha3.keccak_256()
         if isinstance(msg, str):
             encoded_message = msg.encode('utf-8')
         else:
@@ -58,7 +58,7 @@ class EthWallet:
         Returns:
         string: returns the Ethereum address corresponding to the private key the message was signed with
         """
-        k = sha3.keccak_256()
+        k = _pysha3.keccak_256()
         if isinstance(msg, str):
             encoded_message = msg.encode('utf-8')
         else:

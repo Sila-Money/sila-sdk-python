@@ -3,6 +3,7 @@ from silasdk import message
 import json
 import requests
 
+
 class User():
     def checkHandle(self, payload):
         """Check if the user handle is available.
@@ -39,8 +40,9 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["requestKyc"]
-        msg_type = ("header_msg" if (use_kyc_level is False) else "header_msg_kyc_level")
-        response = message.postRequest(self, path, msg_type, payload, user_private_key)
+        msg_type = "header_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
         return response
 
     def linkAccount(self, payload, user_private_key, plaid=False):
@@ -53,8 +55,10 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["linkAccount"]
-        msg_type = ("link_account_msg" if (plaid is False) else "link_account_msg_plaid")
-        response = message.postRequest(self, path, msg_type, payload, user_private_key)
+        msg_type = ("link_account_msg" if (plaid is False)
+                    else "link_account_msg_plaid")
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
         return response
 
     def checkKyc(self, payload, user_private_key):
@@ -67,7 +71,8 @@ class User():
         """
         path = endPoints["checkKyc"]
         msg_type = "header_msg"
-        response = message.postRequest(self, path, msg_type, payload, user_private_key)
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
         return response
 
     def addIdentity(self, payload, user_private_key):
@@ -81,7 +86,8 @@ class User():
         """
         path = endPoints["addIdentity"]
         msg_type = "identity_msg"
-        response = message.postRequest(self, path, msg_type, payload, user_private_key)
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
         return response
 
     def getAccounts(self, payload, user_private_key):
@@ -95,7 +101,8 @@ class User():
         """
         path = endPoints["getAccounts"]
         msg_type = "get_accounts_msg"
-        response = message.postRequest(self, path, msg_type, payload, user_private_key)
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
         return response
 
     def getAccountBalance(self, payload, user_private_key):
@@ -108,7 +115,8 @@ class User():
         """
         path = endPoints["getAccountBalance"]
         msg_type = "account_name_msg"
-        response = message.postRequest(self, path, msg_type, payload, user_private_key)
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
         return response
 
     def getTransactions(self, payload, user_private_key):
@@ -122,7 +130,8 @@ class User():
         """
         path = endPoints["getTransactions"]
         msg_type = "header_msg"
-        response = message.postRequest(self, path, msg_type, payload, user_private_key)
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
         return response
 
     def silaBalance(self, address):
@@ -141,3 +150,33 @@ class User():
             endpoint = endPoints["silaBalanceSandbox"]
         response = requests.post(endpoint, data=data, headers=header)
         return response.json()
+
+    def getEntities(self, payload, per_page=None, page=None):
+        """Return all end-user and legal entities (businesses) associated with a customer application.
+            This endpoint allows the listing of all entities registered to an application.
+        Args:
+            payload: filters information
+            per_page: pagination information
+            page: pagination information
+        Returns:
+            dict: response body (entities list)
+        """
+        path = endPoints["getEntities"] + (('&per_page=' + str(per_page)) if per_page is not None else '') + (('&page=' + str(page)) if page is not None else '') 
+        msg_type = "header_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload)
+        return response
+
+    def getEntity(self, payload, user_private_key):
+        """
+        Args:
+            payload: filters information
+            user_private_key
+        Returns:
+            dict: response body (entity information)
+        """
+        path = endPoints["getEntity"]
+        msg_type = "get_entity_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
