@@ -129,7 +129,7 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["getTransactions"]
-        msg_type = "header_msg"
+        msg_type = "get_transaction_msg"
         response = message.postRequest(
             self, path, msg_type, payload, user_private_key)
         return response

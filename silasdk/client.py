@@ -63,6 +63,12 @@ class App():
             data=data1,
             headers=header)
         output = response.json()
+        
+        try:
+            output['status_code'] = response.status_code
+        except:
+            pass
+        
         return output
 
     def postPlaid(self, url, payload):
