@@ -10,7 +10,7 @@ This lists the full functionality available in the Python SDK, Version 0.2. Requ
 
 ```python
 
-pip3 install silasdk==0.2.9rc0
+pip3 install silasdk==0.2.10rc2
 
 ```
 
@@ -370,10 +370,10 @@ User.getTransactions(silaApp,payload,user_private_key)        #Requires 256 bit 
 
 ##
 
-### Get Sila balance
+### Get Sila balance 
 
 ```python
-silaBalance = User.silaBalance(app, eth_address)
+silaBalance = User.getSilaBalance(app, eth_address)
 ```
 
 ### Success Response Object
@@ -393,7 +393,6 @@ silaBalance = User.silaBalance(app, eth_address)
   "success": false
 }
 ```
-
 ##
 
 ### Get account balance

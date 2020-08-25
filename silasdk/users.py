@@ -151,6 +151,22 @@ class User():
         response = requests.post(endpoint, data=data, headers=header)
         return response.json()
 
+    def getSilaBalance(self, address):
+        """get sila balance of the addresses registered with sila
+           The user will be checked if they have been kyced, along with app
+        Args:
+            address: requires valid ethereum address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        payload = {"address": str(address)}
+        header = {'content-type': 'application/json'}
+        path = endPoints["getSilaBalance"]
+        msg_type = "sila_balance_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload)
+        return response
+
     def getEntities(self, payload, per_page=None, page=None):
         """Return all end-user and legal entities (businesses) associated with a customer application.
             This endpoint allows the listing of all entities registered to an application.

@@ -58,7 +58,11 @@ def createMessage(self, payload, msg_type):
             for key in inpt[i].keys():
                 if key in data.keys():
                     inpt[i][key] = data[key]
-    inpt["header"]["created"] = int(time.time())
+    
+    try:
+        inpt["header"]["created"] = int(time.time())
+    except:
+        pass
 
     inpt = cull_null_values(inpt)
 
