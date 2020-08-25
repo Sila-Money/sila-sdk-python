@@ -30,6 +30,7 @@ from silasdk.tests.test015_get_wallets import Test015GetWalletsTest
 from silasdk.tests.test016_get_wallet import Test016GetWalletTest
 from silasdk.tests.test017_update_wallet import Test017UpdateWalletTest
 from silasdk.tests.test018_delete_wallet import Test018DeleteWalletTest
+from silasdk.tests.test019_sila_balance import GetSilaBalanceTest
 
 
 def create_suite(classes):
@@ -74,7 +75,8 @@ def run_unit_tests():
             Test015GetWalletsTest,
             Test016GetWalletTest,
             Test017UpdateWalletTest,
-            Test018DeleteWalletTest
+            Test018DeleteWalletTest,
+            GetSilaBalanceTest
         ]
         runner.run(create_suite(classes))
     cov.stop()

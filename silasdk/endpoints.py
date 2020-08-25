@@ -21,7 +21,7 @@ endPoints = {
     "getWallet": "/get_wallet",
     "updateWallet": "/update_wallet",
     "deleteWallet": "/delete_wallet",
-    "getSilaBalance": "get_sila_balance",
+    "getSilaBalance": "/get_sila_balance",
     "schemaUrl": "https://api.silamoney.com/0.2/getmessage?emptymessage=%sTestMessage",
     "apiUrl": "https://%s.silamoney.com/0.2",
     "silaBalanceProd": "https://silatokenapi.silamoney.com/silaBalance",
