@@ -275,5 +275,30 @@ Schema = [
             "user_handle": "",
             "business_handle": ""
         }
+    }},
+    {'get_transaction_msg': {
+        "header": {
+            "created": '',
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
+        },
+        "message": "get_transactions_msg",
+        "search_filters": {
+            "transaction_id": "",
+            "reference_id": "",
+            "show_timelines": '',
+            "sort_ascending": '',
+            "max_sila_amount": '',
+            "min_sila_amount": '',
+            "statuses": [],
+            "start_epoch": '',
+            "end_epoch": '',
+            "page": '',
+            "per_page": '',
+            "transaction_types": []
+        }
     }}
 ]

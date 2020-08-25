@@ -345,7 +345,21 @@ User.getAccounts(silaApp,payload,user_private_key)            # users_private_ke
 
 payload={
 
-        "user_handle": "user.silamoney.eth"    #Required
+        "user_handle": "user.silamoney.eth",    #Required
+        "search_filters": {                     #Optional
+            "transaction_id": "some UUID string assigned by Sila",
+            "reference_id": "the reference string sent in the header object when transaction request was made",
+            "show_timelines": true,
+            "sort_ascending": false,
+            "max_sila_amount": 1300,
+            "min_sila_amount": 1000,
+            "statuses": ["queued", "pending", "failed", "success", "rollback", "review"],
+            "start_epoch": 1234567860,
+            "end_epoch": 1234567891,
+            "page": 1,
+            "per_page": 20,
+            "transaction_types": ["issue", "redeem", "transfer"]
+        }
     }
 
 User.getTransactions(silaApp,payload,user_private_key)        #Requires 256 bit ethereum private key

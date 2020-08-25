@@ -1,15 +1,22 @@
-import unittest, silasdk
+import unittest
+import silasdk
 
 from silasdk.tests.test_config import *
+
 
 class Test012GetTransactionsTest(unittest.TestCase):
     def test_get_transactions_200(self):
         payload = {
-            "user_handle": user_handle
+            "user_handle": user_handle,
+            "search_filters": {
+                'page': 1,
+                'per_page': 1
+            }
         }
 
         response = silasdk.User.getTransactions(app, payload, eth_private_key)
         self.assertTrue(response["success"])
+        self.assertEqual(len(response["transactions"]), 1)
 
     def test_get_transactions_403(self):
         payload = {
