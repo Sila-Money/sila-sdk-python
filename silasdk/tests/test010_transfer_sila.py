@@ -1,5 +1,5 @@
 import unittest, silasdk
-
+from silasdk.tests.poll_until_status import *
 from silasdk.tests.test_config import *
 
 class Test010TrasferSilaTest(unittest.TestCase):
@@ -7,12 +7,15 @@ class Test010TrasferSilaTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "destination": user_handle_2,
-            "amount": 1000,
+            "amount": 100,
             "descriptor": "test descriptor",
             "business_uuid": business_uuid
         }
 
         response = silasdk.Transaction.transferSila(app, payload, eth_private_key)
+
+        PollUntilStatus.poll(self, response["transaction_id"], "success")
+
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
