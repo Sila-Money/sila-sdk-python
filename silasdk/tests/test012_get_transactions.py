@@ -17,6 +17,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         response = silasdk.User.getTransactions(app, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertEqual(len(response["transactions"]), 1)
+        self.assertEqual(response["transactions"][0]["processing_type"], silasdk.ProcessingTypes.STANDARD_ACH)
 
     def test_get_transactions_403(self):
         payload = {
