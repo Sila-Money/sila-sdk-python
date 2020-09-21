@@ -81,7 +81,8 @@ Schema = [
         "amount": "",
         "account_name": "",
         "business_uuid": "",
-        "descriptor": ""
+        "descriptor": "",
+        "processing_type": ""
     }},
     {"redeem_msg": {
         "header": {
