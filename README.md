@@ -487,7 +487,8 @@ payload={
         "user_handle":   "user.silamoney.eth",
         "descriptor": "Transaction Descriptor",
         "business_uuid": "UUID of a business with an approved ACH name",
-        "account_name": "account name"
+        "account_name": "account name",
+        "processing_type": ProcessingTypes.STANDARD_ACH # or ProcessingTypes.SAME_DAY_ACH
         }
 
 Transaction.issueSila(silaApp,payload,user_private_key)
@@ -521,7 +522,8 @@ payload={
         "user_handle":   "user.silamoney.eth",
         "descriptor": "Transaction Descriptor",
         "business_uuid": "UUID of a business with an approved ACH name",
-        "account_name": "account name"
+        "account_name": "account name",
+        "processing_type": ProcessingTypes.STANDARD_ACH # or ProcessingTypes.SAME_DAY_ACH
         }
 
 Transaction.redeemSila(silaApp,payload,user_private_key)
