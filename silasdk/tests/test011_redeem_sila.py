@@ -9,7 +9,8 @@ class Test011RedeemSilaTest(unittest.TestCase):
             "amount": 100,
             "account_name":"default_plaid",
             "descriptor": "test descriptor",
-            "business_uuid": business_uuid
+            "business_uuid": business_uuid,
+            "processing_type": silasdk.ProcessingTypes.STANDARD_ACH
         }
 
         response = silasdk.Transaction.redeemSila(app, payload, eth_private_key)

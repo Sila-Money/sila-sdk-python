@@ -97,7 +97,8 @@ Schema = [
         "amount": "",
         "account_name": "",
         "business_uuid": "",
-        "descriptor": ""
+        "descriptor": "",
+        "processing_type": ""
     }},
     {"no_content_msg": {
         "header": {
