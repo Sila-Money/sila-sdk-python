@@ -10,7 +10,7 @@ This lists the full functionality available in the Python SDK, Version 0.2. Requ
 
 ```python
 
-pip3 install silasdk==0.2.10rc2
+pip3 install silasdk==0.2.11rc
 
 ```
 
