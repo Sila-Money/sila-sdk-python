@@ -313,5 +313,31 @@ Schema = [
             "reference": ""
         },
         "transaction_id": ""
+    }},
+    {"add_registration_data_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": ""
+        },
+        "email": "",
+        "phone": "",
+        "identity_alias": "",
+        "identity_value": "",
+        "address_alias": "",
+        "street_address_1": "",
+        "street_address_2": "",
+        "city": "",
+        "state": "",
+        "postal_code": "",
+        "country": ""
+    }},
+    {"delete_registration_data_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": ""
+        },
+        "uuid": ""
     }}
 ]

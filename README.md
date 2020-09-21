@@ -1223,3 +1223,114 @@ response = User.getEntity(app, payload, user_private_key)
     ]
 }
 ```
+
+##
+
+### Add Registration Data
+
+```python
+# Add Email
+payload = {
+    "user_handle": user_handle,
+    "email": email,
+}
+
+response = silasdk.User.addRegistrationData(
+    app, RegistrationFields.EMAIL, payload, eth_private_key)
+
+# Add Phone
+payload = {
+    "user_handle": user_handle,
+    "phone": phone,
+}
+
+response = silasdk.User.addRegistrationData(
+    app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
+
+# Add Identity
+payload = {
+    "user_handle": business_handle,
+    "identity_alias": identityAlias,
+    "identity_value": identityValue
+}
+
+response = silasdk.User.addRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
+
+# Add Address
+payload = {
+    "user_handle": user_handle,
+    "address_alias": address_alias,
+    "street_address_1": street_address_1,
+    "street_address_2": street_address_2,
+    "city": city,
+    "state": state,
+    "postal_code": postal_code,
+    "country": country
+}
+
+response = silasdk.User.addRegistrationData(
+    app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
+```
+
+### Success Response Object (Individual)
+
+```python
+# Address
+{
+    "success": true,
+    "message": "Successfully added email to user your_individual_end_user.",
+    "email": {
+        "added_epoch": 1599006972,
+        "modified_epoch": 1599006972,
+        "uuid": "30c41951-1f2b-445b-8604-fa748316881d",
+        "email": "new.email@yournewemail.com"
+    },
+    "status": "SUCCESS"
+}
+
+# Phone 
+{
+    "success": true,
+    "message": "Successfully added phone to user your_individual_end_user.",
+    "phone": {
+        "added_epoch": 1599007660,
+        "modified_epoch": 1599007660,
+        "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
+        "phone": "3189250987"
+    },
+    "status": "SUCCESS"
+}
+
+# Identity
+{
+    "success": true,
+    "message": "Successfully added identity to user your_individual_end_user.",
+    "phone": {
+        "added_epoch": 1599007660,
+        "modified_epoch": 1599007660,
+        "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
+        "identity_alias": "SSN",
+        "identity_value": "*2222"
+    },
+    "status": "SUCCESS"
+}
+
+# Address
+{
+    "success": true,
+    "message": "Successfully added address to user your_individual_end_user.",
+    "address": {
+        "added_epoch": 1599008272,
+        "modified_epoch": 1599008272,
+        "uuid": "2966e38f-e713-4994-a22f-56e076963d01",
+        "nickname": "Home Number Two",
+        "street_address_1": "324 Songbird Avenue",
+        "street_address_2": "Apt 132",
+        "city": "Portland",
+        "state": "VA",
+        "country": "US",
+        "postal_code": "12345"
+    },
+    "status": "SUCCESS"
+}
+```

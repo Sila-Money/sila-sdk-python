@@ -36,4 +36,6 @@ endPoints = {
     "certifyBeneficialOwner": "/certify_beneficial_owner",
     "certifyBusiness": "/certify_business",
     "cancelTransaction": "/cancel_transaction",
+    "addRegistrationData": "/add/",
+    "deleteRegistrationData": "/delete/",
 }
