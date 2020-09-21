@@ -35,4 +35,5 @@ endPoints = {
     "getEntity": "/get_entity",
     "certifyBeneficialOwner": "/certify_beneficial_owner",
     "certifyBusiness": "/certify_business",
+    "cancelTransaction": "/cancel_transaction",
 }

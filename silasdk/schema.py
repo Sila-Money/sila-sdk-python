@@ -302,5 +302,16 @@ Schema = [
             "per_page": '',
             "transaction_types": []
         }
+    }},
+    {'cancel_transaction_msg': {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
+        },
+        "transaction_id": ""
     }}
 ]

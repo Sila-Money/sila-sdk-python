@@ -22,6 +22,7 @@ from silasdk.tests.test007_get_accounts import Test007GetAccountsTest
 from silasdk.tests.test008_get_account_balance import Test008GetAccountBalanceTest
 from silasdk.tests.test009_issue_sila import Test009IssueSilaTest
 from silasdk.tests.test010_transfer_sila import Test010TrasferSilaTest
+from silasdk.tests.test011_cancel_transaction import Test011CancelTransactionTest
 from silasdk.tests.test011_redeem_sila import Test011RedeemSilaTest
 from silasdk.tests.test012_get_transactions import Test012GetTransactionsTest
 from silasdk.tests.test013_plaid_same_day_auth import Test013PlaidSameDayAuthTest
@@ -68,6 +69,7 @@ def run_unit_tests():
             Test008GetAccountBalanceTest,
             Test009IssueSilaTest,
             Test010TrasferSilaTest,
+            Test011CancelTransactionTest,
             Test011RedeemSilaTest,
             Test012GetTransactionsTest,
             Test013PlaidSameDayAuthTest,

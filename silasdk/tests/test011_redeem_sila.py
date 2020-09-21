@@ -6,7 +6,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
     def test_redeem_sila_200(self):
         payload = {
             "user_handle": user_handle,
-            "amount": 100,
+            "amount": 50,
             "account_name":"default_plaid",
             "descriptor": "test descriptor",
             "business_uuid": business_uuid,

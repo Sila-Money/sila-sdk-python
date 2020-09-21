@@ -384,6 +384,37 @@ User.getTransactions(silaApp,payload,user_private_key)        #Requires 256 bit 
 
 ##
 
+### Cancel Transaction
+
+```python
+
+payload = {
+    "user_handle": user_handle,
+    "transaction_id": transaction_id
+}
+
+response = silasdk.Transaction.cancelTransaction(app, payload, eth_private_key)
+
+```
+
+### Success Response Object
+
+```python
+{
+    status: 'SUCCESS'
+}
+```
+
+### Failure Response Object
+
+```python
+{
+    status: 'FAILURE'
+}
+```
+
+##
+
 ### Get Sila balance 
 
 ```python
