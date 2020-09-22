@@ -37,5 +37,6 @@ endPoints = {
     "certifyBusiness": "/certify_business",
     "cancelTransaction": "/cancel_transaction",
     "addRegistrationData": "/add/",
+    "updateRegistrationData": "/update/",
     "deleteRegistrationData": "/delete/",
 }
