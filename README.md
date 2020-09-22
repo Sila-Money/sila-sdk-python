@@ -1275,7 +1275,7 @@ response = silasdk.User.addRegistrationData(
 ### Success Response Object (Individual)
 
 ```python
-# Address
+# Email
 {
     "success": true,
     "message": "Successfully added email to user your_individual_end_user.",
@@ -1326,6 +1326,121 @@ response = silasdk.User.addRegistrationData(
         "nickname": "Home Number Two",
         "street_address_1": "324 Songbird Avenue",
         "street_address_2": "Apt 132",
+        "city": "Portland",
+        "state": "VA",
+        "country": "US",
+        "postal_code": "12345"
+    },
+    "status": "SUCCESS"
+}
+```
+
+##
+
+### Update Registration Data
+
+```python
+# Update Email
+payload = {
+    "user_handle": user_handle,
+    "email": email,
+    "uuid": uuid
+}
+
+response = silasdk.User.updateRegistrationData(
+    app, RegistrationFields.EMAIL, payload, eth_private_key)
+
+# Update Phone
+payload = {
+    "user_handle": user_handle,
+    "phone": phone,
+    "uuid": uuid
+}
+
+response = silasdk.User.updateRegistrationData(
+    app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
+
+# Update Identity
+payload = {
+    "user_handle": business_handle,
+    "identity_alias": identityAlias,
+    "identity_value": identityValue,
+    "uuid": uuid
+}
+
+response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
+
+# Update Updateress
+payload = {
+    "user_handle": user_handle,
+    "Updateress_alias": Updateress_alias,
+    "street_Updateress_1": street_Updateress_1,
+    "street_Updateress_2": street_Updateress_2,
+    "city": city,
+    "state": state,
+    "postal_code": postal_code,
+    "country": country,
+    "uuid": uuid
+}
+
+response = silasdk.User.updateRegistrationData(
+    app, silasdk.RegistrationFields.UpdateRESS, payload, eth_private_key)
+```
+
+### Success Response Object (Individual)
+
+```python
+# Email
+{
+    "success": true,
+    "message": "Successfully Updateed email to user your_individual_end_user.",
+    "email": {
+        "Updateed_epoch": 1599006972,
+        "modified_epoch": 1599006972,
+        "uuid": "30c41951-1f2b-445b-8604-fa748316881d",
+        "email": "new.email@yournewemail.com"
+    },
+    "status": "SUCCESS"
+}
+
+# Phone 
+{
+    "success": true,
+    "message": "Successfully Updateed phone to user your_individual_end_user.",
+    "phone": {
+        "Updateed_epoch": 1599007660,
+        "modified_epoch": 1599007660,
+        "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
+        "phone": "3189250987"
+    },
+    "status": "SUCCESS"
+}
+
+# Identity
+{
+    "success": true,
+    "message": "Successfully Updateed identity to user your_individual_end_user.",
+    "phone": {
+        "Updateed_epoch": 1599007660,
+        "modified_epoch": 1599007660,
+        "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
+        "identity_alias": "SSN",
+        "identity_value": "*2222"
+    },
+    "status": "SUCCESS"
+}
+
+# Address
+{
+    "success": true,
+    "message": "Successfully Updateed Updateress to user your_individual_end_user.",
+    "Updateress": {
+        "Updateed_epoch": 1599008272,
+        "modified_epoch": 1599008272,
+        "uuid": "2966e38f-e713-4994-a22f-56e076963d01",
+        "nickname": "Home Number Two",
+        "street_Updateress_1": "324 Songbird Avenue",
+        "street_Updateress_2": "Apt 132",
         "city": "Portland",
         "state": "VA",
         "country": "US",
