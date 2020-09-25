@@ -358,5 +358,64 @@ Schema = [
             "user_handle": ""
         },
         "uuid": ""
+    }},
+    {"documents_msg": {
+        "files": {
+            "file": ""
+        },
+        "data": {
+            "header": {
+                "created": "",
+                "auth_handle": "",
+                "user_handle": "",
+                "version": "",
+                "crypto": "",
+                "reference": ""
+            },
+            "message": "",
+            "name": "",
+            "file_name": "",
+            "hash": "",
+            "mime_type": "",
+            "document_type": "",
+            "identity_type": "",
+            "description": ""
+        }
+    }},
+    {"list_documents_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
+        },
+        "message": "",
+        "start_date": "",
+        "end_date": "",
+        "doc_types": "",
+        "search": "",
+        "sort_by": ""
+    }},
+    {"get_document_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
+        },
+        "document_id": ""
+    }},
+    {"document_types_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
+        }
     }}
 ]

@@ -39,4 +39,8 @@ endPoints = {
     "addRegistrationData": "/add/",
     "updateRegistrationData": "/update/",
     "deleteRegistrationData": "/delete/",
+    "documents": "/documents",
+    "list_documents": "/list_documents?",
+    "get_document": "/get_document",
+    "list_supported_documents": "/document_types?",
 }

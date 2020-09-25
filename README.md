@@ -81,6 +81,7 @@ payload={
             "identity_value": "123452222",                      # Required:  Must in in 2222 in the sandbox
             "phone": "1234567890",                              # Required:  Must be a valid phone number (format not enforced)
             "street_address_1": '123 Main St',                  # Required:  Must be a valid USPS mailing address
+            "street_address_2": '',                             # Optional:  Must be a valid USPS mailing address
             "city": 'Anytown',                                  # Required:  Must be a valid US City matching the zip
             "state": 'OR',                                      # Required:  Must be a 2 character US State abbr.
             "postal_code": "12345",                             # Required:  Must be a valid US Postal Code
@@ -1272,8 +1273,7 @@ response = silasdk.User.addRegistrationData(
     app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
 ```
 
-### Success Response Object (Individual)
-
+### Success Response Object 
 ```python
 # Email
 {
@@ -1387,15 +1387,15 @@ response = silasdk.User.updateRegistrationData(
     app, silasdk.RegistrationFields.UpdateRESS, payload, eth_private_key)
 ```
 
-### Success Response Object (Individual)
+### Success Response Object
 
 ```python
 # Email
 {
     "success": true,
-    "message": "Successfully Updateed email to user your_individual_end_user.",
+    "message": "Successfully Updated email to user your_individual_end_user.",
     "email": {
-        "Updateed_epoch": 1599006972,
+        "Updated_epoch": 1599006972,
         "modified_epoch": 1599006972,
         "uuid": "30c41951-1f2b-445b-8604-fa748316881d",
         "email": "new.email@yournewemail.com"
@@ -1406,9 +1406,9 @@ response = silasdk.User.updateRegistrationData(
 # Phone 
 {
     "success": true,
-    "message": "Successfully Updateed phone to user your_individual_end_user.",
+    "message": "Successfully Updated phone to user your_individual_end_user.",
     "phone": {
-        "Updateed_epoch": 1599007660,
+        "Updated_epoch": 1599007660,
         "modified_epoch": 1599007660,
         "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
         "phone": "3189250987"
@@ -1419,9 +1419,9 @@ response = silasdk.User.updateRegistrationData(
 # Identity
 {
     "success": true,
-    "message": "Successfully Updateed identity to user your_individual_end_user.",
+    "message": "Successfully Updated identity to user your_individual_end_user.",
     "phone": {
-        "Updateed_epoch": 1599007660,
+        "Updated_epoch": 1599007660,
         "modified_epoch": 1599007660,
         "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
         "identity_alias": "SSN",
@@ -1433,9 +1433,9 @@ response = silasdk.User.updateRegistrationData(
 # Address
 {
     "success": true,
-    "message": "Successfully Updateed Updateress to user your_individual_end_user.",
+    "message": "Successfully Updated Updateress to user your_individual_end_user.",
     "Updateress": {
-        "Updateed_epoch": 1599008272,
+        "Updated_epoch": 1599008272,
         "modified_epoch": 1599008272,
         "uuid": "2966e38f-e713-4994-a22f-56e076963d01",
         "nickname": "Home Number Two",
@@ -1446,6 +1446,77 @@ response = silasdk.User.updateRegistrationData(
         "country": "US",
         "postal_code": "12345"
     },
+    "status": "SUCCESS"
+}
+```
+
+### Delete Registration Data
+
+```python
+# Delete Email
+payload = {
+    "user_handle": user_handle,
+    "uuid": uuid
+}
+
+response = silasdk.User.deleteRegistrationData(
+    app, RegistrationFields.EMAIL, payload, eth_private_key)
+
+# Delete Phone
+payload = {
+    "user_handle": user_handle,
+    "uuid": uuid
+}
+
+response = silasdk.User.deleteRegistrationData(
+    app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
+
+# Delete Identity
+payload = {
+    "user_handle": business_handle,
+    "uuid": uuid
+}
+
+response = silasdk.User.deleteRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
+
+# Delete Updateress
+payload = {
+    "user_handle": user_handle,
+    "uuid": uuid
+}
+
+response = silasdk.User.deleteRegistrationData(
+    app, silasdk.RegistrationFields.UpdateRESS, payload, eth_private_key)
+```
+
+### Success Response Object
+
+```python
+# Email
+{
+    "success": true,
+    "message": "Successfully deleted email with UUID dcc7afe8-b8bd-4b59-acd0-59097427485b.",
+    "status": "SUCCESS"
+}
+
+# Phone 
+{
+    "success": true,
+    "message": "Successfully deleted phone with UUID a180ad8d-02d4-4677-8b87-20a204f07c68.",
+    "status": "SUCCESS"
+}
+
+# Identity
+{
+    "success": true,
+    "message": "Successfully deleted identity with UUID dcc7afe8-b8bd-4b59-acd0-59097427485b.",
+    "status": "SUCCESS"
+}
+
+# Address
+{
+    "success": true,
+    "message": "Successfully deleted address with UUID dcc7afe8-b8bd-4b59-acd0-59097427485b.",
     "status": "SUCCESS"
 }
 ```

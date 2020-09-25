@@ -163,7 +163,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "uuid": phoneUuid
         }
 
-        response = silasdk.User.addRegistrationData(
+        response = silasdk.User.updateRegistrationData(
             app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
@@ -171,13 +171,6 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertEqual(response["phone"]["phone"], phone)
         self.assertIsNotNone(response["phone"]["added_epoch"])
         self.assertIsNotNone(response["phone"]["modified_epoch"])
-
-        payload = {
-            "user_handle": user_handle,
-            "uuid": identityUuid
-        }
-
-        response = silasdk.User.deleteRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
 
         identityAlias = "SSN"
         identityValue = "543212223"
@@ -188,7 +181,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "uuid": identityUuid
         }
 
-        response = silasdk.User.addRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
+        response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
         self.assertEqual(response["status"], "SUCCESS")
@@ -217,7 +210,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "uuid": addressUuid
         }
 
-        response = silasdk.User.addRegistrationData(
+        response = silasdk.User.updateRegistrationData(
             app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
@@ -252,6 +245,72 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertEqual(response["status"], "FAILURE")
 
         response = silasdk.User.updateRegistrationData(
+            app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
+        self.assertEqual(response["status"], "FAILURE")
+
+    def test_delete_registration_data_200(self):
+        payload = {
+            "user_handle": user_handle
+        }
+
+        response = silasdk.User.getEntity(app, payload, eth_private_key)
+
+        emailUuid = response["emails"][0]["uuid"]
+        phoneUuid = response["phones"][0]["uuid"]
+        identityUuid = response["identities"][0]["uuid"]
+        addressUuid = response["addresses"][0]["uuid"]
+
+        payload = {
+            "user_handle": user_handle,
+            "uuid": emailUuid
+        }
+
+        response = silasdk.User.deleteRegistrationData(
+            app, silasdk.RegistrationFields.EMAIL, payload, eth_private_key)
+        self.assertTrue(response["success"])
+        self.assertIsNotNone(response["message"])
+        self.assertEqual(response["status"], "SUCCESS")
+
+        payload = {
+            "user_handle": user_handle,
+            "uuid": phoneUuid
+        }
+
+        response = silasdk.User.deleteRegistrationData(
+            app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
+        self.assertTrue(response["success"])
+        self.assertIsNotNone(response["message"])
+        self.assertEqual(response["status"], "SUCCESS")
+
+        payload = {
+            "user_handle": user_handle,
+            "uuid": addressUuid
+        }
+
+        response = silasdk.User.deleteRegistrationData(
+            app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
+        self.assertTrue(response["success"])
+        self.assertIsNotNone(response["message"])
+        self.assertEqual(response["status"], "SUCCESS")
+
+    def test_delete_registration_data_400(self):
+        payload = {
+            "user_handle": user_handle,
+        }
+
+        response = silasdk.User.deleteRegistrationData(
+            app, silasdk.RegistrationFields.EMAIL, payload, eth_private_key)
+        self.assertEqual(response["status"], "FAILURE")
+
+        response = silasdk.User.deleteRegistrationData(
+            app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
+        self.assertEqual(response["status"], "FAILURE")
+
+        response = silasdk.User.deleteRegistrationData(
+            app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
+        self.assertEqual(response["status"], "FAILURE")
+
+        response = silasdk.User.deleteRegistrationData(
             app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 

@@ -4,6 +4,17 @@ from copy import deepcopy
 from typing import Dict
 from .schema import Schema
 
+def createBody(bodyStructure, fields):
+    for field in fields:
+        if field in bodyStructure.keys():
+            bodyStructure[field] = fields[field]
+        else:
+            for bodyField in bodyStructure:
+                if isinstance(bodyStructure[bodyField], dict):
+                    createBody(bodyStructure[bodyField], fields)
+
+    return bodyStructure
+
 
 def getMessage(self, msg_type):
     """gets the message from schema 
@@ -51,13 +62,8 @@ def createMessage(self, payload, msg_type):
     )
     inpt = getMessage(self, msg_type)
     data = lower_keys(payload)
-    for i in inpt:
-        if i in data.keys():
-            inpt[i] = data[i]
-        elif isinstance(inpt[i], dict):
-            for key in inpt[i].keys():
-                if key in data.keys():
-                    inpt[i][key] = data[key]
+    
+    inpt = createBody(inpt, data)
     
     try:
         inpt["header"]["created"] = int(time.time())
@@ -68,7 +74,7 @@ def createMessage(self, payload, msg_type):
 
     return inpt
 
-def postRequest(self, path, msg_type, payload, key=None, business_key=None):
+def postRequest(self, path, msg_type, payload, key=None, business_key=None, content_type=None):
     """post the message and return resposne
     Args:
         payload:customer message
@@ -76,6 +82,6 @@ def postRequest(self, path, msg_type, payload, key=None, business_key=None):
         key :user_private_key
     """
     data = createMessage(self, payload, msg_type)
-    header = self.setHeader(data, key, business_key)
+    header = self.setHeader(data, key, business_key, content_type)
     response = self.post(path, data, header)
     return response

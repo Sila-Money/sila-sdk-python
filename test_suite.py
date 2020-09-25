@@ -14,6 +14,7 @@ from silasdk.tests.test003_check_handle_failure import Test003CheckHandleFailTes
 from silasdk.tests.test003_link_business_member import Test003LinkBusinessMemberTest
 from silasdk.tests.test003_unlink_business_member import Test003UnlinkBusinessMemberTest
 from silasdk.tests.test004_request_kyc import Test004RequestKycTest
+from silasdk.tests.test004_z_documents import Test004ZDocuments
 from silasdk.tests.test005_check_kyc import Test005CheckKycTest
 from silasdk.tests.test005_get_entity import Test005GetEntityTest
 from silasdk.tests.test006_certify_beneficial_owner import Test006CertifyBeneficialOwnerTest
@@ -63,6 +64,7 @@ def run_unit_tests():
             Test003LinkBusinessMemberTest,
             Test003UnlinkBusinessMemberTest,
             Test004RequestKycTest,
+            Test004ZDocuments,
             Test005CheckKycTest,
             Test006CertifyBeneficialOwnerTest,
             Test006CertifyBusinessTest,

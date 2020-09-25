@@ -62,6 +62,7 @@ class App():
             endpoint,
             data=data1,
             headers=header)
+
         output = response.json()
         
         try:
@@ -98,7 +99,7 @@ class App():
         output = response.json()
         return output
 
-    def setHeader(self, msg, key=None, business_key=None):
+    def setHeader(self, msg, key=None, business_key=None, content_type=None):
         """set the application header with usersignature and authsignature
         Args:
             key : ethereum private key for the user
@@ -106,7 +107,7 @@ class App():
         """
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
         header = {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json' if content_type is None else content_type,
             "authsignature": appsignature
         }
         if key is not None:

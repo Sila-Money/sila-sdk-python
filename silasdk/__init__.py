@@ -7,3 +7,4 @@ from .businessInformation import BusinessInformation
 from .businessOperations import BusinessOperations
 from .processingTypes import ProcessingTypes
 from .registrationFields import RegistrationFields
+from .documents import Documents
