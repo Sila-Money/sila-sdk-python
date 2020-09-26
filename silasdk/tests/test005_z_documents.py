@@ -1,25 +1,38 @@
+import hashlib
+import os
 import unittest
 import silasdk
 
 from silasdk.tests.test_config import *
 
 
-class Test004ZDocuments(unittest.TestCase):
+class Test005ZDocuments(unittest.TestCase):
+    def test_list_supported_documents_200(self):
+
+        response = silasdk.Documents.listSupportedDocuments(
+            app, 1, 1)
+        self.assertTrue(response["success"])
+        self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response["message"])
+        self.assertIsNotNone(response["document_types"])
+
     def test_upload_document_200(self):
+        f = open(os.path.dirname(os.path.realpath(__file__)) +
+                 "/images/logo-geko.png", "rb")
+        fileContents = f.read()
+        f.close()
+
         payload = {
-            "file": "hello world",
             "user_handle": user_handle,
-            "name": "CA drivers license",
-            "file_name": "img_201901022_193206",
-            "hash": "046a9aaa83711158c3c4afa585a30be3bee8a34231ee72caac625faef48b4abe",
-            "mime_type": "image/jpeg",
+            "filename": "logo-geko",
+            "hash": hashlib.sha256(fileContents).hexdigest(),
+            "mime_type": "image/png",
             "document_type": "id_drivers_license",
-            "identity_type": "license",
-            "description": "my CA driver's license from 2019"
+            "identity_type": "license"
         }
 
         response = silasdk.Documents.uploadDocument(
-            app, payload, eth_private_key)
+            app, payload, fileContents, eth_private_key)
         self.assertTrue(response["success"])
         self.assertEqual(response["status"], "SUCCESS")
         self.assertIsNotNone(response["message"])
@@ -33,7 +46,6 @@ class Test004ZDocuments(unittest.TestCase):
 
         response = silasdk.Documents.getDocument(
             app, payload, eth_private_key)
-        print(response)
 
     def test_list_documents_200(self):
         payload = {
@@ -51,15 +63,6 @@ class Test004ZDocuments(unittest.TestCase):
         self.assertEqual(response["status"], "SUCCESS")
         self.assertIsNotNone(response["documents"])
         self.assertIsNotNone(response["pagination"])
-
-    def test_list_supported_documents_200(self):
-
-        response = silasdk.Documents.listSupportedDocuments(
-            app, 1, 1)
-        self.assertTrue(response["success"])
-        self.assertEqual(response["status"], "SUCCESS")
-        self.assertIsNotNone(response["message"])
-        self.assertIsNotNone(response["document_types"])
 
 
 if __name__ == "__main__":

@@ -64,12 +64,28 @@ class App():
             headers=header)
 
         output = response.json()
-        
+
         try:
             output['status_code'] = response.status_code
         except:
             pass
-        
+
+        return output
+
+    def postFile(self, path, payload, header, fileContents):
+        url = self.getUrl()
+        endpoint = url + path
+        message = json.dumps(payload['data'])
+        files = {'file': fileContents}
+        response = requests.post(
+            endpoint,
+            data={'data': message},
+            headers=header,
+            files=files
+        )
+
+        output = response.json()
+
         return output
 
     def postPlaid(self, url, payload):
@@ -107,12 +123,16 @@ class App():
         """
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
         header = {
-            'Content-Type': 'application/json' if content_type is None else content_type,
             "authsignature": appsignature
         }
+        if content_type is not None and content_type == 'multipart/form-data':
+            pass
+        else:
+            header["Content-Type"]: 'application/json' if content_type is None else content_type
         if key is not None:
             header["usersignature"] = EthWallet.signMessage(msg, key.lower())
         if business_key is not None:
-            header["businesssignature"] = EthWallet.signMessage(msg, business_key.lower())
+            header["businesssignature"] = EthWallet.signMessage(
+                msg, business_key.lower())
 
         return header

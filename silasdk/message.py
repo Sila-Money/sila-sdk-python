@@ -4,6 +4,7 @@ from copy import deepcopy
 from typing import Dict
 from .schema import Schema
 
+
 def createBody(bodyStructure, fields):
     for field in fields:
         if field in bodyStructure.keys():
@@ -25,6 +26,7 @@ def getMessage(self, msg_type):
         for key, value in i.items():
             if key == msg_type:
                 return deepcopy(i[msg_type])
+
 
 def lower_keys(x):
     """converts the payload dict keys to all lowercase to match schema
@@ -60,13 +62,17 @@ def createMessage(self, payload, msg_type):
             "relationship": "user"
         }
     )
+
     inpt = getMessage(self, msg_type)
     data = lower_keys(payload)
-    
+
     inpt = createBody(inpt, data)
-    
+
     try:
-        inpt["header"]["created"] = int(time.time())
+        if msg_type == 'documents_msg':
+            inpt["data"]["header"]["created"] = int(time.time())
+        else:
+            inpt["header"]["created"] = int(time.time())
     except:
         pass
 
@@ -74,14 +80,17 @@ def createMessage(self, payload, msg_type):
 
     return inpt
 
-def postRequest(self, path, msg_type, payload, key=None, business_key=None, content_type=None):
-    """post the message and return resposne
+
+def postRequest(self, path, msg_type, payload, key=None, business_key=None, content_type=None, fileContents=None):
+    """post the message and return response
     Args:
         payload:customer message
         path : endpoint
         key :user_private_key
     """
     data = createMessage(self, payload, msg_type)
-    header = self.setHeader(data, key, business_key, content_type)
-    response = self.post(path, data, header)
+    header = self.setHeader(data, key, business_key, content_type) if msg_type != 'documents_msg' else self.setHeader(
+        data['data'], key, business_key, content_type)
+    response = self.post(path, data, header) if fileContents is None else self.postFile(
+        path, data, header, fileContents)
     return response

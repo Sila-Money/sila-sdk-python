@@ -3,7 +3,7 @@ from silasdk import message
 
 
 class Documents():
-    def uploadDocument(self, payload, user_private_key):
+    def uploadDocument(self, payload, file, user_private_key):
         """
         Args:
             payload: document data
@@ -14,7 +14,7 @@ class Documents():
         path = endPoints["documents"]
         msg_type = "documents_msg"
         response = message.postRequest(
-            self, path, msg_type, payload, user_private_key, None, "multipart/form-data")
+            self, path, msg_type, payload, key=user_private_key, content_type="multipart/form-data", fileContents=file)
         return response
 
     def listDocuments(self, payload, user_private_key, page=None, per_page=None, order=None):
