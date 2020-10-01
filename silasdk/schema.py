@@ -360,27 +360,22 @@ Schema = [
         "uuid": ""
     }},
     {"documents_msg": {
-        "files": {
-            "file": ""
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": ""
         },
-        "data": {
-            "header": {
-                "created": "",
-                "auth_handle": "",
-                "user_handle": "",
-                "version": "0.2",
-                "crypto": "ETH",
-                "reference": ""
-            },
-            "message": "",
-            "name": "",
-            "filename": "",
-            "hash": "",
-            "mime_type": "",
-            "document_type": "",
-            "identity_type": "",
-            "description": ""
-        }
+        "message": "",
+        "name": "",
+        "filename": "",
+        "hash": "",
+        "mime_type": "",
+        "document_type": "",
+        "identity_type": "",
+        "description": ""
     }},
     {"list_documents_msg": {
         "header": {

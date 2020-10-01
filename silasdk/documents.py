@@ -44,9 +44,17 @@ class Documents():
         """
         path = endPoints["get_document"]
         msg_type = "get_document_msg"
-        response = message.postRequest(
+        response = message.postGetFile(
             self, path, msg_type, payload, user_private_key)
-        return response
+        if (isinstance(response, dict)):
+            return response
+        else:
+            document_reponse = {
+                'status_code': response.status_code,
+                'headers': response.headers,
+                'content': response.content
+            }
+            return document_reponse
 
     def listSupportedDocuments(self, page=None, per_page=None):
         """

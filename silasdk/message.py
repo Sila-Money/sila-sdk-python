@@ -1,3 +1,4 @@
+import requests
 import time
 import uuid
 from copy import deepcopy
@@ -69,10 +70,7 @@ def createMessage(self, payload, msg_type):
     inpt = createBody(inpt, data)
 
     try:
-        if msg_type == 'documents_msg':
-            inpt["data"]["header"]["created"] = int(time.time())
-        else:
-            inpt["header"]["created"] = int(time.time())
+        inpt["header"]["created"] = int(time.time())
     except:
         pass
 
@@ -89,8 +87,14 @@ def postRequest(self, path, msg_type, payload, key=None, business_key=None, cont
         key :user_private_key
     """
     data = createMessage(self, payload, msg_type)
-    header = self.setHeader(data, key, business_key, content_type) if msg_type != 'documents_msg' else self.setHeader(
-        data['data'], key, business_key, content_type)
+    header = self.setHeader(data, key, business_key, content_type)
     response = self.post(path, data, header) if fileContents is None else self.postFile(
         path, data, header, fileContents)
+    return response
+
+
+def postGetFile(self, path: str, msg_type: str, payload: dict, key: str) -> requests.Response:
+    data = createMessage(self, payload, msg_type)
+    header = self.setHeader(data, key)
+    response = self.postFileResponse(path, data, header)
     return response

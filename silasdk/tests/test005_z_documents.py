@@ -47,6 +47,10 @@ class Test005ZDocuments(unittest.TestCase):
         response = silasdk.Documents.getDocument(
             app, payload, eth_private_key)
 
+        self.assertEquals(response['status_code'], 200)
+        self.assertEquals(response['headers']['Content-Type'], 'image/png')
+        self.assertIsNotNone(response['content'])
+
     def test_list_documents_200(self):
         payload = {
             "user_handle": user_handle,

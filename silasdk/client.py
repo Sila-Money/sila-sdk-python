@@ -75,7 +75,7 @@ class App():
     def postFile(self, path, payload, header, fileContents):
         url = self.getUrl()
         endpoint = url + path
-        message = json.dumps(payload['data'])
+        message = json.dumps(payload)
         files = {'file': fileContents}
         response = requests.post(
             endpoint,
@@ -87,6 +87,21 @@ class App():
         output = response.json()
 
         return output
+
+    def postFileResponse(self, path: str, payload: dict, header: dict) -> requests.Response:
+        url = self.getUrl()
+        endpoint = url + path
+        data = json.dumps(payload)
+        response = self.session.post(
+            endpoint,
+            data=data,
+            headers=header
+        )
+
+        if (response.status_code == 200):
+            return response
+        else:
+            return response.json()
 
     def postPlaid(self, url, payload):
         """makes a post request to the sila_apis
