@@ -416,7 +416,7 @@ response = silasdk.Transaction.cancelTransaction(app, payload, eth_private_key)
 
 ##
 
-### Get Sila balance 
+### Get Sila balance
 
 ```python
 silaBalance = User.getSilaBalance(app, eth_address)
@@ -439,6 +439,7 @@ silaBalance = User.getSilaBalance(app, eth_address)
   "success": false
 }
 ```
+
 ##
 
 ### Get account balance
@@ -861,6 +862,7 @@ response = Wallet.deleteWallet(app, payload, user_private_key)
 ```
 
 ##
+
 ### Get Business Types
 
 ```python
@@ -884,6 +886,7 @@ response = BusinessInformation.getBusinessTypes(app)
 ```
 
 ##
+
 ### Get Business Roles
 
 ```python
@@ -907,6 +910,7 @@ response = BusinessInformation.getBusinessRoles(app)
 ```
 
 ##
+
 ### Get Naics Categories
 
 ```python
@@ -933,6 +937,7 @@ response = BusinessInformation.getNaicsCategories(app)
 ```
 
 ##
+
 ### Link Business Member
 
 ```python
@@ -958,6 +963,7 @@ response = BusinessOperations.linkBusinessMember(app, payload, user_private_key,
 ```
 
 ##
+
 ### Unlink Business Member
 
 ```python
@@ -980,6 +986,7 @@ response = BusinessOperations.linkBusinessMember(app, payload, user_private_key,
 ```
 
 ##
+
 ### Certify Beneficial Owner
 
 ```python
@@ -1003,6 +1010,7 @@ response = BusinessOperations.certifyBeneficialOwner(app, payload, user_private_
 ```
 
 ##
+
 ### Certify Business
 
 ```python
@@ -1024,6 +1032,7 @@ response = BusinessOperations.certifyBusiness(app, payload, user_private_key, bu
 ```
 
 ##
+
 ### Get Entities
 
 ```python
@@ -1078,6 +1087,7 @@ response = User.getEntities(app, payload, per_page, page)
 ```
 
 ##
+
 ### Get Entity
 
 ```python
@@ -1273,7 +1283,8 @@ response = silasdk.User.addRegistrationData(
     app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
 ```
 
-### Success Response Object 
+### Success Response Object
+
 ```python
 # Email
 {
@@ -1288,7 +1299,7 @@ response = silasdk.User.addRegistrationData(
     "status": "SUCCESS"
 }
 
-# Phone 
+# Phone
 {
     "success": true,
     "message": "Successfully added phone to user your_individual_end_user.",
@@ -1403,7 +1414,7 @@ response = silasdk.User.updateRegistrationData(
     "status": "SUCCESS"
 }
 
-# Phone 
+# Phone
 {
     "success": true,
     "message": "Successfully Updated phone to user your_individual_end_user.",
@@ -1499,7 +1510,7 @@ response = silasdk.User.deleteRegistrationData(
     "status": "SUCCESS"
 }
 
-# Phone 
+# Phone
 {
     "success": true,
     "message": "Successfully deleted phone with UUID a180ad8d-02d4-4677-8b87-20a204f07c68.",
@@ -1518,5 +1529,139 @@ response = silasdk.User.deleteRegistrationData(
     "success": true,
     "message": "Successfully deleted address with UUID dcc7afe8-b8bd-4b59-acd0-59097427485b.",
     "status": "SUCCESS"
+}
+```
+
+### List Supported Documents
+
+```python
+response = silasdk.Documents.listSupportedDocuments(app, page, per_page)
+```
+
+#### Success Response Object
+
+```python
+{
+  "success": true,
+  "status": "SUCCESS",
+  "message": "Document type details returned.",
+  "document_types" : [
+    {
+      "name": "doc_green_card",
+      "label": "Permanent Resident Card (or Green Card)",
+      "identity_type": "other"
+    },
+    ...
+  ],
+  "pagination": {
+    "returned_count": 28,
+    "total_count": 28,
+    "current_page": 1,
+    "total_pages": 1
+  }
+}
+```
+
+### Get Document
+
+```python
+payload = {
+    "user_handle": user_handle,
+    "document_id": document_id
+}
+response = silasdk.Documents.getDocument(app, payload, user_private_key)
+```
+
+#### Success Response Object
+
+```python
+{
+    "status_code": 200,
+    "headers": {
+        "Content-Type": "image/png",
+        ...
+    }, # dictionary with all the response headers
+    "content": "..." # File binary data
+}
+```
+
+### List Documents
+
+```python
+payload = {
+    "user_handle": user_handle,
+    "start_date": "2020-01-01", # Optional
+    "end_date": "2020-12-31", # Optional
+    "doc_types": ["id_drivers_license"], # Optional
+    "search": "my CA driver", # Optional
+    "sort_by": "name" # Optional
+}
+page = 1 # Optional
+per_page = 20 # Optional
+order = "asc" # Optional. Only asc or desc are allowed
+
+response = silasdk.Documents.listDocuments(app, payload, user_private_key, page, per_page, order)
+```
+
+#### Success Response Object
+
+```python
+{
+    "success": true,
+    "status": "SUCCESS",
+    "documents": [
+        {
+            "user_handle": "user.silamoney.eth",
+            "document_id": "279687a0-30c6-463d-85bc-eee9bf395e21",
+            "name": "passport_2017",
+            "filename": "img_201901022_034923",
+            "hash": "075f0956584cfa8d32beb384fcf51ce3ee30a7e5aeee6434acc222928a30db3e",
+            "type": "id_passport",
+            "size": "12345678",
+            "created": "2020-08-03T17:09:24.917939"
+        },
+        ...
+    ],
+    "pagination": {
+        "returned_count": 2,
+        "total_count": 2,
+        "current_page": 1,
+        "total_pages": 1
+    }
+}
+```
+
+### Documents
+
+```python
+import hashlib
+
+f = open("/path/to/file", "rb")
+file_contents = f.read()
+f.close()
+
+payload = {
+    "user_handle": user_handle,
+    "filename": "file-name",
+    "hash": hashlib.sha256(file_contents).hexdigest(),
+    "mime_type": "image/png",
+    "document_type": "id_drivers_license", # You can obtain this value from the listSupportedDocuments
+    "identity_type": "license", # You can obtain this value from the listSupportedDocuments
+    "name": "some file name", # Optional
+    "description": "some file description" # Optional
+}
+
+response = silasdk.Documents.uploadDocument(app, payload, file_contents, user_private_key)
+```
+
+#### Success Response Object
+
+```python
+{
+  "success": true,
+  "status": "SUCCESS",
+  "message": "File uploaded successfully.",
+  "reference_id": "2624a0f6-e913-4e09-bfd7-c1bc10543483",
+  "document_id": "05e313a5-2cb4-4638-bf74-debe96b931ee"
 }
 ```
