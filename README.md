@@ -117,10 +117,9 @@ User.register(silaApp,payload)
 
 ```python
 
-payload={
-
-        "user_handle": "user.silamoney.eth"    #Required
-    }
+payload = {
+    "user_handle": "user.silamoney.eth"    #Required
+}
 
 User.requestKyc(silaApp,payload,user_private_key, use_kyc_level=False)
 
@@ -130,10 +129,10 @@ User.requestKyc(silaApp,payload,user_private_key, use_kyc_level=False)
 
 ```python
 
-payload={
-
-        "user_handle": "user.silamoney.eth"    #Required
-    }
+payload = {
+    "user_handle": "user.silamoney.eth"    #Required
+    "kyc_level": "CUSTOM_KYC_FLOW_NAME"
+}
 
 User.requestKyc(silaApp,payload,user_private_key, use_kyc_level=True)
 
