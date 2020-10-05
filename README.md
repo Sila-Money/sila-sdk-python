@@ -10,7 +10,7 @@ This lists the full functionality available in the Python SDK, Version 0.2. Requ
 
 ```python
 
-pip3 install silasdk==0.2.10rc2
+pip3 install silasdk==0.2.13rc
 
 ```
 
@@ -81,6 +81,7 @@ payload={
             "identity_value": "123452222",                      # Required:  Must in in 2222 in the sandbox
             "phone": "1234567890",                              # Required:  Must be a valid phone number (format not enforced)
             "street_address_1": '123 Main St',                  # Required:  Must be a valid USPS mailing address
+            "street_address_2": '',                             # Optional:  Must be a valid USPS mailing address
             "city": 'Anytown',                                  # Required:  Must be a valid US City matching the zip
             "state": 'OR',                                      # Required:  Must be a 2 character US State abbr.
             "postal_code": "12345",                             # Required:  Must be a valid US Postal Code
@@ -384,7 +385,38 @@ User.getTransactions(silaApp,payload,user_private_key)        #Requires 256 bit 
 
 ##
 
-### Get Sila balance 
+### Cancel Transaction
+
+```python
+
+payload = {
+    "user_handle": user_handle,
+    "transaction_id": transaction_id
+}
+
+response = silasdk.Transaction.cancelTransaction(app, payload, eth_private_key)
+
+```
+
+### Success Response Object
+
+```python
+{
+    status: 'SUCCESS'
+}
+```
+
+### Failure Response Object
+
+```python
+{
+    status: 'FAILURE'
+}
+```
+
+##
+
+### Get Sila balance
 
 ```python
 silaBalance = User.getSilaBalance(app, eth_address)
@@ -407,6 +439,7 @@ silaBalance = User.getSilaBalance(app, eth_address)
   "success": false
 }
 ```
+
 ##
 
 ### Get account balance
@@ -487,7 +520,8 @@ payload={
         "user_handle":   "user.silamoney.eth",
         "descriptor": "Transaction Descriptor",
         "business_uuid": "UUID of a business with an approved ACH name",
-        "account_name": "account name"
+        "account_name": "account name",
+        "processing_type": ProcessingTypes.STANDARD_ACH # or ProcessingTypes.SAME_DAY_ACH
         }
 
 Transaction.issueSila(silaApp,payload,user_private_key)
@@ -521,7 +555,8 @@ payload={
         "user_handle":   "user.silamoney.eth",
         "descriptor": "Transaction Descriptor",
         "business_uuid": "UUID of a business with an approved ACH name",
-        "account_name": "account name"
+        "account_name": "account name",
+        "processing_type": ProcessingTypes.STANDARD_ACH # or ProcessingTypes.SAME_DAY_ACH
         }
 
 Transaction.redeemSila(silaApp,payload,user_private_key)
@@ -827,6 +862,7 @@ response = Wallet.deleteWallet(app, payload, user_private_key)
 ```
 
 ##
+
 ### Get Business Types
 
 ```python
@@ -850,6 +886,7 @@ response = BusinessInformation.getBusinessTypes(app)
 ```
 
 ##
+
 ### Get Business Roles
 
 ```python
@@ -873,6 +910,7 @@ response = BusinessInformation.getBusinessRoles(app)
 ```
 
 ##
+
 ### Get Naics Categories
 
 ```python
@@ -899,6 +937,7 @@ response = BusinessInformation.getNaicsCategories(app)
 ```
 
 ##
+
 ### Link Business Member
 
 ```python
@@ -924,6 +963,7 @@ response = BusinessOperations.linkBusinessMember(app, payload, user_private_key,
 ```
 
 ##
+
 ### Unlink Business Member
 
 ```python
@@ -946,6 +986,7 @@ response = BusinessOperations.linkBusinessMember(app, payload, user_private_key,
 ```
 
 ##
+
 ### Certify Beneficial Owner
 
 ```python
@@ -969,6 +1010,7 @@ response = BusinessOperations.certifyBeneficialOwner(app, payload, user_private_
 ```
 
 ##
+
 ### Certify Business
 
 ```python
@@ -990,6 +1032,7 @@ response = BusinessOperations.certifyBusiness(app, payload, user_private_key, bu
 ```
 
 ##
+
 ### Get Entities
 
 ```python
@@ -1044,6 +1087,7 @@ response = User.getEntities(app, payload, per_page, page)
 ```
 
 ##
+
 ### Get Entity
 
 ```python
@@ -1188,5 +1232,436 @@ response = User.getEntity(app, payload, user_private_key)
             "ownership_stake": null
         }
     ]
+}
+```
+
+##
+
+### Add Registration Data
+
+```python
+# Add Email
+payload = {
+    "user_handle": user_handle,
+    "email": email,
+}
+
+response = silasdk.User.addRegistrationData(
+    app, RegistrationFields.EMAIL, payload, eth_private_key)
+
+# Add Phone
+payload = {
+    "user_handle": user_handle,
+    "phone": phone,
+}
+
+response = silasdk.User.addRegistrationData(
+    app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
+
+# Add Identity
+payload = {
+    "user_handle": business_handle,
+    "identity_alias": identityAlias,
+    "identity_value": identityValue
+}
+
+response = silasdk.User.addRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
+
+# Add Address
+payload = {
+    "user_handle": user_handle,
+    "address_alias": address_alias,
+    "street_address_1": street_address_1,
+    "street_address_2": street_address_2,
+    "city": city,
+    "state": state,
+    "postal_code": postal_code,
+    "country": country
+}
+
+response = silasdk.User.addRegistrationData(
+    app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
+```
+
+### Success Response Object
+
+```python
+# Email
+{
+    "success": true,
+    "message": "Successfully added email to user your_individual_end_user.",
+    "email": {
+        "added_epoch": 1599006972,
+        "modified_epoch": 1599006972,
+        "uuid": "30c41951-1f2b-445b-8604-fa748316881d",
+        "email": "new.email@yournewemail.com"
+    },
+    "status": "SUCCESS"
+}
+
+# Phone
+{
+    "success": true,
+    "message": "Successfully added phone to user your_individual_end_user.",
+    "phone": {
+        "added_epoch": 1599007660,
+        "modified_epoch": 1599007660,
+        "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
+        "phone": "3189250987"
+    },
+    "status": "SUCCESS"
+}
+
+# Identity
+{
+    "success": true,
+    "message": "Successfully added identity to user your_individual_end_user.",
+    "phone": {
+        "added_epoch": 1599007660,
+        "modified_epoch": 1599007660,
+        "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
+        "identity_alias": "SSN",
+        "identity_value": "*2222"
+    },
+    "status": "SUCCESS"
+}
+
+# Address
+{
+    "success": true,
+    "message": "Successfully added address to user your_individual_end_user.",
+    "address": {
+        "added_epoch": 1599008272,
+        "modified_epoch": 1599008272,
+        "uuid": "2966e38f-e713-4994-a22f-56e076963d01",
+        "nickname": "Home Number Two",
+        "street_address_1": "324 Songbird Avenue",
+        "street_address_2": "Apt 132",
+        "city": "Portland",
+        "state": "VA",
+        "country": "US",
+        "postal_code": "12345"
+    },
+    "status": "SUCCESS"
+}
+```
+
+##
+
+### Update Registration Data
+
+```python
+# Update Email
+payload = {
+    "user_handle": user_handle,
+    "email": email,
+    "uuid": uuid
+}
+
+response = silasdk.User.updateRegistrationData(
+    app, RegistrationFields.EMAIL, payload, eth_private_key)
+
+# Update Phone
+payload = {
+    "user_handle": user_handle,
+    "phone": phone,
+    "uuid": uuid
+}
+
+response = silasdk.User.updateRegistrationData(
+    app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
+
+# Update Identity
+payload = {
+    "user_handle": business_handle,
+    "identity_alias": identityAlias,
+    "identity_value": identityValue,
+    "uuid": uuid
+}
+
+response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
+
+# Update Updateress
+payload = {
+    "user_handle": user_handle,
+    "Updateress_alias": Updateress_alias,
+    "street_Updateress_1": street_Updateress_1,
+    "street_Updateress_2": street_Updateress_2,
+    "city": city,
+    "state": state,
+    "postal_code": postal_code,
+    "country": country,
+    "uuid": uuid
+}
+
+response = silasdk.User.updateRegistrationData(
+    app, silasdk.RegistrationFields.UpdateRESS, payload, eth_private_key)
+```
+
+### Success Response Object
+
+```python
+# Email
+{
+    "success": true,
+    "message": "Successfully Updated email to user your_individual_end_user.",
+    "email": {
+        "Updated_epoch": 1599006972,
+        "modified_epoch": 1599006972,
+        "uuid": "30c41951-1f2b-445b-8604-fa748316881d",
+        "email": "new.email@yournewemail.com"
+    },
+    "status": "SUCCESS"
+}
+
+# Phone
+{
+    "success": true,
+    "message": "Successfully Updated phone to user your_individual_end_user.",
+    "phone": {
+        "Updated_epoch": 1599007660,
+        "modified_epoch": 1599007660,
+        "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
+        "phone": "3189250987"
+    },
+    "status": "SUCCESS"
+}
+
+# Identity
+{
+    "success": true,
+    "message": "Successfully Updated identity to user your_individual_end_user.",
+    "phone": {
+        "Updated_epoch": 1599007660,
+        "modified_epoch": 1599007660,
+        "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
+        "identity_alias": "SSN",
+        "identity_value": "*2222"
+    },
+    "status": "SUCCESS"
+}
+
+# Address
+{
+    "success": true,
+    "message": "Successfully Updated Updateress to user your_individual_end_user.",
+    "Updateress": {
+        "Updated_epoch": 1599008272,
+        "modified_epoch": 1599008272,
+        "uuid": "2966e38f-e713-4994-a22f-56e076963d01",
+        "nickname": "Home Number Two",
+        "street_Updateress_1": "324 Songbird Avenue",
+        "street_Updateress_2": "Apt 132",
+        "city": "Portland",
+        "state": "VA",
+        "country": "US",
+        "postal_code": "12345"
+    },
+    "status": "SUCCESS"
+}
+```
+
+### Delete Registration Data
+
+```python
+# Delete Email
+payload = {
+    "user_handle": user_handle,
+    "uuid": uuid
+}
+
+response = silasdk.User.deleteRegistrationData(
+    app, RegistrationFields.EMAIL, payload, eth_private_key)
+
+# Delete Phone
+payload = {
+    "user_handle": user_handle,
+    "uuid": uuid
+}
+
+response = silasdk.User.deleteRegistrationData(
+    app, silasdk.RegistrationFields.PHONE, payload, eth_private_key)
+
+# Delete Identity
+payload = {
+    "user_handle": business_handle,
+    "uuid": uuid
+}
+
+response = silasdk.User.deleteRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
+
+# Delete Updateress
+payload = {
+    "user_handle": user_handle,
+    "uuid": uuid
+}
+
+response = silasdk.User.deleteRegistrationData(
+    app, silasdk.RegistrationFields.UpdateRESS, payload, eth_private_key)
+```
+
+### Success Response Object
+
+```python
+# Email
+{
+    "success": true,
+    "message": "Successfully deleted email with UUID dcc7afe8-b8bd-4b59-acd0-59097427485b.",
+    "status": "SUCCESS"
+}
+
+# Phone
+{
+    "success": true,
+    "message": "Successfully deleted phone with UUID a180ad8d-02d4-4677-8b87-20a204f07c68.",
+    "status": "SUCCESS"
+}
+
+# Identity
+{
+    "success": true,
+    "message": "Successfully deleted identity with UUID dcc7afe8-b8bd-4b59-acd0-59097427485b.",
+    "status": "SUCCESS"
+}
+
+# Address
+{
+    "success": true,
+    "message": "Successfully deleted address with UUID dcc7afe8-b8bd-4b59-acd0-59097427485b.",
+    "status": "SUCCESS"
+}
+```
+
+### List Supported Documents
+
+```python
+response = silasdk.Documents.listSupportedDocuments(app, page, per_page)
+```
+
+#### Success Response Object
+
+```python
+{
+  "success": true,
+  "status": "SUCCESS",
+  "message": "Document type details returned.",
+  "document_types" : [
+    {
+      "name": "doc_green_card",
+      "label": "Permanent Resident Card (or Green Card)",
+      "identity_type": "other"
+    },
+    ...
+  ],
+  "pagination": {
+    "returned_count": 28,
+    "total_count": 28,
+    "current_page": 1,
+    "total_pages": 1
+  }
+}
+```
+
+### Get Document
+
+```python
+payload = {
+    "user_handle": user_handle,
+    "document_id": document_id
+}
+response = silasdk.Documents.getDocument(app, payload, user_private_key)
+```
+
+#### Success Response Object
+
+```python
+{
+    "status_code": 200,
+    "headers": {
+        "Content-Type": "image/png",
+        ...
+    }, # dictionary with all the response headers
+    "content": "..." # File binary data
+}
+```
+
+### List Documents
+
+```python
+payload = {
+    "user_handle": user_handle,
+    "start_date": "2020-01-01", # Optional
+    "end_date": "2020-12-31", # Optional
+    "doc_types": ["id_drivers_license"], # Optional
+    "search": "my CA driver", # Optional
+    "sort_by": "name" # Optional
+}
+page = 1 # Optional
+per_page = 20 # Optional
+order = "asc" # Optional. Only asc or desc are allowed
+
+response = silasdk.Documents.listDocuments(app, payload, user_private_key, page, per_page, order)
+```
+
+#### Success Response Object
+
+```python
+{
+    "success": true,
+    "status": "SUCCESS",
+    "documents": [
+        {
+            "user_handle": "user.silamoney.eth",
+            "document_id": "279687a0-30c6-463d-85bc-eee9bf395e21",
+            "name": "passport_2017",
+            "filename": "img_201901022_034923",
+            "hash": "075f0956584cfa8d32beb384fcf51ce3ee30a7e5aeee6434acc222928a30db3e",
+            "type": "id_passport",
+            "size": "12345678",
+            "created": "2020-08-03T17:09:24.917939"
+        },
+        ...
+    ],
+    "pagination": {
+        "returned_count": 2,
+        "total_count": 2,
+        "current_page": 1,
+        "total_pages": 1
+    }
+}
+```
+
+### Documents
+
+```python
+import hashlib
+
+f = open("/path/to/file", "rb")
+file_contents = f.read()
+f.close()
+
+payload = {
+    "user_handle": user_handle,
+    "filename": "file-name",
+    "hash": hashlib.sha256(file_contents).hexdigest(),
+    "mime_type": "image/png",
+    "document_type": "id_drivers_license", # You can obtain this value from the listSupportedDocuments
+    "identity_type": "license", # You can obtain this value from the listSupportedDocuments
+    "name": "some file name", # Optional
+    "description": "some file description" # Optional
+}
+
+response = silasdk.Documents.uploadDocument(app, payload, file_contents, user_private_key)
+```
+
+#### Success Response Object
+
+```python
+{
+  "success": true,
+  "status": "SUCCESS",
+  "message": "File uploaded successfully.",
+  "reference_id": "2624a0f6-e913-4e09-bfd7-c1bc10543483",
+  "document_id": "05e313a5-2cb4-4638-bf74-debe96b931ee"
 }
 ```

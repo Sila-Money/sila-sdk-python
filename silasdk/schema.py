@@ -81,7 +81,8 @@ Schema = [
         "amount": "",
         "account_name": "",
         "business_uuid": "",
-        "descriptor": ""
+        "descriptor": "",
+        "processing_type": ""
     }},
     {"redeem_msg": {
         "header": {
@@ -96,7 +97,8 @@ Schema = [
         "amount": "",
         "account_name": "",
         "business_uuid": "",
-        "descriptor": ""
+        "descriptor": "",
+        "processing_type": ""
     }},
     {"no_content_msg": {
         "header": {
@@ -299,6 +301,116 @@ Schema = [
             "page": '',
             "per_page": '',
             "transaction_types": []
+        }
+    }},
+    {'cancel_transaction_msg': {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
+        },
+        "transaction_id": ""
+    }},
+    {"add_registration_data_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": ""
+        },
+        "email": "",
+        "phone": "",
+        "identity_alias": "",
+        "identity_value": "",
+        "address_alias": "",
+        "street_address_1": "",
+        "street_address_2": "",
+        "city": "",
+        "state": "",
+        "postal_code": "",
+        "country": ""
+    }},
+    {"update_registration_data_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": ""
+        },
+        "uuid": "",
+        "email": "",
+        "phone": "",
+        "identity_alias": "",
+        "identity_value": "",
+        "address_alias": "",
+        "street_address_1": "",
+        "street_address_2": "",
+        "city": "",
+        "state": "",
+        "postal_code": "",
+        "country": ""
+    }},
+    {"delete_registration_data_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": ""
+        },
+        "uuid": ""
+    }},
+    {"documents_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": ""
+        },
+        "message": "",
+        "name": "",
+        "filename": "",
+        "hash": "",
+        "mime_type": "",
+        "document_type": "",
+        "identity_type": "",
+        "description": ""
+    }},
+    {"list_documents_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
+        },
+        "message": "",
+        "start_date": "",
+        "end_date": "",
+        "doc_types": "",
+        "search": "",
+        "sort_by": ""
+    }},
+    {"get_document_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "user_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
+        },
+        "document_id": ""
+    }},
+    {"document_types_msg": {
+        "header": {
+            "created": "",
+            "auth_handle": "",
+            "version": "",
+            "crypto": "",
+            "reference": ""
         }
     }}
 ]

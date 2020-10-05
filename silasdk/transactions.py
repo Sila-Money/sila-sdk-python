@@ -60,3 +60,18 @@ class Transaction():
         msg_type = "account_name_msg"
         response = message.postRequest(self, path, msg_type, payload, user_private_key)
         return response
+
+    def cancelTransaction(self, payload, user_private_key):
+        """ Cancel a pending transaction under certain circumstances
+
+
+        Args:
+            payload : user handle and transaction id
+            user_private_key: users ethereum private key
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["cancelTransaction"]
+        msg_type = "cancel_transaction_msg"
+        response = message.postRequest(self, path, msg_type, payload, user_private_key)
+        return response

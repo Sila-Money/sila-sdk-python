@@ -196,3 +196,45 @@ class User():
         response = message.postRequest(
             self, path, msg_type, payload, user_private_key)
         return response
+
+    def addRegistrationData(self, registrationField, payload, user_private_key):
+        """
+        Args:
+            payload: registration data
+            user_private_key
+        Returns:
+            dict: response body (entity information)
+        """
+        path = endPoints["addRegistrationData"] + registrationField
+        msg_type = "add_registration_data_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
+    def updateRegistrationData(self, registrationField, payload, user_private_key):
+        """
+        Args:
+            payload: registration data
+            user_private_key
+        Returns:
+            dict: response body (entity information)
+        """
+        path = endPoints["updateRegistrationData"] + registrationField
+        msg_type = "update_registration_data_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
+    def deleteRegistrationData(self, registrationField, payload, user_private_key):
+        """
+        Args:
+            payload: registration data
+            user_private_key
+        Returns:
+            dict: response body (entity information)
+        """
+        path = endPoints["deleteRegistrationData"] + registrationField
+        msg_type = "delete_registration_data_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
