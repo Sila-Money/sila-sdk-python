@@ -1315,7 +1315,7 @@ response = silasdk.User.addRegistrationData(
 {
     "success": true,
     "message": "Successfully added identity to user your_individual_end_user.",
-    "phone": {
+    "identity": {
         "added_epoch": 1599007660,
         "modified_epoch": 1599007660,
         "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
@@ -1383,9 +1383,9 @@ response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.I
 # Update Updateress
 payload = {
     "user_handle": user_handle,
-    "Updateress_alias": Updateress_alias,
-    "street_Updateress_1": street_Updateress_1,
-    "street_Updateress_2": street_Updateress_2,
+    "address_alias": Updateress_alias,
+    "street_address_1": street_address_1,
+    "street_address_2": street_address_2,
     "city": city,
     "state": state,
     "postal_code": postal_code,
@@ -1393,8 +1393,7 @@ payload = {
     "uuid": uuid
 }
 
-response = silasdk.User.updateRegistrationData(
-    app, silasdk.RegistrationFields.UpdateRESS, payload, eth_private_key)
+response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
 ```
 
 ### Success Response Object
@@ -1405,7 +1404,7 @@ response = silasdk.User.updateRegistrationData(
     "success": true,
     "message": "Successfully Updated email to user your_individual_end_user.",
     "email": {
-        "Updated_epoch": 1599006972,
+        "added_epoch": 1599006972,
         "modified_epoch": 1599006972,
         "uuid": "30c41951-1f2b-445b-8604-fa748316881d",
         "email": "new.email@yournewemail.com"
@@ -1418,7 +1417,7 @@ response = silasdk.User.updateRegistrationData(
     "success": true,
     "message": "Successfully Updated phone to user your_individual_end_user.",
     "phone": {
-        "Updated_epoch": 1599007660,
+        "added_epoch": 1599007660,
         "modified_epoch": 1599007660,
         "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
         "phone": "3189250987"
@@ -1430,8 +1429,8 @@ response = silasdk.User.updateRegistrationData(
 {
     "success": true,
     "message": "Successfully Updated identity to user your_individual_end_user.",
-    "phone": {
-        "Updated_epoch": 1599007660,
+    "identity": {
+        "added_epoch": 1599007660,
         "modified_epoch": 1599007660,
         "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
         "identity_alias": "SSN",
@@ -1443,14 +1442,14 @@ response = silasdk.User.updateRegistrationData(
 # Address
 {
     "success": true,
-    "message": "Successfully Updated Updateress to user your_individual_end_user.",
-    "Updateress": {
-        "Updated_epoch": 1599008272,
+    "message": "Successfully Updated address to user your_individual_end_user.",
+    "address": {
+        "added_epoch": 1599008272,
         "modified_epoch": 1599008272,
         "uuid": "2966e38f-e713-4994-a22f-56e076963d01",
         "nickname": "Home Number Two",
-        "street_Updateress_1": "324 Songbird Avenue",
-        "street_Updateress_2": "Apt 132",
+        "street_address_1": "324 Songbird Avenue",
+        "street_address_2": "Apt 132",
         "city": "Portland",
         "state": "VA",
         "country": "US",
