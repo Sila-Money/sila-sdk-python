@@ -349,7 +349,15 @@ Schema = [
         "city": "",
         "state": "",
         "postal_code": "",
-        "country": ""
+        "country": "",
+        "first_name": "",
+        "last_name": "",
+        "entity_name": "",
+        "birthdate": "",
+        "business_type": "",
+        "naics_code": "",
+        "doing_business_as": "",
+        "business_website": ""
     }},
     {"delete_registration_data_msg": {
         "header": {

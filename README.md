@@ -1380,7 +1380,7 @@ payload = {
 
 response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
 
-# Update Updateress
+# Update Address
 payload = {
     "user_handle": user_handle,
     "address_alias": Updateress_alias,
@@ -1394,6 +1394,26 @@ payload = {
 }
 
 response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
+
+# Update Individual Entity
+payload = {
+    "user_handle": user_handle,
+    "first_name": first_name,
+    "last_name": last_name,
+    "entity_name": entity_name,
+    "birthdate": birthdate
+}
+
+# Update Business Entity
+payload = {
+    "user_handle": business_handle,
+    "entity_name": entity_name,
+    "birthdate": birthdate,
+    "business_type": business_type,
+    "naics_code": naics_code,
+    "doing_business_as": doing_business_as,
+    "business_website": business_website
+}
 ```
 
 ### Success Response Object
@@ -1454,6 +1474,43 @@ response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.A
         "state": "VA",
         "country": "US",
         "postal_code": "12345"
+    },
+    "status": "SUCCESS"
+}
+
+# Individual Entity
+{
+    "success": true,
+    "message": "Successfully updated entity with handle your_individual_end_user.",
+    "user_handle": "your_individual_end_user",
+    "entity_type": "individual",
+    "entity": {
+        "created_epoch": 1599090039,
+        "entity_name": "New Full Name",
+        "birthdate": "1990-02-28",
+        "first_name": "Newfirst",
+        "last_name": "Newlast"
+    },
+    "status": "SUCCESS"
+}
+
+# Business Entity
+{
+    "success": true,
+    "message": "Successfully updated entity with handle your_business_end_user.",
+    "user_handle": "your_business_end_user",
+    "entity_type": "business",
+    "entity": {
+        "created_epoch": 1599090039,
+        "entity_name": "New Company",
+        "birthdate": "1990-02-28",
+        "business_type": "corporation",
+        "naics_code": 721,
+        "doing_business_as": "NC Limited",
+        "business_website": "https://yourwebsite.domain",
+        "business_uuid": "2966e38f-e713-4994-a22f-56e076963d01",
+        "naics_category": "Accommodation and Food Services",
+        "naics_subcategory": "Accommodation"
     },
     "status": "SUCCESS"
 }
