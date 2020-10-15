@@ -10,7 +10,7 @@ This lists the full functionality available in the Python SDK, Version 0.2. Requ
 
 ```python
 
-pip3 install silasdk==0.2.13rc
+pip3 install silasdk==0.2.13rc2
 
 ```
 
@@ -1315,7 +1315,7 @@ response = silasdk.User.addRegistrationData(
 {
     "success": true,
     "message": "Successfully added identity to user your_individual_end_user.",
-    "phone": {
+    "identity": {
         "added_epoch": 1599007660,
         "modified_epoch": 1599007660,
         "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
@@ -1380,12 +1380,12 @@ payload = {
 
 response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.IDENTITY, payload, eth_private_key)
 
-# Update Updateress
+# Update Address
 payload = {
     "user_handle": user_handle,
-    "Updateress_alias": Updateress_alias,
-    "street_Updateress_1": street_Updateress_1,
-    "street_Updateress_2": street_Updateress_2,
+    "address_alias": Updateress_alias,
+    "street_address_1": street_address_1,
+    "street_address_2": street_address_2,
     "city": city,
     "state": state,
     "postal_code": postal_code,
@@ -1393,8 +1393,27 @@ payload = {
     "uuid": uuid
 }
 
-response = silasdk.User.updateRegistrationData(
-    app, silasdk.RegistrationFields.UpdateRESS, payload, eth_private_key)
+response = silasdk.User.updateRegistrationData(app, silasdk.RegistrationFields.ADDRESS, payload, eth_private_key)
+
+# Update Individual Entity
+payload = {
+    "user_handle": user_handle,
+    "first_name": first_name,
+    "last_name": last_name,
+    "entity_name": entity_name,
+    "birthdate": birthdate
+}
+
+# Update Business Entity
+payload = {
+    "user_handle": business_handle,
+    "entity_name": entity_name,
+    "birthdate": birthdate,
+    "business_type": business_type,
+    "naics_code": naics_code,
+    "doing_business_as": doing_business_as,
+    "business_website": business_website
+}
 ```
 
 ### Success Response Object
@@ -1405,7 +1424,7 @@ response = silasdk.User.updateRegistrationData(
     "success": true,
     "message": "Successfully Updated email to user your_individual_end_user.",
     "email": {
-        "Updated_epoch": 1599006972,
+        "added_epoch": 1599006972,
         "modified_epoch": 1599006972,
         "uuid": "30c41951-1f2b-445b-8604-fa748316881d",
         "email": "new.email@yournewemail.com"
@@ -1418,7 +1437,7 @@ response = silasdk.User.updateRegistrationData(
     "success": true,
     "message": "Successfully Updated phone to user your_individual_end_user.",
     "phone": {
-        "Updated_epoch": 1599007660,
+        "added_epoch": 1599007660,
         "modified_epoch": 1599007660,
         "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
         "phone": "3189250987"
@@ -1430,8 +1449,8 @@ response = silasdk.User.updateRegistrationData(
 {
     "success": true,
     "message": "Successfully Updated identity to user your_individual_end_user.",
-    "phone": {
-        "Updated_epoch": 1599007660,
+    "identity": {
+        "added_epoch": 1599007660,
         "modified_epoch": 1599007660,
         "uuid": "ac6435a7-d960-4b0a-9c04-adf99102ba57",
         "identity_alias": "SSN",
@@ -1443,18 +1462,55 @@ response = silasdk.User.updateRegistrationData(
 # Address
 {
     "success": true,
-    "message": "Successfully Updated Updateress to user your_individual_end_user.",
-    "Updateress": {
-        "Updated_epoch": 1599008272,
+    "message": "Successfully Updated address to user your_individual_end_user.",
+    "address": {
+        "added_epoch": 1599008272,
         "modified_epoch": 1599008272,
         "uuid": "2966e38f-e713-4994-a22f-56e076963d01",
         "nickname": "Home Number Two",
-        "street_Updateress_1": "324 Songbird Avenue",
-        "street_Updateress_2": "Apt 132",
+        "street_address_1": "324 Songbird Avenue",
+        "street_address_2": "Apt 132",
         "city": "Portland",
         "state": "VA",
         "country": "US",
         "postal_code": "12345"
+    },
+    "status": "SUCCESS"
+}
+
+# Individual Entity
+{
+    "success": true,
+    "message": "Successfully updated entity with handle your_individual_end_user.",
+    "user_handle": "your_individual_end_user",
+    "entity_type": "individual",
+    "entity": {
+        "created_epoch": 1599090039,
+        "entity_name": "New Full Name",
+        "birthdate": "1990-02-28",
+        "first_name": "Newfirst",
+        "last_name": "Newlast"
+    },
+    "status": "SUCCESS"
+}
+
+# Business Entity
+{
+    "success": true,
+    "message": "Successfully updated entity with handle your_business_end_user.",
+    "user_handle": "your_business_end_user",
+    "entity_type": "business",
+    "entity": {
+        "created_epoch": 1599090039,
+        "entity_name": "New Company",
+        "birthdate": "1990-02-28",
+        "business_type": "corporation",
+        "naics_code": 721,
+        "doing_business_as": "NC Limited",
+        "business_website": "https://yourwebsite.domain",
+        "business_uuid": "2966e38f-e713-4994-a22f-56e076963d01",
+        "naics_category": "Accommodation and Food Services",
+        "naics_subcategory": "Accommodation"
     },
     "status": "SUCCESS"
 }
