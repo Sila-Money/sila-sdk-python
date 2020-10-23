@@ -197,6 +197,7 @@ User.checkKyc(silaApp,payload,user_private_key)
 ##
 
 ### Link Account (Plaid flow)
+Uses a provided Plaid public token to link a bank account to a verified entity. Public token received in the /link/item/create [Plaid](https://plaid.com/docs/link/maintain-legacy-integration/) endpoint.
 
 ```python
 
