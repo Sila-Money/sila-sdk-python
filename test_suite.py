@@ -64,6 +64,7 @@ def run_unit_tests():
             Test003LinkBusinessMemberTest,
             Test003UnlinkBusinessMemberTest,
             Test004RequestKycTest,
+            Test005GetEntityTest,
             Test005CheckKycTest,
             Test005ZDocuments,
             Test006CertifyBeneficialOwnerTest,
