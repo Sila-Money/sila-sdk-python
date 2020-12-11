@@ -13,7 +13,6 @@ class Test005GetEntityTest(unittest.TestCase):
         with self.assertWarns(DeprecationWarning):
             response = User.getEntity(app, payload, eth_private_key)
             self.assertTrue(response["success"])
-        
 
     def test_get_entity_200(self):
         payload = {
@@ -32,6 +31,16 @@ class Test005GetEntityTest(unittest.TestCase):
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["entity"])
         self.assertTrue("created" in response["entity"])
+
+    def test_get_entity_401_with_empty_eth_private_key(self):
+        payload = {
+            "user_handle": user_handle
+        }
+        response = User.get_entity(app, payload, '')
+        self.assertFalse(response.get("success"))
+        self.assertEqual(response.get("status_code"), 403)
+        self.assertRegex(response.get("message"),
+                         r'\bsignature is required for this request\b')
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 import json
 import requests
+from typing import Optional
 from .ethwallet import EthWallet
 from .endpoints import endPoints
 from .errors import Errors
@@ -130,7 +131,7 @@ class App():
         output = response.json()
         return output
 
-    def setHeader(self, msg, key=None, business_key=None, content_type=None):
+    def setHeader(self, msg, key: Optional[str] = None, business_key: Optional[str] = None, content_type: Optional[str] = None):
         """set the application header with usersignature and authsignature
         Args:
             key : ethereum private key for the user
@@ -144,9 +145,9 @@ class App():
             pass
         else:
             header["Content-Type"]: 'application/json' if content_type is None else content_type
-        if key is not None:
+        if key is not None and len(key.strip()) > 0:
             header["usersignature"] = EthWallet.signMessage(msg, key.lower())
-        if business_key is not None:
+        if business_key is not None and len(business_key.strip() > 0):
             header["businesssignature"] = EthWallet.signMessage(
                 msg, business_key.lower())
 

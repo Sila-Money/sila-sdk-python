@@ -9,7 +9,6 @@ endPoints = {
     "addCrypto": "/add_crypto",
     "addIdentity": "/add_identity",
     "createBond": "/create_bond",
-    "checkHandle": "/check_handle",
     "getAccounts": "/get_accounts",
     "getAccountBalance": "/get_account_balance",
     "getTransactions": "/get_transactions",

@@ -188,7 +188,7 @@ class User():
         return response
 
     @staticmethod
-    def getEntity(app: App, payload, user_private_key, pretty_dates: Optional[bool] = None) -> dict:
+    def getEntity(app: App, payload: dict, user_private_key: str, pretty_dates: Optional[bool] = None) -> dict:
         """
         Args:
             app (App): The current app configuration
@@ -198,7 +198,8 @@ class User():
         Returns:
             dict: response body (entity information)
         """
-        warnings.warn('deprecated', DeprecationWarning)
+        warnings.warn(
+            'This method is deprecated in favor of get_entity', DeprecationWarning)
         return User.get_entity(app, payload, user_private_key)
 
     @staticmethod
