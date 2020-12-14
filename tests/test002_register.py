@@ -55,6 +55,7 @@ class Test002RegisterTest(unittest.TestCase):
             "identity_alias": "SSN",
             "identity_value": "123452222",
             "phone": 1234567890,
+            "sms_opt_in": True,
             "email": "intant@email.com",
             "address_alias": "default",
             "street_address_1": '1232 Main Street',
