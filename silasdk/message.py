@@ -19,7 +19,7 @@ def createBody(bodyStructure, fields):
 
 
 def getMessage(self, msg_type):
-    """gets the message from schema 
+    """gets the message from schema
     Args:
         path : endpoint path
     """
@@ -58,11 +58,13 @@ def createMessage(self, payload, msg_type):
     payload.update(
         {
             "auth_handle": str(self.app_handle),
-            "reference": str(uuid.uuid4()),
             "crypto_code": "ETH",
             "relationship": "user"
         }
     )
+
+    if payload.get('reference') is None:
+        payload.update({"reference": str(uuid.uuid4())})
 
     inpt = getMessage(self, msg_type)
     data = lower_keys(payload)

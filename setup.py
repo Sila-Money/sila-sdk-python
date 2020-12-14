@@ -37,7 +37,7 @@ setup(
 
     packages=["silasdk"],
 
-    install_requires=["requests>=2.20.0","pyaml>=15.8.2","eth-account==0.3.0","uuid==1.30","pysha3==1.0.2"],
+    install_requires=["requests>=2.20.0","pyaml>=15.8.2","eth-account==0.3.0","pysha3==1.0.2"],
 
     zip_safe=False,
     
