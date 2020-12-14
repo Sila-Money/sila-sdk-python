@@ -1,34 +1,32 @@
-import unittest, silasdk
+import unittest
+from silasdk.wallet import Wallet
+from tests.test_config import (
+    app, eth_private_key, user_handle, wallet_private_key)
 
-from tests.test_config import *
 
 class Test018DeleteWalletTest(unittest.TestCase):
     def test_delete_wallet_200(self):
         payload = {
-            "user_handle": user_handle,
-            "crypto": "ETH"
+            "user_handle": user_handle
         }
 
-        response = silasdk.Wallet.getWallet(app, payload, eth_private_key)
+        response = Wallet.deleteWallet(app, payload, wallet_private_key)
         self.assertTrue(response["success"])
 
     def test_delete_wallet_400(self):
         payload = {
-            "user_handle": user_handle,
-            "crypto": "ETHS",
-            "blockchain_address": "0x0000000A"
+            "user_handle": '',
         }
 
-        response = silasdk.Wallet.getWallet(app, payload, eth_private_key)
+        response = Wallet.deleteWallet(app, payload, eth_private_key)
         self.assertFalse(response["success"])
 
     def test_delete_wallet_401(self):
         payload = {
-            "user_handle": "",
-            "crypto": "ETH"
+            "user_handle": user_handle
         }
 
-        response = silasdk.Wallet.getWallet(app, payload, eth_private_key)
+        response = Wallet.deleteWallet(app, payload, '')
         self.assertFalse(response["success"])
 
 

@@ -1,6 +1,8 @@
-import unittest, silasdk
+import unittest
+from silasdk.wallet import Wallet
+from tests.test_config import (app, eth_private_key, user_handle,
+                               verification_signature, wallet_address, wallet_address_signed_verified)
 
-from tests.test_config import *
 
 class Test014RegisterWalletTest(unittest.TestCase):
     def test_register_wallet_200(self):
@@ -14,7 +16,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
             }
         }
 
-        response = silasdk.Wallet.registerWallet(app, payload, eth_private_key)
+        response = Wallet.registerWallet(app, payload, eth_private_key)
         self.assertTrue(response["success"])
 
     def test_register_wallet_400(self):
@@ -28,7 +30,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
             }
         }
 
-        response = silasdk.Wallet.registerWallet(app, payload, eth_private_key)
+        response = Wallet.registerWallet(app, payload, eth_private_key)
         self.assertFalse(response["success"])
 
     def test_register_wallet_401(self):
@@ -42,7 +44,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
             }
         }
 
-        response = silasdk.Wallet.registerWallet(app, payload, eth_private_key)
+        response = Wallet.registerWallet(app, payload, eth_private_key)
         self.assertFalse(response["success"])
 
     def test_register_wallet_403(self):
@@ -56,7 +58,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
             }
         }
 
-        response = silasdk.Wallet.registerWallet(app, payload, eth_private_key)
+        response = Wallet.registerWallet(app, payload, eth_private_key)
         self.assertFalse(response["success"])
 
 
