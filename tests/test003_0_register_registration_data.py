@@ -42,6 +42,8 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["phone"]["added_epoch"])
         self.assertIsNotNone(response["phone"]["modified_epoch"])
         self.assertIsNotNone(response["phone"]["uuid"])
+        self.assertTrue(response.get('phone').get(
+            'sms_confirmation_requested'))
 
         payload = {
             "user_handle": business_handle
@@ -183,11 +185,13 @@ class Test003RegistrationDataTests(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "phone": phone,
-            "uuid": phone_uuid
+            "uuid": phone_uuid,
+            'sms_opt_in': False
         }
 
         response = User.updateRegistrationData(
             app, RegistrationFields.PHONE, payload, eth_private_key)
+
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
         self.assertEqual(response["status"], "SUCCESS")

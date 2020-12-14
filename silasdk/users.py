@@ -263,7 +263,7 @@ class User():
         """
         warnings.warn(
             'This method has been deprecated in favor of update_registration_data', DeprecationWarning)
-        return User.add_registration_data(app, registration_field, payload, user_private_key)
+        return User.update_registration_data(app, registration_field, payload, user_private_key)
 
     @staticmethod
     def update_registration_data(app: App, registration_field: str, payload: dict, user_private_key: str) -> dict:

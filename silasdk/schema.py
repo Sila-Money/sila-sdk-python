@@ -365,7 +365,8 @@ Schema = [
         "business_type": "",
         "naics_code": "",
         "doing_business_as": "",
-        "business_website": ""
+        "business_website": "",
+        "sms_opt_in": ""
     }},
     {"delete_registration_data_msg": {
         "header": {
