@@ -1,7 +1,7 @@
 import unittest
 from silasdk.users import User
-from tests.test_config import (app, business_handle, eth_address, eth_address_2,
-                               eth_address_3, eth_address_4, user_handle, user_handle_2, instant_ach_handle)
+from tests.test_config import (app, basic_individual_handle, business_handle, eth_address, eth_address_2,
+                               eth_address_3, eth_address_4, eth_address_5, user_handle, user_handle_2, instant_ach_handle)
 
 
 class Test002RegisterTest(unittest.TestCase):
@@ -13,8 +13,10 @@ class Test002RegisterTest(unittest.TestCase):
             "last_name": 'User',
             "entity_name": 'Example User',
             "identity_value": "123452222",
+            "identity_alias": "SSN",
             "phone": 1234567890,
             "email": "fake@email.com",
+            "address_alias": "default",
             "street_address_1": '123 Main Street',
             "city": 'New City',
             "state": 'OR',
@@ -30,9 +32,11 @@ class Test002RegisterTest(unittest.TestCase):
             "first_name": 'Example 2',
             "last_name": 'User 2',
             "entity_name": 'Example User 2',
+            "identity_alias": "SSN",
             "identity_value": "123452222",
             "phone": 1234567890,
             "email": "fake2@email.com",
+            "address_alias": "default",
             "street_address_1": '1232 Main Street',
             "city": 'New City 2',
             "state": 'OR',
@@ -48,16 +52,19 @@ class Test002RegisterTest(unittest.TestCase):
             "first_name": 'Instant',
             "last_name": 'Ach',
             "entity_name": 'Instant Ach',
+            "identity_alias": "SSN",
             "identity_value": "123452222",
             "phone": 1234567890,
             "email": "intant@email.com",
+            "address_alias": "default",
             "street_address_1": '1232 Main Street',
             "city": 'New City',
             "state": 'OR',
             "postal_code": 97204,
             "crypto_address": eth_address_4,
             "crypto_alias": "default",
-            "birthdate": "1994-01-08"
+            "birthdate": "1994-01-08",
+            "device_fingerprint": "test_instant_ach"
         }
 
         business = {
@@ -68,6 +75,7 @@ class Test002RegisterTest(unittest.TestCase):
             "identity_value": "123452222",
             "phone": 1234567890,
             "email": "fake2@email.com",
+            "address_alias": "default",
             "street_address_1": '1232 Main Street',
             "city": 'New City 2',
             "state": 'OR',
@@ -82,15 +90,34 @@ class Test002RegisterTest(unittest.TestCase):
         }
 
         response = User.register(app, payload)
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertTrue(response.get('success'))
+        self.assertEqual(response.get('status_code'), 200)
+        self.assertEqual(response.get('status'), 'SUCCESS')
 
-        response_2 = User.register(app, payload_2)
-        self.assertEqual(response_2["status"], "SUCCESS")
+        response = User.register(app, payload_2)
+        self.assertTrue(response.get('success'))
+        self.assertEqual(response.get('status_code'), 200)
+        self.assertEqual(response.get('status'), 'SUCCESS')
 
-        response_3 = User.register(app, business)
-        self.assertEqual(response_3["status"], "SUCCESS")
+        response = User.register(app, business)
+        self.assertTrue(response.get('success'))
+        self.assertEqual(response.get('status_code'), 200)
+        self.assertEqual(response.get('status'), 'SUCCESS')
 
         response = User.register(app, instant_ach)
+        self.assertTrue(response.get('success'))
+        self.assertEqual(response.get('status_code'), 200)
+        self.assertEqual(response.get('status'), 'SUCCESS')
+
+    def test_register_200_basic(self):
+        basic_individual = {
+            'user_handle': basic_individual_handle,
+            'crypto_address': eth_address_5,
+            'first_name': 'Basic',
+            'last_name': 'Test'
+        }
+
+        response = User.register(app, basic_individual)
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')

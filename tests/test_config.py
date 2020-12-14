@@ -15,6 +15,7 @@ strng = ''.join(random.choice(letters) for i in range(10))
 strng_2 = ''.join(random.choice(letters) for i in range(10))
 strng_3 = ''.join(random.choice(letters) for i in range(10))
 strng_4 = ''.join(random.choice(letters) for i in range(10))
+strng_5 = ''.join(random.choice(letters) for i in range(10))
 
 #
 app_hanlde = "end2end"
@@ -23,6 +24,7 @@ user_handle = strng
 user_handle_2 = strng_2
 business_handle = strng_3
 instant_ach_handle = strng_4
+basic_individual_handle = strng_5
 business_uuid = "ec5d1366-b56c-4442-b6c3-c919d548fcb5"
 
 app = App("stageapi", app_private_key, app_hanlde)
@@ -46,6 +48,10 @@ eth_private_key_3 = eth_3["eth_private_key"]
 eth_4 = EthWallet.create()
 eth_address_4 = eth_4.get('eth_address')
 eth_private_key_4 = eth_4.get('eth_private_key')
+
+eth_5 = EthWallet.create()
+eth_address_5 = eth_5.get('eth_address')
+eth_private_key_5 = eth_5.get('eth_private_key')
 
 #
 wallet = EthWallet.create()

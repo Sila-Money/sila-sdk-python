@@ -199,24 +199,26 @@ Schema = [
         },
         "message": "entity_msg",
         "address": {
-            "address_alias": "default",
+            "address_alias": "",
             "street_address_1": "",
             "city": "",
             "state": "",
             "country": "",
-            "postal_code": ""
+            "postal_code": "",
+            "street_address_2": ""
         },
         "identity": {
-            "identity_alias": "SSN",
+            "identity_alias": "",
             "identity_value": ""
         },
         "contact": {
-            "contact_alias": "default",
+            "contact_alias": "",
             "phone": "",
-            "email": ""
+            "email": "",
+            "sms_opt_in": ""
         },
         "crypto_entry": {
-            "crypto_alias": "default",
+            "crypto_alias": "",
             "crypto_code": "ETH",
             "crypto_address": ""
         },
@@ -228,9 +230,13 @@ Schema = [
             "relationship": "",
             "type": "",
             "business_type": "",
+            "business_type_uuid": "",
             "business_website": "",
             "doing_business_as": "",
             "naics_code": ""
+        },
+        "device": {
+            "device_fingerprint": ""
         }
     }},
     {"link_business_member_msg": {
