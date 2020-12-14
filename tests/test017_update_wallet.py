@@ -33,7 +33,7 @@ class Test017UpdateWalletTest(unittest.TestCase):
         self.assertEqual(response.get('status_code'), 400)
         self.assertEqual(response.get('status'), 'FAILURE')
 
-    def test_update_wallet_401(self):
+    def test_update_wallet_403(self):
         payload = {
             "user_handle": user_handle,
             "nickname": "wallet_python_updated",
