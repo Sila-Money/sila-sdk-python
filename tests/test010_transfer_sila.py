@@ -1,6 +1,9 @@
-import unittest, silasdk
-from tests.poll_until_status import *
-from tests.test_config import *
+import unittest
+from silasdk.transactions import Transaction
+from tests.poll_until_status import poll
+from tests.test_config import (
+    app, business_uuid, eth_private_key, user_handle, user_handle_2)
+
 
 class Test010TrasferSilaTest(unittest.TestCase):
     def test_transfer_sila_200(self):
@@ -12,9 +15,11 @@ class Test010TrasferSilaTest(unittest.TestCase):
             "business_uuid": business_uuid
         }
 
-        response = silasdk.Transaction.transferSila(app, payload, eth_private_key)
+        response = Transaction.transferSila(
+            app, payload, eth_private_key)
 
-        PollUntilStatus.poll(self, response["transaction_id"], "success")
+        poll(self, response["transaction_id"], "success",
+             app, user_handle, eth_private_key)
 
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["descriptor"], "test descriptor")
@@ -27,7 +32,8 @@ class Test010TrasferSilaTest(unittest.TestCase):
             "crypto": "ETHS",
         }
 
-        response = silasdk.Transaction.transferSila(app, payload, eth_private_key)
+        response = Transaction.transferSila(
+            app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
     def test_transfer_sila_401(self):
@@ -38,7 +44,8 @@ class Test010TrasferSilaTest(unittest.TestCase):
             "amount": 1000
         }
 
-        response = silasdk.Transaction.transferSila(app, payload, eth_private_key)
+        response = Transaction.transferSila(
+            app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
 

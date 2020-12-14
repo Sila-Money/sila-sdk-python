@@ -14,17 +14,18 @@ letters = string.ascii_lowercase
 strng = ''.join(random.choice(letters) for i in range(10))
 strng_2 = ''.join(random.choice(letters) for i in range(10))
 strng_3 = ''.join(random.choice(letters) for i in range(10))
+strng_4 = ''.join(random.choice(letters) for i in range(10))
 
 #
-app_hanlde = "digital_geko_e2e.silamoney.eth"
+app_hanlde = "end2end"
 app_private_key = os.environ.get("SILA_PRIVATE_KEY")
 user_handle = strng
 user_handle_2 = strng_2
 business_handle = strng_3
-business_uuid = "9f280665-629f-45bf-a694-133c86bffd5e"
+instant_ach_handle = strng_4
+business_uuid = "ec5d1366-b56c-4442-b6c3-c919d548fcb5"
 
-#import os
-app = App("SANDBOX", app_private_key, app_hanlde)
+app = App("stageapi", app_private_key, app_hanlde)
 
 #
 eth = EthWallet.create()
@@ -42,9 +43,15 @@ eth_3 = EthWallet.create()
 eth_address_3 = eth_3["eth_address"]
 eth_private_key_3 = eth_3["eth_private_key"]
 
+eth_4 = EthWallet.create()
+eth_address_4 = eth_4.get('eth_address')
+eth_private_key_4 = eth_4.get('eth_private_key')
+
 #
 wallet = EthWallet.create()
 wallet_address = wallet["eth_address"]
 wallet_private_key = wallet["eth_private_key"]
-verification_signature = EthWallet.signMessage(wallet_address, wallet_private_key)
-wallet_address_signed_verified = EthWallet.verifySignature(wallet_address, verification_signature)
+verification_signature = EthWallet.signMessage(
+    wallet_address, wallet_private_key)
+wallet_address_signed_verified = EthWallet.verifySignature(
+    wallet_address, verification_signature)

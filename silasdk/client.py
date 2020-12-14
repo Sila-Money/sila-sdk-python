@@ -147,7 +147,7 @@ class App():
             header["Content-Type"]: 'application/json' if content_type is None else content_type
         if key is not None and len(key.strip()) > 0:
             header["usersignature"] = EthWallet.signMessage(msg, key.lower())
-        if business_key is not None and len(business_key.strip() > 0):
+        if business_key is not None and len(business_key.strip()) > 0:
             header["businesssignature"] = EthWallet.signMessage(
                 msg, business_key.lower())
 

@@ -1,23 +1,26 @@
-import unittest, silasdk, time
-from tests.test_config import *
+from unittest import TestCase
+from silasdk.client import App
+from silasdk.users import User
+import time
 
-class PollUntilStatus():
-    def poll(self, transactionId, expectedStatus):
-        payload = {
-            "user_handle": user_handle,
-            "search_filters": {
-                'page': 1,
-                'per_page': 1,
-                "transaction_id": transactionId,
-            }
+
+def poll(test: TestCase, transaction_id: str, expected_status: str, app: App, user_handle: str, eth_private_key: str):
+    payload = {
+        "user_handle": user_handle,
+        "search_filters": {
+            'page': 1,
+            'per_page': 1,
+            "transaction_id": transaction_id,
         }
+    }
 
-        response = silasdk.User.getTransactions(app, payload, eth_private_key)
+    response = User.getTransactions(app, payload, eth_private_key)
+    status = response["transactions"][0]["status"]
+
+    while status == "queued" or status == "pending":
+        time.sleep(30)
+        response = User.getTransactions(
+            app, payload, eth_private_key)
         status = response["transactions"][0]["status"]
 
-        while status == "queued" or status == "pending":
-            time.sleep(30)
-            response = silasdk.User.getTransactions(app, payload, eth_private_key)
-            status = response["transactions"][0]["status"]
-
-        self.assertEqual(status, expectedStatus)
+    test.assertEqual(status, expected_status)
