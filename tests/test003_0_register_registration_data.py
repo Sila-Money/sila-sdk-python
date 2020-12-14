@@ -189,7 +189,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             'sms_opt_in': False
         }
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.PHONE, payload, eth_private_key)
 
         self.assertTrue(response["success"])
