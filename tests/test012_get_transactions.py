@@ -1,11 +1,11 @@
 import unittest
-import silasdk
-
-from tests.test_config import *
+from silasdk.users import User
+from silasdk.processingTypes import ProcessingTypes
+from tests.test_config import (app, eth_private_key, user_handle)
 
 
 class Test012GetTransactionsTest(unittest.TestCase):
-    def test_get_transactions_200(self):
+    def test_get_transactions_200_deprecated(self):
         payload = {
             "user_handle": user_handle,
             "search_filters": {
@@ -13,19 +13,37 @@ class Test012GetTransactionsTest(unittest.TestCase):
                 'per_page': 1
             }
         }
+        with self.assertWarns(DeprecationWarning):
+            response = User.getTransactions(app, payload, eth_private_key)
+            self.assertTrue(response["success"])
+            self.assertEqual(len(response["transactions"]), 1)
+            self.assertEqual(
+                response["transactions"][0]["processing_type"], ProcessingTypes.STANDARD_ACH)
 
-        response = silasdk.User.getTransactions(app, payload, eth_private_key)
+    def test_get_transactions_200(self):
+        payload = {
+            "user_handle": user_handle,
+            "search_filters": {
+                'page': 1,
+                'per_page': 1,
+                'show_timelines': True
+            }
+        }
+        response = User.get_transactions(app, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertEqual(len(response["transactions"]), 1)
-        self.assertEqual(response["transactions"][0]["processing_type"], silasdk.ProcessingTypes.STANDARD_ACH)
+        self.assertEqual(
+            response["transactions"][0]["processing_type"], ProcessingTypes.STANDARD_ACH)
+        self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
 
-    def test_get_transactions_403(self):
+    def test_get_transactions_400(self):
         payload = {
             "user_handle": ""
         }
 
-        response = silasdk.User.getTransactions(app, payload, eth_private_key)
-        self.assertFalse(response["success"])
+        response = User.get_transactions(app, payload, eth_private_key)
+        self.assertFalse(response.get('success'))
+        self.assertEqual(response.get('status_code'), 400)
 
 
 if __name__ == '__main__':

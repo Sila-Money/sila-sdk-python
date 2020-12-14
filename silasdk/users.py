@@ -123,7 +123,8 @@ class User():
             self, path, msg_type, payload, user_private_key)
         return response
 
-    def getTransactions(self, payload, user_private_key):
+    @staticmethod
+    def getTransactions(app: App, payload: dict, user_private_key: str) -> dict:
         """get the users transactions registered with ur app
            The user will be checked if they have been kyced, along with app
         Args:
@@ -132,10 +133,16 @@ class User():
         Returns:
             dict: response body (a confirmation message)
         """
+        warnings.warn(
+            'This methid has been deprecated in favor of get_transactions', DeprecationWarning)
+        return User.get_transactions(app, payload, user_private_key)
+
+    @staticmethod
+    def get_transactions(app: App, payload: dict, user_private_key: str) -> dict:
         path = endPoints["getTransactions"]
         msg_type = "get_transaction_msg"
         response = message.postRequest(
-            self, path, msg_type, payload, user_private_key)
+            app, path, msg_type, payload, user_private_key)
         return response
 
     def silaBalance(self, address):
