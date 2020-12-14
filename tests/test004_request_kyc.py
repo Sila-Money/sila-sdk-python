@@ -38,7 +38,6 @@ class Test004RequestKycTest(unittest.TestCase):
             'kyc_level': 'INSTANT-ACH'
         }
         response = User.requestKyc(app, payload, eth_private_key_4)
-        print(response)
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status'), 'SUCCESS')
         self.assertEqual(response.get('status_code'), 200)

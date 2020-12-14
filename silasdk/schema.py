@@ -120,7 +120,7 @@ Schema = [
             "reference": ""
         },
         "nickname": "",
-        "default": False
+        "default": ""
     }},
     {"register_wallet_msg": {
         "header": {
@@ -148,10 +148,10 @@ Schema = [
             "reference": ""
         },
         "search_filters": {
-            "page": 1,
-            "per_page": 20,
-            "sort_ascending": False,
-            "blockchain_network": "ETH",
+            "page": "",
+            "per_page": "",
+            "sort_ascending": "",
+            "blockchain_network": "",
             "blockchain_address": "",
             "nickname": ""
         }
