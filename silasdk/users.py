@@ -229,7 +229,8 @@ class User():
             app, path, msg_type, payload, user_private_key)
         return response
 
-    def addRegistrationData(self, registrationField, payload, user_private_key):
+    @staticmethod
+    def addRegistrationData(app: App, registration_field: str, payload: dict, user_private_key: str) -> dict:
         """
         Args:
             payload: registration data
@@ -237,27 +238,42 @@ class User():
         Returns:
             dict: response body (entity information)
         """
-        path = endPoints["addRegistrationData"] + registrationField
+        warnings.warn(
+            'This method has been deprecated in favor of add_registration_data', DeprecationWarning)
+        return User.add_registration_data(app, registration_field, payload, user_private_key)
+
+    @staticmethod
+    def add_registration_data(app: App, registration_field: str, payload: dict, user_private_key: str) -> dict:
+        path = endPoints["addRegistrationData"] + registration_field
         msg_type = "add_registration_data_msg"
         response = message.postRequest(
-            self, path, msg_type, payload, user_private_key)
+            app, path, msg_type, payload, user_private_key)
         return response
 
-    def updateRegistrationData(self, registrationField, payload, user_private_key):
+    @staticmethod
+    def updateRegistrationData(app: App, registration_field: str, payload: dict, user_private_key: str):
         """
         Args:
-            payload: registration data
-            user_private_key
+            app (App): The application configuration
+            registration_field (str): The specific registration field to update
+            payload (dict): registration data
+            user_private_key (str): The user's private key to sign the message
         Returns:
             dict: response body (entity information)
         """
-        path = endPoints["updateRegistrationData"] + registrationField
+        warnings.warn(
+            'This method has been deprecated in favor of update_registration_data', DeprecationWarning)
+        return User.add_registration_data(app, registration_field, payload, user_private_key)
+
+    @staticmethod
+    def update_registration_data(app: App, registration_field: str, payload: dict, user_private_key: str) -> dict:
+        path = endPoints["updateRegistrationData"] + registration_field
         msg_type = "update_registration_data_msg"
         response = message.postRequest(
-            self, path, msg_type, payload, user_private_key)
+            app, path, msg_type, payload, user_private_key)
         return response
 
-    def deleteRegistrationData(self, registrationField, payload, user_private_key):
+    def deleteRegistrationData(self, registration_field, payload, user_private_key):
         """
         Args:
             payload: registration data
@@ -265,7 +281,7 @@ class User():
         Returns:
             dict: response body (entity information)
         """
-        path = endPoints["deleteRegistrationData"] + registrationField
+        path = endPoints["deleteRegistrationData"] + registration_field
         msg_type = "delete_registration_data_msg"
         response = message.postRequest(
             self, path, msg_type, payload, user_private_key)

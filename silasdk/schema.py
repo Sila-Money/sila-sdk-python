@@ -336,7 +336,9 @@ Schema = [
         "city": "",
         "state": "",
         "postal_code": "",
-        "country": ""
+        "country": "",
+        "sms_opt_in": "",
+        "device_fingerprint": ""
     }},
     {"update_registration_data_msg": {
         "header": {

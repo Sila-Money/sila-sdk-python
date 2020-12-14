@@ -29,10 +29,12 @@ class Test003RegistrationDataTests(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "phone": phone,
+            "sms_opt_in": True
         }
 
         response = User.addRegistrationData(
             app, RegistrationFields.PHONE, payload, eth_private_key)
+
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
         self.assertEqual(response["status"], "SUCCESS")
@@ -111,6 +113,21 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["address"]["added_epoch"])
         self.assertIsNotNone(response["address"]["modified_epoch"])
         self.assertIsNotNone(response["address"]["uuid"])
+
+        payload = {
+            'user_handle': user_handle,
+            'device_fingerprint': 'test_device_fingerprint_added'
+        }
+
+        response = User.add_registration_data(
+            app, RegistrationFields.DEVICE, payload, eth_private_key)
+
+        self.assertTrue(response["success"])
+        self.assertIsNotNone(response["message"])
+        self.assertRegex(response.get('message'),
+                         r'\bsuccessfully registered for handle\b')
+        self.assertEqual(response.get('status_code'), 200)
+        self.assertEqual(response["status"], "SUCCESS")
 
     def test_add_registration_data_400(self):
         payload = {
