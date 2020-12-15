@@ -7,7 +7,7 @@ setup(
     name='silasdk',
 
 
-    version='0.2.13.rc2',
+    version='0.2.17.rc',
 
     description='Sila Python library for message signing and api wrapper',
 
@@ -19,8 +19,8 @@ setup(
     license='Apache',
 
     classifiers=[
-        
-        # How stable is your project? 
+
+        # How stable is your project?
         #   3 - Alpha, 4 - Beta,5 - Production/Stable
 
         'Development Status :: 4 - Beta',
@@ -33,21 +33,22 @@ setup(
 
     ],
 
-    keywords='Sila v0.2.13.rc2 Rest API',
+    keywords='Sila v0.2.17.rc Rest API',
 
     packages=["silasdk"],
 
-    install_requires=["requests>=2.20.0","pyaml>=15.8.2","eth-account==0.3.0","pysha3==1.0.2"],
+    install_requires=["requests>=2.20.0", "pyaml>=15.8.2",
+                      "eth-account==0.3.0", "pysha3==1.0.2"],
 
     zip_safe=False,
-    
+
     include_package_data=True,
 
     extras_require={},
 
-   
+
     package_data={},
 
-  
+
     entry_points={}
 )
