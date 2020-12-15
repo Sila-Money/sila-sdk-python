@@ -14,7 +14,7 @@ class Documents():
         path = endPoints["documents"]
         msg_type = "documents_msg"
         response = message.postRequest(
-            self, path, msg_type, payload, key=user_private_key, content_type="multipart/form-data", fileContents=file)
+            self, path, msg_type, payload, key=user_private_key, content_type="multipart/form-data", file_contents=file)
         return response
 
     def listDocuments(self, payload, user_private_key, page=None, per_page=None, order=None):

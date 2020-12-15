@@ -1,9 +1,10 @@
 import requests
 import time
 import uuid
+from typing import Optional
 from copy import deepcopy
-from typing import Dict
 from .schema import Schema
+from silasdk.client import App
 
 
 def createBody(bodyStructure, fields):
@@ -19,7 +20,7 @@ def createBody(bodyStructure, fields):
 
 
 def getMessage(self, msg_type):
-    """gets the message from schema 
+    """gets the message from schema
     Args:
         path : endpoint path
     """
@@ -40,14 +41,22 @@ def lower_keys(x):
         return "msg_fromat_incorrect"
 
 
-def cull_null_values(data: Dict) -> Dict:
+def cull_null_values(data: dict, original: dict) -> dict:
     for k, v in list(data.items()):
         if isinstance(v, dict):
-            data[k] = cull_null_values(v)
-        elif v == '':
+            data[k] = cull_null_values(v, original)
+            if len(data[k].items()) == 0:
+                del data[k]
+        elif not exists_in_dict(k, original) and (v is None or v == ''):
             del data[k]
 
     return data
+
+
+def exists_in_dict(key: str, data: dict) -> bool:
+    for k, v in list(data.items()):
+        if k == key or (isinstance(v, dict) and exists_in_dict(key, v)):
+            return True
 
 
 def createMessage(self, payload, msg_type):
@@ -58,11 +67,13 @@ def createMessage(self, payload, msg_type):
     payload.update(
         {
             "auth_handle": str(self.app_handle),
-            "reference": str(uuid.uuid4()),
             "crypto_code": "ETH",
             "relationship": "user"
         }
     )
+
+    if payload.get('reference') is None:
+        payload.update({"reference": str(uuid.uuid4())})
 
     inpt = getMessage(self, msg_type)
     data = lower_keys(payload)
@@ -74,22 +85,24 @@ def createMessage(self, payload, msg_type):
     except:
         pass
 
-    inpt = cull_null_values(inpt)
+    inpt = cull_null_values(inpt, payload)
+    if (self.debug):
+        print(inpt)
 
     return inpt
 
 
-def postRequest(self, path, msg_type, payload, key=None, business_key=None, content_type=None, fileContents=None):
+def postRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional[str] = None, business_key: Optional[str] = None, content_type=None, file_contents=None):
     """post the message and return response
     Args:
         payload:customer message
         path : endpoint
         key :user_private_key
     """
-    data = createMessage(self, payload, msg_type)
-    header = self.setHeader(data, key, business_key, content_type)
-    response = self.post(path, data, header) if fileContents is None else self.postFile(
-        path, data, header, fileContents)
+    data = createMessage(app, payload, msg_type)
+    header = app.setHeader(data, key, business_key, content_type)
+    response = app.post(path, data, header) if file_contents is None else app.postFile(
+        path, data, header, file_contents)
     return response
 
 

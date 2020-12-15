@@ -120,7 +120,7 @@ Schema = [
             "reference": ""
         },
         "nickname": "",
-        "default": False
+        "default": ""
     }},
     {"register_wallet_msg": {
         "header": {
@@ -148,10 +148,10 @@ Schema = [
             "reference": ""
         },
         "search_filters": {
-            "page": 1,
-            "per_page": 20,
-            "sort_ascending": False,
-            "blockchain_network": "ETH",
+            "page": "",
+            "per_page": "",
+            "sort_ascending": "",
+            "blockchain_network": "",
             "blockchain_address": "",
             "nickname": ""
         }
@@ -199,24 +199,26 @@ Schema = [
         },
         "message": "entity_msg",
         "address": {
-            "address_alias": "default",
+            "address_alias": "",
             "street_address_1": "",
             "city": "",
             "state": "",
             "country": "",
-            "postal_code": ""
+            "postal_code": "",
+            "street_address_2": ""
         },
         "identity": {
-            "identity_alias": "SSN",
+            "identity_alias": "",
             "identity_value": ""
         },
         "contact": {
-            "contact_alias": "default",
+            "contact_alias": "",
             "phone": "",
-            "email": ""
+            "email": "",
+            "sms_opt_in": ""
         },
         "crypto_entry": {
-            "crypto_alias": "default",
+            "crypto_alias": "",
             "crypto_code": "ETH",
             "crypto_address": ""
         },
@@ -228,9 +230,13 @@ Schema = [
             "relationship": "",
             "type": "",
             "business_type": "",
+            "business_type_uuid": "",
             "business_website": "",
             "doing_business_as": "",
             "naics_code": ""
+        },
+        "device": {
+            "device_fingerprint": ""
         }
     }},
     {"link_business_member_msg": {
@@ -330,7 +336,9 @@ Schema = [
         "city": "",
         "state": "",
         "postal_code": "",
-        "country": ""
+        "country": "",
+        "sms_opt_in": "",
+        "device_fingerprint": ""
     }},
     {"update_registration_data_msg": {
         "header": {
@@ -357,7 +365,8 @@ Schema = [
         "business_type": "",
         "naics_code": "",
         "doing_business_as": "",
-        "business_website": ""
+        "business_website": "",
+        "sms_opt_in": ""
     }},
     {"delete_registration_data_msg": {
         "header": {
