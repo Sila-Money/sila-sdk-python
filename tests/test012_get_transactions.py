@@ -36,6 +36,23 @@ class Test012GetTransactionsTest(unittest.TestCase):
             response["transactions"][0]["processing_type"], ProcessingTypes.STANDARD_ACH)
         self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
 
+    def test_get_transactions_200_with_filters(self):
+        payload = {
+            'user_handle': user_handle,
+            'search_filters': {
+                'statuses': ['success'],
+                'transaction_types': ['issue']
+            }
+        }
+        response = User.get_transactions(app, payload, eth_private_key)
+
+        self.assertTrue(response.get('success'))
+        self.assertGreater(len(response.get('transactions')), 1)
+        self.assertEqual(response.get('transactions')
+                         [0].get('status'), 'success')
+        self.assertEqual(response.get('transactions')[
+                         0].get('transaction_type'), 'issue')
+
     def test_get_transactions_400(self):
         payload = {
             "user_handle": ""

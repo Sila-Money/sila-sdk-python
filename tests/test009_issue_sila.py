@@ -58,7 +58,6 @@ class Test009IssueSilaTest(unittest.TestCase):
 
         response = Transaction.issue_sila(app, payload, eth_private_key_4)
 
-        print(response)
         self.assertEqual(response.get("success"), True)
 
         poll(self, response["transaction_id"], "pending_confirmation",
