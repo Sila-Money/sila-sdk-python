@@ -9,7 +9,7 @@ from .schema import Schema
 
 class App():
 
-    def __init__(self, tier, app_private_key, app_handle):
+    def __init__(self, tier, app_private_key, app_handle, debug: bool = False):
         """Initalize the application 
             This lets users initialize the application by providing the tier, application privatekey and application handle
         Args:
@@ -21,6 +21,7 @@ class App():
         self.tier = tier.lower()
         self.app_private_key = app_private_key
         self.app_handle = app_handle
+        self.debug = debug
         self.updateSchema()
 
     def updateSchema(self):

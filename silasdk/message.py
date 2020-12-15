@@ -41,16 +41,22 @@ def lower_keys(x):
         return "msg_fromat_incorrect"
 
 
-def cull_null_values(data: dict) -> dict:
+def cull_null_values(data: dict, original: dict) -> dict:
     for k, v in list(data.items()):
         if isinstance(v, dict):
-            data[k] = cull_null_values(v)
+            data[k] = cull_null_values(v, original)
             if len(data[k].items()) == 0:
                 del data[k]
-        elif v is None or v == '':
+        elif not exists_in_dict(k, original) and (v is None or v == ''):
             del data[k]
 
     return data
+
+
+def exists_in_dict(key: str, data: dict) -> bool:
+    for k, v in list(data.items()):
+        if k == key or (isinstance(v, dict) and exists_in_dict(key, v)):
+            return True
 
 
 def createMessage(self, payload, msg_type):
@@ -79,7 +85,9 @@ def createMessage(self, payload, msg_type):
     except:
         pass
 
-    inpt = cull_null_values(inpt)
+    inpt = cull_null_values(inpt, payload)
+    if (self.debug):
+        print(inpt)
 
     return inpt
 
