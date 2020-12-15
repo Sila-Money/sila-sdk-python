@@ -35,7 +35,7 @@ setup(
 
     keywords='Sila v0.2.17.rc Rest API',
 
-    packages=["silasdk"],
+    packages=find_packages(exclude=["tests", "tests.*"]),
 
     install_requires=["requests>=2.20.0", "pyaml>=15.8.2",
                       "eth-account==0.3.0", "pysha3==1.0.2"],
