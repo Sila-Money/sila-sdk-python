@@ -19,6 +19,18 @@ class Test006LinkAccountTest(unittest.TestCase):
             app, payload, eth_private_key, False)
         self.assertEqual(response["status"], "SUCCESS")
 
+        payload = {
+            "user_handle": user_handle,
+            "account_name": "unlink",
+            "account_number": "123456789013",
+            "routing_number": "123456780",
+            "account_type": "CHECKING",
+        }
+
+        response = silasdk.User.linkAccount(
+            app, payload, eth_private_key, False)
+        self.assertEqual(response["status"], "SUCCESS")
+
     def test_link_account_instant_ach(self):
         payload = {
             "user_handle": instant_ach_handle,

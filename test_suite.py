@@ -20,7 +20,9 @@ from tests.test005_z_documents import Test005ZDocuments
 from tests.test006_certify_beneficial_owner import Test006CertifyBeneficialOwnerTest
 from tests.test006_certify_business import Test006CertifyBusinessTest
 from tests.test006_link_account import Test006LinkAccountTest
+from tests.test006_plaid_link_token import Test006PlaidLinkTokenTest
 from tests.test007_get_accounts import Test007GetAccountsTest
+from tests.test007_delete_account import Test007DeleteAccountTest
 from tests.test008_get_account_balance import Test008GetAccountBalanceTest
 from tests.test009_issue_sila import Test009IssueSilaTest
 from tests.test010_transfer_sila import Test010TrasferSilaTest

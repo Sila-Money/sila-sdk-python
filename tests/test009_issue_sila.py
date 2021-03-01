@@ -47,6 +47,15 @@ class Test009IssueSilaTest(unittest.TestCase):
         self.assertEqual(response["status"], "SUCCESS")
         self.assertIsNotNone(response["transaction_id"])
 
+        payload = {
+            "user_handle": user_handle,
+            "amount": 420,
+            "account_name": "default_plaid"
+        }
+
+        response = Transaction.issue_sila(app, payload, eth_private_key)
+        self.assertEqual(response.get("success"), True)
+
     def test_issue_sila_200_instant_ach(self):
         payload = {
             "user_handle": instant_ach_handle,

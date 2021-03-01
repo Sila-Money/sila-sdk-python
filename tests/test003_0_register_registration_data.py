@@ -81,12 +81,12 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["identity"]["uuid"])
 
         address_alias = "added address"
-        street_address_1 = "324 Songbird Avenue"
-        street_address_2 = "Apt. 132"
-        state = "VA"
+        street_address_1 = "324 songbird avenue"
+        street_address_2 = "apt. 132"
+        state = "va"
         postal_code = "12345"
         country = "US"
-        city = "Portland"
+        city = "portland"
         payload = {
             "user_handle": user_handle,
             "address_alias": address_alias,

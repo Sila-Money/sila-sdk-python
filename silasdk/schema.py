@@ -4,7 +4,7 @@ Schema = [
             "reference": "",
             "created": "",
             "user_handle": "",
-            "auth_handle": "",
+            "app_handle": "",
             "version": "0.2",
             "crypto": "ETH"
         },
@@ -15,7 +15,7 @@ Schema = [
     {"link_account_msg_plaid": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -29,7 +29,7 @@ Schema = [
     {"link_account_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -45,7 +45,7 @@ Schema = [
     {"account_name_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
         },
         "account_name": ""
@@ -53,7 +53,7 @@ Schema = [
     {"transfer_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -71,7 +71,7 @@ Schema = [
     {"issue_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -87,7 +87,7 @@ Schema = [
     {"redeem_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -103,7 +103,7 @@ Schema = [
     {"no_content_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -113,7 +113,7 @@ Schema = [
     {"update_wallet_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -125,7 +125,7 @@ Schema = [
     {"register_wallet_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -141,7 +141,7 @@ Schema = [
     {"get_wallets_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -159,7 +159,7 @@ Schema = [
     {"get_accounts_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -173,25 +173,25 @@ Schema = [
     {"business_types_msg": {
         "header": {
             "created": "",
-            "auth_handle": ""
+            "app_handle": ""
         }
     }},
     {"business_roles_msg": {
         "header": {
             "created": "",
-            "auth_handle": ""
+            "app_handle": ""
         }
     }},
     {"naics_categories_msg": {
         "header": {
             "created": "",
-            "auth_handle": ""
+            "app_handle": ""
         }
     }},
     {"entity_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -242,7 +242,7 @@ Schema = [
     {"link_business_member_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "business_handle": ""
         },
@@ -253,7 +253,7 @@ Schema = [
     {"unlink_business_member_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "business_handle": ""
         },
@@ -262,14 +262,14 @@ Schema = [
     {"get_entity_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": ""
         }
     }},
     {"certify_beneficial_owner_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "business_handle": ""
         },
@@ -279,7 +279,7 @@ Schema = [
     {"certify_business_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "business_handle": ""
         }
@@ -287,7 +287,7 @@ Schema = [
     {'get_transaction_msg': {
         "header": {
             "created": '',
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "",
             "crypto": "",
@@ -312,7 +312,7 @@ Schema = [
     {'cancel_transaction_msg': {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "",
             "crypto": "",
@@ -323,7 +323,7 @@ Schema = [
     {"add_registration_data_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": ""
         },
         "email": "",
@@ -343,7 +343,7 @@ Schema = [
     {"update_registration_data_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": ""
         },
         "uuid": "",
@@ -371,7 +371,7 @@ Schema = [
     {"delete_registration_data_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": ""
         },
         "uuid": ""
@@ -379,7 +379,7 @@ Schema = [
     {"documents_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "0.2",
             "crypto": "ETH",
@@ -397,7 +397,7 @@ Schema = [
     {"list_documents_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "",
             "crypto": "",
@@ -413,7 +413,7 @@ Schema = [
     {"get_document_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "user_handle": "",
             "version": "",
             "crypto": "",
@@ -424,10 +424,28 @@ Schema = [
     {"document_types_msg": {
         "header": {
             "created": "",
-            "auth_handle": "",
+            "app_handle": "",
             "version": "",
             "crypto": "",
             "reference": ""
         }
+    }},
+    {"plaid_link_token_msg": {
+        "header": {
+            "created": "", 
+            "app_handle": "", 
+            "user_handle": "", 
+        }
+    }},
+    {"delete_account": {
+        "header": {
+            "created": "", 
+            "app_handle": "", 
+            "user_handle":"", 
+            "version": "0.2", 
+            "crypto": "ETH", 
+            "reference": ""
+        },
+        "account_name": ""
     }}
 ]
