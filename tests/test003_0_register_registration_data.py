@@ -15,7 +15,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "email": email,
         }
 
-        response = User.addRegistrationData(
+        response = User.add_registration_data(
             app, RegistrationFields.EMAIL, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
@@ -32,7 +32,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "sms_opt_in": True
         }
 
-        response = User.addRegistrationData(
+        response = User.add_registration_data(
             app, RegistrationFields.PHONE, payload, eth_private_key)
 
         self.assertTrue(response["success"])
@@ -69,7 +69,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "identity_value": identity_value
         }
 
-        response = User.addRegistrationData(
+        response = User.add_registration_data(
             app, RegistrationFields.IDENTITY, payload, eth_private_key_3)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
@@ -98,7 +98,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "country": country
         }
 
-        response = User.addRegistrationData(
+        response = User.add_registration_data(
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
@@ -136,19 +136,19 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "user_handle": user_handle,
         }
 
-        response = User.addRegistrationData(
+        response = User.add_registration_data(
             app, RegistrationFields.EMAIL, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-        response = User.addRegistrationData(
+        response = User.add_registration_data(
             app, RegistrationFields.PHONE, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-        response = User.addRegistrationData(
+        response = User.add_registration_data(
             app, RegistrationFields.IDENTITY, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-        response = User.addRegistrationData(
+        response = User.add_registration_data(
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
@@ -171,7 +171,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "uuid": email_uuid
         }
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.EMAIL, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
@@ -208,7 +208,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "uuid": identity_uuid
         }
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.IDENTITY, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
@@ -238,7 +238,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "uuid": address_uuid
         }
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
@@ -268,7 +268,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "birthdate": birthdate
         }
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.ENTITY, payload, eth_private_key)
 
         self.assertTrue(response["success"])
@@ -299,7 +299,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "business_website": business_website
         }
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.ENTITY, payload, eth_private_key_3)
 
         self.assertTrue(response["success"])
@@ -325,19 +325,19 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "user_handle": user_handle,
         }
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.EMAIL, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.PHONE, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.IDENTITY, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-        response = User.updateRegistrationData(
+        response = User.update_registration_data(
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 

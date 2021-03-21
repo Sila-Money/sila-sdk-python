@@ -17,8 +17,9 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False)
+        
         self.assertEqual(response["status"], "SUCCESS")
-
+        
         payload = {
             "user_handle": user_handle,
             "account_name": "unlink",
@@ -29,6 +30,20 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False)
+        
+        self.assertEqual(response["status"], "SUCCESS")
+
+        payload = {
+            "user_handle": user_handle,
+            "account_name": "forupdate",
+            "account_number": "123456789013",
+            "routing_number": "123456780",
+            "account_type": "CHECKING",
+        }
+
+        response = silasdk.User.linkAccount(
+            app, payload, eth_private_key, False)
+        
         self.assertEqual(response["status"], "SUCCESS")
 
     def test_link_account_instant_ach(self):
@@ -40,6 +55,7 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key_4, True)
+        
         self.assertEqual(response["status"], "SUCCESS")
 
     def test_link_account_plaid_200(self):
@@ -65,7 +81,10 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, True)
+
+        
         self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response['account_owner_name'])
 
     def test_link_account_400(self):
         payload = {

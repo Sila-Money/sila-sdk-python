@@ -13,6 +13,7 @@ class Test004RequestKycTest(unittest.TestCase):
         response = User.requestKyc(app, payload, eth_private_key)
         self.assertEqual(response.get('status'), "SUCCESS")
         self.assertTrue(response.get('success'))
+        self.assertIsNotNone(response['verification_uuid'])
         self.assertEqual(response.get('status_code'), 200)
 
         payload = {
@@ -23,6 +24,7 @@ class Test004RequestKycTest(unittest.TestCase):
         self.assertEqual(response.get('status'), "SUCCESS")
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
+        self.assertIsNotNone(response['verification_uuid'])
 
         payload = {
             "user_handle": business_handle
@@ -32,6 +34,7 @@ class Test004RequestKycTest(unittest.TestCase):
         self.assertEqual(response.get('status'), "SUCCESS")
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
+        self.assertIsNotNone(response['verification_uuid'])
 
         payload = {
             'user_handle': instant_ach_handle,
@@ -41,6 +44,7 @@ class Test004RequestKycTest(unittest.TestCase):
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status'), 'SUCCESS')
         self.assertEqual(response.get('status_code'), 200)
+        self.assertIsNotNone(response['verification_uuid'])
 
     def test_register_kyc_custom_403(self):
         payload = {

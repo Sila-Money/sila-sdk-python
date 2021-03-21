@@ -306,3 +306,19 @@ class User():
         response = message.postRequest(
             app, path, msg_type, payload, user_private_key)
         return response
+
+    @staticmethod
+    def check_partner_kyc(app: App, payload: dict) -> dict:
+        path = "/check_partner_kyc"
+        msg_type = "check_partner_kyc"
+        response = message.postRequest(
+            app, path, msg_type, payload)
+        return response
+
+    @staticmethod
+    def update_account(app: App, payload: dict, user_private_key: str) -> dict:
+        path = '/update_account'
+        msg_type = "update_account"
+        response = message.postRequest(
+            app, path, msg_type, payload, user_private_key)
+        return response

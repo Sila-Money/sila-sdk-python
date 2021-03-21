@@ -190,53 +190,53 @@ Schema = [
     }},
     {"entity_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
         "message": "entity_msg",
         "address": {
-            "address_alias": "",
-            "street_address_1": "",
-            "city": "",
-            "state": "",
-            "country": "",
-            "postal_code": "",
-            "street_address_2": ""
+            "address_alias": None,
+            "street_address_1": None,
+            "city": None,
+            "state": None,
+            "country": None,
+            "postal_code": None,
+            "street_address_2": None
         },
         "identity": {
-            "identity_alias": "",
-            "identity_value": ""
+            "identity_alias": None,
+            "identity_value": None
         },
         "contact": {
-            "contact_alias": "",
-            "phone": "",
-            "email": "",
-            "sms_opt_in": ""
+            "contact_alias": None,
+            "phone": None,
+            "email": None,
+            "sms_opt_in": None
         },
         "crypto_entry": {
-            "crypto_alias": "",
+            "crypto_alias": None,
             "crypto_code": "ETH",
-            "crypto_address": ""
+            "crypto_address": None
         },
         "entity": {
-            "first_name": "",
-            "last_name": "",
-            "entity_name": "",
-            "birthdate": "",
-            "relationship": "",
-            "type": "",
-            "business_type": "",
-            "business_type_uuid": "",
-            "business_website": "",
-            "doing_business_as": "",
-            "naics_code": ""
+            "first_name": None,
+            "last_name": None,
+            "entity_name": None,
+            "birthdate": None,
+            "relationship": None,
+            "type": None,
+            "business_type": None,
+            "business_type_uuid": None,
+            "business_website": None,
+            "doing_business_as": None,
+            "naics_code": None
         },
         "device": {
-            "device_fingerprint": ""
+            "device_fingerprint": None
         }
     }},
     {"link_business_member_msg": {
@@ -322,59 +322,59 @@ Schema = [
     }},
     {"add_registration_data_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None
         },
-        "email": "",
-        "phone": "",
-        "identity_alias": "",
-        "identity_value": "",
-        "address_alias": "",
-        "street_address_1": "",
-        "street_address_2": "",
-        "city": "",
-        "state": "",
-        "postal_code": "",
-        "country": "",
-        "sms_opt_in": "",
-        "device_fingerprint": ""
+        "email": None,
+        "phone": None,
+        "identity_alias": None,
+        "identity_value": None,
+        "address_alias": None,
+        "street_address_1": None,
+        "street_address_2": None,
+        "city": None,
+        "state": None,
+        "postal_code": None,
+        "country": None,
+        "sms_opt_in": None,
+        "device_fingerprint": None
     }},
     {"update_registration_data_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None
         },
-        "uuid": "",
-        "email": "",
-        "phone": "",
-        "identity_alias": "",
-        "identity_value": "",
-        "address_alias": "",
-        "street_address_1": "",
-        "street_address_2": "",
-        "city": "",
-        "state": "",
-        "postal_code": "",
-        "country": "",
-        "first_name": "",
-        "last_name": "",
-        "entity_name": "",
-        "birthdate": "",
-        "business_type": "",
-        "naics_code": "",
-        "doing_business_as": "",
-        "business_website": "",
-        "sms_opt_in": ""
+        "uuid": None,
+        "email": None,
+        "phone": None,
+        "identity_alias": None,
+        "identity_value": None,
+        "address_alias": None,
+        "street_address_1": None,
+        "street_address_2": None,
+        "city": None,
+        "state": None,
+        "postal_code": None,
+        "country": None,
+        "first_name": None,
+        "last_name": None,
+        "entity_name": None,
+        "birthdate": None,
+        "business_type": None,
+        "naics_code": None,
+        "doing_business_as": None,
+        "business_website": None,
+        "sms_opt_in": None
     }},
     {"delete_registration_data_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None
         },
-        "uuid": ""
+        "uuid": None
     }},
     {"documents_msg": {
         "header": {
@@ -432,20 +432,47 @@ Schema = [
     }},
     {"plaid_link_token_msg": {
         "header": {
-            "created": "", 
-            "app_handle": "", 
-            "user_handle": "", 
+            "created": "",
+            "app_handle": "",
+            "user_handle": "",
         }
     }},
     {"delete_account": {
         "header": {
-            "created": "", 
-            "app_handle": "", 
-            "user_handle":"", 
-            "version": "0.2", 
-            "crypto": "ETH", 
+            "created": "",
+            "app_handle": "",
+            "user_handle": "",
+            "version": "0.2",
+            "crypto": "ETH",
             "reference": ""
         },
         "account_name": ""
-    }}
+    }},
+    {
+        "check_partner_kyc": {
+            "header": {
+                "created": "",
+                "app_handle": "",
+                "version": "0.2",
+                "crypto": "ETH",
+                "reference": ""
+            },
+            "query_app_handle": "",
+            "query_user_handle": ""
+        }
+    },
+    {
+        "update_account": {
+            "header": {
+                "created": "",
+                "app_handle": "",
+                "user_handle": "",
+                "version": "0.2",
+                "crypto": "ETH",
+                "reference": ""
+            },
+            "account_name": "",
+            "new_account_name": ""
+        }
+    }
 ]
