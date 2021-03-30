@@ -25,7 +25,10 @@ user_handle_2 = strng_2
 business_handle = strng_3
 instant_ach_handle = strng_4
 basic_individual_handle = strng_5
-business_uuid = "ec5d1366-b56c-4442-b6c3-c919d548fcb5"
+#STAGING
+#business_uuid = "ec5d1366-b56c-4442-b6c3-c919d548fcb5"
+#SANDBOX
+business_uuid = "9f280665-629f-45bf-a694-133c86bffd5e"
 
 app = App("sandbox", app_private_key, app_hanlde)
 

@@ -56,25 +56,6 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = Transaction.issue_sila(app, payload, eth_private_key)
         self.assertEqual(response.get("success"), True)
 
-    def test_issue_sila_200_instant_ach(self):
-        payload = {
-            "user_handle": instant_ach_handle,
-            "amount": 200,
-            "account_name": "default_plaid",
-            "business_uuid": business_uuid,
-            "processing_type": ProcessingTypes.INSTANT_ACH
-        }
-
-        response = Transaction.issue_sila(app, payload, eth_private_key_4)
-
-        self.assertEqual(response.get("success"), True)
-
-        poll(self, response["transaction_id"], "pending_confirmation",
-             app, instant_ach_handle, eth_private_key_4)
-
-        self.assertEqual(response["status"], "SUCCESS")
-        self.assertIsNotNone(response["transaction_id"])
-
     def test_issue_sila_400(self):
         payload = {
             "user_handle": user_handle,
