@@ -1,0 +1,4 @@
+v0.2.21
+-Adding support for check_partner_kyc endpoint.
+-Adding support for update_account endpoint.
+-Removing blank fields in request body for register endpoints.

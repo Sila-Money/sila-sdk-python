@@ -66,7 +66,7 @@ def createMessage(self, payload, msg_type):
     """
     payload.update(
         {
-            "auth_handle": str(self.app_handle),
+            "app_handle": str(self.app_handle),
             "crypto_code": "ETH",
             "relationship": "user"
         }

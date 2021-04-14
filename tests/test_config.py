@@ -18,16 +18,19 @@ strng_4 = ''.join(random.choice(letters) for i in range(10))
 strng_5 = ''.join(random.choice(letters) for i in range(10))
 
 #
-app_hanlde = "end2end"
-app_private_key = os.environ.get("SILA_PRIVATE_KEY")
+app_hanlde = "digital_geko_e2e"
+app_private_key = "e60a5c57130f4e82782cbdb498943f31fe8f92ab96daac2cc13cbbbf9c0b4d9e"
 user_handle = strng
 user_handle_2 = strng_2
 business_handle = strng_3
 instant_ach_handle = strng_4
 basic_individual_handle = strng_5
-business_uuid = "ec5d1366-b56c-4442-b6c3-c919d548fcb5"
+#STAGING
+#business_uuid = "ec5d1366-b56c-4442-b6c3-c919d548fcb5"
+#SANDBOX
+business_uuid = "9f280665-629f-45bf-a694-133c86bffd5e"
 
-app = App("stageapi", app_private_key, app_hanlde)
+app = App("sandbox", app_private_key, app_hanlde)
 
 #
 eth = EthWallet.create()

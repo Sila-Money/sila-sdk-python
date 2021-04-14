@@ -42,4 +42,6 @@ endPoints = {
     "list_documents": "/list_documents?",
     "get_document": "/get_document",
     "list_supported_documents": "/document_types?",
+    "plaid_link_token": "/plaid_link_token",
+    "delete_account": "/delete_account",
 }

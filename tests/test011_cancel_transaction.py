@@ -26,8 +26,6 @@ class Test011CancelTransactionTest(unittest.TestCase):
         response = Transaction.cancelTransaction(
             app, payload, eth_private_key)
 
-        self.assertTrue(response["success"])
-        self.assertEqual(response["status"], "SUCCESS")
         self.assertIsNotNone(response["message"])
         self.assertIsNotNone(response["reference"])
 

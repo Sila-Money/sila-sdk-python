@@ -15,12 +15,16 @@ from tests.test003_link_business_member import Test003LinkBusinessMemberTest
 from tests.test003_unlink_business_member import Test003UnlinkBusinessMemberTest
 from tests.test004_request_kyc import Test004RequestKycTest
 from tests.test005_check_kyc import Test005CheckKycTest
+from tests.test005_check_partner_kyc import Test005CheckPartnerKycTest
 from tests.test005_get_entity import Test005GetEntityTest
 from tests.test005_z_documents import Test005ZDocuments
 from tests.test006_certify_beneficial_owner import Test006CertifyBeneficialOwnerTest
 from tests.test006_certify_business import Test006CertifyBusinessTest
 from tests.test006_link_account import Test006LinkAccountTest
+from tests.test006_plaid_link_token import Test006PlaidLinkTokenTest
 from tests.test007_get_accounts import Test007GetAccountsTest
+from tests.test007_delete_account import Test007DeleteAccountTest
+from tests.test007_update_account import Test007UpdateAccountTest
 from tests.test008_get_account_balance import Test008GetAccountBalanceTest
 from tests.test009_issue_sila import Test009IssueSilaTest
 from tests.test010_transfer_sila import Test010TrasferSilaTest
@@ -66,10 +70,13 @@ def run_unit_tests():
             Test004RequestKycTest,
             Test005GetEntityTest,
             Test005CheckKycTest,
+            Test005CheckPartnerKycTest,
             Test005ZDocuments,
             Test006CertifyBeneficialOwnerTest,
             Test006CertifyBusinessTest,
             Test006LinkAccountTest,
+            Test007DeleteAccountTest,
+            Test007UpdateAccountTest,
             Test007GetAccountsTest,
             Test008GetAccountBalanceTest,
             Test009IssueSilaTest,

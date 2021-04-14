@@ -140,7 +140,8 @@ class App():
         """
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
         header = {
-            "authsignature": appsignature
+            "authsignature": appsignature,
+            "User-Agent": 'SilaSDK-python/0.2.21'
         }
         if content_type is not None and content_type == 'multipart/form-data':
             pass
