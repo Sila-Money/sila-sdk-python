@@ -23,22 +23,22 @@ from tests.test006_certify_business import Test006CertifyBusinessTest
 from tests.test006_link_account import Test006LinkAccountTest
 from tests.test006_plaid_link_token import Test006PlaidLinkTokenTest
 from tests.test006_plaid_update_link_token import Test006PlaidUpdateLinkTokenTest
-# from tests.test007_get_accounts import Test007GetAccountsTest
-# from tests.test007_delete_account import Test007DeleteAccountTest
-# from tests.test007_update_account import Test007UpdateAccountTest
-# from tests.test008_get_account_balance import Test008GetAccountBalanceTest
-# from tests.test009_issue_sila import Test009IssueSilaTest
-# from tests.test010_transfer_sila import Test010TrasferSilaTest
-# from tests.test011_cancel_transaction import Test011CancelTransactionTest
-# from tests.test011_redeem_sila import Test011RedeemSilaTest
-# from tests.test012_get_transactions import Test012GetTransactionsTest
-# from tests.test013_plaid_same_day_auth import Test013PlaidSameDayAuthTest
-# from tests.test014_register_wallet import Test014RegisterWalletTest
-# from tests.test015_get_wallets import Test015GetWalletsTest
-# from tests.test016_get_wallet import Test016GetWalletTest
-# from tests.test017_update_wallet import Test017UpdateWalletTest
-# from tests.test018_delete_wallet import Test018DeleteWalletTest
-# from tests.test019_sila_balance import GetSilaBalanceTest
+from tests.test007_get_accounts import Test007GetAccountsTest
+from tests.test007_delete_account import Test007DeleteAccountTest
+from tests.test007_update_account import Test007UpdateAccountTest
+from tests.test008_get_account_balance import Test008GetAccountBalanceTest
+from tests.test009_issue_sila import Test009IssueSilaTest
+from tests.test010_transfer_sila import Test010TrasferSilaTest
+from tests.test011_cancel_transaction import Test011CancelTransactionTest
+from tests.test011_redeem_sila import Test011RedeemSilaTest
+from tests.test012_get_transactions import Test012GetTransactionsTest
+from tests.test013_plaid_same_day_auth import Test013PlaidSameDayAuthTest
+from tests.test014_register_wallet import Test014RegisterWalletTest
+from tests.test015_get_wallets import Test015GetWalletsTest
+from tests.test016_get_wallet import Test016GetWalletTest
+from tests.test017_update_wallet import Test017UpdateWalletTest
+from tests.test018_delete_wallet import Test018DeleteWalletTest
+from tests.test019_sila_balance import GetSilaBalanceTest
 
 
 def create_suite(classes):
@@ -77,22 +77,22 @@ def run_unit_tests():
             Test006CertifyBusinessTest,
             Test006LinkAccountTest,
             Test006PlaidUpdateLinkTokenTest,
-            # Test007DeleteAccountTest,
-            # Test007UpdateAccountTest,
-            # Test007GetAccountsTest,
-            # Test008GetAccountBalanceTest,
-            # Test009IssueSilaTest,
-            # Test010TrasferSilaTest,
-            # Test011CancelTransactionTest,
-            # Test011RedeemSilaTest,
-            # Test012GetTransactionsTest,
-            # Test013PlaidSameDayAuthTest,
-            # Test014RegisterWalletTest,
-            # Test015GetWalletsTest,
-            # Test016GetWalletTest,
-            # Test017UpdateWalletTest,
-            # Test018DeleteWalletTest,
-            # GetSilaBalanceTest
+            Test007DeleteAccountTest,
+            Test007UpdateAccountTest,
+            Test007GetAccountsTest,
+            Test008GetAccountBalanceTest,
+            Test009IssueSilaTest,
+            Test010TrasferSilaTest,
+            Test011CancelTransactionTest,
+            Test011RedeemSilaTest,
+            Test012GetTransactionsTest,
+            Test013PlaidSameDayAuthTest,
+            Test014RegisterWalletTest,
+            Test015GetWalletsTest,
+            Test016GetWalletTest,
+            Test017UpdateWalletTest,
+            Test018DeleteWalletTest,
+            GetSilaBalanceTest
         ]
         runner.run(create_suite(classes))
     cov.stop()
