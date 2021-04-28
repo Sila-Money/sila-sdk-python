@@ -11,8 +11,6 @@ class Test006PlaidUpdateLinkTokenTest(unittest.TestCase):
         }
         response = User.plaid_update_link_token(app, payload)
         
-        self.assertTrue(response["success"])
-        self.assertIsNotNone(response['link_token'])
         self.assertIsNotNone(response['status'])
         self.assertIsNotNone(response['message'])
 
