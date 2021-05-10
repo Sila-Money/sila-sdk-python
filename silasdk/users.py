@@ -337,3 +337,11 @@ class User():
         response = message.postRequest(
             app, path, msg_type, payload)
         return response
+
+    @staticmethod
+    def check_instant_ach(app: App, payload: dict, user_private_key: str) -> dict:
+        path = '/check_instant_ach'
+        msg_type = "check_instant_ach"
+        response = message.postRequest(
+            app, path, msg_type, payload, user_private_key)
+        return response

@@ -485,5 +485,18 @@ Schema = [
             },
             "account_name": "",
         }
+    },
+    {
+        'check_instant_ach': {
+            "header": {
+                "created": '',
+                "app_handle": "",
+                "user_handle": "",
+                "version": "0.2",
+                "crypto": "ETH",
+                "reference": ""
+            },
+            "account_name": ""
+        }
     }
 ]

@@ -1,3 +1,7 @@
+v0.2.23
+    -Ading support for check_instant_ach.
+    -Adding support for blockchain_address filter in get_transactions.
+
 v0.2.22
     -Adding support for plaid_update_link_token endpoint.
     -Deprecating public_token in linkAccount.
