@@ -345,3 +345,11 @@ class User():
         response = message.postRequest(
             app, path, msg_type, payload, user_private_key)
         return response
+
+    @staticmethod
+    def get_institutions(app: App, payload: dict) -> dict:
+        path = '/get_institutions'
+        msg_type = "get_institutions"
+        response = message.postRequest(
+            app, path, msg_type, payload)
+        return response

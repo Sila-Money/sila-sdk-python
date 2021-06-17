@@ -10,7 +10,16 @@ from silasdk.client import App
 def createBody(bodyStructure, fields):
     for field in fields:
         if field in bodyStructure.keys():
-            bodyStructure[field] = fields[field]
+            print('field')
+            print(field)
+            print('fields[field]')
+            print(fields[field])
+            print('bodyStructure[field]')
+            print(bodyStructure[field])
+            if fields[field] is not None and fields[field]:
+                bodyStructure[field] = fields[field]
+            else:
+                del bodyStructure[field]
         else:
             for bodyField in bodyStructure:
                 if isinstance(bodyStructure[bodyField], dict):
@@ -100,6 +109,7 @@ def postRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional
         key :user_private_key
     """
     data = createMessage(app, payload, msg_type)
+    print(data)
     header = app.setHeader(data, key, business_key, content_type)
     response = app.post(path, data, header) if file_contents is None else app.postFile(
         path, data, header, file_contents)
