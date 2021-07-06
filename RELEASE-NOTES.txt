@@ -1,3 +1,6 @@
+v0.2.24
+    -Ading support for get_institutions.
+
 v0.2.23
     -Ading support for check_instant_ach.
     -Adding support for blockchain_address filter in get_transactions.

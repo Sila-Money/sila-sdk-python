@@ -3,7 +3,7 @@ import unittest, silasdk
 from tests.test_config import *
 
 
-class GetSilaBalanceTest(unittest.TestCase):
+class Test019GetSilaBalanceTest(unittest.TestCase):
     def test_200(self):
         # Deprecated
         # self.assertEqual(True, silasdk.User.silaBalance(app, eth_address))

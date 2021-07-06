@@ -1,192 +1,192 @@
 Schema = [
     {"header_msg": {
         "header": {
-            "reference": "",
-            "created": "",
-            "user_handle": "",
-            "app_handle": "",
+            "reference": None,
+            "created": None,
+            "user_handle": None,
+            "app_handle": None,
             "version": "0.2",
             "crypto": "ETH"
         },
         "message": "header_msg",
-        "kyc_level": "",
-        "entity_type": ""
+        "kyc_level": None,
+        "entity_type": None
     }},
     {"link_account_msg_plaid": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
         "message": "link_account_msg",
-        "plaid_token": "",
-        "account_name": "",
-        "selected_account_id": "",
-        "plaid_token_type": ""
+        "plaid_token": None,
+        "account_name": None,
+        "selected_account_id": None,
+        "plaid_token_type": None
     }},
     {"link_account_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
         "message": "link_account_msg",
-        "account_number": "",
-        "routing_number": "",
-        "account_type": "",
-        "account_name": "",
-        "selected_account_id": ""
+        "account_number": None,
+        "routing_number": None,
+        "account_type": None,
+        "account_name": None,
+        "selected_account_id": None
     }},
     {"account_name_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
         },
-        "account_name": ""
+        "account_name": None
     }},
     {"transfer_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
         "message": "transfer_msg",
-        "amount": "",
-        "destination": "",
-        "destination_handle": "",
-        "destination_wallet": "",
-        "destination_address": "",
-        "business_uuid": "",
-        "descriptor": ""
+        "amount": None,
+        "destination": None,
+        "destination_handle": None,
+        "destination_wallet": None,
+        "destination_address": None,
+        "business_uuid": None,
+        "descriptor": None
     }},
     {"issue_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
         "message": "issue_msg",
-        "amount": "",
-        "account_name": "",
-        "business_uuid": "",
-        "descriptor": "",
-        "processing_type": ""
+        "amount": None,
+        "account_name": None,
+        "business_uuid": None,
+        "descriptor": None,
+        "processing_type": None
     }},
     {"redeem_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
         "message": "redeem_msg",
-        "amount": "",
-        "account_name": "",
-        "business_uuid": "",
-        "descriptor": "",
-        "processing_type": ""
+        "amount": None,
+        "account_name": None,
+        "business_uuid": None,
+        "descriptor": None,
+        "processing_type": None
     }},
     {"no_content_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         }
     }},
     {"update_wallet_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
-        "nickname": "",
-        "default": ""
+        "nickname": None,
+        "default": None
     }},
     {"register_wallet_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
-        "wallet_verification_signature": "",
+        "wallet_verification_signature": None,
         "wallet": {
-            "blockchain_address": "",
+            "blockchain_address": None,
             "blockchain_network": "ETH",
-            "nickname": ""
+            "nickname": None
         }
     }},
     {"get_wallets_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
         "search_filters": {
-            "page": "",
-            "per_page": "",
-            "sort_ascending": "",
-            "blockchain_network": "",
-            "blockchain_address": "",
-            "nickname": ""
+            "page": None,
+            "per_page": None,
+            "sort_ascending": None,
+            "blockchain_network": None,
+            "blockchain_address": None,
+            "nickname": None
         }
     }},
     {"get_accounts_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
         "message": "get_accounts_msg"
     }},
     {"sila_balance_msg": {
-        "address": ""
+        "address": None
     }},
     {"business_types_msg": {
         "header": {
-            "created": "",
-            "app_handle": ""
+            "created": None,
+            "app_handle": None
         }
     }},
     {"business_roles_msg": {
         "header": {
-            "created": "",
-            "app_handle": ""
+            "created": None,
+            "app_handle": None
         }
     }},
     {"naics_categories_msg": {
         "header": {
-            "created": "",
-            "app_handle": ""
+            "created": None,
+            "app_handle": None
         }
     }},
     {"entity_msg": {
@@ -242,62 +242,62 @@ Schema = [
     }},
     {"link_business_member_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
-            "business_handle": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
+            "business_handle": None
         },
-        "role": "",
-        "details": "",
-        "ownership_stake": ""
+        "role": None,
+        "details": None,
+        "ownership_stake": None
     }},
     {"unlink_business_member_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
-            "business_handle": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
+            "business_handle": None
         },
-        "role": ""
+        "role": None
     }},
     {"get_entity_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None
         }
     }},
     {"certify_beneficial_owner_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
-            "business_handle": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
+            "business_handle": None
         },
-        "member_handle": "",
-        "certification_token": ""
+        "member_handle": None,
+        "certification_token": None
     }},
     {"certify_business_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
-            "business_handle": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
+            "business_handle": None
         }
     }},
     {'get_transaction_msg': {
         "header": {
             "created": '',
-            "app_handle": "",
-            "user_handle": "",
-            "version": "",
-            "crypto": "",
-            "reference": ""
+            "app_handle": None,
+            "user_handle": None,
+            "version": None,
+            "crypto": None,
+            "reference": None
         },
         "message": "get_transactions_msg",
         "search_filters": {
-            "transaction_id": "",
-            "reference_id": "",
+            "transaction_id": None,
+            "reference_id": None,
             "show_timelines": '',
             "sort_ascending": '',
             "max_sila_amount": '',
@@ -312,14 +312,14 @@ Schema = [
     }},
     {'cancel_transaction_msg': {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
-            "version": "",
-            "crypto": "",
-            "reference": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
+            "version": None,
+            "crypto": None,
+            "reference": None
         },
-        "transaction_id": ""
+        "transaction_id": None
     }},
     {"add_registration_data_msg": {
         "header": {
@@ -379,124 +379,139 @@ Schema = [
     }},
     {"documents_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
-        "message": "",
-        "name": "",
-        "filename": "",
-        "hash": "",
-        "mime_type": "",
-        "document_type": "",
-        "identity_type": "",
-        "description": ""
+        "message": None,
+        "name": None,
+        "filename": None,
+        "hash": None,
+        "mime_type": None,
+        "document_type": None,
+        "identity_type": None,
+        "description": None
     }},
     {"list_documents_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
-            "version": "",
-            "crypto": "",
-            "reference": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
+            "version": None,
+            "crypto": None,
+            "reference": None
         },
-        "message": "",
-        "start_date": "",
-        "end_date": "",
-        "doc_types": "",
-        "search": "",
-        "sort_by": ""
+        "message": None,
+        "start_date": None,
+        "end_date": None,
+        "doc_types": None,
+        "search": None,
+        "sort_by": None
     }},
     {"get_document_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
-            "version": "",
-            "crypto": "",
-            "reference": ""
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
+            "version": None,
+            "crypto": None,
+            "reference": None
         },
-        "document_id": ""
+        "document_id": None
     }},
     {"document_types_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "version": "",
-            "crypto": "",
-            "reference": ""
+            "created": None,
+            "app_handle": None,
+            "version": None,
+            "crypto": None,
+            "reference": None
         }
     }},
     {"plaid_link_token_msg": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
         }
     }},
     {"delete_account": {
         "header": {
-            "created": "",
-            "app_handle": "",
-            "user_handle": "",
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
             "version": "0.2",
             "crypto": "ETH",
-            "reference": ""
+            "reference": None
         },
-        "account_name": ""
+        "account_name": None
     }},
     {
         "check_partner_kyc": {
             "header": {
-                "created": "",
-                "app_handle": "",
+                "created": None,
+                "app_handle": None,
                 "version": "0.2",
                 "crypto": "ETH",
-                "reference": ""
+                "reference": None
             },
-            "query_app_handle": "",
-            "query_user_handle": ""
+            "query_app_handle": None,
+            "query_user_handle": None
         }
     },
     {
         "update_account": {
             "header": {
-                "created": "",
-                "app_handle": "",
-                "user_handle": "",
+                "created": None,
+                "app_handle": None,
+                "user_handle": None,
                 "version": "0.2",
                 "crypto": "ETH",
-                "reference": ""
+                "reference": None
             },
-            "account_name": "",
-            "new_account_name": ""
+            "account_name": None,
+            "new_account_name": None
         }
     },
     {
         "plaid_update_link_token": {
             "header": {
-                "created": "",
-                "app_handle": "",
-                "user_handle": "",
+                "created": None,
+                "app_handle": None,
+                "user_handle": None,
             },
-            "account_name": "",
+            "account_name": None,
         }
     },
     {
         'check_instant_ach': {
             "header": {
                 "created": '',
-                "app_handle": "",
-                "user_handle": "",
+                "app_handle": None,
+                "user_handle": None,
                 "version": "0.2",
                 "crypto": "ETH",
-                "reference": ""
+                "reference": None
             },
-            "account_name": ""
+            "account_name": None
+        }
+    },
+    {
+        "get_institutions": {
+            "header": {
+                "created": None,
+                "app_handle": None
+            },
+            "message": "header_msg",
+            "search_filters": {
+                "institution_name": None,
+                "routing_number": None,
+                "page": None,
+                "per_page": None
+            }
         }
     }
 ]
