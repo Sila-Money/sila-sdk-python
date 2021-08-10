@@ -12,7 +12,8 @@ class Test014RegisterWalletTest(unittest.TestCase):
             "wallet": {
                 "blockchain_address": wallet_address,
                 "blockchain_network": "ETH",
-                "nickname": "wallet_python_new"
+                "nickname": "wallet_python_new",
+                "default": True
             }
         }
 
@@ -26,7 +27,8 @@ class Test014RegisterWalletTest(unittest.TestCase):
             "wallet": {
                 "blockchain_address": wallet_address_signed_verified,
                 "blockchain_network": "ETH",
-                "nicknames": "wallet_python"
+                "nicknames": "wallet_python",
+                "default": True
             }
         }
 
@@ -40,7 +42,8 @@ class Test014RegisterWalletTest(unittest.TestCase):
             "wallet": {
                 "blockchain_address": wallet_address_signed_verified,
                 "blockchain_network": "ETH",
-                "nickname": "wallet_python"
+                "nickname": "wallet_python",
+                "default": True
             }
         }
 
@@ -54,7 +57,8 @@ class Test014RegisterWalletTest(unittest.TestCase):
             "wallet": {
                 "blockchain_address": wallet_address_signed_verified,
                 "blockchain_network": "ETH",
-                "nickname": "wallet_python"
+                "nickname": "wallet_python",
+                "default": True
             }
         }
 

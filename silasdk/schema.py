@@ -136,7 +136,8 @@ Schema = [
         "wallet": {
             "blockchain_address": None,
             "blockchain_network": "ETH",
-            "nickname": None
+            "nickname": None,
+            "default": None
         }
     }},
     {"get_wallets_msg": {
