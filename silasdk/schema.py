@@ -437,7 +437,8 @@ Schema = [
             "created": None,
             "app_handle": None,
             "user_handle": None,
-        }
+        },
+        "android_package_name": None
     }},
     {"delete_account": {
         "header": {

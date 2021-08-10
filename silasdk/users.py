@@ -298,10 +298,12 @@ class User():
         return response
 
     @staticmethod
-    def plaid_link_token(app: App, user_handle: str) -> dict:
+    def plaid_link_token(app: App, user_handle: str, android_package_name: str = None) -> dict:
         path = endPoints["plaid_link_token"]
         msg_type = "plaid_link_token_msg"
         payload = {"user_handle": user_handle}
+        if android_package_name is not None:
+            payload["android_package_name"] = android_package_name
         response = message.postRequest(
             app, path, msg_type, payload)
         return response
