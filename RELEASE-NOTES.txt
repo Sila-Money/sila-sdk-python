@@ -1,3 +1,10 @@
+v0.2.26
+Enhancements:
+    - Added business_uuid to the response in /register.
+    - Added default a new optional input in /register_wallet.
+    - Added android_package_name a new optional input in /plaid_link_token.
+    - Reverting previous SDK work where the SDK is looking for blank inputs and applying logic to not send that information to the APIs.
+
 v0.2.24
     -Ading support for get_institutions.
 
