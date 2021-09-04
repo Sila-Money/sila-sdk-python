@@ -1,21 +1,22 @@
-import requests
+import logging
 import time
 import uuid
-from typing import Optional
 from copy import deepcopy
-from .schema import Schema
+from typing import Optional
+
+import requests
+
 from silasdk.client import App
+from .schema import Schema
+
+logger = logging.getLogger(__name__)
 
 
 def createBody(bodyStructure, fields):
     for field in fields:
         if field in bodyStructure.keys():
-            print('field')
-            print(field)
-            print('fields[field]')
-            print(fields[field])
-            print('bodyStructure[field]')
-            print(bodyStructure[field])
+            logger.debug(bodyStructure)
+
             if fields[field] is not None and fields[field]:
                 bodyStructure[field] = fields[field]
             else:
@@ -95,8 +96,7 @@ def createMessage(self, payload, msg_type):
         pass
 
     inpt = cull_null_values(inpt, payload)
-    if (self.debug):
-        print(inpt)
+    logger.debug(inpt)
 
     return inpt
 
@@ -109,7 +109,7 @@ def postRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional
         key :user_private_key
     """
     data = createMessage(app, payload, msg_type)
-    print(data)
+    logger.debug(data)
     header = app.setHeader(data, key, business_key, content_type)
     response = app.post(path, data, header) if file_contents is None else app.postFile(
         path, data, header, file_contents)
