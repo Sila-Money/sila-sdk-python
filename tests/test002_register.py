@@ -104,6 +104,7 @@ class Test002RegisterTest(unittest.TestCase):
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
+        self.assertTrue(response.get('business_uuid'))
 
         response = User.register(app, instant_ach)
         self.assertTrue(response.get('success'))

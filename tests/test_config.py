@@ -29,6 +29,7 @@ basic_individual_handle = strng_5
 #business_uuid = "ec5d1366-b56c-4442-b6c3-c919d548fcb5"
 #SANDBOX
 business_uuid = "9f280665-629f-45bf-a694-133c86bffd5e"
+android_package_name = "com.sila.package"
 
 app = App("sandbox", app_private_key, app_hanlde)
 

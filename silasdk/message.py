@@ -10,16 +10,7 @@ from silasdk.client import App
 def createBody(bodyStructure, fields):
     for field in fields:
         if field in bodyStructure.keys():
-            print('field')
-            print(field)
-            print('fields[field]')
-            print(fields[field])
-            print('bodyStructure[field]')
-            print(bodyStructure[field])
-            if fields[field] is not None and fields[field]:
-                bodyStructure[field] = fields[field]
-            else:
-                del bodyStructure[field]
+            bodyStructure[field] = fields[field]
         else:
             for bodyField in bodyStructure:
                 if isinstance(bodyStructure[bodyField], dict):

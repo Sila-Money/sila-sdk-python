@@ -136,7 +136,8 @@ Schema = [
         "wallet": {
             "blockchain_address": None,
             "blockchain_network": "ETH",
-            "nickname": None
+            "nickname": None,
+            "default": None
         }
     }},
     {"get_wallets_msg": {
@@ -436,7 +437,8 @@ Schema = [
             "created": None,
             "app_handle": None,
             "user_handle": None,
-        }
+        },
+        "android_package_name": None
     }},
     {"delete_account": {
         "header": {
