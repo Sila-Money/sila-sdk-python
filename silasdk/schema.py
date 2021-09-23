@@ -475,7 +475,8 @@ Schema = [
                 "reference": None
             },
             "account_name": None,
-            "new_account_name": None
+            "new_account_name": None,
+            "active": None
         }
     },
     {
