@@ -1,3 +1,8 @@
+v0.2.28
+Enhancements:
+    - Added new optional params active to Freeze/unfreeze bank account.
+    - Remove unwanted print statements from code. 
+
 v0.2.26
 Enhancements:
     - Added business_uuid to the response in /register.
