@@ -20,16 +20,18 @@ class Test007UpdateAccountTest(unittest.TestCase):
         self.assertEqual(response["account"]["account_name"], "accountupdated")
 
     def test_freeze_account(self):
-            """Verify user is able to freeze there bank account."""
-            payload = {
-                "user_handle": user_handle,
-                "account_name": "forupdate",
-                "active": False
-            }
-            response = User.update_account(app, payload, eth_private_key)
-            self.assertEqual(response["status"], "SUCCESS")
-            self.assertEqual(response["account"]["active"], False)
-            self.assertEqual(response["account"]["account_status"], 'inactive')
+        """Verify user is able to freeze there bank account."""
+        payload = {
+            "user_handle": user_handle,
+            "account_name": "forupdate",
+            "active": False
+        }
+        response = User.update_account(
+            app, payload, eth_private_key)
+
+        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["account"]["active"], False)
+        self.assertEqual(response["account"]["account_status"], 'inactive')
 
     def test_unfreeze_account(self):
         """Verify user is able to unfreeze the freeze account"""
@@ -39,7 +41,9 @@ class Test007UpdateAccountTest(unittest.TestCase):
             "account_name": "forupdate",
             "active": True
         }
-        response = User.update_account(app, payload, eth_private_key)
+        response = User.update_account(
+            app, payload, eth_private_key)
+
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["account"]["active"], True)
         self.assertEqual(response["account"]["account_status"], 'active')
