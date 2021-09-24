@@ -44,7 +44,5 @@ class Test007UpdateAccountTest(unittest.TestCase):
         self.assertEqual(response["account"]["active"], True)
         self.assertEqual(response["account"]["account_status"], 'active')
 
-
-
 if __name__ == '__main__':
     unittest.main()
