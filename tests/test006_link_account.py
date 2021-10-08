@@ -11,7 +11,7 @@ class Test006LinkAccountTest(unittest.TestCase):
             "user_handle": user_handle,
             "account_name": "default",
             "account_number": "123456789012",
-            "routing_number": "123456789",
+            "routing_number": "123456780",
             "account_type": "CHECKING",
         }
 

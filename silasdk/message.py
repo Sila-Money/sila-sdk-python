@@ -86,9 +86,6 @@ def createMessage(self, payload, msg_type):
         pass
 
     inpt = cull_null_values(inpt, payload)
-    if (self.debug):
-        print(inpt)
-
     return inpt
 
 
@@ -100,7 +97,6 @@ def postRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional
         key :user_private_key
     """
     data = createMessage(app, payload, msg_type)
-    print(data)
     header = app.setHeader(data, key, business_key, content_type)
     response = app.post(path, data, header) if file_contents is None else app.postFile(
         path, data, header, file_contents)
