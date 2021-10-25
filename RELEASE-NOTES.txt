@@ -1,3 +1,7 @@
+v0.2.30
+Enhancements:
+    - Introduce new endpoints for cards 
+
 v0.2.28
 Enhancements:
     - Added new optional params active to Freeze/unfreeze bank account.
