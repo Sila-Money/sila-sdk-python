@@ -65,6 +65,24 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = Transaction.issue_sila(app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
+    def test_issue_sila_200_with_card_name(self):
+        payload = {
+            "user_handle": user_handle,
+            "amount": 200,
+            "card_name": "visa"
+        }
+        response = Transaction.issue_sila(app, payload, eth_private_key)
+        self.assertTrue(response["success"])   
+    
+    def test_issue_sila_400_card_name_account(self):
+        payload = {
+            "user_handle": user_handle,
+            "amount": 200,
+            "account_name": "test_account",
+            "card_name": "visa"
+        }
+        response = Transaction.issue_sila(app, payload, eth_private_key)
+        self.assertFalse(response["success"])         
 
 if __name__ == '__main__':
     unittest.main()

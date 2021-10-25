@@ -81,6 +81,7 @@ Schema = [
         "message": "issue_msg",
         "amount": None,
         "account_name": None,
+        "card_name": None,
         "business_uuid": None,
         "descriptor": None,
         "processing_type": None
@@ -97,6 +98,7 @@ Schema = [
         "message": "redeem_msg",
         "amount": None,
         "account_name": None,
+        "card_name": None,
         "business_uuid": None,
         "descriptor": None,
         "processing_type": None
@@ -515,6 +517,45 @@ Schema = [
                 "page": None,
                 "per_page": None
             }
+        }
+    },
+    {
+        "link_card_msg": {
+            "header": {
+                "created": None,
+                "app_handle": None,
+                "user_handle": None,
+                "version": "0.2",
+                "crypto": "ETH",
+                "reference": None
+            },
+            "message": "header_msg",
+            "card_name": None,
+            "account_postal_code": None,
+            "token":None
+        }
+    },
+    {
+        "get_cards": {
+            "header": {
+                "created": None,
+                "app_handle": None,
+                "user_handle": None,
+                "reference": None
+            },
+            "message": "header_msg"           
+        }
+    },
+    {
+        "delete_card": {
+            "header": {
+                "created": None,
+                "app_handle": None,
+                "user_handle": None,
+                "reference": None
+            },
+            "message": "header_msg",
+            "card_name": None           
         }
     }
 ]

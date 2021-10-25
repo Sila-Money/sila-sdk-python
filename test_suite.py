@@ -22,13 +22,16 @@ from tests.test005_z_documents import Test005ZDocuments
 from tests.test006_certify_beneficial_owner import Test006CertifyBeneficialOwnerTest
 from tests.test006_certify_business import Test006CertifyBusinessTest
 from tests.test006_link_account import Test006LinkAccountTest
+from tests.test006_link_card import Test006LinkCardTest
 from tests.test006_plaid_link_token import Test006PlaidLinkTokenTest
 from tests.test006_plaid_update_link_token import Test006PlaidUpdateLinkTokenTest
 from tests.test007_check_instant_ach import Test007CheckInstantAchTest
 from tests.test007_get_accounts import Test007GetAccountsTest
+from tests.test007_get_cards import Test007GetCardsTest
 from tests.test007_delete_account import Test007DeleteAccountTest
 from tests.test007_update_account import Test007UpdateAccountTest
 from tests.test008_get_account_balance import Test008GetAccountBalanceTest
+from tests.test008_delete_card import Test008DeleteCardTest
 from tests.test009_issue_sila import Test009IssueSilaTest
 from tests.test010_transfer_sila import Test010TrasferSilaTest
 from tests.test011_cancel_transaction import Test011CancelTransactionTest
@@ -79,13 +82,16 @@ def run_unit_tests():
             Test006CertifyBeneficialOwnerTest,
             Test006CertifyBusinessTest,
             Test006LinkAccountTest,
+            Test006LinkCardTest,
             Test006PlaidLinkTokenTest,
             Test006PlaidUpdateLinkTokenTest,
             Test007CheckInstantAchTest,
             Test007DeleteAccountTest,
             Test007UpdateAccountTest,
             Test007GetAccountsTest,
+            Test007GetCardsTest,
             Test008GetAccountBalanceTest,
+            Test008DeleteCardTest,
             Test009IssueSilaTest,
             Test010TrasferSilaTest,
             Test011CancelTransactionTest,

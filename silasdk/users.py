@@ -355,3 +355,27 @@ class User():
         response = message.postRequest(
             app, path, msg_type, payload)
         return response
+
+    @staticmethod
+    def link_card(app: App, payload: dict, user_private_key: str) -> dict:
+        path = '/link_card'
+        msg_type = "link_card_msg"
+        response = message.postRequest(
+            app, path, msg_type, payload, user_private_key)
+        return response
+
+    @staticmethod
+    def get_cards(app: App, payload: dict, user_private_key: str) -> dict:
+        path = '/get_cards'
+        msg_type = "get_cards"
+        response = message.postRequest(
+            app, path, msg_type, payload, user_private_key)
+        return response
+
+    @staticmethod
+    def delete_card(app: App, payload: dict, user_private_key: str) -> dict:
+        path = '/delete_card'
+        msg_type = "delete_card"
+        response = message.postRequest(
+            app, path, msg_type, payload, user_private_key)
+        return response        
