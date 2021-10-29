@@ -18,8 +18,6 @@ class Test012GetTransactionsTest(unittest.TestCase):
         response = User.get_transactions(app, payload)
         self.assertTrue(response["success"])
         self.assertEqual(len(response["transactions"]), 1)
-        self.assertEqual(
-            response["transactions"][0]["processing_type"], ProcessingTypes.STANDARD_ACH)
         self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
 
     def test_get_transactions_200_with_error_code(self):
@@ -69,6 +67,15 @@ class Test012GetTransactionsTest(unittest.TestCase):
         self.assertFalse(response.get('success'))
         self.assertEqual(response.get('status_code'), 400)
 
+    def test_get_transactions_filter_by_account_name(self):
+        payload = {
+            "user_handle": user_handle,
+            'search_filters': {
+                'bank_account_name': 'default'
+            }
+        }
+        response = User.get_transactions(app, payload)
+        self.assertTrue(response.get('success'))
 
 if __name__ == '__main__':
     unittest.main()

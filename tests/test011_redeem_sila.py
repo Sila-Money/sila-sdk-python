@@ -50,15 +50,12 @@ class Test011RedeemSilaTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "amount": 50,
-            "card_name": "visa",
-            "descriptor": "test descriptor",
-            "business_uuid": business_uuid,
-            "processing_type": ProcessingTypes.STANDARD_ACH
+            "card_name": "visa"
         }
 
         response = Transaction.redeemSila(
             app, payload, eth_private_key)
-
+        
         poll(self, response["transaction_id"], "success",
              app, user_handle, eth_private_key)
 
@@ -69,17 +66,11 @@ class Test011RedeemSilaTest(unittest.TestCase):
             "user_handle": user_handle,
             "amount": 50,
             "account_name": "test_account",
-            "card_name": "visa",
-            "descriptor": "test descriptor",
-            "business_uuid": business_uuid,
-            "processing_type": ProcessingTypes.STANDARD_ACH
+            "card_name": "visa"
         }
 
         response = Transaction.redeemSila(
             app, payload, eth_private_key)
-
-        poll(self, response["transaction_id"], "success",
-             app, user_handle, eth_private_key)
 
         self.assertFalse(response["success"])
 

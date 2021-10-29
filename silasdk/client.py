@@ -69,6 +69,7 @@ class App():
 
         try:
             output['status_code'] = response.status_code
+            output['headers'] = response.headers
         except:
             pass
 

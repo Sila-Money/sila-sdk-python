@@ -310,7 +310,9 @@ Schema = [
             "end_epoch": '',
             "page": '',
             "per_page": '',
-            "transaction_types": []
+            "transaction_types": [],
+            "bank_account_name":None,
+            "card_account_name":None
         }
     }},
     {'cancel_transaction_msg': {
@@ -556,6 +558,42 @@ Schema = [
             },
             "message": "header_msg",
             "card_name": None           
+        }
+    },
+    {
+        "reverse_transaction_msg": {
+            "header": {
+                "created": None,
+                "app_handle": None,
+                "user_handle": None,
+                "version": None,
+                "crypto": None,
+                "reference": None
+            },
+            "transaction_id": None
+        }
+    },
+    {
+        "get_webhooks": {
+            "header": {
+                "created": None,
+                "app_handle": None,
+                "user_handle": None,
+                "reference": None
+            },
+            "message": "header_msg",
+            "search_filters": {
+                "uuid": None,
+                "delivered": None,
+                "sort_ascending": None,
+                "event_type": None,
+                "endpoint_name": None,
+                "user_handle": None,
+                "start_epoch": None,
+                "end_epoch": None,
+                "page": None,
+                "per_page": None
+            }           
         }
     }
 ]

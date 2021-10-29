@@ -379,4 +379,12 @@ class User():
         response = message.postRequest(
             app, path, msg_type, payload, user_private_key)
         return response
+
+    @staticmethod
+    def get_webhooks(app: App, payload: dict, user_private_key: str) -> dict:
+        path = '/get_webhooks'
+        msg_type = "get_webhooks"
+        response = message.postRequest(
+            app, path, msg_type, payload, user_private_key)
+        return response    
         

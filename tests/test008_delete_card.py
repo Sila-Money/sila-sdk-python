@@ -8,7 +8,7 @@ class Test008DeleteCardTest(unittest.TestCase):
         """Generate plaid legacy token"""
 
         url = "https://sso.sandbox.tabapay.com:8443/v2/SSOEncrypt"
-        payload = "cBm0RU8eASGfSxLYJjsG73Q\tn5403879999999997\te202205\ts2545"
+        payload = "cBm0RU8eASGfSxLYJjsG73Q\tn9010111999999992\te202205\ts2545"
         headers = {
             'Content-Type': 'application/tabapay-compact'
         }

@@ -38,12 +38,14 @@ from tests.test011_cancel_transaction import Test011CancelTransactionTest
 from tests.test011_redeem_sila import Test011RedeemSilaTest
 from tests.test012_get_transactions import Test012GetTransactionsTest
 from tests.test013_plaid_same_day_auth import Test013PlaidSameDayAuthTest
+from tests.test013_reverse_transactions import Test013ReverseTransactionsTest
 from tests.test014_register_wallet import Test014RegisterWalletTest
 from tests.test015_get_wallets import Test015GetWalletsTest
 from tests.test016_get_wallet import Test016GetWalletTest
 from tests.test017_update_wallet import Test017UpdateWalletTest
 from tests.test018_delete_wallet import Test018DeleteWalletTest
 from tests.test019_sila_balance import Test019GetSilaBalanceTest
+from tests.test020_get_webhooks import Test020GetWebhooksTest
 
 
 def create_suite(classes):
@@ -98,12 +100,14 @@ def run_unit_tests():
             Test011RedeemSilaTest,
             Test012GetTransactionsTest,
             Test013PlaidSameDayAuthTest,
+            Test013ReverseTransactionsTest,
             Test014RegisterWalletTest,
             Test015GetWalletsTest,
             Test016GetWalletTest,
             Test017UpdateWalletTest,
             Test018DeleteWalletTest,
-            Test019GetSilaBalanceTest
+            Test019GetSilaBalanceTest,
+            Test020GetWebhooksTest
         ]
         runner.run(create_suite(classes))
     cov.stop()

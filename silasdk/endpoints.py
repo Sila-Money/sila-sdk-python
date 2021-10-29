@@ -45,4 +45,5 @@ endPoints = {
     "plaid_link_token": "/plaid_link_token",
     "delete_account": "/delete_account",
     "plaid_update_link_token": "/plaid_update_link_token",
+    "reverseTransaction": "/reverse_transaction",
 }
