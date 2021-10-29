@@ -386,5 +386,4 @@ class User():
         msg_type = "get_webhooks"
         response = message.postRequest(
             app, path, msg_type, payload, user_private_key)
-        return response    
-        
+        return response
