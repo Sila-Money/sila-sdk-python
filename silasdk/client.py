@@ -69,7 +69,7 @@ class App():
 
         try:
             output['status_code'] = response.status_code
-            output['headers'] = response.headers
+            output['headers'] = dict(response.headers)
         except:
             pass
 
