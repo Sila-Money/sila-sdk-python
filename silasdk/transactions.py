@@ -92,8 +92,6 @@ class Transaction():
 
     def reverseTransaction(self, payload, user_private_key):
         """ Reverse transaction under certain circumstances
-
-
         Args:
             payload : user handle and transaction id
             user_private_key: users ethereum private key
@@ -104,4 +102,4 @@ class Transaction():
         msg_type = "reverse_transaction_msg"
         response = postRequest(
             self, path, msg_type, payload, user_private_key)
-        return response    
+        return response

@@ -579,7 +579,9 @@ Schema = [
                 "created": None,
                 "app_handle": None,
                 "user_handle": None,
-                "reference": None
+                "reference": None,
+                "version": "0.2",
+                "crypto": "ETH"
             },
             "message": "header_msg",
             "search_filters": {
