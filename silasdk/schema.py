@@ -534,7 +534,7 @@ Schema = [
             "message": "header_msg",
             "card_name": None,
             "account_postal_code": None,
-            "token":None
+            "token": None
         }
     },
     {
@@ -545,7 +545,7 @@ Schema = [
                 "user_handle": None,
                 "reference": None
             },
-            "message": "header_msg"           
+            "message": "header_msg"
         }
     },
     {
@@ -557,7 +557,7 @@ Schema = [
                 "reference": None
             },
             "message": "header_msg",
-            "card_name": None           
+            "card_name": None
         }
     },
     {
@@ -593,7 +593,7 @@ Schema = [
                 "end_epoch": None,
                 "page": None,
                 "per_page": None
-            }           
+            }
         }
     }
 ]
