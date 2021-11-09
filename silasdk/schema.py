@@ -311,8 +311,7 @@ Schema = [
             "page": '',
             "per_page": '',
             "transaction_types": [],
-            "bank_account_name":None,
-            "card_account_name":None
+            "bank_account_name":None
         }
     }},
     {'cancel_transaction_msg': {
