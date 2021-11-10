@@ -69,6 +69,7 @@ class App():
 
         try:
             output['status_code'] = response.status_code
+            output['headers'] = dict(response.headers)
         except:
             pass
 
@@ -141,7 +142,7 @@ class App():
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
         header = {
             "authsignature": appsignature,
-            "User-Agent": 'SilaSDK-python/0.2.28'
+            "User-Agent": 'SilaSDK-python/0.2.30'
         }
         if content_type is not None and content_type == 'multipart/form-data':
             pass

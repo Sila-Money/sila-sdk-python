@@ -1,3 +1,17 @@
+v0.2.30
+New endpoints:
+    - Added support for /link_card.
+    - Added support for /get_cards.
+    - Added support for /delete_card.
+    - Added support for /reverse_transaction.
+    - Added support for /get_webhooks.
+Enhancements:
+    - Added card_name a new optional input in /issue_sila.
+    - Added card_name a new optional input in /redeem_sila.
+    - Added card_account_name a new optional input in search filters in /get_transactions.
+    - Exposed RateLimit-Limit and RateLimit-Remaining parameters in header in APIs endpoint.
+    - Upgrade eth-account to latest version 
+
 v0.2.28
 Enhancements:
     - Added new optional params active to Freeze/unfreeze bank account.

@@ -45,6 +45,34 @@ class Test011RedeemSilaTest(unittest.TestCase):
         response = Transaction.redeemSila(
             app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
+    
+    def test_redeem_sila_200_with_card_name(self):
+        payload = {
+            "user_handle": user_handle,
+            "amount": 50,
+            "card_name": "visa"
+        }
+
+        response = Transaction.redeemSila(
+            app, payload, eth_private_key)
+        
+        poll(self, response["transaction_id"], "success",
+             app, user_handle, eth_private_key)
+
+        self.assertTrue(response["success"])
+
+    def test_redeem_sila_400_both_card_account(self):
+        payload = {
+            "user_handle": user_handle,
+            "amount": 50,
+            "account_name": "test_account",
+            "card_name": "visa"
+        }
+
+        response = Transaction.redeemSila(
+            app, payload, eth_private_key)
+
+        self.assertFalse(response["success"])
 
 
 if __name__ == '__main__':
