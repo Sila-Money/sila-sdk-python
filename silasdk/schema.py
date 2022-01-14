@@ -48,6 +48,7 @@ Schema = [
             "created": None,
             "app_handle": None,
             "user_handle": None,
+            "reference": None
         },
         "account_name": None
     }},
@@ -177,19 +178,22 @@ Schema = [
     {"business_types_msg": {
         "header": {
             "created": None,
-            "app_handle": None
+            "app_handle": None,
+            "reference": None
         }
     }},
     {"business_roles_msg": {
         "header": {
             "created": None,
-            "app_handle": None
+            "app_handle": None,
+            "reference": None
         }
     }},
     {"naics_categories_msg": {
         "header": {
             "created": None,
-            "app_handle": None
+            "app_handle": None,
+            "reference": None
         }
     }},
     {"entity_msg": {
@@ -248,7 +252,8 @@ Schema = [
             "created": None,
             "app_handle": None,
             "user_handle": None,
-            "business_handle": None
+            "business_handle": None,
+            "reference": None
         },
         "role": None,
         "details": None,
@@ -259,7 +264,8 @@ Schema = [
             "created": None,
             "app_handle": None,
             "user_handle": None,
-            "business_handle": None
+            "business_handle": None,
+            "reference": None
         },
         "role": None
     }},
@@ -267,7 +273,8 @@ Schema = [
         "header": {
             "created": None,
             "app_handle": None,
-            "user_handle": None
+            "user_handle": None,
+            "reference": None
         }
     }},
     {"certify_beneficial_owner_msg": {
@@ -275,7 +282,8 @@ Schema = [
             "created": None,
             "app_handle": None,
             "user_handle": None,
-            "business_handle": None
+            "business_handle": None,
+            "reference": None
         },
         "member_handle": None,
         "certification_token": None
@@ -285,7 +293,8 @@ Schema = [
             "created": None,
             "app_handle": None,
             "user_handle": None,
-            "business_handle": None
+            "business_handle": None,
+            "reference": None
         }
     }},
     {'get_transaction_msg': {
@@ -329,7 +338,8 @@ Schema = [
         "header": {
             "created": None,
             "app_handle": None,
-            "user_handle": None
+            "user_handle": None,
+            "reference": None
         },
         "email": None,
         "phone": None,
@@ -349,7 +359,8 @@ Schema = [
         "header": {
             "created": None,
             "app_handle": None,
-            "user_handle": None
+            "user_handle": None,
+            "reference": None
         },
         "uuid": None,
         "email": None,
@@ -377,7 +388,8 @@ Schema = [
         "header": {
             "created": None,
             "app_handle": None,
-            "user_handle": None
+            "user_handle": None,
+            "reference": None
         },
         "uuid": None
     }},
@@ -440,6 +452,7 @@ Schema = [
             "created": None,
             "app_handle": None,
             "user_handle": None,
+            "reference": None
         },
         "android_package_name": None
     }},
@@ -487,7 +500,7 @@ Schema = [
             "header": {
                 "created": None,
                 "app_handle": None,
-                "user_handle": None,
+                "user_handle": None
             },
             "account_name": None,
         }
@@ -509,7 +522,8 @@ Schema = [
         "get_institutions": {
             "header": {
                 "created": None,
-                "app_handle": None
+                "app_handle": None,
+                "reference": None
             },
             "message": "header_msg",
             "search_filters": {

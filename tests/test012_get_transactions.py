@@ -17,6 +17,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         }
         response = User.get_transactions(app, payload)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
         self.assertEqual(len(response["transactions"]), 1)
         self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
 
@@ -34,6 +35,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         response = User.get_transactions(app, payload)
         
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
         self.assertEqual(len(response["transactions"]), 1)
         self.assertEqual(
             response["transactions"][0]["error_code"], 'ACH_RETURN')    
@@ -52,6 +54,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         response = User.get_transactions(app, payload)
 
         self.assertTrue(response.get('success'))
+        self.assertIsNotNone(response["reference"])
         self.assertGreater(len(response.get('transactions')), 1)
         self.assertEqual(response.get('transactions')
                          [0].get('status'), 'success')

@@ -18,6 +18,7 @@ class Test015GetWalletsTest(unittest.TestCase):
 
         response = silasdk.Wallet.getWallets(app, payload, eth_private_key)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
     def test_get_wallets_400(self):
         payload = {

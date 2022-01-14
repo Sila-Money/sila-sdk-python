@@ -24,6 +24,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["email"]["added_epoch"])
         self.assertIsNotNone(response["email"]["modified_epoch"])
         self.assertIsNotNone(response["email"]["uuid"])
+        self.assertIsNotNone(response["reference"])
 
         phone = "3189250987"
         payload = {
@@ -44,6 +45,8 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["phone"]["uuid"])
         self.assertTrue(response.get('phone').get(
             'sms_confirmation_requested'))
+        self.assertIsNotNone(response["reference"])
+
 
         payload = {
             "user_handle": business_handle
@@ -60,6 +63,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
             app, RegistrationFields.IDENTITY, payload, eth_private_key_3)
 
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
         identity_alias = "EIN"
         identity_value = "543212222"
@@ -79,6 +83,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["identity"]["added_epoch"])
         self.assertIsNotNone(response["identity"]["modified_epoch"])
         self.assertIsNotNone(response["identity"]["uuid"])
+        self.assertIsNotNone(response["reference"])
 
         address_alias = "added address"
         street_address_1 = "324 songbird avenue"
@@ -115,6 +120,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["address"]["added_epoch"])
         self.assertIsNotNone(response["address"]["modified_epoch"])
         self.assertIsNotNone(response["address"]["uuid"])
+        self.assertIsNotNone(response["reference"])
 
         payload = {
             'user_handle': user_handle,
@@ -130,6 +136,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
                          r'\bsuccessfully registered for handle\b')
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response["reference"])
 
     def test_add_registration_data_400(self):
         payload = {
@@ -180,6 +187,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertEqual(response["email"]["uuid"], email_uuid)
         self.assertIsNotNone(response["email"]["added_epoch"])
         self.assertIsNotNone(response["email"]["modified_epoch"])
+        self.assertIsNotNone(response["reference"])
 
         phone = "3189250988"
         payload = {
@@ -198,6 +206,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertEqual(response["phone"]["phone"], phone)
         self.assertIsNotNone(response["phone"]["added_epoch"])
         self.assertIsNotNone(response["phone"]["modified_epoch"])
+        self.assertIsNotNone(response["reference"])
 
         identity_alias = "SSN"
         identity_value = "543212223"
@@ -218,6 +227,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["identity"]["added_epoch"])
         self.assertIsNotNone(response["identity"]["modified_epoch"])
         self.assertIsNotNone(response["identity"]["uuid"])
+        self.assertIsNotNone(response["reference"])
 
         address_alias = "added address"
         street_address_1 = "324 Songbird Avenue"
@@ -254,6 +264,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertEqual(response["address"]["country"], country)
         self.assertIsNotNone(response["address"]["added_epoch"])
         self.assertIsNotNone(response["address"]["modified_epoch"])
+        self.assertIsNotNone(response["reference"])
 
         first_name = "NewFirst"
         last_name = "NewLast"
@@ -281,6 +292,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertEqual(response["entity"]["first_name"], first_name)
         self.assertEqual(response["entity"]["last_name"], last_name)
         self.assertIsNotNone(response["entity"]["created_epoch"])
+        self.assertIsNotNone(response["reference"])
 
         entity_name = "NewCompany"
         birthdate = "1994-01-01"
@@ -319,6 +331,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["entity"]["business_uuid"])
         self.assertIsNotNone(response["entity"]["naics_category"])
         self.assertIsNotNone(response["entity"]["naics_subcategory"])
+        self.assertIsNotNone(response["reference"])
 
     def test_update_registration_data_400(self):
         payload = {
@@ -362,6 +375,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
         self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response["reference"])
 
         payload = {
             "user_handle": user_handle,
@@ -373,6 +387,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
         self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response["reference"])
 
         payload = {
             "user_handle": user_handle,
@@ -384,6 +399,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
         self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response["reference"])
 
     def test_delete_registration_data_400(self):
         payload = {

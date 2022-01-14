@@ -10,6 +10,7 @@ class Test001GetBusinessTypesTest(unittest.TestCase):
         self.assertIsNotNone(response["business_types"][0]["uuid"])
         self.assertIsNotNone(response["business_types"][0]["name"])
         self.assertIsNotNone(response["business_types"][0]["label"])
+        self.assertIsNotNone(response["reference"])
 
 
 if __name__ == "__main__":

@@ -82,7 +82,41 @@ class Test009IssueSilaTest(unittest.TestCase):
             "card_name": "visa"
         }
         response = Transaction.issue_sila(app, payload, eth_private_key)
-        self.assertFalse(response["success"])         
+        self.assertFalse(response["success"])   
+
+    def test_issue_sila_instant_ach_403_max_amount(self):
+        descriptor = "test descriptor"
+        payload = {
+            "user_handle": instant_ach_handle,
+            "amount": 5001,
+            "account_name": "default_plaid",
+            "descriptor": descriptor,
+            "business_uuid": business_uuid,
+            "processing_type": ProcessingTypes.INSTANT_ACH
+        }
+
+        with self.assertWarns(DeprecationWarning):
+            response = Transaction.issueSila(app, payload, eth_private_key_4)
+
+            self.assertEqual(response["status"], "FAILURE")
+            self.assertEqual(response["error_code"], "INSTANT_ACH_MAX_AMOUNT")
+
+    def test_issue_sila_403_no_match_score(self):
+        descriptor = "test descriptor"
+        payload = {
+            "user_handle": instant_ach_handle,
+            "amount": 37,
+            "account_name": "default_plaid",
+            "descriptor": descriptor,
+            "business_uuid": business_uuid,
+            "processing_type": ProcessingTypes.INSTANT_ACH
+        }
+
+        with self.assertWarns(DeprecationWarning):
+            response = Transaction.issueSila(app, payload, eth_private_key_4)
+
+            self.assertEqual(response["status"], "FAILURE")
+            self.assertEqual(response["error_code"], "INSTANT_ACH_NO_MATCH_SCORE")      
 
 if __name__ == '__main__':
     unittest.main()

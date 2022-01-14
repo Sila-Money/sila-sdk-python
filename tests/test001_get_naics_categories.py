@@ -9,6 +9,7 @@ class Test001GetNaicsCategoriesTest(unittest.TestCase):
         self.assertIsNotNone(response["naics_categories"])
         self.assertEqual(response["naics_categories"]["Accommodation and Food Services"][0]["code"], 721)
         self.assertEqual(response["naics_categories"]["Accommodation and Food Services"][0]["subcategory"], "Accommodation")
+        self.assertIsNotNone(response["reference"])
 
 
 if __name__ == "__main__":

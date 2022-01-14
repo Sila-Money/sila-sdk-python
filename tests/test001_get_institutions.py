@@ -9,6 +9,7 @@ class Test001GetInstitutionsTest(unittest.TestCase):
         }
         response = silasdk.User.get_institutions(app, payload)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
 
 if __name__ == "__main__":

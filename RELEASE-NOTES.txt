@@ -1,3 +1,9 @@
+v0.2.36
+Enhancements:
+    - Added support of processing_type=CARD for /redeem_sila.
+    - Returning reference for every endpoint responce.
+    - Provide support for Instant ACH to return error_code in response when getting 403.
+
 v0.2.30
 New endpoints:
     - Added support for /link_card.

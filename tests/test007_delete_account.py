@@ -16,6 +16,7 @@ class Test007DeleteAccountTest(unittest.TestCase):
             app, payload, eth_private_key)
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["account_name"], "unlink")
+        self.assertIsNotNone(response["reference"])
 
 if __name__ == '__main__':
     unittest.main()

@@ -15,6 +15,7 @@ class Test003LinkBusinessMemberTest(unittest.TestCase):
         response = BusinessOperations.linkBusinessMember(
             app, payload, eth_private_key, eth_private_key_3)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
     def test_link_business_member_controlling_officer_200(self):
         payload = {
@@ -26,6 +27,7 @@ class Test003LinkBusinessMemberTest(unittest.TestCase):
         response = BusinessOperations.linkBusinessMember(
             app, payload, eth_private_key, eth_private_key_3)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
     def test_link_business_member_administrator_2_200(self):
         payload = {
@@ -37,6 +39,7 @@ class Test003LinkBusinessMemberTest(unittest.TestCase):
         response = BusinessOperations.linkBusinessMember(
             app, payload, eth_private_key_2, eth_private_key_3)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
     def test_link_business_member_beneficial_owner_200(self):
         payload = {
@@ -49,6 +52,7 @@ class Test003LinkBusinessMemberTest(unittest.TestCase):
         response = BusinessOperations.linkBusinessMember(
             app, payload, eth_private_key_2, eth_private_key_3)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
 
 if __name__ == "__main__":
