@@ -11,6 +11,7 @@ class Test007GetCardsTest(unittest.TestCase):
 
         response = User.get_cards(app, payload, eth_private_key)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
     
     def test_002_get_cards_400(self):
         payload = {

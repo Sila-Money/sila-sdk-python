@@ -10,7 +10,6 @@ class Test006PlaidUpdateLinkTokenTest(unittest.TestCase):
             'account_name': 'default_plaid'
         }
         response = User.plaid_update_link_token(app, payload)
-        
         self.assertIsNotNone(response['status'])
         self.assertIsNotNone(response['message'])
 

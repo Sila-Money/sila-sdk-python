@@ -97,7 +97,6 @@ def run_unit_tests():
             Test009IssueSilaTest,
             Test010TrasferSilaTest,
             Test011CancelTransactionTest,
-            Test011RedeemSilaTest,
             Test012GetTransactionsTest,
             Test013PlaidSameDayAuthTest,
             Test013ReverseTransactionsTest,

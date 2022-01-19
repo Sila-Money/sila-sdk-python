@@ -13,6 +13,7 @@ class Test005GetEntityTest(unittest.TestCase):
         with self.assertWarns(DeprecationWarning):
             response = User.getEntity(app, payload, eth_private_key)
             self.assertTrue(response["success"])
+            self.assertIsNotNone(response["reference"])
 
     def test_get_entity_200(self):
         payload = {
@@ -22,6 +23,7 @@ class Test005GetEntityTest(unittest.TestCase):
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["entity"])
         self.assertFalse("created" in response["entity"])
+        self.assertIsNotNone(response["reference"])
 
     def test_get_entity_200_with_pretty_dates(self):
         payload = {
@@ -31,6 +33,7 @@ class Test005GetEntityTest(unittest.TestCase):
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["entity"])
         self.assertTrue("created" in response["entity"])
+        self.assertIsNotNone(response["reference"])
 
     def test_get_entity_401_with_empty_eth_private_key(self):
         payload = {

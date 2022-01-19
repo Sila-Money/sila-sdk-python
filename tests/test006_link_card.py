@@ -22,6 +22,7 @@ class Test006LinkCardTest(unittest.TestCase):
 
         response = User.link_card(app, payload, eth_private_key)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
 
 if __name__ == "__main__":

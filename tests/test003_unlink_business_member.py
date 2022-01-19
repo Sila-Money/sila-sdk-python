@@ -11,6 +11,7 @@ class Test003UnlinkBusinessMemberTest(unittest.TestCase):
         }
         response = silasdk.BusinessOperations.unlinkBusinessMember(app, payload, eth_private_key_2, eth_private_key_3)
         self.assertTrue(response["success"])
+        self.assertIsNotNone(response["reference"])
 
 
 if __name__ == "__main__":

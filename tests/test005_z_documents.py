@@ -15,6 +15,7 @@ class Test005ZDocuments(unittest.TestCase):
         self.assertEqual(response["status"], "SUCCESS")
         self.assertIsNotNone(response["message"])
         self.assertIsNotNone(response["document_types"])
+        self.assertIsNotNone(response["reference"])
 
     def test_upload_document_200(self):
         f = open(os.path.dirname(os.path.realpath(__file__)) +
@@ -67,6 +68,7 @@ class Test005ZDocuments(unittest.TestCase):
         self.assertEqual(response["status"], "SUCCESS")
         self.assertIsNotNone(response["documents"])
         self.assertIsNotNone(response["pagination"])
+        self.assertIsNotNone(response["reference"])
 
 
 if __name__ == "__main__":

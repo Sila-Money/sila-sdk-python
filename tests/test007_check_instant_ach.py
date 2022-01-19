@@ -17,6 +17,7 @@ class Test007CheckInstantAchTest(unittest.TestCase):
         
         self.assertIsNotNone(response["status"])
         self.assertIsNotNone(response["message"])
-        
+        self.assertIsNotNone(response["reference"])
+
 if __name__ == '__main__':
     unittest.main()

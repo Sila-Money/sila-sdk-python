@@ -11,6 +11,7 @@ class Test002GetEntitiesTest(unittest.TestCase):
         response = silasdk.User.getEntities(app, payload)
         self.assertTrue(response["success"])
         self.assertFalse(response["entities"]["individuals"])
+        self.assertIsNotNone(response["reference"])
 
     def test_get_entities_individuals_200(self):
         payload = {
@@ -20,6 +21,7 @@ class Test002GetEntitiesTest(unittest.TestCase):
         response = silasdk.User.getEntities(app, payload)
         self.assertTrue(response["success"])
         self.assertFalse(response["entities"]["businesses"])
+        self.assertIsNotNone(response["reference"])
 
     def test_get_entities_pagination_200(self):
         payload = {}
@@ -28,6 +30,7 @@ class Test002GetEntitiesTest(unittest.TestCase):
         self.assertTrue(response["success"])
         self.assertEqual(response["pagination"]["returned_count"], 3)
         self.assertEqual(response["pagination"]["current_page"], 1)
+        self.assertIsNotNone(response["reference"])
 
 
 if __name__ == "__main__":
