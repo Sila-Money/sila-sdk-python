@@ -130,6 +130,81 @@ class User():
             self, path, msg_type, payload, user_private_key)
         return response
 
+    def openVirtualAccount(self, payload, user_private_key):
+        """get the accounts of users registered with sila
+            The user will be checked if they have been kyced, along with app
+        Args:
+            user_hanlde: users handle registered with app
+            user_private_key: user private key asscoicated with crypto address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["openVirtualAccount"]
+        msg_type = "open_virtual_acc"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+        
+    def getVirtualAccount(self, payload, user_private_key):
+        """get the accounts of users registered with sila
+            The user will be checked if they have been kyced, along with app
+        Args:
+            user_hanlde: users handle registered with app
+            user_private_key: user private key asscoicated with crypto address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["getVirtualAccount"]
+        msg_type = "get_virtual_acc"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
+    def getVirtualAccounts(self, payload, user_private_key):
+        """get the accounts of users registered with sila
+            The user will be checked if they have been kyced, along with app
+        Args:
+            user_hanlde: users handle registered with app
+            user_private_key: user private key asscoicated with crypto address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["getVirtualAccounts"]
+        msg_type = "get_virtual_accounts_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
+    def updateVirtualAccount(self, payload, user_private_key):
+        """get the accounts of users registered with sila
+            The user will be checked if they have been kyced, along with app
+        Args:
+            user_hanlde: users handle registered with app
+            user_private_key: user private key asscoicated with crypto address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["updateVirtualAccount"]
+        msg_type = "update_virtual_account_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
+    def getPaymentMethods(self, payload, user_private_key):
+        """get the accounts of users registered with sila
+            The user will be checked if they have been kyced, along with app
+        Args:
+            user_hanlde: users handle registered with app
+            user_private_key: user private key asscoicated with crypto address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["getPaymentMethods"]
+        msg_type = "get_payment_methods"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
     @staticmethod
     def getTransactions(app: App, payload: dict, user_private_key: str) -> dict:
         """get the users transactions registered with ur app

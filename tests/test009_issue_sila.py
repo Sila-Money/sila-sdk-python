@@ -1,5 +1,5 @@
 import unittest
-
+from silasdk.users import User
 from silasdk.processingTypes import ProcessingTypes
 from silasdk.transactions import Transaction
 from tests.poll_until_status import poll
@@ -117,6 +117,42 @@ class Test009IssueSilaTest(unittest.TestCase):
 
             self.assertEqual(response["status"], "FAILURE")
             self.assertEqual(response["error_code"], "INSTANT_ACH_NO_MATCH_SCORE")      
+
+    def test_issue_sila_vaccount_200(self):
+        payload = {
+            "virtual_account_name": "test_v_acc",
+            "user_handle": user_handle
+        }
+        response = User.openVirtualAccount(app, payload, eth_private_key)
+        self.assertTrue(response["success"])
+        v_id = response.get("virtual_account").get("virtual_account_id")
+
+        payload = {
+            "user_handle": user_handle
+        }
+        response = User.getPaymentMethods(app, payload, eth_private_key)
+        self.assertTrue(response["success"])
+        for item in response.get("payment_methods"):
+            if item["payment_method_type"] == "card":
+                card_id = item.get("card_id")
+
+        descriptor = "test descriptor"
+        payload = {
+            "message": "issue_msg",
+            "user_handle": user_handle,
+            "amount": 200,
+            "source_id": card_id,
+            "descriptor": descriptor,
+            "business_uuid": business_uuid,
+            "processing_type": ProcessingTypes.STANDARD_ACH,
+            "destination_id": v_id,
+        }
+
+        response = Transaction.issue_sila(app, payload, eth_private_key)
+
+        self.assertEqual(response.get("success"), True)
+        self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response["transaction_id"])
 
 if __name__ == '__main__':
     unittest.main()

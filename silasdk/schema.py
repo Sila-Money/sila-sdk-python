@@ -68,7 +68,9 @@ Schema = [
         "destination_wallet": None,
         "destination_address": None,
         "business_uuid": None,
-        "descriptor": None
+        "descriptor": None,
+        "source_id": None,
+        "destination_id": None,
     }},
     {"issue_msg": {
         "header": {
@@ -85,7 +87,9 @@ Schema = [
         "card_name": None,
         "business_uuid": None,
         "descriptor": None,
-        "processing_type": None
+        "processing_type": None,
+        "source_id": None,
+        "destination_id": None,
     }},
     {"redeem_msg": {
         "header": {
@@ -102,7 +106,9 @@ Schema = [
         "card_name": None,
         "business_uuid": None,
         "descriptor": None,
-        "processing_type": None
+        "processing_type": None,
+        "source_id": None,
+        "destination_id": None,
     }},
     {"no_content_msg": {
         "header": {
@@ -608,6 +614,74 @@ Schema = [
                 "end_epoch": None,
                 "page": None,
                 "per_page": None
+            }
+        }
+    },
+    {
+        "open_virtual_acc": {
+            "header": {
+                "created": None, 
+                "auth_handle": None, 
+                "app_handle": None,
+                "user_handle": None, 
+                "version": "0.2", 
+                "crypto": "ETH", 
+                "reference": None
+            },
+            "virtual_account_name": None
+        }
+    },
+    {
+        "get_virtual_acc": {
+            "header": {
+                "created": None, 
+                "auth_handle": None, 
+                "user_handle": None,
+                "app_handle": None,
+                "version": "0.2", 
+                "crypto": "ETH", 
+                "reference": None
+            },
+            "virtual_account_id": None
+        }
+    },
+    {
+        "get_virtual_accounts_msg": {
+            "header": {
+                "created": None, 
+                "auth_handle": None, 
+                "user_handle": None,
+                "app_handle": None,
+                "version": "0.2", 
+                "crypto": "ETH", 
+                "reference": None
+            }
+        }
+    },
+    {
+        "update_virtual_account_msg": {
+            "header": {
+                "created": None, 
+                "auth_handle": None, 
+                "user_handle": None, 
+                "app_handle": None,
+                "version": "0.2", 
+                "crypto": "ETH", 
+                "reference": None
+            },
+            "virtual_account_id": None,
+            "virtual_account_name": None,
+            "active": None
+        }
+    },
+    {
+        "get_payment_methods":{
+            "header": {
+                "created": None,
+                "auth_handle": None,
+                "user_handle": None,
+                "app_handle": None,
+                "reference": None,
             }
         }
     }

@@ -46,4 +46,9 @@ endPoints = {
     "delete_account": "/delete_account",
     "plaid_update_link_token": "/plaid_update_link_token",
     "reverseTransaction": "/reverse_transaction",
+    "openVirtualAccount": "/open_virtual_account",
+    "getVirtualAccount": "/get_virtual_account",
+    "getVirtualAccounts": "/get_virtual_accounts",
+    "updateVirtualAccount": "/update_virtual_account",
+    "getPaymentMethods":"/get_payment_methods",
 }
