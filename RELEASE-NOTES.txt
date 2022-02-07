@@ -1,3 +1,16 @@
+v0.2.37
+New endpoints:
+    - Added support for /open_virtual_account.
+    - Added support for /get_virtual_account.
+    - Added support for /get_virtual_accounts.
+    - Added support for /update_virtual_account.
+    - Added support for /get_payment_methods.
+Enhancements:
+    - Added source_id and destination_id as new optional input in /issue_sila.
+    - Added source_id and destination_id as new optional input in /redeem_sila.
+    - Added source_id and destination_id as new optional input in /transfer_sila.
+    - Added source_id and destination_id as new optional input in search filters in /get_transactions.
+
 v0.2.36
 Enhancements:
     - Added support of processing_type=CARD for /redeem_sila.

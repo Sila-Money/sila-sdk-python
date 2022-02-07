@@ -7,19 +7,47 @@ from tests.test_config import (app, user_handle)
 class Test012GetTransactionsTest(unittest.TestCase):
 
     def test_get_transactions_200(self):
+        lai = False
+        di = False
+        si = False
+        dslt = False
+        dlai = False
+
         payload = {
             "user_handle": user_handle,
             "search_filters": {
                 'page': 1,
-                'per_page': 1,
+                'per_page': 13,
                 'show_timelines': True
             }
         }
         response = User.get_transactions(app, payload)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["reference"])
-        self.assertEqual(len(response["transactions"]), 1)
+        self.assertEqual(len(response["transactions"]), 13)
         self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
+        self.assertIsNotNone(response.get('transactions')[0].get('sila_ledger_type'))
+        for item in response.get("transactions"):
+            if item.get("ledger_account_id") and not lai:
+                self.assertIsNotNone(item["ledger_account_id"])
+                lai = True
+            if item.get("destination_id") and not di:
+                self.assertIsNotNone(item["destination_id"])
+                di = True
+            if item.get("source_id") and not si:
+                self.assertIsNotNone(item["source_id"])
+                si = True
+            if item.get("destination_sila_ledger_type") and not dslt:
+                self.assertIsNotNone(item["destination_sila_ledger_type"])
+                dslt = True
+            if item.get("destination_ledger_account_id") and not dlai:
+                self.assertIsNotNone(item["destination_ledger_account_id"])
+                dlai = True
+        self.assertTrue(lai)
+        self.assertTrue(di)
+        self.assertTrue(si)
+        self.assertTrue(dslt)
+        self.assertTrue(dlai)
 
     def test_get_transactions_200_with_error_code(self):
         payload = {

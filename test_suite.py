@@ -10,6 +10,7 @@ from tests.test001_get_naics_categories import Test001GetNaicsCategoriesTest
 from tests.test001_get_institutions import Test001GetInstitutionsTest
 from tests.test002_get_entities import Test002GetEntitiesTest
 from tests.test002_register import Test002RegisterTest
+from tests.test005_virtual_account import Test005Virtual_account
 from tests.test003_0_register_registration_data import Test003RegistrationDataTests
 from tests.test003_check_handle_failure import Test003CheckHandleFailTest
 from tests.test003_link_business_member import Test003LinkBusinessMemberTest
@@ -79,6 +80,7 @@ def run_unit_tests():
             Test004RequestKycTest,
             Test005GetEntityTest,
             Test005CheckKycTest,
+            Test005Virtual_account,
             Test005CheckPartnerKycTest,
             Test005ZDocuments,
             Test006CertifyBeneficialOwnerTest,
@@ -96,6 +98,7 @@ def run_unit_tests():
             Test008DeleteCardTest,
             Test009IssueSilaTest,
             Test010TrasferSilaTest,
+            Test011RedeemSilaTest,
             Test011CancelTransactionTest,
             Test012GetTransactionsTest,
             Test013PlaidSameDayAuthTest,
