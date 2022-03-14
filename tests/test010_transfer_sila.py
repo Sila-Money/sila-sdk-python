@@ -3,7 +3,7 @@ from silasdk.transactions import Transaction
 from silasdk.users import User
 from tests.poll_until_status import poll
 from silasdk.processingTypes import ProcessingTypes
-from tests.test_config import (
+from tests.test_config import ( sardine_handle, eth_private_key_6,
     app, business_uuid, eth_private_key, user_handle, user_handle_2)
 
 
@@ -117,16 +117,6 @@ def test_transfer_sila_v2block_chain_200(self):
         self.assertTrue(response["success"])
         source_v_id = response.get("virtual_account").get("virtual_account_id")
 
-        # payload = {
-        #     "virtual_account_name": "destination_v_acc",
-        #     "user_handle": user_handle
-        # }
-
-        # response = User.openVirtualAccount(app, payload, eth_private_key)
-        # self.assertTrue(response["success"])
-        # destination_v_id = response.get(
-        #     "virtual_account").get("virtual_account_id")
-
         payload = {
             "user_handle": user_handle
         }
@@ -172,5 +162,21 @@ def test_transfer_sila_v2block_chain_200(self):
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
+    
+
+def test_transfer_sila_instant_settelment_200(self):
+    payload = {
+        "user_handle": sardine_handle,
+        "destination": user_handle_2,
+        "amount": 100,
+        "descriptor": "test descriptor",
+        "business_uuid": business_uuid
+    }
+
+    response = Transaction.transferSila(
+        app, payload, eth_private_key_6)
+    print(response)
+    self.assertEqual(response["status"], "SUCCESS")
+
 if __name__ == '__main__':
     unittest.main()

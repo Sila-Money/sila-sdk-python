@@ -1,7 +1,7 @@
 import unittest
 import silasdk
 
-from tests.test_config import (
+from tests.test_config import ( sardine_handle, eth_private_key_6,
     app, eth_private_key, eth_private_key_4, instant_ach_handle, user_handle)
 
 
@@ -56,6 +56,17 @@ class Test006LinkAccountTest(unittest.TestCase):
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key_4, True)
         
+        self.assertEqual(response["status"], "SUCCESS")
+
+    def test_link_account_sardine(self):
+        payload = {
+            "user_handle": sardine_handle,
+            "account_name": "default_plaid",
+            "plaid_token": "sandbox"
+        }
+
+        response = silasdk.User.linkAccount(
+            app, payload, eth_private_key_6, True)
         self.assertEqual(response["status"], "SUCCESS")
 
     def test_link_account_plaid_200(self):

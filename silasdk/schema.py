@@ -250,7 +250,8 @@ Schema = [
             "naics_code": None
         },
         "device": {
-            "device_fingerprint": None
+            "device_fingerprint": None,
+            "session_identifier": None
         }
     }},
     {"link_business_member_msg": {
@@ -326,7 +327,8 @@ Schema = [
             "page": '',
             "per_page": '',
             "transaction_types": [],
-            "bank_account_name":None
+            "bank_account_name":None,
+            "processing_type": None,
         }
     }},
     {'cancel_transaction_msg': {
@@ -359,7 +361,8 @@ Schema = [
         "postal_code": None,
         "country": None,
         "sms_opt_in": None,
-        "device_fingerprint": None
+        "device_fingerprint": None,
+        "session_identifier": None
     }},
     {"update_registration_data_msg": {
         "header": {
@@ -521,7 +524,8 @@ Schema = [
                 "crypto": "ETH",
                 "reference": None
             },
-            "account_name": None
+            "account_name": None,
+            "kyc_level": None
         }
     },
     {
@@ -615,6 +619,20 @@ Schema = [
                 "page": None,
                 "per_page": None
             }
+        }
+    },
+    {
+        "retry_webhook": {
+            "header": {
+                "created": None,
+                "app_handle": None,
+                "user_handle": None,
+                "reference": None,
+                "version": "0.2",
+                "crypto": "ETH"
+            },
+            "message": "header_msg",
+            "event_uuid": None,
         }
     },
     {

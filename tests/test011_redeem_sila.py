@@ -3,7 +3,7 @@ from silasdk.processingTypes import ProcessingTypes
 from silasdk.transactions import Transaction
 from silasdk.users import User
 from tests.poll_until_status import poll
-from tests.test_config import (
+from tests.test_config import (sardine_handle, eth_private_key_6,
     app, business_uuid, eth_private_key, user_handle)
 
 
@@ -137,6 +137,19 @@ class Test011RedeemSilaTest(unittest.TestCase):
             "source_id": v_id,
         }
         response = Transaction.redeemSila(app, payload, eth_private_key)
+        self.assertEqual(response["status"], "SUCCESS")
+        
+    def test_redeem_sila_instant_settelment_200(self):
+        payload = {
+            "user_handle": sardine_handle,
+            "amount": 50,
+            "account_name": "default_plaid",
+            "descriptor": "test descriptor",
+            "business_uuid": business_uuid,
+        }
+
+        response = Transaction.redeemSila(
+            app, payload, eth_private_key_6)
         self.assertEqual(response["status"], "SUCCESS")
 
 if __name__ == '__main__':
