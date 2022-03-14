@@ -1,3 +1,14 @@
+v0.2.39
+New endpoints:
+    - Added support for /retry_webhook endpoint.
+Enhancements:
+    - Added session_identifier new optional input field for Device object in /register.
+    - Added session_identifier new optional input field for ./add register-data for add device.
+    - Added kyc_level new optional input field in /check_kyc.
+    - Added kyc_level new optional input field in /check_instant_ach.
+    - Added new processing type "INSTANT_SETTLEMENT" in processing_type object in /issue_sila.
+    - Added processing_type object new optional input fields in search_filters and child_transactions array to the Transaction response in /get_transactions.   
+
 v0.2.37
 New endpoints:
     - Added support for /open_virtual_account.

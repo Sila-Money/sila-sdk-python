@@ -3,7 +3,7 @@ from silasdk.users import User
 from silasdk.processingTypes import ProcessingTypes
 from silasdk.transactions import Transaction
 from tests.poll_until_status import poll
-from tests.test_config import (
+from tests.test_config import (sardine_handle, eth_private_key_6,
     app, business_uuid, instant_ach_handle, user_handle, eth_private_key, eth_private_key_4)
 
 
@@ -153,6 +153,20 @@ class Test009IssueSilaTest(unittest.TestCase):
         self.assertEqual(response.get("success"), True)
         self.assertEqual(response["status"], "SUCCESS")
         self.assertIsNotNone(response["transaction_id"])
+
+    def test_issue_sila_instant_settelment_200(self):
+        descriptor = "test descriptor"
+        payload = {
+            "user_handle": sardine_handle,
+            "amount": 200,
+            "account_name": "default_plaid",
+            "descriptor": descriptor,
+            "business_uuid": business_uuid,
+            "processing_type": ProcessingTypes.INSTANT_SETTLEMENT
+        }
+        response = Transaction.issueSila(app, payload, eth_private_key_6)
+        self.assertEqual(response.get("success"), True)
+        self.assertEqual(response["status"], "SUCCESS")
 
 if __name__ == '__main__':
     unittest.main()

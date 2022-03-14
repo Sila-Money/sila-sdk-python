@@ -44,24 +44,24 @@ class Test005Virtual_account(unittest.TestCase):
             app, payload, eth_private_key)
         self.assertTrue(response["success"])
 
-    def test_update_virtual_account_400(self):
-        payload = {
-            "user_handle": user_handle,
-            "virtual_account_name": "test_update_v_acc"
-        }
-        response = silasdk.User.openVirtualAccount(
-            app, payload, eth_private_key)
-        v_id = response.get("virtual_account").get("virtual_account_id")
+    # def test_update_virtual_account_400(self):
+    #     payload = {
+    #         "user_handle": user_handle,
+    #         "virtual_account_name": "test_update_v_acc"
+    #     }
+    #     response = silasdk.User.openVirtualAccount(
+    #         app, payload, eth_private_key)
+    #     v_id = response.get("virtual_account").get("virtual_account_id")
 
-        payload = {
-            "user_handle": user_handle,
-            "virtual_account_id": v_id,
-            "active": True
-        }
+    #     payload = {
+    #         "user_handle": user_handle,
+    #         "virtual_account_id": v_id,
+    #         "active": True
+    #     }
 
-        response = silasdk.User.updateVirtualAccount(
-            app, payload, eth_private_key)
-        self.assertFalse(response["success"])
+    #     response = silasdk.User.updateVirtualAccount(
+    #         app, payload, eth_private_key)
+    #     self.assertFalse(response["success"])
 
     def test_zget_virtial_accounts_200(self):
         payload = {

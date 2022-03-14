@@ -3,7 +3,7 @@ import unittest
 from silasdk.registrationFields import RegistrationFields
 from silasdk.users import User
 from tests.test_config import (
-    app, business_handle, eth_private_key, user_handle, eth_private_key_3)
+    app, business_handle, eth_private_key, user_handle, eth_private_key_3, sardine_handle, eth_private_key_6)
 
 
 class Test003RegistrationDataTests(unittest.TestCase):
@@ -422,6 +422,19 @@ class Test003RegistrationDataTests(unittest.TestCase):
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
+
+    def test_add_registration_data_session_identifier_200(self):
+        session_identifier = "c096f601-f927-44bc-9215-7fc7fa97c6d7"
+        payload = {
+            "user_handle": user_handle,
+            "session_identifier": session_identifier,
+            "device_fingerprint": "test_sardine_integration"
+        }
+
+        response = User.add_registration_data(
+            app, RegistrationFields.DEVICE, payload, eth_private_key)
+
+        self.assertTrue(response["success"])
 
 if __name__ == "__main__":
     unittest.main()

@@ -21,7 +21,7 @@ class Test013ReverseTransactionsTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle, 
             'search_filters': {
-                'bank_account_name': 'visa'
+                'processing_type': ProcessingTypes.CARD
             }               
         }
         response1 = User.get_transactions(app, payload, eth_private_key) 

@@ -462,3 +462,11 @@ class User():
         response = message.postRequest(
             app, path, msg_type, payload, user_private_key)
         return response
+
+    @staticmethod
+    def retry_webhook(app: App, payload: dict, user_private_key: str) -> dict:
+        path = '/retry_webhook'
+        msg_type = "retry_webhook"
+        response = message.postRequest(
+            app, path, msg_type, payload, user_private_key)
+        return response
