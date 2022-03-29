@@ -131,10 +131,10 @@ class User():
         return response
 
     def openVirtualAccount(self, payload, user_private_key):
-        """get the accounts of users registered with sila
-            The user will be checked if they have been kyced, along with app
+        """open virtual account for a user
         Args:
             user_hanlde: users handle registered with app
+            payload : includes virtual_account_name, ach_credit_enabled, ach_debit_enabled
             user_private_key: user private key asscoicated with crypto address
         Returns:
             dict: response body (a confirmation message)
@@ -146,10 +146,10 @@ class User():
         return response
         
     def getVirtualAccount(self, payload, user_private_key):
-        """get the accounts of users registered with sila
-            The user will be checked if they have been kyced, along with app
+        """get the virtual account of users registered with sila
         Args:
             user_hanlde: users handle registered with app
+            payload: virtual_account_id
             user_private_key: user private key asscoicated with crypto address
         Returns:
             dict: response body (a confirmation message)
@@ -161,8 +161,7 @@ class User():
         return response
 
     def getVirtualAccounts(self, payload, user_private_key):
-        """get the accounts of users registered with sila
-            The user will be checked if they have been kyced, along with app
+        """get virtual accounts of users registered with sila
         Args:
             user_hanlde: users handle registered with app
             user_private_key: user private key asscoicated with crypto address
@@ -176,10 +175,10 @@ class User():
         return response
 
     def updateVirtualAccount(self, payload, user_private_key):
-        """get the accounts of users registered with sila
-            The user will be checked if they have been kyced, along with app
+        """update virtual account of users registered with sila
         Args:
             user_hanlde: users handle registered with app
+            payload: virtual_account_id, virtual_account_name, active, ach_debit_enabled, ach_credit_enabled
             user_private_key: user private key asscoicated with crypto address
         Returns:
             dict: response body (a confirmation message)
@@ -190,8 +189,38 @@ class User():
             self, path, msg_type, payload, user_private_key)
         return response
 
+    def closeVirtualAccount(self, payload, user_private_key):
+        """close virtual account of users registered with sila
+        Args:
+            user_hanlde: users handle registered with app
+            payload: virtual_account_id, account_number
+            user_private_key: user private key asscoicated with crypto address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["closeVirtualAccount"]
+        msg_type = "close_virtual_account_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
+    def testVirtualAaccountAchTransaction(self, payload, user_private_key):
+        """test transaction for virtual account(works only with sandbox)
+        Args:
+            user_hanlde: users handle registered with app
+            payload: amount, virtual_account_number, effective_date, tran_code, entity_name, ced, ach_name
+            user_private_key: user private key asscoicated with crypto address
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["testVirtualAaccountAchTransaction"]
+        msg_type = "create_test_virtual_account_ach_transaction_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
     def getPaymentMethods(self, payload, user_private_key):
-        """get the accounts of users registered with sila
+        """get payment methods of users registered with sila
             The user will be checked if they have been kyced, along with app
         Args:
             user_hanlde: users handle registered with app

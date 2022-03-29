@@ -119,6 +119,7 @@ class Test009IssueSilaTest(unittest.TestCase):
             self.assertEqual(response["error_code"], "INSTANT_ACH_NO_MATCH_SCORE")      
 
     def test_issue_sila_vaccount_200(self):
+        card_id=None
         payload = {
             "virtual_account_name": "test_v_acc",
             "user_handle": user_handle

@@ -424,7 +424,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
 
     def test_add_registration_data_session_identifier_200(self):
-        session_identifier = "c096f601-f927-44bc-9215-7fc7fa97c6d7"
+        session_identifier = "ppppp-aaaa-dddd-99ce-c45944174e0c"
         payload = {
             "user_handle": user_handle,
             "session_identifier": session_identifier,
