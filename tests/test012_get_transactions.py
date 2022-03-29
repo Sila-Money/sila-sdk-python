@@ -89,6 +89,17 @@ class Test012GetTransactionsTest(unittest.TestCase):
         self.assertEqual(response.get('transactions')[
                          0].get('transaction_type'), 'issue')
 
+        payment_method_id = response.get("transactions")[0].get("transaction_id")
+        payload = {
+            'user_handle': user_handle,
+            'search_filters': {
+                'payment_method_id': payment_method_id
+            }
+        }
+        response = User.get_transactions(app, payload)
+
+        self.assertTrue(response.get('success'))
+
     def test_get_transactions_400(self):
         payload = {
             "user_handle": ""

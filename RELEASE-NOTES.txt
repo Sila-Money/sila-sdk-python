@@ -1,3 +1,19 @@
+
+v0.2.41
+New endpoints:
+    - Added support for /close_virtual_account endpoint.
+    - Added support for /create_test_virtual_account_ach_transaction endpoint.
+Enhancements:
+    - Added virtual accounts as a type/section and ach_credit_enabled and ach_debit_enabled boolean fields to the response in /get_payment_methods.
+    - Added payment_method_id new optional input field in search_filters in /get_transactions.
+    - Updated uuid to wallet_id input field in internal code in /get_wallets.
+    - Added response_time_ms to the response in API returns.
+    - Added ach_credit_enabled and ach_debit_enabled new optional inputs fields and corresponding response fields in /open_virtual_account.
+    - Added ach_credit_enabled and ach_debit_enabled new optional inputs fields and corresponding response fields in /update_virtual_account.
+    - Added ach_credit_enabled and ach_debit_enabled boolean fields to the response in /get_virtual_accounts.
+    - Added ach_credit_enabled and ach_debit_enabled boolean fields to the response in /get_virtual_account.
+    - Remove identity_type field from /documents request.
+
 v0.2.39
 New endpoints:
     - Added support for /retry_webhook endpoint.

@@ -164,7 +164,8 @@ Schema = [
             "sort_ascending": None,
             "blockchain_network": None,
             "blockchain_address": None,
-            "nickname": None
+            "nickname": None,
+            "wallet_id":None
         }
     }},
     {"get_accounts_msg": {
@@ -329,6 +330,7 @@ Schema = [
             "transaction_types": [],
             "bank_account_name":None,
             "processing_type": None,
+            "payment_method_id":None,
         }
     }},
     {'cancel_transaction_msg': {
@@ -417,7 +419,6 @@ Schema = [
         "hash": None,
         "mime_type": None,
         "document_type": None,
-        "identity_type": None,
         "description": None
     }},
     {"list_documents_msg": {
@@ -646,7 +647,9 @@ Schema = [
                 "crypto": "ETH", 
                 "reference": None
             },
-            "virtual_account_name": None
+            "virtual_account_name": None,
+            "ach_credit_enabled": None,
+            "ach_debit_enabled": None
         }
     },
     {
@@ -689,7 +692,9 @@ Schema = [
             },
             "virtual_account_id": None,
             "virtual_account_name": None,
-            "active": None
+            "active": None,
+            "ach_credit_enabled": None,
+            "ach_debit_enabled": None
         }
     },
     {
@@ -702,5 +707,40 @@ Schema = [
                 "reference": None,
             }
         }
-    }
+    },
+    {
+        "close_virtual_account_msg": {
+            "header": {
+                "created": None, 
+                "auth_handle": None, 
+                "user_handle": None, 
+                "app_handle": None,
+                "version": "0.2", 
+                "crypto": "ETH", 
+                "reference": None
+            },
+            "virtual_account_id": None,
+            "account_number": None,
+        }
+    },
+    {
+        "create_test_virtual_account_ach_transaction_msg": {
+            "header": {
+                "created": None, 
+                "auth_handle": None, 
+                "user_handle": None, 
+                "app_handle": None,
+                "version": "0.2", 
+                "crypto": "ETH", 
+                "reference": None
+            },
+            "amount": None,
+            "virtual_account_number": None,
+            "tran_code": None,
+            "effective_date": None,
+            "entity_name": None,
+            "ced": None,
+            "ach_name": None
+        }
+    },
 ]

@@ -110,7 +110,7 @@ class Test002RegisterTest(unittest.TestCase):
             "crypto_alias": "python_wallet_2",
             "birthdate": "1990-05-12",
             "device_fingerprint": "test_sardine",
-            "session_identifier":"c096f601-f927-44bc-9215-7fc7fa97c6d7"
+            "session_identifier":"ppppp-aaaa-dddd-99ce-c45944174e0c"
         }
 
         response = User.register(app, payload)

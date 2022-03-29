@@ -50,5 +50,7 @@ endPoints = {
     "getVirtualAccount": "/get_virtual_account",
     "getVirtualAccounts": "/get_virtual_accounts",
     "updateVirtualAccount": "/update_virtual_account",
-    "getPaymentMethods":"/get_payment_methods",
+    "getPaymentMethods": "/get_payment_methods",
+    "closeVirtualAccount": "/close_virtual_account",
+    "testVirtualAaccountAchTransaction": "/create_test_virtual_account_ach_transaction",
 }

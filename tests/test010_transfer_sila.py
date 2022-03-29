@@ -175,7 +175,6 @@ def test_transfer_sila_instant_settelment_200(self):
 
     response = Transaction.transferSila(
         app, payload, eth_private_key_6)
-    print(response)
     self.assertEqual(response["status"], "SUCCESS")
 
 if __name__ == '__main__':

@@ -47,6 +47,7 @@ from tests.test017_update_wallet import Test017UpdateWalletTest
 from tests.test018_delete_wallet import Test018DeleteWalletTest
 from tests.test019_sila_balance import Test019GetSilaBalanceTest
 from tests.test020_get_webhooks import Test020GetWebhooksTest
+from tests.test021_get_payment_methods import Test021GetPaymentMethods
 
 
 def create_suite(classes):
@@ -109,7 +110,8 @@ def run_unit_tests():
             Test017UpdateWalletTest,
             Test018DeleteWalletTest,
             Test019GetSilaBalanceTest,
-            Test020GetWebhooksTest
+            Test020GetWebhooksTest,
+            Test021GetPaymentMethods
         ]
         runner.run(create_suite(classes))
     cov.stop()
