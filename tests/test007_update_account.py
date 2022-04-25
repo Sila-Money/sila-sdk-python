@@ -18,6 +18,7 @@ class Test007UpdateAccountTest(unittest.TestCase):
 
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["account"]["account_name"], "accountupdated")
+        self.assertIsNotNone(response["account"]['web_debit_verified'])
 
     def test_freeze_account(self):
         """Verify user is able to freeze there bank account."""

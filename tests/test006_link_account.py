@@ -19,6 +19,7 @@ class Test006LinkAccountTest(unittest.TestCase):
             app, payload, eth_private_key, False)
         
         self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response['web_debit_verified'])
         
         payload = {
             "user_handle": user_handle,

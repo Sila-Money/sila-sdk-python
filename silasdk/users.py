@@ -249,7 +249,7 @@ class User():
         return User.get_transactions(app, payload, user_private_key)
 
     @staticmethod
-    def get_transactions(app: App, payload: dict, user_private_key: str = '') -> dict:
+    def get_transactions(app: App, payload: dict = {}, user_private_key: str = '') -> dict:
         if user_private_key != '':
             warnings.warn(
                 'user_private_key is no longer needed, this will be removed in future versions.', DeprecationWarning)
