@@ -27,6 +27,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         self.assertEqual(len(response["transactions"]), 13)
         self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
         self.assertIsNotNone(response.get('transactions')[0].get('sila_ledger_type'))
+        self.assertIsNotNone(response.get('transactions')[0].get('sec_code'))
         for item in response.get("transactions"):
             if item.get("ledger_account_id") and not lai:
                 self.assertIsNotNone(item["ledger_account_id"])
@@ -48,6 +49,10 @@ class Test012GetTransactionsTest(unittest.TestCase):
         self.assertTrue(si)
         self.assertTrue(dslt)
         self.assertTrue(dlai)
+
+    def test_get_transactions_without_user_handle_200(self):
+        response = User.get_transactions(app)
+        self.assertTrue(response["success"])
 
     def test_get_transactions_200_with_error_code(self):
         payload = {
