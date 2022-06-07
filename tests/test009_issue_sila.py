@@ -13,7 +13,7 @@ class Test009IssueSilaTest(unittest.TestCase):
         descriptor = "test descriptor"
         payload = {
             "user_handle": user_handle,
-            "amount": 200,
+            "amount": 50000,
             "account_name": "default_plaid",
             "descriptor": descriptor,
             "business_uuid": business_uuid,

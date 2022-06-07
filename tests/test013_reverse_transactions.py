@@ -19,11 +19,14 @@ class Test013ReverseTransactionsTest(unittest.TestCase):
         self.assertEqual(response.get("success"), True)    
 
         payload = {
-            "user_handle": user_handle, 
-            'search_filters': {
-                'processing_type': ProcessingTypes.CARD
-            }               
+            "user_handle": user_handle,
+            "search_filters": {
+                'page': 1,
+                'per_page': 1,
+                "transaction_id": response["transaction_id"],
+            }
         }
+        
         response1 = User.get_transactions(app, payload, eth_private_key) 
         while response1['transactions'][0]['status'] == "pending":
             time.sleep(50)

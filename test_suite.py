@@ -37,6 +37,7 @@ from tests.test009_issue_sila import Test009IssueSilaTest
 from tests.test010_transfer_sila import Test010TrasferSilaTest
 from tests.test011_cancel_transaction import Test011CancelTransactionTest
 from tests.test011_redeem_sila import Test011RedeemSilaTest
+from tests.test011_wire import Test011WireTest
 from tests.test012_get_transactions import Test012GetTransactionsTest
 from tests.test013_plaid_same_day_auth import Test013PlaidSameDayAuthTest
 from tests.test013_reverse_transactions import Test013ReverseTransactionsTest
@@ -100,6 +101,7 @@ def run_unit_tests():
             Test009IssueSilaTest,
             Test010TrasferSilaTest,
             Test011RedeemSilaTest,
+            Test011WireTest,
             Test011CancelTransactionTest,
             Test012GetTransactionsTest,
             Test013PlaidSameDayAuthTest,

@@ -48,29 +48,6 @@ class Test011CancelTransactionTest(unittest.TestCase):
             app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-    def test_redeem_sila_403_redeem(self):
-        payload = {
-            "user_handle": user_handle,
-            "amount": 50,
-            "account_name": "default_plaid",
-            "descriptor": "test descriptor",
-            "business_uuid": business_uuid,
-            "processing_type": ProcessingTypes.STANDARD_ACH
-        }
-
-        response = Transaction.redeemSila(
-            app, payload, eth_private_key)
-
-        payload = {
-            "user_handle": user_handle,
-            "transaction_id": response["transaction_id"]
-        }
-
-        response = Transaction.cancelTransaction(
-            app, payload, eth_private_key)
-
-        self.assertEqual(response["status"], "FAILURE")
-
     def test_redeem_sila_404(self):
         payload = {
             "user_handle": user_handle,
