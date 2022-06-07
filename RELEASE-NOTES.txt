@@ -1,3 +1,14 @@
+v0.2.44
+New endpoints:
+Added support for /approve_wire endpoint.
+Added support for /mock_wire_out_file endpoint.
+Enhancements:
+Added sila_available_balance and sila_pending_balance in the response of /get_wallet.
+Added new input value for processing_type "WIRE" and mock_wire_account_name as an optional field in /redeem_sila.
+Added IMAD, OMAD, provider_tx_id and provider_status fields in the response of /get_transactions.
+Added provider_status field in timeline object in the response of /get_transactions.
+Added new processing type "WIRE" in input field in search_filters in /get_transactions.
+
 v0.2.43
 Enhancements:
     - Added "sec_code" string field to the response in /get_transactions.

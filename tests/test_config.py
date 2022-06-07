@@ -36,7 +36,8 @@ android_package_name = "com.sila.package"
 # Generate plaid legacy token
 plaid_token_for_card_url = 'https://sso.sandbox.tabapay.com:8443/v2/SSOEncrypt'
 plaid_token_for_card_payload = "cBm0RU8eASGfSxLYJjsG73Q\tn9010111999999992\te202205\ts2545"
-plaid_token_for_card_headers = {'Content-Type': 'application/tabapay-compact'}
+plaid_token_for_card_headers = {'Content-Type': 'application/tabapay-compact',
+                                'Referer': 'https://sso.sandbox.tabapay.com:8443/SSOEvolveISO.html'}
 
 
 app = App("sandbox", app_private_key, app_hanlde)

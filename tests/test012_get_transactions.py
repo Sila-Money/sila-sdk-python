@@ -28,6 +28,9 @@ class Test012GetTransactionsTest(unittest.TestCase):
         self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
         self.assertIsNotNone(response.get('transactions')[0].get('sila_ledger_type'))
         self.assertIsNotNone(response.get('transactions')[0].get('sec_code'))
+        self.assertIn("provider_status",response.get("transactions")[0].keys())
+        self.assertIn("provider_status",response.get("transactions")[0]["timeline"][0].keys())
+
         for item in response.get("transactions"):
             if item.get("ledger_account_id") and not lai:
                 self.assertIsNotNone(item["ledger_account_id"])
@@ -133,5 +136,19 @@ class Test012GetTransactionsTest(unittest.TestCase):
         }
         response = User.get_transactions(app, payload)
         self.assertTrue(response.get('success'))
+
+    def test_get_wire_transactions_200(self):
+        payload = {
+            'user_handle': user_handle,
+            'search_filters': {
+                'processing_type': ProcessingTypes.WIRE,
+            }
+        }
+        response = User.get_transactions(app, payload)
+        self.assertTrue(response.get('success'))
+        self.assertIn("IMAD",response.get("transactions")[0].keys())
+        self.assertIn("OMAD",response.get("transactions")[0].keys())
+        self.assertIn("provider_tx_id",response.get("transactions")[0].keys())
+        self.assertIn("provider_status",response.get("transactions")[0].keys())
 if __name__ == '__main__':
     unittest.main()

@@ -109,6 +109,7 @@ Schema = [
         "processing_type": None,
         "source_id": None,
         "destination_id": None,
+        "mock_wire_account_name": None,
     }},
     {"no_content_msg": {
         "header": {
@@ -741,6 +742,39 @@ Schema = [
             "entity_name": None,
             "ced": None,
             "ach_name": None
+        }
+    },
+    {
+        "approve_wire_msg": {
+            "header": {
+                "created": None, 
+                "auth_handle": None, 
+                "user_handle": None, 
+                "app_handle": None,
+                "version": "0.2", 
+                "crypto": "ETH", 
+                "reference": None
+            },
+            "transaction_id": None,
+            "approve": None,
+            "notes": None,
+            "mock_wire_account_name": None,
+
+        }
+    },
+    {
+        "mock_wire_out_file_msg": {
+            "header": {
+                "created": None, 
+                "auth_handle": None, 
+                "user_handle": None, 
+                "app_handle": None,
+                "version": "0.2", 
+                "crypto": "ETH", 
+                "reference": None
+            },
+            "transaction_id": None,
+            "wire_status": None,
         }
     },
 ]

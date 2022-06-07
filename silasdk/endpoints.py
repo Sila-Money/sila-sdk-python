@@ -53,4 +53,6 @@ endPoints = {
     "getPaymentMethods": "/get_payment_methods",
     "closeVirtualAccount": "/close_virtual_account",
     "testVirtualAaccountAchTransaction": "/create_test_virtual_account_ach_transaction",
+    "approveWire":"/approve_wire",
+    "mockWireOutFile":"/mock_wire_out_file",
 }

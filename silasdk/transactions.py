@@ -44,6 +44,35 @@ class Transaction():
             self, path, msg_type, payload, user_private_key)
         return response
 
+    def approveWire(self, payload, user_private_key):
+        """approve/deny wire transactions which are above the set STP limit if
+            a transaction is in a pending_approval state
+        Args:
+            payload : user handle and amount
+            user_private_key: users ethereum private key 
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["approveWire"]
+        msg_type = "approve_wire_msg"
+        response = postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
+    def mockWire(self, payload, user_private_key):
+        """mock wire endpoints in sandbox env
+        Args:
+            payload : user handle and amount
+            user_private_key: users ethereum private key 
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["mockWireOutFile"]
+        msg_type = "mock_wire_out_file_msg"
+        response = postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response
+
     def transferSila(self, payload, user_private_key, use_destination_address=False):
         """ transfer sila from one ethereum address to another using sila api
             the handle address signatures need to be verified
