@@ -1,3 +1,14 @@
+v0.2.48
+Enhancements:
+	- Added registration_state new optional input field for business user in /register. 
+	- Added registration_state new optional input field in /update/entity. 
+	- Added registration_state new optional field to the response in /get_entity. 
+	- Added transaction_idempotency_id new optional input field in /issue_sila. 
+	- Added transaction_idempotency_id new optional input field in /redeem_sila.
+	- Added transaction_idempotency_id new optional input field in /transfer_sila. 
+New Features:
+	- Created a new method uploadDocuments to support multiple files upload at the same time for /documents endpoint.
+
 v0.2.44
 New endpoints:
 Added support for /approve_wire endpoint.

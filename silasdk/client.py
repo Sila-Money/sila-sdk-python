@@ -79,7 +79,10 @@ class App():
         url = self.getUrl()
         endpoint = url + path
         message = json.dumps(payload)
-        files = {'file': fileContents}
+        if type(fileContents) is dict:
+            files = fileContents
+        else:
+            files = {'file': fileContents}
         response = requests.post(
             endpoint,
             data={'data': message},
@@ -142,7 +145,7 @@ class App():
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
         header = {
             "authsignature": appsignature,
-            "User-Agent": 'SilaSDK-python/0.2.44'
+            "User-Agent": 'SilaSDK-python/0.2.48'
         }
         if content_type is not None and content_type == 'multipart/form-data':
             pass

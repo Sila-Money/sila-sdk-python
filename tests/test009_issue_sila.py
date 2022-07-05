@@ -1,3 +1,4 @@
+import uuid
 import unittest
 from silasdk.users import User
 from silasdk.processingTypes import ProcessingTypes
@@ -56,6 +57,18 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = Transaction.issue_sila(app, payload, eth_private_key)
         self.assertEqual(response.get("success"), True)
 
+    def test_issue_sila_idempotency_200(self):
+        payload = {
+            "user_handle": user_handle,
+            "amount": 200,
+            "account_name": "default_plaid",
+            "transaction_idempotency_id" : str(uuid.uuid4())
+        }
+
+        first_response = Transaction.issue_sila(app, payload, eth_private_key)
+        second_response = Transaction.issue_sila(app, payload, eth_private_key)
+        self.assertEqual(first_response["transaction_id"], second_response["transaction_id"])
+        
     def test_issue_sila_400(self):
         payload = {
             "user_handle": user_handle,
@@ -168,6 +181,6 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = Transaction.issueSila(app, payload, eth_private_key_6)
         self.assertEqual(response.get("success"), True)
         self.assertEqual(response["status"], "SUCCESS")
-
+    
 if __name__ == '__main__':
     unittest.main()

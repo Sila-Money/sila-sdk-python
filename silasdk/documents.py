@@ -17,6 +17,20 @@ class Documents():
             self, path, msg_type, payload, key=user_private_key, content_type="multipart/form-data", file_contents=file)
         return response
 
+    def uploadDocuments(self, payload, file, user_private_key):
+        """
+        Args:
+            payload: document data
+            user_private_key
+        Returns:
+            dict: response body (entity information)
+        """
+        path = endPoints["documents"]
+        msg_type = "documents_msg"
+        response = message.postRequest(
+            self, path, msg_type, payload, key=user_private_key, content_type="multipart/form-data", file_contents=file)
+        return response
+
     def listDocuments(self, payload, user_private_key, page=None, per_page=None, order=None):
         """
         Args:

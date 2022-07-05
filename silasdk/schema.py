@@ -71,6 +71,7 @@ Schema = [
         "descriptor": None,
         "source_id": None,
         "destination_id": None,
+        "transaction_idempotency_id":None
     }},
     {"issue_msg": {
         "header": {
@@ -90,6 +91,7 @@ Schema = [
         "processing_type": None,
         "source_id": None,
         "destination_id": None,
+        "transaction_idempotency_id":None
     }},
     {"redeem_msg": {
         "header": {
@@ -110,6 +112,7 @@ Schema = [
         "source_id": None,
         "destination_id": None,
         "mock_wire_account_name": None,
+        "transaction_idempotency_id":None
     }},
     {"no_content_msg": {
         "header": {
@@ -249,7 +252,8 @@ Schema = [
             "business_type_uuid": None,
             "business_website": None,
             "doing_business_as": None,
-            "naics_code": None
+            "naics_code": None,
+            "registration_state":None
         },
         "device": {
             "device_fingerprint": None,
@@ -365,7 +369,8 @@ Schema = [
         "country": None,
         "sms_opt_in": None,
         "device_fingerprint": None,
-        "session_identifier": None
+        "session_identifier": None,
+        "registration_state":None
     }},
     {"update_registration_data_msg": {
         "header": {
@@ -394,7 +399,8 @@ Schema = [
         "naics_code": None,
         "doing_business_as": None,
         "business_website": None,
-        "sms_opt_in": None
+        "sms_opt_in": None,
+        "registration_state":None
     }},
     {"delete_registration_data_msg": {
         "header": {
@@ -420,7 +426,8 @@ Schema = [
         "hash": None,
         "mime_type": None,
         "document_type": None,
-        "description": None
+        "description": None,
+        "file_metadata" :None
     }},
     {"list_documents_msg": {
         "header": {

@@ -2,7 +2,7 @@ import unittest
 from silasdk.users import User
 from tests.test_config import (app, basic_individual_handle, business_handle, eth_address, eth_address_2,
                                eth_address_3, eth_address_4, eth_address_5, user_handle, user_handle_2, 
-                               instant_ach_handle, sardine_handle, eth_address_6)
+                               instant_ach_handle, sardine_handle, eth_address_6, business_handle_2, eth_address_7)
 
 
 class Test002RegisterTest(unittest.TestCase):
@@ -113,6 +113,29 @@ class Test002RegisterTest(unittest.TestCase):
             "session_identifier":"ppppp-aaaa-dddd-99ce-c45944174e0c"
         }
 
+        business_with_registration_state = {
+            "country": "US",
+            "user_handle": business_handle_2,
+            "entity_name": 'Business name',
+            "identity_alias": "EIN",
+            "identity_value": "123458877",
+            "phone": "1234567890",
+            "email": "fake2@email.com",
+            "address_alias": "default",
+            "street_address_1": '1232 Main Street',
+            "city": 'New City 2',
+            "state": 'OR',
+            "postal_code": 97204,
+            "crypto_address": eth_address_7,
+            "crypto_alias": "python_wallet_2",
+            "type": "business",
+            "business_type": "corporation",
+            "business_website": "https://www.yourbusinesscustomer.com",
+            "doing_business_as": "Your Business Customer Alias Co.",
+            "naics_code": 721,
+            "registration_state":"NY"
+        }
+
         response = User.register(app, payload)
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
@@ -135,6 +158,11 @@ class Test002RegisterTest(unittest.TestCase):
         self.assertEqual(response.get('status'), 'SUCCESS')
 
         response = User.register(app, sardine)
+        self.assertTrue(response.get('success'))
+        self.assertEqual(response.get('status_code'), 200)
+        self.assertEqual(response.get('status'), 'SUCCESS')
+
+        response = User.register(app, business_with_registration_state)
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')

@@ -1,3 +1,4 @@
+import uuid
 import unittest
 from silasdk.transactions import Transaction
 from silasdk.users import User
@@ -18,14 +19,26 @@ class Test010TrasferSilaTest(unittest.TestCase):
         }
 
         response = Transaction.transferSila(
-            app, payload, eth_private_key)
-
-        poll(self, response["transaction_id"], "success",
-             app, user_handle, eth_private_key)
+            app, payload, eth_private_key)      
+        poll(self, response["transaction_id"], "success", app, user_handle, eth_private_key)
 
         self.assertEqual(response["status"], "SUCCESS")
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
+
+    def test_transfer_sila_idempotency_200(self):
+        payload = {            
+            "user_handle": user_handle,
+            "destination": user_handle_2,
+            "amount": 1000,
+            "descriptor": "test descriptor",
+            "business_uuid": business_uuid,
+            "transaction_idempotency_id" : str(uuid.uuid4())
+        }
+
+        first_response = Transaction.transferSila(app, payload, eth_private_key)
+        second_response = Transaction.transferSila(app, payload, eth_private_key)        
+        self.assertEqual(first_response["transaction_id"], second_response["transaction_id"])        
 
     def test_transfer_sila_400(self):
         payload = {
