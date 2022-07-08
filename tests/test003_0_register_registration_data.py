@@ -3,7 +3,7 @@ import unittest
 from silasdk.registrationFields import RegistrationFields
 from silasdk.users import User
 from tests.test_config import (
-    app, business_handle, eth_private_key, user_handle, eth_private_key_3, sardine_handle, eth_private_key_6)
+    app, business_handle, eth_private_key, user_handle, eth_private_key_3, sardine_handle, eth_private_key_6, business_handle_2, eth_private_key_7)
 
 
 class Test003RegistrationDataTests(unittest.TestCase):
@@ -300,20 +300,21 @@ class Test003RegistrationDataTests(unittest.TestCase):
         naics_code = 721
         doing_business_as = "NC Limited"
         business_website = "https://newwebsite.domain"
+        registration_state = "NY"
 
         payload = {
-            "user_handle": business_handle,
+            "user_handle":  business_handle,                        
             "entity_name": entity_name,
             "birthdate": birthdate,
             "business_type": business_type,
             "naics_code": naics_code,
             "doing_business_as": doing_business_as,
-            "business_website": business_website
+            "business_website": business_website,
+            "registration_state": registration_state
         }
 
         response = User.update_registration_data(
-            app, RegistrationFields.ENTITY, payload, eth_private_key_3)
-
+            app, RegistrationFields.ENTITY, payload, eth_private_key_3)        
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["message"])
         self.assertEqual(response["status"], "SUCCESS")
