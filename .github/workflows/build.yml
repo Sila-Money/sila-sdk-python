@@ -5,7 +5,7 @@ on:
       - master # or the name of your main branch
       - develop
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, ready_for_review]
     
 jobs:
   build:
@@ -25,3 +25,14 @@ jobs:
       #   timeout-minutes: 5
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  request:
+    name: Request reviews on opened PRs
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create PR review request
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_FOR_AUTO_REQUEST_REVIEW }}
+        run: |
+          gh pr edit ${{ github.event.pull_request.html_url }} \
+            --add-reviewer Sila-Money/sdks
