@@ -133,8 +133,7 @@ class App():
         """
         endpoint = path
         response = self.session.get(endpoint)
-        output = response.json()
-        return output
+        return checkResponse(response)
 
     def setHeader(self, msg, key: Optional[str] = None, business_key: Optional[str] = None, content_type: Optional[str] = None):
         """set the application header with usersignature and authsignature
@@ -158,3 +157,14 @@ class App():
                 msg, business_key.lower())
 
         return header
+
+def checkResponse(response):
+        """ check if response is in json or not
+        Args:
+            response : response from the output of other function
+        """
+        try:
+            response_data = response.json()
+        except json.decoder.JSONDecodeError:
+            response_data = response
+        return response_data
