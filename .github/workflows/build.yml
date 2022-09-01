@@ -1,9 +1,5 @@
 name: SonarQube Scan
 on:
-  push:
-    branches:
-      - master # or the name of your main branch
-      - develop
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     
