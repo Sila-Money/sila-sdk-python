@@ -27,6 +27,22 @@ Schema = [
         "selected_account_id": None,
         "plaid_token_type": None
     }},
+    {"link_account_msg_mx": {
+        "header": {
+            "created": None,
+            "app_handle": None,
+            "user_handle": None,
+            "version": "0.2",
+            "crypto": "ETH",
+            "reference": None
+        },
+        "message": "link_account_msg",
+        "provider": None,
+        "provider_token_type": None,
+        "provider_token": None,
+        "account_name": None,
+        "selected_account_id": None
+    }},
     {"link_account_msg": {
         "header": {
             "created": None,

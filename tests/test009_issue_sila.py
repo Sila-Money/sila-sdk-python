@@ -57,6 +57,17 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = Transaction.issue_sila(app, payload, eth_private_key)
         self.assertEqual(response.get("success"), True)
 
+        payload = {
+            "user_handle": user_handle,
+            "amount": 200,
+            "account_name": "default_mx"
+        }
+
+        response = Transaction.issue_sila(app, payload, eth_private_key)
+        self.assertEqual(response.get("success"), True)
+        self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response["transaction_id"])
+
     def test_issue_sila_idempotency_200(self):
         payload = {
             "user_handle": user_handle,
@@ -181,6 +192,6 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = Transaction.issueSila(app, payload, eth_private_key_6)
         self.assertEqual(response.get("success"), True)
         self.assertEqual(response["status"], "SUCCESS")
-    
+
 if __name__ == '__main__':
     unittest.main()

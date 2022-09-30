@@ -49,7 +49,7 @@ class User():
             self, path, msg_type, payload, user_private_key)
         return response
 
-    def linkAccount(self, payload, user_private_key, plaid=False):
+    def linkAccount(self, payload, user_private_key, plaid=False, mx=False):
         """link the bank account of user using plad
            This users bank account will be linked  
         Args:
@@ -59,8 +59,13 @@ class User():
             dict: response body (a confirmation message)
         """
         path = endPoints["linkAccount"]
-        msg_type = ("link_account_msg" if (plaid is False)
-                    else "link_account_msg_plaid")
+        if plaid is True:
+            msg_type = 'link_account_msg_plaid'
+        elif mx is True:
+            msg_type = 'link_account_msg_mx'
+        else:
+            msg_type = 'link_account_msg'
+
         if payload.get('public_token') is not None:
             warnings.warn(
                 'public_token is deprecated in favor of plaid_token', DeprecationWarning)

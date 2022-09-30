@@ -29,6 +29,22 @@ class Test011RedeemSilaTest(unittest.TestCase):
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
 
+        payload = {
+            "user_handle": user_handle,
+            "amount": 50,
+            "account_name": "default_mx",
+            "descriptor": "test descriptor",
+            "business_uuid": business_uuid,
+            "processing_type": ProcessingTypes.STANDARD_ACH
+        }
+
+        response = Transaction.redeemSila(
+            app, payload, eth_private_key)
+
+        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["descriptor"], "test descriptor")
+        self.assertIsNotNone(response["transaction_id"])
+
     def test_redeem_sila_idempotency_200(self):
         payload = {
             "user_handle": user_handle,

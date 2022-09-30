@@ -10,7 +10,8 @@ class Test007GetAccountsTest(unittest.TestCase):
 
         response = silasdk.User.getAccounts(app, payload, eth_private_key)
         self.assertGreater(len(response), 0)
-
+        self.assertIsNotNone(response[0]['provider_name'])
+        
     def test_get_accounts_400(self):
         payload = {
             "user_handle": "none.silamoney.eth"
