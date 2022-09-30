@@ -65,7 +65,7 @@ def run_unit_tests():
     cov = coverage.Coverage()
     cov.start()
     results = os.path.abspath('./test-results.xml')
-    with open(results, 'w') as output:
+    with open(results, 'wb') as output:
         runner = xmlrunner.XMLTestRunner(output=output, verbosity=2)
         classes = [
             Test001CheckHandleTest,
