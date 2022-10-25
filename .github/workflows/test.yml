@@ -15,12 +15,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          repository: Sila-Money/sila-sdk-python
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
+          pwd
+          ls -lhrt
           pip install -r requirements.txt -r requirements-test.txt
       - name: Run tests
         run: |
