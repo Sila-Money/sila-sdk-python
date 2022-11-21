@@ -37,8 +37,12 @@ setup(
 
     packages=find_packages(exclude=["tests", "tests.*"]),
 
-    install_requires=["requests>=2.20.0", "pyaml>=15.8.2",
-                      "eth-account==0.5.9", "pysha3==1.0.2"],
+    install_requires=[
+        "requests>=2.20.0",
+        "pyaml>=15.8.2",
+        "eth-account==0.5.9",
+        "pysha3==1.0.2"
+    ],
 
     zip_safe=False,
 
