@@ -800,4 +800,40 @@ Schema = [
             "wire_status": None,
         }
     },
+    {
+    "get_statements_data_msg":{
+      "header": {
+        "created": None,
+        "app_handle": None,
+        "user_handle": None,
+        "version": "0.2",
+        "crypto": "ETH",
+        "reference":  None
+      },
+       "search_filters":{
+           "month": None,
+           "page":None,
+           "per_page":None
+       }
+    }
+    },
+    {
+    "get_wallet_statement_data_msg":{
+      "header": {
+        "created": None,
+        "app_handle": None,
+        "user_handle":None,
+        "version": "0.2",
+        "crypto": "ETH",
+        "reference": None
+      },
+       "wallet_id": None,
+       "search_filters":{
+           "start_month": None,
+           "end_month":None,
+           "page":None,
+           "per_page":None
+       }
+    }
+    },
 ]

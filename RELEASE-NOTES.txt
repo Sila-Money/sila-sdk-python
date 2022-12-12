@@ -1,11 +1,17 @@
+v0.2.50
+New Features:
+    - Added support for /get_wallet_statement_data.
+    - Added support for /get_statements_data.
+
+
 v0.2.49
 Enhancements:
-    - added support for link account with MX in /link_account endpoint.
-    - endpoint /get_accounts have "provider" a new parameters in response .
-    - endpoint /get_account_balance have "provider" a new parameters in response .
+    - Added support for link account with MX in /link_account endpoint.
+    - Endpoint /get_accounts have "provider" a new parameters in response .
+    - Endpoint /get_account_balance have "provider" a new parameters in response .
 
 New Features:
-    added support for MX integration.
+    - Added support for MX integration.
 
 v0.2.48
 Enhancements:
