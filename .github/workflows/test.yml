@@ -1,0 +1,28 @@
+name: Python SDK unit tests
+run-name: ${{ github.event.pull_request.title }} - ${{ github.event.pull_request.html_url }} - ${{ github.event.pull_request.user.login }}
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.7"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.text ]; then pip install -r requirements.text; fi
+          if [ -f requirements-test.txt ]; then pip install -r requirements-test.txt; fi
+      - name: Run tests
+        run: |
+          python -m unittest test_suite.py -vvv
