@@ -504,3 +504,33 @@ class User():
         response = message.postRequest(
             app, path, msg_type, payload, user_private_key)
         return response
+
+    @staticmethod
+    def get_statements_data(app: App, payload: dict, user_private_key: str)-> dict:
+        """
+           Args:
+               app (App): The current app configuration
+               payload (dict): Filters information
+               user_private_key (str): The user's private key to sign the message
+           Returns:
+               dict: response body (entity information)
+           """
+        path = "/get_statements_data"
+        msg_type = "get_statements_data_msg"
+        response = message.postRequest(app, path, msg_type, payload, user_private_key)
+        return response
+
+    @staticmethod
+    def get_wallet_statement_data(app: App, payload: dict, user_private_key: str) -> dict:
+        """
+          Args:
+              app (App): The current app configuration
+              payload (dict): Filters information
+              user_private_key (str): The user's private key to sign the message
+          Returns:
+              dict: response body (entity information)
+          """
+        path = "/get_wallet_statement_data"
+        msg_type = "get_wallet_statement_data_msg"
+        response = message.postRequest(app, path, msg_type, payload, user_private_key)
+        return response
