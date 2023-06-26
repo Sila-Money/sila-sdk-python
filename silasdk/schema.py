@@ -150,7 +150,8 @@ Schema = [
             "reference": None
         },
         "nickname": None,
-        "default": None
+        "default": None,
+        "statements_enabled": None
     }},
     {"register_wallet_msg": {
         "header": {
@@ -166,7 +167,8 @@ Schema = [
             "blockchain_address": None,
             "blockchain_network": "ETH",
             "nickname": None,
-            "default": None
+            "default": None,
+            "statements_enabled": None
         }
     }},
     {"get_wallets_msg": {
@@ -605,7 +607,8 @@ Schema = [
                 "reference": None
             },
             "message": "header_msg",
-            "card_name": None
+            "card_name": None,
+            "provider" : None
         }
     },
     {
@@ -673,7 +676,8 @@ Schema = [
             },
             "virtual_account_name": None,
             "ach_credit_enabled": None,
-            "ach_debit_enabled": None
+            "ach_debit_enabled": None,
+            "statements_enabled": None
         }
     },
     {
@@ -836,4 +840,43 @@ Schema = [
        }
     }
     },
+    {
+    "statements_msg":{
+    "header": {
+        "created": None, 
+        "app_handle": None, 
+        "user_handle": None, 	
+        "version": "0.2", 
+        "crypto": "ETH", 
+        "reference":  None
+    }, 
+    "search_filters":{
+        "start_date": None,
+        "end_date": None,
+        "user_name": None,
+        "user_handle": None,
+        "account_type": None,
+        "email": None,
+        "status": None,
+        "identifier": None,
+        "page": None,
+        "per_page": None
+        }
+    }
+    },
+
+   {
+    "resend_statements_msg":{
+    "header": {
+        "created": None, 
+        "app_handle": None, 
+        "user_handle":None, 
+        "version": "0.2", 
+        "crypto": "ETH", 
+        "reference":None
+    }, 
+    "email":None
+    }
+    },
+
 ]

@@ -10,10 +10,12 @@ class Test017UpdateWalletTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "nickname": nickname,
-            "default": True
+            "default": True,
+            "statements_enabled": True
         }
 
         response = Wallet.update_wallet(app, payload, eth_private_key)
+        self.assertTrue(response['wallet']['statements_enabled'])
         self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')

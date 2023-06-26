@@ -7,7 +7,7 @@ setup(
     name='silasdk',
 
 
-    version='0.2.50',
+    version='0.2.51',
 
     description='Sila Python library for message signing and api wrapper',
 
@@ -33,7 +33,7 @@ setup(
 
     ],
 
-    keywords='Sila v0.2.50 Rest API',
+    keywords='Sila v0.2.51 Rest API',
 
     packages=find_packages(exclude=["tests", "tests.*"]),
 
