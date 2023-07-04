@@ -48,6 +48,8 @@ from tests.test017_update_wallet import Test017UpdateWalletTest
 from tests.test018_delete_wallet import Test018DeleteWalletTest
 from tests.test0018_get_statements import Test018GetStatementsData
 from tests.test018_get_wallet_statement_data import Test018GetWalletStatementData
+from tests.test018_statements import Test018Statements
+from tests.test018_resend_statements import Test018ResendStatements
 from tests.test019_sila_balance import Test019GetSilaBalanceTest
 from tests.test020_get_webhooks import Test020GetWebhooksTest
 from tests.test021_get_payment_methods import Test021GetPaymentMethods
@@ -115,6 +117,8 @@ def run_unit_tests():
             Test018DeleteWalletTest,
             Test018GetStatementsData,
             Test018GetWalletStatementData,
+            Test018Statements,
+            Test018ResendStatements,
             Test019GetSilaBalanceTest,
             Test020GetWebhooksTest,
             Test021GetPaymentMethods

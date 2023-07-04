@@ -10,6 +10,7 @@ class Test016GetWalletTest(unittest.TestCase):
         }
 
         response = silasdk.Wallet.getWallet(app, payload, eth_private_key)
+        self.assertTrue(response["wallet"]["statements_enabled"])
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["sila_available_balance"])
         self.assertIsNotNone(response["sila_pending_balance"])

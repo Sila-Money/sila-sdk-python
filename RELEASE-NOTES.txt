@@ -1,8 +1,22 @@
+v0.2.51
+	Enhancements:
+		- Endpoint /register_wallet has a new optional parameter "statements_enabled" in request and response.
+		- Endpoint /update_wallet has a new optional parameter "statements_enabled" in request and response.
+		- Endpoint /get_wallet has a new key "statements_enabled" in response.
+		- Endpoint /get_wallets has a new key "statements_enabled" in response.
+		- Endpoint /open_virtual_account has a new optional parameter "statements_enabled" in request and response.
+		- Endpoint /update_virtual_account has a new optional parameter "statements_enabled" in request and response.
+		- Endpoint /close_virtual_account has a new key "statements_enabled" in response.
+		- Endpoint /delete_card has "provider" as a new mandatory parameter.
+	New Features:
+		- Added support for new Endpoint /statements. 
+		- Added support for new Endpoint /statements/<statement_id>.
+
 v0.2.50
 New Features:
     - Added support for /get_wallet_statement_data.
     - Added support for /get_statements_data.
-
+    
 
 v0.2.49
 Enhancements:

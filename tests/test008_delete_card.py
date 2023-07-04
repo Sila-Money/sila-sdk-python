@@ -27,7 +27,8 @@ class Test008DeleteCardTest(unittest.TestCase):
     def test_002_delete_card_200(self):
         payload = {
             "user_handle": user_handle,
-            "card_name": "unlink"            
+            "card_name": "unlink",
+            "provider" : "CKO"            
         }
 
         response = User.delete_card(app, payload, eth_private_key)
@@ -37,7 +38,7 @@ class Test008DeleteCardTest(unittest.TestCase):
     def test_003_delete_card_400(self):
         payload = {
             "user_handle": '',
-            "card_name": "unlink"            
+            "card_name": "unlink",           
         }
 
         response = User.delete_card(app, payload, eth_private_key)

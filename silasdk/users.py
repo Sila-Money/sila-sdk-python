@@ -534,3 +534,35 @@ class User():
         msg_type = "get_wallet_statement_data_msg"
         response = message.postRequest(app, path, msg_type, payload, user_private_key)
         return response
+    
+    @staticmethod
+    def statements(app: App, payload: dict, user_private_key: str) -> dict:
+        """
+          Args:
+              app (App): The current app configuration
+              payload (dict): Filters information
+              user_private_key (str): The user's private key to sign the message
+          Returns:
+              dict: response body (entity information)
+          """
+        path = endPoints['statements']
+        msg_type = "statements_msg"
+        response = message.getRequest(app, path, msg_type, payload, user_private_key)
+        return response
+    
+    @staticmethod
+    def resend_statements(app: App, payload: dict, user_private_key: str) -> dict:
+        """
+          Args:
+              app (App): The current app configuration
+              payload (dict): Filters information
+              user_private_key (str): The user's private key to sign the message
+          Returns:
+              dict: response body (entity information)
+          """
+        statement_id = payload["statement_id"]
+        payload.pop("statement_id")
+        path = f"{endPoints['statements']}/{statement_id}"
+        msg_type = "resend_statements_msg"
+        response = message.putRequest(app, path, msg_type, payload, user_private_key)
+        return response

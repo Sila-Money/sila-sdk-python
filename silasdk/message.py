@@ -102,6 +102,29 @@ def postRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional
         path, data, header, file_contents)
     return response
 
+def getRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional[str] = None, business_key: Optional[str] = None, content_type=None):
+    """post the message and return response
+    Args:
+        payload:customer message
+        path : endpoint
+        key :user_private_key
+    """
+    data = createMessage(app, payload, msg_type)
+    header = app.setHeader(data, key, business_key, content_type)
+    response = app.post(path, data, header, 'get') 
+    return response
+
+def putRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional[str] = None, business_key: Optional[str] = None, content_type=None):
+    """post the message and return response
+    Args:
+        payload:customer message
+        path : endpoint
+        key :user_private_key
+    """
+    data = createMessage(app, payload, msg_type)
+    header = app.setHeader(data, key, business_key, content_type)
+    response = app.post(path, data, header, 'put') 
+    return response
 
 def postGetFile(self, path: str, msg_type: str, payload: dict, key: str) -> requests.Response:
     data = createMessage(self, payload, msg_type)

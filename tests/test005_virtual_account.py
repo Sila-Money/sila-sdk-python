@@ -12,11 +12,13 @@ class Test005Virtual_account(unittest.TestCase):
             "virtual_account_name": "test_v_acc",
             "user_handle": user_handle,
             "ach_credit_enabled": True,
-            "ach_debit_enabled": False
+            "ach_debit_enabled": False,
+            "statements_enabled": True
         }
         response = silasdk.User.openVirtualAccount(
             app, payload, eth_private_key)
         self.assertTrue(response["success"])
+        self.assertTrue(response["virtual_account"]["statements_enabled"])
         self.assertIsNotNone(response.get('virtual_account').get('ach_debit_enabled'))
         self.assertIsNotNone(response.get('virtual_account').get('ach_credit_enabled'))
         
@@ -46,11 +48,13 @@ class Test005Virtual_account(unittest.TestCase):
             "active": False,
             "ach_debit_enabled": True,
             "ach_credit_enabled": False,
+            "statements_enabled": True,
         }
 
         response = silasdk.User.updateVirtualAccount(
             app, payload, eth_private_key)
         self.assertTrue(response["success"])
+        self.assertTrue(response["virtual_account"]["statements_enabled"])
         self.assertTrue(response.get('virtual_account').get('ach_debit_enabled'))
         self.assertFalse(response.get('virtual_account').get('ach_credit_enabled'))
 
@@ -104,6 +108,7 @@ class Test005Virtual_account(unittest.TestCase):
 
         response = silasdk.User.closeVirtualAccount(
             app, payload, eth_private_key)
+        self.assertTrue(response["virtual_account"]["statements_enabled"])
         self.assertTrue(response["success"])
 
     def test_create_virtual_account_ach_transaction_200(self):

@@ -19,9 +19,10 @@ strng_5 = ''.join(random.choice(letters) for i in range(10))
 strng_6 = ''.join(random.choice(letters) for i in range(10))
 strng_7 = ''.join(random.choice(letters) for i in range(10))
 
-app_hanlde = "digital_geko_e2e"
-app_private_key = "e60a5c57130f4e82782cbdb498943f31fe8f92ab96daac2cc13cbbbf9c0b4d9e"
-
+# app_hanlde = "digital_geko_e2e"
+# app_private_key = "e60a5c57130f4e82782cbdb498943f31fe8f92ab96daac2cc13cbbbf9c0b4d9e"
+app_hanlde = "arc_sandbox_test_app01"
+app_private_key = "9c17e7b767b8f4a63863caf1619ef3e9967a34b287ce58542f3eb19b5a72f076"
 user_handle = strng
 user_handle_2 = strng_2
 business_handle = strng_3

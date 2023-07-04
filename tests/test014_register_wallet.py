@@ -13,11 +13,13 @@ class Test014RegisterWalletTest(unittest.TestCase):
                 "blockchain_address": wallet_address,
                 "blockchain_network": "ETH",
                 "nickname": "wallet_python_new",
-                "default": True
+                "default": True,
+                "statements_enabled": True
             }
         }
 
         response = Wallet.registerWallet(app, payload, eth_private_key)
+        self.assertTrue(response["statements_enabled"])
         self.assertTrue(response["success"])
 
     def test_register_wallet_400(self):

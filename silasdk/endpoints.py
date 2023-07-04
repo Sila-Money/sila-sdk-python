@@ -57,4 +57,5 @@ endPoints = {
     "mockWireOutFile": "/mock_wire_out_file",
     "getStatementsData": "/get_statements_data",
     "getWalletStatementData": "/get_wallet_statement_data",
+    "statements":"/statements",
 }

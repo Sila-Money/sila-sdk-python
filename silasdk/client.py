@@ -50,7 +50,7 @@ class App():
             apiurl = url % self.tier
         return apiurl
 
-    def post(self, path, payload, header):
+    def post(self, path, payload, header, method='post'):
         """makes a post request to the sila_apis
         Args:
             path : path to the endpoint being called
@@ -60,12 +60,25 @@ class App():
         url = self.getUrl()
         endpoint = url + path
         data1 = json.dumps(payload)
-        response = self.session.post(
+        if method == 'get':
+            response = self.session.get(
             endpoint,
             data=data1,
             headers=header)
-
-        output = response.json()
+        elif method == 'put':
+            response = self.session.put(
+            endpoint,
+            data=data1,
+            headers=header)
+        else: 
+            response = self.session.post(
+                endpoint,
+                data=data1,
+                headers=header)
+        try:
+            output = response.json()
+        except:
+            output = response
 
         try:
             output['status_code'] = response.status_code
@@ -144,7 +157,7 @@ class App():
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
         header = {
             "authsignature": appsignature,
-            "User-Agent": 'SilaSDK-python/0.2.50'
+            "User-Agent": 'SilaSDK-python/0.2.51'
         }
         if content_type is not None and content_type == 'multipart/form-data':
             pass
