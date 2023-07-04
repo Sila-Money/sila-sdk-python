@@ -11,7 +11,7 @@ class Test017UpdateWalletTest(unittest.TestCase):
             "user_handle": user_handle,
             "nickname": nickname,
             "default": True,
-            "statements_enabled": True
+            "statements_enabled": True,
         }
 
         response = Wallet.update_wallet(app, payload, eth_private_key)

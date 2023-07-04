@@ -545,7 +545,7 @@ class User():
           Returns:
               dict: response body (entity information)
           """
-        path = endPoints['Statements']
+        path = endPoints['statements']
         msg_type = "statements_msg"
         response = message.getRequest(app, path, msg_type, payload, user_private_key)
         return response
@@ -562,7 +562,7 @@ class User():
           """
         statement_id = payload["statement_id"]
         payload.pop("statement_id")
-        path = endPoints['Statements']+'/'+statement_id
+        path = f"{endPoints['statements']}/{statement_id}"
         msg_type = "resend_statements_msg"
         response = message.putRequest(app, path, msg_type, payload, user_private_key)
         return response

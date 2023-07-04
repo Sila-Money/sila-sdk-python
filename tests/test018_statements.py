@@ -17,8 +17,8 @@ class   Test018Statements(unittest.TestCase):
             "per_page":20
 
         }
-        app = App("sandbox", "9c17e7b767b8f4a63863caf1619ef3e9967a34b287ce58542f3eb19b5a72f076", "arc_sandbox_test_app01")
-        response = silasdk.User.statements(app, payload, 'c087fb917b921f930355b97edda0ab29a5ea40963cef376be999e6aedf0efe0e')
+
+        response = silasdk.User.statements(app, payload, eth_private_key)
         self.assertNotEquals(response['delivery_attempts'],None)
         self.assertNotEquals(response['pagination']['total_count'],0)
         
@@ -31,7 +31,7 @@ class   Test018Statements(unittest.TestCase):
             "per_page":20
 
         }
-        app = App("sandbox", "9c17e7b767b8f4a63863caf1619ef3e9967a34b287ce58542f3eb19b5a72f076", "arc_sandbox_test_app01")
-        response = silasdk.User.statements(app, payload, 'c087fb917b921f930355b97edda0ab29a5ea40963cef376be999e6aedf0efe0e')
+    
+        response = silasdk.User.statements(app, payload, eth_private_key)
         self.assertEqual(response['success'],False)
         self.assertEqual(response['status'],'FAILURE')
