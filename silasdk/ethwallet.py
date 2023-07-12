@@ -1,8 +1,9 @@
 from eth_account import Account
-import sha3, _pysha3
+from eth_utils import keccak
 import json
 
 from typing import Dict, Union
+from web3 import Web3
 
 
 class EthWallet:
@@ -11,10 +12,10 @@ class EthWallet:
     def create(entropy=''):
         """Create an Ethereum wallet for a user.
 
-        This will generate a private key and ethereum address, that can be used for trasaction,
+        This will generate a private key and ethereum address, that can be used for transaction,
         however this not a recommended way to create your wallets
         Args:
-        entropy : provide randomness to gnerate the wallet
+        entropy : provide randomness to generate the wallet
         Returns:
         tuple: response body with ethereum address and private key
         """
@@ -32,13 +33,12 @@ class EthWallet:
         Returns:
         string: a signed message
         """
-        k = _pysha3.keccak_256()
         if isinstance(msg, str):
             encoded_message = msg.encode('utf-8')
         else:
             encoded_message = (json.dumps(msg)).encode("utf-8")
-        k.update(encoded_message)
-        message_hash = k.hexdigest()
+        encrypted = keccak(encoded_message)
+        message_hash = Web3.toHex(encrypted)[2:]
         if key is not None:
             signed_message = Account.signHash(message_hash, key)
             sig_hx = signed_message.signature.hex()
@@ -58,11 +58,10 @@ class EthWallet:
         Returns:
         string: returns the Ethereum address corresponding to the private key the message was signed with
         """
-        k = _pysha3.keccak_256()
         if isinstance(msg, str):
             encoded_message = msg.encode('utf-8')
         else:
             encoded_message = (json.dumps(msg)).encode("utf-8")
-        k.update(encoded_message)
-        message_hash = k.hexdigest()
+        encrypted = keccak(encoded_message)
+        message_hash = Web3.toHex(encrypted)[2:]
         return Account.recoverHash(message_hash, signature=sign)
