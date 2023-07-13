@@ -16,7 +16,7 @@ from tests.test_config import (
 
 class Test005CheckKycTest(unittest.TestCase):
     def test_check_kyc_200(self):
-        time.sleep(10)
+        time.sleep(100)
         payload = {
             "user_handle": user_handle
         }
