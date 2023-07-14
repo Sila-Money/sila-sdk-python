@@ -20,7 +20,7 @@ class EthWallet:
         tuple: response body with ethereum address and private key
         """
         account = Account.create(entropy)
-        return {"eth_private_key": account.privateKey.hex(), "eth_address": account.address}
+        return {"eth_private_key": Web3().to_hex(account._private_key), "eth_address": account.address}
 
     @staticmethod
     def signMessage(msg: Union[str, Dict], key=None):
@@ -38,7 +38,7 @@ class EthWallet:
         else:
             encoded_message = (json.dumps(msg)).encode("utf-8")
         encrypted = keccak(encoded_message)
-        message_hash = Web3.toHex(encrypted)[2:]
+        message_hash = Web3.to_hex(encrypted)[2:]
         if key is not None:
             signed_message = Account.signHash(message_hash, key)
             sig_hx = signed_message.signature.hex()
@@ -63,5 +63,5 @@ class EthWallet:
         else:
             encoded_message = (json.dumps(msg)).encode("utf-8")
         encrypted = keccak(encoded_message)
-        message_hash = Web3.toHex(encrypted)[2:]
-        return Account.recoverHash(message_hash, signature=sign)
+        message_hash = Web3.to_hex(encrypted)[2:]
+        return Account._recover_hash(message_hash, signature=sign)

@@ -36,8 +36,8 @@ setup(
     install_requires=[
         "requests==2.31.0",
         "pyaml>=15.8.2",
-        "eth-account==0.5.9",
-        "web3==5.31.3"
+        "eth-account==0.8.0",
+        "web3==6.5.0"
     ],
 
     zip_safe=False,
