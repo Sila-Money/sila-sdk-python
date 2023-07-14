@@ -1,3 +1,10 @@
+v0.2.52
+Enhancements:
+    - Removed the pysha3 package.
+    - Upgraded package dependencies.
+    - Removed support for Python 3.6.
+
+
 v0.2.51
 	Enhancements:
 		- Endpoint /register_wallet has a new optional parameter "statements_enabled" in request and response.
@@ -9,14 +16,15 @@ v0.2.51
 		- Endpoint /close_virtual_account has a new key "statements_enabled" in response.
 		- Endpoint /delete_card has "provider" as a new mandatory parameter.
 	New Features:
-		- Added support for new Endpoint /statements. 
+		- Added support for new Endpoint /statements.
 		- Added support for new Endpoint /statements/<statement_id>.
+
 
 v0.2.50
 New Features:
     - Added support for /get_wallet_statement_data.
     - Added support for /get_statements_data.
-    
+
 
 v0.2.49
 Enhancements:
@@ -29,12 +37,12 @@ New Features:
 
 v0.2.48
 Enhancements:
-	- Added registration_state new optional input field for business user in /register. 
-	- Added registration_state new optional input field in /update/entity. 
-	- Added registration_state new optional field to the response in /get_entity. 
-	- Added transaction_idempotency_id new optional input field in /issue_sila. 
+	- Added registration_state new optional input field for business user in /register.
+	- Added registration_state new optional input field in /update/entity.
+	- Added registration_state new optional field to the response in /get_entity.
+	- Added transaction_idempotency_id new optional input field in /issue_sila.
 	- Added transaction_idempotency_id new optional input field in /redeem_sila.
-	- Added transaction_idempotency_id new optional input field in /transfer_sila. 
+	- Added transaction_idempotency_id new optional input field in /transfer_sila.
 New Features:
 	- Created a new method uploadDocuments to support multiple files upload at the same time for /documents endpoint.
 
@@ -79,7 +87,7 @@ Enhancements:
     - Added kyc_level new optional input field in /check_kyc.
     - Added kyc_level new optional input field in /check_instant_ach.
     - Added new processing type "INSTANT_SETTLEMENT" in processing_type object in /issue_sila.
-    - Added processing_type object new optional input fields in search_filters and child_transactions array to the Transaction response in /get_transactions.   
+    - Added processing_type object new optional input fields in search_filters and child_transactions array to the Transaction response in /get_transactions.
 
 v0.2.37
 New endpoints:
@@ -112,12 +120,12 @@ Enhancements:
     - Added card_name a new optional input in /redeem_sila.
     - Added card_account_name a new optional input in search filters in /get_transactions.
     - Exposed RateLimit-Limit and RateLimit-Remaining parameters in header in APIs endpoint.
-    - Upgrade eth-account to latest version 
+    - Upgrade eth-account to latest version
 
 v0.2.28
 Enhancements:
     - Added new optional params active to Freeze/unfreeze bank account.
-    - Remove unwanted print statements from code. 
+    - Remove unwanted print statements from code.
 
 v0.2.26
 Enhancements:
@@ -138,7 +146,7 @@ v0.2.22
     -Deprecating public_token in linkAccount.
     -Adding support for plaid_token and plaid_token_type in linkAccount.
 
-v0.2.21 
+v0.2.21
     -Adding support for check_partner_kyc endpoint.
     -Adding support for update_account endpoint.
     -Removing blank fields in request body for register endpoints.
