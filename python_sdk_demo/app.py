@@ -1,14 +1,11 @@
 #!flask/bin/python
-import sys
 from flask import (
     escape,
     Flask,
     render_template,
     request,
-    redirect,
-    Response,
 )
-import random, json
+import json
 from silasdk import App
 from silasdk import User
 from silasdk import Transaction
@@ -143,5 +140,5 @@ def transferSila():
 
 
 if __name__ == '__main__':
-	# run!
-	app.run(debug=False)
+    # run!
+    app.run(debug=False)
