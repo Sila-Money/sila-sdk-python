@@ -158,15 +158,15 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = User.getPaymentMethods(app, payload, eth_private_key)
         self.assertTrue(response["success"])
         for item in response.get("payment_methods"):
-            if item["payment_method_type"] == "card":
-                card_id = item.get("card_id")
+            if item["payment_method_type"] == "bank_account":
+                bank_acc_id = item.get("bank_account_id")
 
         descriptor = "test descriptor"
         payload = {
             "message": "issue_msg",
             "user_handle": user_handle,
             "amount": 200,
-            "source_id": card_id,
+            "source_id": bank_acc_id,
             "descriptor": descriptor,
             "business_uuid": business_uuid,
             "processing_type": ProcessingTypes.STANDARD_ACH,

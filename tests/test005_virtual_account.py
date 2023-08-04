@@ -4,23 +4,30 @@ import silasdk
 
 from tests.test_config import *
 
+v_id = None
+v_no = None
+
 
 class Test005Virtual_account(unittest.TestCase):
 
     def test_open_virtual_account_200(self):
         payload = {
-            "virtual_account_name": "test_v_acc",
+            "virtual_account_name": "test_update_v_acc",
             "user_handle": user_handle,
             "ach_credit_enabled": True,
             "ach_debit_enabled": False,
             "statements_enabled": True
         }
+        global v_id
+        global v_no
         response = silasdk.User.openVirtualAccount(
             app, payload, eth_private_key)
         self.assertTrue(response["success"])
         self.assertTrue(response["virtual_account"]["statements_enabled"])
         self.assertIsNotNone(response.get('virtual_account').get('ach_debit_enabled'))
         self.assertIsNotNone(response.get('virtual_account').get('ach_credit_enabled'))
+        v_id = response.get("virtual_account").get("virtual_account_id")
+        v_no = response.get("virtual_account").get("account_number")
         
     def test_open_virtual_account_400(self):
         payload = {
@@ -31,21 +38,11 @@ class Test005Virtual_account(unittest.TestCase):
         self.assertFalse(response["success"])
 
     def test_update_virtual_account_200(self):
-        payload = {
-            "user_handle": user_handle,
-            "virtual_account_name": "test_update_v_acc",
-            "ach_credit_enabled": True,
-            "ach_debit_enabled": False
-        }
-        response = silasdk.User.openVirtualAccount(
-            app, payload, eth_private_key)
-        v_id = response.get("virtual_account").get("virtual_account_id")
 
         payload = {
             "user_handle": user_handle,
             "virtual_account_id": v_id,
-            "virtual_account_name": "updates_test_v_acc",
-            "active": False,
+            "virtual_account_name": "test_v_acc",
             "ach_debit_enabled": True,
             "ach_credit_enabled": False,
             "statements_enabled": True,
@@ -97,13 +94,13 @@ class Test005Virtual_account(unittest.TestCase):
         }
         response = silasdk.User.openVirtualAccount(
             app, payload, eth_private_key)
-        v_id = response.get("virtual_account").get("virtual_account_id")
-        v_no = response.get("virtual_account").get("account_number")
+        v_acc_id = response.get("virtual_account").get("virtual_account_id")
+        v_acc_no = response.get("virtual_account").get("account_number")
 
         payload = {
             "user_handle": user_handle,
-            "virtual_account_id": v_id,
-            "account_number": v_no
+            "virtual_account_id": v_acc_id,
+            "account_number": v_acc_no
         }
 
         response = silasdk.User.closeVirtualAccount(
@@ -111,14 +108,7 @@ class Test005Virtual_account(unittest.TestCase):
         self.assertTrue(response["virtual_account"]["statements_enabled"])
         self.assertTrue(response["success"])
 
-    def test_create_virtual_account_ach_transaction_200(self):
-        payload = {
-            "user_handle": user_handle,
-            "virtual_account_name": "test_close_v_acc"
-        }
-        response = silasdk.User.openVirtualAccount(
-            app, payload, eth_private_key)
-        v_no = response.get("virtual_account").get("account_number")
+    def test_pcreate_virtual_account_ach_transaction_200(self):
 
         payload = {
             "user_handle": user_handle,
