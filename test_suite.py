@@ -53,6 +53,7 @@ from tests.test018_resend_statements import Test018ResendStatements
 from tests.test019_sila_balance import Test019GetSilaBalanceTest
 from tests.test020_get_webhooks import Test020GetWebhooksTest
 from tests.test021_get_payment_methods import Test021GetPaymentMethods
+from tests.test100_teardown import Test100Teardown
 
 
 def create_suite(classes):
@@ -121,7 +122,8 @@ def run_unit_tests():
             Test018ResendStatements,
             Test019GetSilaBalanceTest,
             Test020GetWebhooksTest,
-            Test021GetPaymentMethods
+            Test021GetPaymentMethods,
+            Test100Teardown
         ]
         runner.run(create_suite(classes))
     cov.stop()
