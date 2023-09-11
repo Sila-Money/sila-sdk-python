@@ -1,3 +1,10 @@
+v1.0.1
+	Enhancements:
+		- Allowed skipVerification a new optional input field in /link_card.
+	New Features:
+		- Added support for new Endpoint /create_cko_testing_token.
+		- Added support for new Endpoint /refund_debit_card.
+
 v0.2.53
 Enhancements:
     - Fixed security vulnerabilities

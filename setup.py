@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='silasdk',
 
-    version='0.2.53',
+    version='1.0.1',
 
     description='Sila Python library for message signing and api wrapper',
 
@@ -29,7 +29,7 @@ setup(
 
     ],
 
-    keywords='Sila v0.2.53 Rest API',
+    keywords='Sila v1.0.1 Rest API',
 
     packages=find_packages(exclude=["tests", "tests.*"]),
 

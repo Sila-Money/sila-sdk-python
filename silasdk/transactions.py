@@ -132,3 +132,17 @@ class Transaction():
         response = postRequest(
             self, path, msg_type, payload, user_private_key)
         return response
+
+    def refundDebitCard(self, payload, user_private_key):
+        """ refund debit card transaction under certain circumstances
+        Args:
+            payload : user handle and transaction id
+            user_private_key: users ethereum private key
+        Returns:
+            dict: response body (a confirmation message)
+        """
+        path = endPoints["refundDebitCard"]
+        msg_type = "refund_debit_card_msg"
+        response = postRequest(
+            self, path, msg_type, payload, user_private_key)
+        return response

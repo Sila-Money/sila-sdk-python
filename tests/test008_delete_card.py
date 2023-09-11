@@ -1,6 +1,6 @@
 import unittest, requests 
 from silasdk.users import User
-from tests.test_config import (app, user_handle, eth_private_key, plaid_token_for_card_url, plaid_token_for_card_payload, plaid_token_for_card_headers)
+from tests.test_config import (app, user_handle, eth_private_key, user_handle_2, eth_private_key_2, plaid_token_for_card_url, plaid_token_for_card_payload, plaid_token_for_card_headers)
 
 
 class Test008DeleteCardTest(unittest.TestCase):
@@ -26,12 +26,12 @@ class Test008DeleteCardTest(unittest.TestCase):
 
     def test_002_delete_card_200(self):
         payload = {
-            "user_handle": user_handle,
-            "card_name": "unlink",
+            "user_handle": user_handle_2,
+            "card_name": "visaas",
             "provider" : "CKO"            
         }
 
-        response = User.delete_card(app, payload, eth_private_key)
+        response = User.delete_card(app, payload, eth_private_key_2)
         self.assertTrue(response["success"])
         self.assertIsNotNone(response["reference"])
 

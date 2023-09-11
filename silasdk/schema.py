@@ -584,7 +584,9 @@ Schema = [
             "message": "header_msg",
             "card_name": None,
             "account_postal_code": None,
-            "token": None
+            "token": None,
+            "provider": None,
+            "skip_verification" : None ,
         }
     },
     {
@@ -879,4 +881,35 @@ Schema = [
     }
     },
 
+    {
+    "refund_debit_card_msg":{
+     "header": {
+        "created": None,
+        "app_handle": None,
+        "user_handle":None,
+        "version": "0.2",
+        "crypto": "ETH",
+        "reference": None
+      },
+    "transaction_id": None
+    }
+    },
+
+    {
+    "create_cko_testing_token_msg":{
+     "header": {
+        "created": None,
+        "app_handle": None,
+        "user_handle":None,
+        "version": "0.2",
+        "crypto": "ETH",
+        "reference": None
+      },
+    "card_number": None,
+    "expiry_month": None, 
+    "expiry_year": None,
+    "cvv": None,
+    "cko_public_key": None
+    }
+    },
 ]

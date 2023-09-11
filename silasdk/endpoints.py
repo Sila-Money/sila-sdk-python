@@ -58,4 +58,6 @@ endPoints = {
     "getStatementsData": "/get_statements_data",
     "getWalletStatementData": "/get_wallet_statement_data",
     "statements":"/statements",
+    "createCkoTestingToken":"/create_cko_testing_token",
+    "refundDebitCard":"/refund_debit_card",
 }

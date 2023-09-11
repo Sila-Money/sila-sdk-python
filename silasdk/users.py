@@ -566,3 +566,18 @@ class User():
         msg_type = "resend_statements_msg"
         response = message.putRequest(app, path, msg_type, payload, user_private_key)
         return response
+
+    @staticmethod
+    def create_cko_testing_token(app: App, payload: dict, user_private_key: str) -> dict:
+        """
+          Args:
+              app (App): The current app configuration
+              payload (dict): Filters information
+              user_private_key (str): The user's private key to sign the message
+          Returns:
+              dict: response body (entity information)
+          """
+        path = endPoints["createCkoTestingToken"]
+        msg_type = "create_cko_testing_token_msg"
+        response = message.postRequest(app, path, msg_type, payload, user_private_key)
+        return response
