@@ -1,9 +1,11 @@
 import unittest
+import time
 from silasdk.users import User
 from tests.test_config import (app, basic_individual_handle, business_handle, eth_address, eth_address_2,
                                eth_address_3, eth_address_4, eth_address_5, user_handle, user_handle_2, 
                                instant_ach_handle, sardine_handle, eth_address_6, business_handle_2, eth_address_7)
 
+timestamp = time.time()
 
 class Test002RegisterTest(unittest.TestCase):
     def test_register_200(self):
@@ -36,7 +38,7 @@ class Test002RegisterTest(unittest.TestCase):
             "identity_alias": "SSN",
             "identity_value": "123458877",
             "phone": "1234567890",
-            "email": "fake2@email.com",
+            "email": f"fake{timestamp}@email.com",
             "address_alias": "default",
             "street_address_1": '1232 Main Street',
             "city": 'New City 2',

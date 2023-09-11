@@ -4,6 +4,7 @@ import silasdk
 from tests.test_config import *
 from silasdk.users import User
 from tests.test005_virtual_account import v_id, v_no
+from silasdk.registrationFields import RegistrationFields
 
 
 class Test100Teardown(unittest.TestCase):
@@ -100,3 +101,70 @@ class Test100Teardown(unittest.TestCase):
 
         User.delete_account(
             app, payload, eth_private_key)
+
+    def test_delete_restration_data(self):
+
+        payload = {
+            "user_handle": user_handle
+        }
+
+        response = User.get_entity(app, payload, eth_private_key)
+        email_uuid = response["emails"][0]["uuid"]
+        phone_uuid = response["phones"][0]["uuid"]
+        address_uuid = response["addresses"][0]["uuid"]
+
+        payload = {
+            "user_handle": user_handle,
+            "uuid": address_uuid
+        }
+
+        User.deleteRegistrationData(
+            app, RegistrationFields.ADDRESS, payload, eth_private_key)
+        
+        payload = {
+            "user_handle": user_handle,
+            "uuid": phone_uuid
+        }
+
+        User.deleteRegistrationData(
+            app, RegistrationFields.ADDRESS, payload, eth_private_key)
+        payload = {
+            "user_handle": user_handle,
+            "uuid": email_uuid
+        }
+
+        User.deleteRegistrationData(
+            app, RegistrationFields.ADDRESS, payload, eth_private_key)
+
+        payload = {
+            "user_handle": business_handle
+        }
+
+        response = User.get_entity(app, payload, eth_private_key_3)
+        email_uuid = response["emails"][0]["uuid"]
+        phone_uuid = response["phones"][0]["uuid"]
+        address_uuid = response["addresses"][0]["uuid"]
+
+        payload = {
+            "user_handle": business_handle,
+            "uuid": address_uuid
+        }
+
+        User.deleteRegistrationData(
+            app, RegistrationFields.ADDRESS, payload, eth_private_key_3)
+
+        payload = {
+            "user_handle": business_handle,
+            "uuid": phone_uuid
+        }
+
+        User.deleteRegistrationData(
+            app, RegistrationFields.ADDRESS, payload, eth_private_key_3)
+
+        payload = {
+            "user_handle": business_handle,
+            "uuid": email_uuid
+        }
+
+        User.deleteRegistrationData(
+            app, RegistrationFields.ADDRESS, payload, eth_private_key_3)

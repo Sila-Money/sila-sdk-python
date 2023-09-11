@@ -17,7 +17,8 @@ class Test006LinkCardTest(unittest.TestCase):
             "user_handle": user_handle,
             "card_name": "visa",
             "account_postal_code": "12345",
-            "token": card_token
+            "token": card_token ,
+            "skip_verification" : False
         }
 
         response = User.link_card(app, payload, eth_private_key)
