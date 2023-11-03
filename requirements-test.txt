@@ -1,3 +1,4 @@
 flask==2.2.5
 xmlrunner==1.7.7
 coverage
+werkzeug>=3.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
