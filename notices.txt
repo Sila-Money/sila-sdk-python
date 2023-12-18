@@ -1,0 +1,42 @@
+Third Party Software License/Notices
+This document contains Third Party Software Notices and/or Additional Terms and Conditions for licensed third party software components included within sila-sdk-python.
+These notices and/or additional terms and conditions are made a part of and incorporated by reference into the sila-sdk-python Software License Agreement.
+
+Third Party Software
+
+Notice/Terms
+
+coverage
+
+Apache 2.0
+https://github.com/nedbat/coveragepy/blob/master/LICENSE.txt
+
+
+eth-account
+
+MIT License
+https://github.com/ethereum/eth-account/blob/master/LICENSE
+
+
+flask
+
+BSD 3-Clause License
+https://flask.palletsprojects.com/en/3.0.x/license/
+
+
+requests
+
+Apache 2.0
+https://github.com/psf/requests/blob/main/LICENSE
+
+
+web3
+
+MIT License
+https://github.com/ethereum/web3.py/blob/main/LICENSE
+
+
+xmlrunner
+
+LGPL
+https://github.com/pycontribs/xmlrunner/blob/master/LICENSE

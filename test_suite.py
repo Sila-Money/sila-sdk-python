@@ -1,7 +1,6 @@
 import coverage
 import os
 import unittest
-import xmlrunner
 
 from tests.test001_check_handle import Test001CheckHandleTest
 from tests.test001_get_business_types import Test001GetBusinessTypesTest
@@ -74,6 +73,7 @@ def run_unit_tests():
     cov.start()
     results = os.path.abspath('./test-results.xml')
     with open(results, 'wb') as output:
+        import xmlrunner
         runner = xmlrunner.XMLTestRunner(output=output, verbosity=2)
         classes = [
             Test001CheckHandleTest,
