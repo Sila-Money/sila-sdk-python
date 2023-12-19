@@ -1,3 +1,8 @@
+v1.0.2
+    Enhancements:
+        - Added notices.txt for OSS attribution
+        - Moved xmlrunner import
+
 v1.0.1
 	Enhancements:
 		- Allowed skipVerification a new optional input field in /link_card.
