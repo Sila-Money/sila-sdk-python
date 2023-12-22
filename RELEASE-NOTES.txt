@@ -1,7 +1,11 @@
-v1.0.2
+v1.0.3
     Enhancements:
         - Added notices.txt for OSS attribution
         - Moved xmlrunner import
+
+v1.0.2
+    Enhancements:
+        - Pinned werkzeug to 2.3.8 to avoid security vulnerabilities.
 
 v1.0.1
 	Enhancements:
