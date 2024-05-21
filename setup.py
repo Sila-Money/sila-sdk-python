@@ -34,7 +34,7 @@ setup(
     packages=find_packages(exclude=["tests", "tests.*"]),
 
     install_requires=[
-        "requests==2.31.0",
+        "requests==2.32.0",
         "pyaml>=15.8.2",
         "eth-account==0.8.0",
         "web3==6.5.0"
