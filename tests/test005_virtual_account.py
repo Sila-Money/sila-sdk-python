@@ -22,7 +22,7 @@ class Test005Virtual_account(unittest.TestCase):
         global v_no
         response = silasdk.User.openVirtualAccount(
             app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertTrue(response["virtual_account"]["statements_enabled"])
         self.assertIsNotNone(response.get('virtual_account').get('ach_debit_enabled'))
         self.assertIsNotNone(response.get('virtual_account').get('ach_credit_enabled'))
@@ -50,7 +50,7 @@ class Test005Virtual_account(unittest.TestCase):
 
         response = silasdk.User.updateVirtualAccount(
             app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertTrue(response["virtual_account"]["statements_enabled"])
         self.assertTrue(response.get('virtual_account').get('ach_debit_enabled'))
         self.assertFalse(response.get('virtual_account').get('ach_credit_enabled'))
@@ -62,7 +62,7 @@ class Test005Virtual_account(unittest.TestCase):
 
         response = silasdk.User.getVirtualAccounts(
             app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response.get('virtual_accounts')[0].get('ach_debit_enabled'))
         self.assertIsNotNone(response.get('virtual_accounts')[0].get('ach_credit_enabled'))
 
@@ -82,7 +82,7 @@ class Test005Virtual_account(unittest.TestCase):
 
         response = silasdk.User.getVirtualAccount(
             app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response.get('virtual_account').get('ach_debit_enabled'))
         self.assertIsNotNone(response.get('virtual_account').get('ach_credit_enabled'))
         
@@ -106,7 +106,7 @@ class Test005Virtual_account(unittest.TestCase):
         response = silasdk.User.closeVirtualAccount(
             app, payload, eth_private_key)
         self.assertTrue(response["virtual_account"]["statements_enabled"])
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_pcreate_virtual_account_ach_transaction_200(self):
 
@@ -120,7 +120,7 @@ class Test005Virtual_account(unittest.TestCase):
 
         response = silasdk.User.testVirtualAaccountAchTransaction(
             app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
 if __name__ == "__main__":
     unittest.main()

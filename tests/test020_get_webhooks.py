@@ -9,7 +9,7 @@ class Test020GetWebhooksTest(unittest.TestCase):
             "user_handle": user_handle            
         }
         response = User.get_webhooks(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
     
     def test_002_get_webhooks_400(self):
         payload = {
@@ -31,7 +31,7 @@ class Test020GetWebhooksTest(unittest.TestCase):
                 "event_uuid":event_uuid        
             }
             response = User.retry_webhook(app, payload, eth_private_key)
-            self.assertTrue(response["success"])
+            self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
 if __name__ == "__main__":
     unittest.main()

@@ -16,7 +16,7 @@ class Test013ReverseTransactionsTest(unittest.TestCase):
         }
 
         response = Transaction.issue_sila(app, payload, eth_private_key)
-        self.assertEqual(response.get("success"), True)    
+        self.assertEqual(response.get("success"), True, msg=response.get('message', 'No message provided'))
 
         payload = {
             "user_handle": user_handle,
@@ -37,7 +37,7 @@ class Test013ReverseTransactionsTest(unittest.TestCase):
             "transaction_id": response["transaction_id"]
         }
         response2 = Transaction.reverseTransaction(app, payload, eth_private_key)
-        self.assertTrue(response2.get('success'))
+        self.assertTrue(response2.get('success'), msg=response2.get('message', 'No message provided'))
 
 if __name__ == '__main__':
     unittest.main()

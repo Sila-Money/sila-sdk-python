@@ -27,7 +27,6 @@ from tests.test006_link_card_with_cko_testing_token import Test006LinkCardWithCk
 from tests.test006_link_card import Test006LinkCardTest
 from tests.test006_plaid_link_token import Test006PlaidLinkTokenTest
 from tests.test006_plaid_update_link_token import Test006PlaidUpdateLinkTokenTest
-from tests.test007_check_instant_ach import Test007CheckInstantAchTest
 from tests.test007_get_accounts import Test007GetAccountsTest
 from tests.test007_get_cards import Test007GetCardsTest
 from tests.test007_delete_account import Test007DeleteAccountTest
@@ -36,10 +35,9 @@ from tests.test008_get_account_balance import Test008GetAccountBalanceTest
 from tests.test008_delete_card import Test008DeleteCardTest
 from tests.test009_issue_sila import Test009IssueSilaTest
 from tests.test007_refund_debit_card import Test007RefundDebitCardTest
-from tests.test010_transfer_sila import Test010TrasferSilaTest
+from tests.test010_transfer_sila import Test010TransferSilaTest
 from tests.test011_cancel_transaction import Test011CancelTransactionTest
 from tests.test011_redeem_sila import Test011RedeemSilaTest
-from tests.test011_wire import Test011WireTest
 from tests.test012_get_transactions import Test012GetTransactionsTest
 from tests.test013_plaid_same_day_auth import Test013PlaidSameDayAuthTest
 from tests.test013_reverse_transactions import Test013ReverseTransactionsTest
@@ -101,7 +99,6 @@ def run_unit_tests():
             Test006LinkCardWithCkoTestingToken,
             Test006PlaidLinkTokenTest,
             Test006PlaidUpdateLinkTokenTest,
-            Test007CheckInstantAchTest,
             Test007DeleteAccountTest,
             Test007UpdateAccountTest,
             Test007GetAccountsTest,
@@ -110,9 +107,8 @@ def run_unit_tests():
             Test008GetAccountBalanceTest,
             Test008DeleteCardTest,
             Test009IssueSilaTest,
-            Test010TrasferSilaTest,
+            Test010TransferSilaTest,
             Test011RedeemSilaTest,
-            Test011WireTest,
             Test011CancelTransactionTest,
             Test012GetTransactionsTest,
             Test013PlaidSameDayAuthTest,

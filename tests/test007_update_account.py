@@ -16,7 +16,7 @@ class Test007UpdateAccountTest(unittest.TestCase):
         response = User.update_account(
             app, payload, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["account"]["account_name"], "accountupdated")
         self.assertIsNotNone(response["account"]['web_debit_verified'])
 
@@ -30,7 +30,7 @@ class Test007UpdateAccountTest(unittest.TestCase):
         response = User.update_account(
             app, payload, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["account"]["active"], False)
         self.assertEqual(response["account"]["account_status"], 'inactive')
 
@@ -45,7 +45,7 @@ class Test007UpdateAccountTest(unittest.TestCase):
         response = User.update_account(
             app, payload, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["account"]["active"], True)
         self.assertEqual(response["account"]["account_status"], 'active')
 

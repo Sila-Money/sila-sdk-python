@@ -20,7 +20,7 @@ class Test006LinkAccountTest(unittest.TestCase):
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False)
         
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response['web_debit_verified'])
         
         payload = {
@@ -34,7 +34,7 @@ class Test006LinkAccountTest(unittest.TestCase):
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False)
         
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
         payload = {
             "user_handle": user_handle,
@@ -47,7 +47,7 @@ class Test006LinkAccountTest(unittest.TestCase):
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False)
         
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
     def test_link_account_instant_ach(self):
         payload = {
@@ -59,7 +59,7 @@ class Test006LinkAccountTest(unittest.TestCase):
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key_4, True)
         
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
     def test_link_account_sardine(self):
         payload = {
@@ -70,7 +70,7 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key_6, True)
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
     def test_link_account_plaid_200(self):
         options = {
@@ -97,7 +97,7 @@ class Test006LinkAccountTest(unittest.TestCase):
             app, payload, eth_private_key, True)
 
         
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response['account_owner_name'])
 
         plaid_response = app.postPlaid(
@@ -114,7 +114,7 @@ class Test006LinkAccountTest(unittest.TestCase):
             app, payload, eth_private_key, True)
 
         
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response['account_owner_name'])
 
     def test_link_account_400(self):
@@ -138,7 +138,7 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False,True)
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
     def test_link_account_mx_400(self):
         payload = {

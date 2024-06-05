@@ -10,7 +10,7 @@ class Test008GetAccountBalanceTest(unittest.TestCase):
         }
 
         response = silasdk.User.getAccountBalance(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
         payload = {

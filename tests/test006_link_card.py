@@ -22,7 +22,7 @@ class Test006LinkCardTest(unittest.TestCase):
         }
 
         response = User.link_card(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
 

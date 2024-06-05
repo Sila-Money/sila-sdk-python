@@ -25,7 +25,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
         # poll(self, response["transaction_id"], "success",
         #      app, user_handle, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
 
@@ -41,7 +41,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
         response = Transaction.redeemSila(
             app, payload, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
 
@@ -93,7 +93,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
         # poll(self, response["transaction_id"], "success",
         #      app, user_handle, eth_private_key)
 
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_redeem_sila_card_200(self):
         payload = {
@@ -107,7 +107,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
         # poll(self, response["transaction_id"], "success",
         #      app, user_handle, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
     def test_redeem_sila_400_both_card_account(self):
         payload = {
@@ -128,7 +128,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
             "user_handle": user_handle
         }
         response = User.openVirtualAccount(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         v_id = response.get("virtual_account").get("virtual_account_id")
 
         payload = {
@@ -136,7 +136,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
         }
         response = User.getPaymentMethods(app, payload, eth_private_key)
 
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         for item in response.get("payment_methods"):
             if item["payment_method_type"] == "bank_account":
                 bank_acc_id = item.get("bank_account_id")
@@ -170,7 +170,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
             "source_id": v_id,
         }
         response = Transaction.redeemSila(app, payload, eth_private_key)
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         
     def test_redeem_sila_instant_settelment_200(self):
         payload = {

@@ -8,7 +8,7 @@ class Test001GetInstitutionsTest(unittest.TestCase):
             "institution_name": "1st advantage bank"
         }
         response = silasdk.User.get_institutions(app, payload)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
         self.assertIsNotNone(response["response_time_ms"])  
 

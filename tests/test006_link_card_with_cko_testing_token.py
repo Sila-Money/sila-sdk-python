@@ -21,7 +21,7 @@ class Test006LinkCardWithCkoTestingToken(unittest.TestCase):
             "token": cko_token
         }
         response = User.link_card(app, payload, eth_private_key_2)
-        self.assertTrue(response['success'])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response['status'],"SUCCESS")
 
     def test_001_link_card_with_cko_testing_token_400(self):

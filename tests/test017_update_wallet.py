@@ -16,7 +16,7 @@ class Test017UpdateWalletTest(unittest.TestCase):
 
         response = Wallet.update_wallet(app, payload, eth_private_key)
         self.assertTrue(response['wallet']['statements_enabled'])
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
         self.assertIsNotNone(response.get('wallet'))

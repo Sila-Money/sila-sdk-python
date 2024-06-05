@@ -21,7 +21,7 @@ class Test008DeleteCardTest(unittest.TestCase):
         }
 
         response = User.link_card(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
     def test_002_delete_card_200(self):
@@ -32,7 +32,7 @@ class Test008DeleteCardTest(unittest.TestCase):
         }
 
         response = User.delete_card(app, payload, eth_private_key_2)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
     def test_003_delete_card_400(self):

@@ -15,7 +15,7 @@ class Test006CreateCkoTestingToken(unittest.TestCase):
             }   
         response = User.create_cko_testing_token(app, payload, eth_private_key)
         self.assertIsNotNone(response["token"])
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_create_cko_testing_token_400(self):
         payload = {

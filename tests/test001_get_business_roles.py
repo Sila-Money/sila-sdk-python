@@ -5,7 +5,7 @@ from tests.test_config import *
 class Test001GetBusinessRolesTest(unittest.TestCase):
     def test_get_business_roles(self):
         response = silasdk.BusinessInformation.getBusinessRoles(app)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["business_roles"])
         self.assertIsNotNone(response["business_roles"][0]["uuid"])
         self.assertIsNotNone(response["business_roles"][0]["name"])

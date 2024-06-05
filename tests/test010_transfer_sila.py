@@ -8,7 +8,7 @@ from tests.test_config import ( sardine_handle, eth_private_key_6,
     app, business_uuid, eth_private_key, user_handle, user_handle_2)
 
 
-class Test010TrasferSilaTest(unittest.TestCase):
+class Test010TransferSilaTest(unittest.TestCase):
     def test_transfer_sila_200(self):
         payload = {
             "user_handle": user_handle,
@@ -22,7 +22,7 @@ class Test010TrasferSilaTest(unittest.TestCase):
             app, payload, eth_private_key)      
         poll(self, response["transaction_id"], "success", app, user_handle, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
 
@@ -70,7 +70,7 @@ class Test010TrasferSilaTest(unittest.TestCase):
         }
 
         response = User.openVirtualAccount(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         source_v_id = response.get("virtual_account").get("virtual_account_id")
 
         payload = {
@@ -79,7 +79,7 @@ class Test010TrasferSilaTest(unittest.TestCase):
         }
 
         response = User.openVirtualAccount(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         destination_v_id = response.get(
             "virtual_account").get("virtual_account_id")
 
@@ -116,7 +116,7 @@ class Test010TrasferSilaTest(unittest.TestCase):
         poll(self, response["transaction_id"], "success",
              app, user_handle, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
 
@@ -127,14 +127,14 @@ def test_transfer_sila_v2block_chain_200(self):
         }
 
         response = User.openVirtualAccount(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         source_v_id = response.get("virtual_account").get("virtual_account_id")
 
         payload = {
             "user_handle": user_handle
         }
         response = User.getPaymentMethods(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         for item in response.get("payment_methods"):
             if item["payment_method_type"] == "blockchain_address":
                 blockchain_address = item.get("blockchain_address")
@@ -172,7 +172,7 @@ def test_transfer_sila_v2block_chain_200(self):
         poll(self, response["transaction_id"], "success",
              app, user_handle, eth_private_key)
 
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
     
@@ -188,7 +188,7 @@ def test_transfer_sila_instant_settelment_200(self):
 
     response = Transaction.transferSila(
         app, payload, eth_private_key_6)
-    self.assertEqual(response["status"], "SUCCESS")
+    self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
 if __name__ == '__main__':
     unittest.main()

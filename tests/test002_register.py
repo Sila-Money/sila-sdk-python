@@ -1,5 +1,7 @@
 import unittest
 import time
+import uuid
+
 from silasdk.users import User
 from tests.test_config import (app, basic_individual_handle, business_handle, eth_address, eth_address_2,
                                eth_address_3, eth_address_4, eth_address_5, user_handle, user_handle_2, 
@@ -112,7 +114,7 @@ class Test002RegisterTest(unittest.TestCase):
             "crypto_alias": "python_wallet_2",
             "birthdate": "1990-05-12",
             "device_fingerprint": "test_sardine",
-            "session_identifier":"ppppp-aaaa-dddd-99ce-c45944174e0c"
+            "session_identifier": str(uuid.uuid4())
         }
 
         business_with_registration_state = {
@@ -139,33 +141,33 @@ class Test002RegisterTest(unittest.TestCase):
         }
 
         response = User.register(app, payload)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
 
         response = User.register(app, payload_2)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
 
         response = User.register(app, business)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
         self.assertTrue(response.get('business_uuid'))
 
         response = User.register(app, instant_ach)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
 
         response = User.register(app, sardine)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
 
         response = User.register(app, business_with_registration_state)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
         
@@ -178,7 +180,7 @@ class Test002RegisterTest(unittest.TestCase):
         }
 
         response = User.register(app, basic_individual)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertEqual(response.get('status'), 'SUCCESS')
 

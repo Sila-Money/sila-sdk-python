@@ -27,7 +27,7 @@ class Test007RefundDebitCardTest(unittest.TestCase):
         }
 
         response = Transaction.refundDebitCard(app, payload, eth_private_key_2)
-        self.assertTrue(response['success'])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_refund_debit_card_400(self):
 
