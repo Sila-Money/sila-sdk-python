@@ -10,7 +10,7 @@ class Test001CheckHandleTest(unittest.TestCase):
             "user_handle": user_handle
         }
         response = silasdk.User.checkHandle(app, payload)
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
     def test_check_handle_401(self):
         payload = {

@@ -12,7 +12,7 @@ class Test005GetEntityTest(unittest.TestCase):
         }
         with self.assertWarns(DeprecationWarning):
             response = User.getEntity(app, payload, eth_private_key)
-            self.assertTrue(response["success"])
+            self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
             self.assertIsNotNone(response["reference"])
 
     def test_get_entity_200(self):
@@ -20,7 +20,7 @@ class Test005GetEntityTest(unittest.TestCase):
             "user_handle": user_handle
         }
         response = User.get_entity(app, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["entity"])
         self.assertFalse("created" in response["entity"])
         self.assertIsNotNone(response["reference"])
@@ -30,7 +30,7 @@ class Test005GetEntityTest(unittest.TestCase):
             "user_handle": user_handle
         }
         response = User.get_entity(app, payload, eth_private_key, True)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["entity"])
         self.assertTrue("created" in response["entity"])
         self.assertIsNotNone(response["reference"])

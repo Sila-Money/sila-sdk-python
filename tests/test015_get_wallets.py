@@ -18,7 +18,7 @@ class Test015GetWalletsTest(unittest.TestCase):
 
         response = silasdk.Wallet.getWallets(app, payload, eth_private_key)
         self.assertTrue((response["wallets"][0])["statements_enabled"])
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
         wallet_id = response.get("wallets")[0].get("wallet_id")
         payload = {
@@ -29,7 +29,7 @@ class Test015GetWalletsTest(unittest.TestCase):
         }
         response = silasdk.Wallet.getWallets(app, payload, eth_private_key)
         self.assertTrue((response["wallets"][0])["statements_enabled"])
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
     def test_get_wallets_400(self):

@@ -1,4 +1,5 @@
 import unittest
+import uuid
 
 from silasdk.registrationFields import RegistrationFields
 from silasdk.users import User
@@ -17,9 +18,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.add_registration_data(
             app, RegistrationFields.EMAIL, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["email"]["email"], email)
         self.assertIsNotNone(response["email"]["added_epoch"])
         self.assertIsNotNone(response["email"]["modified_epoch"])
@@ -36,9 +37,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
         response = User.add_registration_data(
             app, RegistrationFields.PHONE, payload, eth_private_key)
 
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["phone"]["phone"], phone)
         self.assertIsNotNone(response["phone"]["added_epoch"])
         self.assertIsNotNone(response["phone"]["modified_epoch"])
@@ -62,7 +63,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         response = User.deleteRegistrationData(
             app, RegistrationFields.IDENTITY, payload, eth_private_key_3)
 
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
         identity_alias = "EIN"
@@ -75,9 +76,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.add_registration_data(
             app, RegistrationFields.IDENTITY, payload, eth_private_key_3)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["identity"]["identity_type"], identity_alias)
         self.assertIsNotNone(response["identity"]["identity"])
         self.assertIsNotNone(response["identity"]["added_epoch"])
@@ -105,9 +106,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.add_registration_data(
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["address"]["nickname"], address_alias)
         self.assertEqual(response["address"]
                          ["street_address_1"], street_address_1)
@@ -130,12 +131,12 @@ class Test003RegistrationDataTests(unittest.TestCase):
         response = User.add_registration_data(
             app, RegistrationFields.DEVICE, payload, eth_private_key)
 
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
         self.assertRegex(response.get('message'),
                          r'\bsuccessfully registered for handle\b')
         self.assertEqual(response.get('status_code'), 200)
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
     def test_add_registration_data_400(self):
@@ -180,9 +181,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.update_registration_data(
             app, RegistrationFields.EMAIL, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["email"]["email"], email)
         self.assertEqual(response["email"]["uuid"], email_uuid)
         self.assertIsNotNone(response["email"]["added_epoch"])
@@ -200,9 +201,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
         response = User.update_registration_data(
             app, RegistrationFields.PHONE, payload, eth_private_key)
 
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["phone"]["phone"], phone)
         self.assertIsNotNone(response["phone"]["added_epoch"])
         self.assertIsNotNone(response["phone"]["modified_epoch"])
@@ -219,9 +220,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.update_registration_data(
             app, RegistrationFields.IDENTITY, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["identity"]["identity_type"], identity_alias)
         self.assertIsNotNone(response["identity"]["identity"])
         self.assertIsNotNone(response["identity"]["added_epoch"])
@@ -250,9 +251,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.update_registration_data(
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["address"]["nickname"], address_alias)
         self.assertEqual(response["address"]
                          ["street_address_1"], street_address_1)
@@ -282,9 +283,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
         response = User.update_registration_data(
             app, RegistrationFields.ENTITY, payload, eth_private_key)
 
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["user_handle"], user_handle)
         self.assertEqual(response["entity_type"], "individual")
         self.assertEqual(response["entity"]["entity_name"], entity_name)
@@ -315,9 +316,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.update_registration_data(
             app, RegistrationFields.ENTITY, payload, eth_private_key_3)        
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["user_handle"], business_handle)
         self.assertEqual(response["entity_type"], "business")
         self.assertEqual(response["entity"]["entity_name"], entity_name)
@@ -373,9 +374,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.deleteRegistrationData(
             app, RegistrationFields.EMAIL, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
         payload = {
@@ -385,9 +386,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.deleteRegistrationData(
             app, RegistrationFields.PHONE, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
         payload = {
@@ -397,9 +398,9 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
         response = User.deleteRegistrationData(
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
     def test_delete_registration_data_400(self):
@@ -425,7 +426,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
 
 
     def test_add_registration_data_session_identifier_200(self):
-        session_identifier = "ppppp-aaaa-dddd-99ce-c45944174e0c"
+        session_identifier = str(uuid.uuid4())
         payload = {
             "user_handle": user_handle,
             "session_identifier": session_identifier,
@@ -435,7 +436,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         response = User.add_registration_data(
             app, RegistrationFields.DEVICE, payload, eth_private_key)
 
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
 if __name__ == "__main__":
     unittest.main()

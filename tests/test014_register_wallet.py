@@ -20,7 +20,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
 
         response = Wallet.registerWallet(app, payload, eth_private_key)
         self.assertTrue(response["statements_enabled"])
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_register_wallet_400(self):
         payload = {

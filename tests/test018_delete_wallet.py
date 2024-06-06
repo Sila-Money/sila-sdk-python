@@ -11,7 +11,7 @@ class Test018DeleteWalletTest(unittest.TestCase):
         }
 
         response = Wallet.deleteWallet(app, payload, wallet_private_key)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_delete_wallet_400(self):
         payload = {

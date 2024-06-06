@@ -1,4 +1,8 @@
-v1.0.3
+v1.0.4
+    Enhancements:
+        - Updated Packages and fixed tests
+
+ v1.0.3
     Enhancements:
         - Added notices.txt for OSS attribution
         - Moved xmlrunner import

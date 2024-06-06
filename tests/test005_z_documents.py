@@ -11,8 +11,8 @@ class Test005ZDocuments(unittest.TestCase):
 
         response = silasdk.Documents.listSupportedDocuments(
             app, 1, 1)
-        self.assertTrue(response["success"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
         self.assertIsNotNone(response["document_types"])
         self.assertIsNotNone(response["reference"])
@@ -34,8 +34,8 @@ class Test005ZDocuments(unittest.TestCase):
 
         response = silasdk.Documents.uploadDocument(
             app, payload, fileContents, eth_private_key)
-        self.assertTrue(response["success"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
         self.assertIsNotNone(response["reference_id"])
         self.assertIsNotNone(response["document_id"])
@@ -64,8 +64,8 @@ class Test005ZDocuments(unittest.TestCase):
 
         response = silasdk.Documents.listDocuments(
             app, payload, eth_private_key, 1, 1, "asc")
-        self.assertTrue(response["success"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["documents"])
         self.assertIsNotNone(response["pagination"])
         self.assertIsNotNone(response["reference"])
@@ -109,8 +109,8 @@ class Test005ZDocuments(unittest.TestCase):
         
         response = silasdk.Documents.uploadDocuments(
             app, payload, fileContent, eth_private_key)         
-        self.assertTrue(response["success"])
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
         self.assertIsNotNone(response["reference_id"])
         self.assertIsNotNone(response["document_id"])

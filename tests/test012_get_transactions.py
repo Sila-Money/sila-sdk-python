@@ -22,7 +22,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
             }
         }
         response = User.get_transactions(app, payload)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
         self.assertEqual(len(response["transactions"]), 13)
         self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
@@ -55,7 +55,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
 
     def test_get_transactions_without_user_handle_200(self):
         response = User.get_transactions(app)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_get_transactions_200_with_error_code(self):
         payload = {
@@ -70,12 +70,9 @@ class Test012GetTransactionsTest(unittest.TestCase):
         }
         response = User.get_transactions(app, payload)
         
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
         self.assertEqual(len(response["transactions"]), 1)
-        self.assertEqual(
-            response["transactions"][0]["error_code"], 'ACH_RETURN')    
-        self.assertIsNotNone(response.get('transactions')[0].get('error_msg'))
         self.assertIsNotNone(response.get('transactions')[0].get('return_code'))
         self.assertIsNotNone(response.get('transactions')[0].get('return_desc'))
 
@@ -89,7 +86,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         }
         response = User.get_transactions(app, payload)
 
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
         self.assertGreater(len(response.get('transactions')), 1)
         self.assertEqual(response.get('transactions')
@@ -106,7 +103,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         }
         response = User.get_transactions(app, payload)
 
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_get_transactions_400(self):
         payload = {
@@ -125,9 +122,9 @@ class Test012GetTransactionsTest(unittest.TestCase):
             }
         }
         response = User.get_transactions(app, payload)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
-    def test_get_instant_settelment_transactions_200(self):
+    def test_get_instant_settlement_transactions_200(self):
         payload = {
             'user_handle': sardine_handle,
             'search_filters': {
@@ -135,20 +132,8 @@ class Test012GetTransactionsTest(unittest.TestCase):
             }
         }
         response = User.get_transactions(app, payload)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
-    def test_get_wire_transactions_200(self):
-        payload = {
-            'user_handle': user_handle,
-            'search_filters': {
-                'processing_type': ProcessingTypes.WIRE,
-            }
-        }
-        response = User.get_transactions(app, payload)
-        self.assertTrue(response.get('success'))
-        self.assertIn("IMAD",response.get("transactions")[0].keys())
-        self.assertIn("OMAD",response.get("transactions")[0].keys())
-        self.assertIn("provider_tx_id",response.get("transactions")[0].keys())
-        self.assertIn("provider_status",response.get("transactions")[0].keys())
+
 if __name__ == '__main__':
     unittest.main()

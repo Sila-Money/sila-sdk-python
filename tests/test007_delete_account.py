@@ -14,7 +14,7 @@ class Test007DeleteAccountTest(unittest.TestCase):
 
         response = User.delete_account(
             app, payload, eth_private_key)
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["account_name"], "unlink")
         self.assertIsNotNone(response["reference"])
 

@@ -15,7 +15,7 @@ class   Test018ResendStatements(unittest.TestCase):
         }
         
         response = silasdk.User.resend_statements(app, payload, eth_private_key)
-        self.assertTrue(response['success'])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response['status'],"SUCCESS")
 
     def test_resend_statements_400(self):

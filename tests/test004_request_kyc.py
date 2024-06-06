@@ -18,22 +18,23 @@ from tests.test_config import (
 class Test004RequestKycTest(unittest.TestCase):
     def test_register_kyc_200_default(self):
         payload = {
-            "user_handle": user_handle
+            "user_handle": user_handle,
+            'kyc_level': 'KYC-STANDARD'
         }
 
         response = User.requestKyc(app, payload, eth_private_key)
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status'), "SUCCESS")
-        self.assertTrue(response.get('success'))
         self.assertIsNotNone(response['verification_uuid'])
         self.assertEqual(response.get('status_code'), 200)
 
         payload = {
-            "user_handle": user_handle_2
+            "user_handle": user_handle_2,
         }
 
         response = User.requestKyc(app, payload, eth_private_key_2)
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status'), "SUCCESS")
-        self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertIsNotNone(response['verification_uuid'])
 
@@ -43,31 +44,30 @@ class Test004RequestKycTest(unittest.TestCase):
         }
 
         response = User.requestKyc(app, payload, eth_private_key_3)
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status'), "SUCCESS")
-        self.assertTrue(response.get('success'))
         self.assertEqual(response.get('status_code'), 200)
         self.assertIsNotNone(response['verification_uuid'])
 
     def test_register_kyc_200_instant_ach(self):
         payload = {
             'user_handle': instant_ach_handle,
-            'kyc_level': 'INSTANT-ACH'
         }
 
         response = User.requestKyc(app, payload, eth_private_key_4)
 
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status'), 'SUCCESS')
         self.assertEqual(response.get('status_code'), 200)
         self.assertIsNotNone(response['verification_uuid'])
 
         payload = {
             'user_handle': sardine_handle,
-            'kyc_level': 'INSTANT-ACHV2'
+            'kyc_level': 'KYC-STANDARD'
         }
 
         response = User.requestKyc(app, payload, eth_private_key_6)
-        self.assertTrue(response.get('success'))
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response.get('status'), 'SUCCESS')
         self.assertEqual(response.get('status_code'), 200)
         self.assertIsNotNone(response['verification_uuid'])

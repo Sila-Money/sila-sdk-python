@@ -10,7 +10,7 @@ class Test003UnlinkBusinessMemberTest(unittest.TestCase):
             "role": "administrator",
         }
         response = silasdk.BusinessOperations.unlinkBusinessMember(app, payload, eth_private_key_2, eth_private_key_3)
-        self.assertTrue(response["success"])
+        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
 
