@@ -18,7 +18,8 @@ from tests.test_config import (
 class Test004RequestKycTest(unittest.TestCase):
     def test_register_kyc_200_default(self):
         payload = {
-            "user_handle": user_handle
+            "user_handle": user_handle,
+            'kyc_level': 'KYC-STANDARD'
         }
 
         response = User.requestKyc(app, payload, eth_private_key)
@@ -51,7 +52,6 @@ class Test004RequestKycTest(unittest.TestCase):
     def test_register_kyc_200_instant_ach(self):
         payload = {
             'user_handle': instant_ach_handle,
-            'kyc_level': 'INSTANT-ACH'
         }
 
         response = User.requestKyc(app, payload, eth_private_key_4)
@@ -63,7 +63,7 @@ class Test004RequestKycTest(unittest.TestCase):
 
         payload = {
             'user_handle': sardine_handle,
-            'kyc_level': 'INSTANT-ACHV2'
+            'kyc_level': 'KYC-STANDARD'
         }
 
         response = User.requestKyc(app, payload, eth_private_key_6)

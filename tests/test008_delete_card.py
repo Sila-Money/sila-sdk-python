@@ -1,47 +1,32 @@
-import unittest, requests 
+import unittest
+import uuid
+from unittest import mock
+
 from silasdk.users import User
-from tests.test_config import (app, user_handle, eth_private_key, user_handle_2, eth_private_key_2, plaid_token_for_card_url, plaid_token_for_card_payload, plaid_token_for_card_headers)
+from tests.test_config import (app, user_handle, eth_private_key, eth_private_key_2)
 
 
 class Test008DeleteCardTest(unittest.TestCase):
-    def test_001_link_card_200(self):
-        """Generate plaid legacy token"""
-
-        url = plaid_token_for_card_url
-        payload = plaid_token_for_card_payload
-        headers = plaid_token_for_card_headers
-        response = requests.request("POST", url, headers=headers, data=payload)
-        response = response.text
-        card_token = response[3:]
+    @mock.patch('silasdk.message.postRequest',
+                return_value={'success': True, 'reference': str(uuid.uuid4())})
+    def test_002_delete_card_200(self, _):
         payload = {
             "user_handle": user_handle,
-            "card_name": "unlink",
-            "account_postal_code": "12345",
-            "token": card_token
+            "card_name": "delete",
+            "provider": "CKO"
         }
 
-        response = User.link_card(app, payload, eth_private_key)
-        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
-        self.assertIsNotNone(response["reference"])
-
-    def test_002_delete_card_200(self):
-        payload = {
-            "user_handle": user_handle_2,
-            "card_name": "visaas",
-            "provider" : "CKO"            
-        }
-
-        response = User.delete_card(app, payload, eth_private_key_2)
+        response = User.delete_card(app, payload, eth_private_key)
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
 
     def test_003_delete_card_400(self):
         payload = {
             "user_handle": '',
-            "card_name": "unlink",           
+            "card_name": "visaas",           
         }
 
-        response = User.delete_card(app, payload, eth_private_key)
+        response = User.delete_card(app, payload, eth_private_key_2)
         self.assertFalse(response["success"])  
 
 

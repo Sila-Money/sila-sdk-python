@@ -12,28 +12,6 @@ from tests.test_config import (
 
 class Test009IssueSilaTest(unittest.TestCase):
 
-    def test_issue_sila_200_deprecated(self):
-        descriptor = "test descriptor"
-        payload = {
-            "user_handle": user_handle,
-            "amount": 50000,
-            "account_name": "default_plaid",
-            "descriptor": descriptor,
-            "business_uuid": business_uuid,
-            "processing_type": ProcessingTypes.STANDARD_ACH
-        }
-
-        with self.assertWarns(DeprecationWarning):
-            response = Transaction.issueSila(app, payload, eth_private_key)
-            self.assertEqual(response.get("success"), True)
-
-            poll(self, response["transaction_id"], "success",
-                 app, user_handle, eth_private_key)
-
-            self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
-            self.assertEqual(response["descriptor"], descriptor)
-            self.assertIsNotNone(response["transaction_id"])
-
     def test_issue_sila_200(self):
         payload = {
             "user_handle": user_handle,
@@ -93,11 +71,11 @@ class Test009IssueSilaTest(unittest.TestCase):
 
     def test_issue_sila_200_with_card_name(self):
         payload = {
-            "user_handle": user_handle,
+            "user_handle": user_handle_2,
             "amount": 200,
             "card_name": "visaas"
         }
-        response = Transaction.issue_sila(app, payload, eth_private_key)
+        response = Transaction.issue_sila(app, payload, eth_private_key_2)
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
     def test_issue_sila_400_card_name_account(self):

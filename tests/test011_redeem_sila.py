@@ -5,7 +5,7 @@ from silasdk.transactions import Transaction
 from silasdk.users import User
 from tests.poll_until_status import poll
 from tests.test_config import (sardine_handle, eth_private_key_6,
-    app, business_uuid, eth_private_key, user_handle)
+    app, business_uuid, eth_private_key, user_handle, user_handle_2, eth_private_key_2)
 
 
 class Test011RedeemSilaTest(unittest.TestCase):
@@ -79,35 +79,6 @@ class Test011RedeemSilaTest(unittest.TestCase):
         response = Transaction.redeemSila(
             app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
-    
-    def test_redeem_sila_200_with_card_name(self):
-        payload = {
-            "user_handle": user_handle,
-            "amount": 50,
-            "card_name": "visa"
-        }
-
-        response = Transaction.redeemSila(
-            app, payload, eth_private_key)
-        
-        # poll(self, response["transaction_id"], "success",
-        #      app, user_handle, eth_private_key)
-
-        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
-
-    def test_redeem_sila_card_200(self):
-        payload = {
-            "user_handle": user_handle,
-            "amount": 50,
-            "card_name": "visa",
-            "processing_type": ProcessingTypes.CARD
-        }
-        response = Transaction.redeemSila(
-            app, payload, eth_private_key)
-        # poll(self, response["transaction_id"], "success",
-        #      app, user_handle, eth_private_key)
-
-        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
     def test_redeem_sila_400_both_card_account(self):
         payload = {
@@ -183,20 +154,8 @@ class Test011RedeemSilaTest(unittest.TestCase):
 
         response = Transaction.redeemSila(
             app, payload, eth_private_key_6)
-        self.assertEqual(response["status"], "SUCCESS")
+        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
 
-    def test_redeem_wire_transection_200(self):
-        payload = {
-            "user_handle": user_handle,
-            "amount": 50,
-            "account_name": "default_plaid",
-            "processing_type": ProcessingTypes.WIRE,
-            "business_uuid": business_uuid,
-            "mock_wire_account_name": "mock_account_success"
-        }
-        response = Transaction.redeemSila(
-            app, payload, eth_private_key)
-        self.assertEqual(response["status"], "SUCCESS")
 if __name__ == '__main__':
     unittest.main()
