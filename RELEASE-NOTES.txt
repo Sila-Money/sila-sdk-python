@@ -1,4 +1,4 @@
-v2.0.0
+v1.1.0
     Deprecations:
         Removed support for Python 3.7
     Enhancements:
