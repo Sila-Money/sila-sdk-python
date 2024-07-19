@@ -14,14 +14,14 @@ def poll(test: TestCase, transaction_id: str, expected_status: str, app: App, us
         }
     }
 
-    response = User.getTransactions(app, payload, eth_private_key)
+    response = User.get_transactions(app, payload, eth_private_key)
     status = response["transactions"][0]["status"]
 
     time.sleep(30)
 
     while status == "queued" or status == "pending":
         time.sleep(5)
-        response = User.getTransactions(
+        response = User.get_transactions(
             app, payload, eth_private_key)
         status = response["transactions"][0]["status"]
 

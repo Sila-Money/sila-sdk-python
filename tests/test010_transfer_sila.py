@@ -30,15 +30,15 @@ class Test010TransferSilaTest(unittest.TestCase):
         payload = {            
             "user_handle": user_handle,
             "destination": user_handle_2,
-            "amount": 1000,
+            "amount": 100,
             "descriptor": "test descriptor",
             "business_uuid": business_uuid,
-            "transaction_idempotency_id" : str(uuid.uuid4())
+            "transaction_idempotency_id": str(uuid.uuid4())
         }
 
         first_response = Transaction.transferSila(app, payload, eth_private_key)
-        second_response = Transaction.transferSila(app, payload, eth_private_key)        
-        self.assertEqual(first_response["transaction_id"], second_response["transaction_id"])        
+        second_response = Transaction.transferSila(app, payload, eth_private_key)
+        self.assertEqual(first_response["transaction_id"], second_response["transaction_id"])
 
     def test_transfer_sila_400(self):
         payload = {
