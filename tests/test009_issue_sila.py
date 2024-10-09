@@ -5,7 +5,7 @@ from silasdk.processingTypes import ProcessingTypes
 from silasdk.transactions import Transaction
 from tests.poll_until_status import poll
 from tests.test_config import (
-    sardine_handle, eth_private_key_6, app, business_uuid, instant_ach_handle, user_handle, eth_private_key,
+    app, business_uuid, instant_handle, user_handle, eth_private_key,
     eth_private_key_4, user_handle_2, eth_private_key_2
 )
 
@@ -88,24 +88,7 @@ class Test009IssueSilaTest(unittest.TestCase):
         response = Transaction.issue_sila(app, payload, eth_private_key)
         self.assertFalse(response["success"])
 
-    def test_issue_sila_403_no_match_score(self):
-        descriptor = "test descriptor"
-        payload = {
-            "user_handle": instant_ach_handle,
-            "amount": 37,
-            "account_name": "default_plaid",
-            "descriptor": descriptor,
-            "business_uuid": business_uuid,
-            "processing_type": ProcessingTypes.INSTANT_ACH
-        }
-
-        with self.assertWarns(DeprecationWarning):
-            response = Transaction.issueSila(app, payload, eth_private_key_4)
-
-            self.assertEqual(response["status"], "FAILURE")
-
     def test_issue_sila_vaccount_200(self):
-        card_id=None
         payload = {
             "virtual_account_name": "test_v_acc",
             "user_handle": user_handle
@@ -141,19 +124,20 @@ class Test009IssueSilaTest(unittest.TestCase):
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["transaction_id"])
 
-    def test_issue_sila_instant_settelment_200(self):
+    def test_issue_sila_instant_settlement_200(self):
         descriptor = "test descriptor"
         payload = {
-            "user_handle": sardine_handle,
+            "user_handle": instant_handle,
             "amount": 200,
             "account_name": "default_plaid",
             "descriptor": descriptor,
             "business_uuid": business_uuid,
             "processing_type": ProcessingTypes.INSTANT_SETTLEMENT
         }
-        response = Transaction.issueSila(app, payload, eth_private_key_6)
+        response = Transaction.issue_sila(app, payload, eth_private_key_4)
         self.assertEqual(response.get("success"), True)
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
+
 
 if __name__ == '__main__':
     unittest.main()

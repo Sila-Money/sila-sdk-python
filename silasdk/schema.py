@@ -127,7 +127,6 @@ Schema = [
         "processing_type": None,
         "source_id": None,
         "destination_id": None,
-        "mock_wire_account_name": None,
         "transaction_idempotency_id":None
     }},
     {"no_content_msg": {
@@ -252,7 +251,6 @@ Schema = [
             "contact_alias": None,
             "phone": None,
             "email": None,
-            "sms_opt_in": None
         },
         "crypto_entry": {
             "crypto_alias": None,
@@ -273,10 +271,6 @@ Schema = [
             "naics_code": None,
             "registration_state":None
         },
-        "device": {
-            "device_fingerprint": None,
-            "session_identifier": None
-        }
     }},
     {"link_business_member_msg": {
         "header": {
@@ -385,9 +379,6 @@ Schema = [
         "state": None,
         "postal_code": None,
         "country": None,
-        "sms_opt_in": None,
-        "device_fingerprint": None,
-        "session_identifier": None,
         "registration_state":None
     }},
     {"update_registration_data_msg": {
@@ -417,7 +408,6 @@ Schema = [
         "naics_code": None,
         "doing_business_as": None,
         "business_website": None,
-        "sms_opt_in": None,
         "registration_state":None
     }},
     {"delete_registration_data_msg": {
@@ -445,7 +435,7 @@ Schema = [
         "mime_type": None,
         "document_type": None,
         "description": None,
-        "file_metadata" :None
+        "file_metadata": None
     }},
     {"list_documents_msg": {
         "header": {
@@ -539,20 +529,6 @@ Schema = [
                 "user_handle": None
             },
             "account_name": None,
-        }
-    },
-    {
-        'check_instant_ach': {
-            "header": {
-                "created": '',
-                "app_handle": None,
-                "user_handle": None,
-                "version": "0.2",
-                "crypto": "ETH",
-                "reference": None
-            },
-            "account_name": None,
-            "kyc_level": None
         }
     },
     {
@@ -668,12 +644,12 @@ Schema = [
     {
         "open_virtual_acc": {
             "header": {
-                "created": None, 
-                "auth_handle": None, 
+                "created": None,
+                "auth_handle": None,
                 "app_handle": None,
-                "user_handle": None, 
-                "version": "0.2", 
-                "crypto": "ETH", 
+                "user_handle": None,
+                "version": "0.2",
+                "crypto": "ETH",
                 "reference": None
             },
             "virtual_account_name": None,
@@ -685,12 +661,12 @@ Schema = [
     {
         "get_virtual_acc": {
             "header": {
-                "created": None, 
-                "auth_handle": None, 
+                "created": None,
+                "auth_handle": None,
                 "user_handle": None,
                 "app_handle": None,
-                "version": "0.2", 
-                "crypto": "ETH", 
+                "version": "0.2",
+                "crypto": "ETH",
                 "reference": None
             },
             "virtual_account_id": None
@@ -699,12 +675,12 @@ Schema = [
     {
         "get_virtual_accounts_msg": {
             "header": {
-                "created": None, 
-                "auth_handle": None, 
+                "created": None,
+                "auth_handle": None,
                 "user_handle": None,
                 "app_handle": None,
-                "version": "0.2", 
-                "crypto": "ETH", 
+                "version": "0.2",
+                "crypto": "ETH",
                 "reference": None
             }
         }
@@ -712,12 +688,12 @@ Schema = [
     {
         "update_virtual_account_msg": {
             "header": {
-                "created": None, 
-                "auth_handle": None, 
-                "user_handle": None, 
+                "created": None,
+                "auth_handle": None,
+                "user_handle": None,
                 "app_handle": None,
-                "version": "0.2", 
-                "crypto": "ETH", 
+                "version": "0.2",
+                "crypto": "ETH",
                 "reference": None
             },
             "virtual_account_id": None,
@@ -741,12 +717,12 @@ Schema = [
     {
         "close_virtual_account_msg": {
             "header": {
-                "created": None, 
-                "auth_handle": None, 
-                "user_handle": None, 
+                "created": None,
+                "auth_handle": None,
+                "user_handle": None,
                 "app_handle": None,
-                "version": "0.2", 
-                "crypto": "ETH", 
+                "version": "0.2",
+                "crypto": "ETH",
                 "reference": None
             },
             "virtual_account_id": None,
@@ -756,12 +732,12 @@ Schema = [
     {
         "create_test_virtual_account_ach_transaction_msg": {
             "header": {
-                "created": None, 
-                "auth_handle": None, 
-                "user_handle": None, 
+                "created": None,
+                "auth_handle": None,
+                "user_handle": None,
                 "app_handle": None,
-                "version": "0.2", 
-                "crypto": "ETH", 
+                "version": "0.2",
+                "crypto": "ETH",
                 "reference": None
             },
             "amount": None,
@@ -771,39 +747,6 @@ Schema = [
             "entity_name": None,
             "ced": None,
             "ach_name": None
-        }
-    },
-    {
-        "approve_wire_msg": {
-            "header": {
-                "created": None, 
-                "auth_handle": None, 
-                "user_handle": None, 
-                "app_handle": None,
-                "version": "0.2", 
-                "crypto": "ETH", 
-                "reference": None
-            },
-            "transaction_id": None,
-            "approve": None,
-            "notes": None,
-            "mock_wire_account_name": None,
-
-        }
-    },
-    {
-        "mock_wire_out_file_msg": {
-            "header": {
-                "created": None, 
-                "auth_handle": None, 
-                "user_handle": None, 
-                "app_handle": None,
-                "version": "0.2", 
-                "crypto": "ETH", 
-                "reference": None
-            },
-            "transaction_id": None,
-            "wire_status": None,
         }
     },
     {
@@ -845,13 +788,13 @@ Schema = [
     {
     "statements_msg":{
     "header": {
-        "created": None, 
-        "app_handle": None, 
-        "user_handle": None, 	
-        "version": "0.2", 
-        "crypto": "ETH", 
+        "created": None,
+        "app_handle": None,
+        "user_handle": None,
+        "version": "0.2",
+        "crypto": "ETH",
         "reference":  None
-    }, 
+    },
     "search_filters":{
         "start_date": None,
         "end_date": None,
@@ -870,13 +813,13 @@ Schema = [
    {
     "resend_statements_msg":{
     "header": {
-        "created": None, 
-        "app_handle": None, 
-        "user_handle":None, 
-        "version": "0.2", 
-        "crypto": "ETH", 
+        "created": None,
+        "app_handle": None,
+        "user_handle":None,
+        "version": "0.2",
+        "crypto": "ETH",
         "reference":None
-    }, 
+    },
     "email":None
     }
     },
@@ -906,7 +849,7 @@ Schema = [
         "reference": None
       },
     "card_number": None,
-    "expiry_month": None, 
+    "expiry_month": None,
     "expiry_year": None,
     "cvv": None,
     "cko_public_key": None

@@ -1,8 +1,9 @@
 import unittest
 from silasdk.processingTypes import ProcessingTypes
 from silasdk.transactions import Transaction
-from tests.test_config import (sardine_handle, eth_private_key_6,
-    app, business_uuid, eth_private_key, user_handle)
+from tests.test_config import (eth_private_key_4,
+    app, business_uuid, eth_private_key, instant_handle, user_handle
+)
 
 
 class Test011CancelTransactionTest(unittest.TestCase):
@@ -58,9 +59,9 @@ class Test011CancelTransactionTest(unittest.TestCase):
             app, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-    def test_cancel_transaction_instant_settelment_200(self):
+    def test_cancel_transaction_instant_settlement_200(self):
         payload = {
-            "user_handle": sardine_handle,
+            "user_handle": instant_handle,
             "amount": 200,
             "account_name": "default_plaid",
             "descriptor": "test descriptor",
@@ -68,7 +69,7 @@ class Test011CancelTransactionTest(unittest.TestCase):
             "processing_type": ProcessingTypes.INSTANT_SETTLEMENT
         }
 
-        response = Transaction.issueSila(app, payload, eth_private_key_6)
+        response = Transaction.issue_sila(app, payload, eth_private_key_4)
         payload = {
             "user_handle": user_handle,
             "transaction_id": response["transaction_id"]

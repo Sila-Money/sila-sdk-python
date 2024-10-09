@@ -24,7 +24,7 @@ class User():
 
     def register(self, payload):
         """Register a new user.
-           This user will be kyced and ethereum address will be registered with sila 
+           This user will be kyced and ethereum address will be registered with sila
         Args:
             payload : info about user like name,ssn, dob,ethereum address, ethereum handle etc
         Returns:
@@ -37,7 +37,7 @@ class User():
 
     def requestKyc(self, payload, user_private_key, use_kyc_level=False):
         """Request kyc for a user by handle
-           This user will be kyced and ethereum address will be registered with sila 
+           This user will be kyced and ethereum address will be registered with sila
         Args:
             payload : info about user like name,ssn, dob,ethereum address, ethereum handle etc
         Returns:
@@ -51,10 +51,10 @@ class User():
 
     def linkAccount(self, payload, user_private_key, plaid=False, mx=False):
         """link the bank account of user using plad
-           This users bank account will be linked  
+           This users bank account will be linked
         Args:
             payload : need user handle and plad token
-            user_private_key: users ethereum private key 
+            user_private_key: users ethereum private key
         Returns:
             dict: response body (a confirmation message)
         """
@@ -81,7 +81,7 @@ class User():
         """check if the user has been kyced.
             The user will be checked if the they have been kyced
         Args:
-            payload : includes 
+            payload : includes
         Returns:
             dict: response body (a confirmation message)
         """
@@ -96,7 +96,7 @@ class User():
             The used will be checked if the they have been kyced
         Args:
             payload : includes information to be edited and usee handle
-            user_private_key: users ethereum private key 
+            user_private_key: users ethereum private key
         Returns:
             dict: response body (a confirmation message)
         """
@@ -149,7 +149,7 @@ class User():
         response = message.postRequest(
             self, path, msg_type, payload, user_private_key)
         return response
-        
+
     def getVirtualAccount(self, payload, user_private_key):
         """get the virtual account of users registered with sila
         Args:
@@ -450,14 +450,6 @@ class User():
         return response
 
     @staticmethod
-    def check_instant_ach(app: App, payload: dict, user_private_key: str) -> dict:
-        path = '/check_instant_ach'
-        msg_type = "check_instant_ach"
-        response = message.postRequest(
-            app, path, msg_type, payload, user_private_key)
-        return response
-
-    @staticmethod
     def get_institutions(app: App, payload: dict) -> dict:
         path = '/get_institutions'
         msg_type = "get_institutions"
@@ -534,7 +526,7 @@ class User():
         msg_type = "get_wallet_statement_data_msg"
         response = message.postRequest(app, path, msg_type, payload, user_private_key)
         return response
-    
+
     @staticmethod
     def statements(app: App, payload: dict, user_private_key: str) -> dict:
         """
@@ -549,7 +541,7 @@ class User():
         msg_type = "statements_msg"
         response = message.getRequest(app, path, msg_type, payload, user_private_key)
         return response
-    
+
     @staticmethod
     def resend_statements(app: App, payload: dict, user_private_key: str) -> dict:
         """

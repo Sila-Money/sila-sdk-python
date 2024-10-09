@@ -8,7 +8,7 @@ class Test006CertifyBeneficialOwnerTest(unittest.TestCase):
             "user_handle": user_handle_2
         }
 
-        entity = silasdk.User.getEntity(app, payload, eth_private_key_2)
+        entity = silasdk.User.get_entity(app, payload, eth_private_key_2)
 
         payload = {
             "user_handle": user_handle,
@@ -19,6 +19,7 @@ class Test006CertifyBeneficialOwnerTest(unittest.TestCase):
 
         response = silasdk.BusinessOperations.certifyBeneficialOwner(app, payload, eth_private_key, eth_private_key_3)
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
+
 
 if __name__ == '__main__':
     unittest.main()

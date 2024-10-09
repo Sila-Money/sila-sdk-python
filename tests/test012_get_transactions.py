@@ -1,7 +1,7 @@
 import unittest
 from silasdk.users import User
 from silasdk.processingTypes import ProcessingTypes
-from tests.test_config import (app, user_handle, sardine_handle)
+from tests.test_config import (app, user_handle, instant_handle)
 
 
 class Test012GetTransactionsTest(unittest.TestCase):
@@ -69,7 +69,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
             }
         }
         response = User.get_transactions(app, payload)
-        
+
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
         self.assertEqual(len(response["transactions"]), 1)
@@ -126,7 +126,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
 
     def test_get_instant_settlement_transactions_200(self):
         payload = {
-            'user_handle': sardine_handle,
+            'user_handle': instant_handle,
             'search_filters': {
                 'processing_type': ProcessingTypes.INSTANT_SETTLEMENT,
             }

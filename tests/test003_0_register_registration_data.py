@@ -1,16 +1,18 @@
+import random
 import unittest
 import uuid
 
 from silasdk.registrationFields import RegistrationFields
 from silasdk.users import User
 from tests.test_config import (
-    app, business_handle, eth_private_key, user_handle, eth_private_key_3, sardine_handle, eth_private_key_6, business_handle_2, eth_private_key_7)
+    app, business_handle, eth_private_key, user_handle, eth_private_key_3
+)
 
 
 class Test003RegistrationDataTests(unittest.TestCase):
 
     def test_add_registration_data_200(self):
-        email = "fake2@email.com"
+        email = f"fake{uuid.uuid4()}@email.com"
         payload = {
             "user_handle": user_handle,
             "email": email,
@@ -31,7 +33,6 @@ class Test003RegistrationDataTests(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "phone": phone,
-            "sms_opt_in": True
         }
 
         response = User.add_registration_data(
@@ -44,8 +45,6 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["phone"]["added_epoch"])
         self.assertIsNotNone(response["phone"]["modified_epoch"])
         self.assertIsNotNone(response["phone"]["uuid"])
-        self.assertTrue(response.get('phone').get(
-            'sms_confirmation_requested'))
         self.assertIsNotNone(response["reference"])
 
 
@@ -67,7 +66,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["reference"])
 
         identity_alias = "EIN"
-        identity_value = "543212222"
+        identity_value = str(random.randint(100_000_000, 999_999_999))
         payload = {
             "user_handle": business_handle,
             "identity_alias": identity_alias,
@@ -123,22 +122,6 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["address"]["uuid"])
         self.assertIsNotNone(response["reference"])
 
-        payload = {
-            'user_handle': user_handle,
-            'device_fingerprint': 'test_device_fingerprint_added'
-        }
-
-        response = User.add_registration_data(
-            app, RegistrationFields.DEVICE, payload, eth_private_key)
-
-        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
-        self.assertIsNotNone(response["message"])
-        self.assertRegex(response.get('message'),
-                         r'\bsuccessfully registered for handle\b')
-        self.assertEqual(response.get('status_code'), 200)
-        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
-        self.assertIsNotNone(response["reference"])
-
     def test_add_registration_data_400(self):
         payload = {
             "user_handle": user_handle,
@@ -172,7 +155,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         identity_uuid = response["identities"][0]["uuid"]
         address_uuid = response["addresses"][0]["uuid"]
 
-        email = "fake3@email.com"
+        email = f"fake{uuid.uuid4()}@email.com"
         payload = {
             "user_handle": user_handle,
             "email": email,
@@ -195,7 +178,6 @@ class Test003RegistrationDataTests(unittest.TestCase):
             "user_handle": user_handle,
             "phone": phone,
             "uuid": phone_uuid,
-            'sms_opt_in': False
         }
 
         response = User.update_registration_data(
@@ -210,7 +192,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         self.assertIsNotNone(response["reference"])
 
         identity_alias = "SSN"
-        identity_value = "543212223"
+        identity_value = str(random.randint(100_000_000, 999_999_999))
         payload = {
             "user_handle": user_handle,
             "identity_alias": identity_alias,
@@ -304,7 +286,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         registration_state = "NY"
 
         payload = {
-            "user_handle":  business_handle,                        
+            "user_handle":  business_handle,
             "entity_name": entity_name,
             "birthdate": birthdate,
             "business_type": business_type,
@@ -315,7 +297,7 @@ class Test003RegistrationDataTests(unittest.TestCase):
         }
 
         response = User.update_registration_data(
-            app, RegistrationFields.ENTITY, payload, eth_private_key_3)        
+            app, RegistrationFields.ENTITY, payload, eth_private_key_3)
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
@@ -424,19 +406,6 @@ class Test003RegistrationDataTests(unittest.TestCase):
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
         self.assertEqual(response["status"], "FAILURE")
 
-
-    def test_add_registration_data_session_identifier_200(self):
-        session_identifier = str(uuid.uuid4())
-        payload = {
-            "user_handle": user_handle,
-            "session_identifier": session_identifier,
-            "device_fingerprint": "test_sardine_integration"
-        }
-
-        response = User.add_registration_data(
-            app, RegistrationFields.DEVICE, payload, eth_private_key)
-
-        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
 if __name__ == "__main__":
     unittest.main()

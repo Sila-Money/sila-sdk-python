@@ -3,8 +3,9 @@ import silasdk
 import requests
 import json
 
-from tests.test_config import ( sardine_handle, eth_private_key_6,
-    app, eth_private_key, eth_private_key_4, instant_ach_handle, user_handle)
+from tests.test_config import (
+    app, eth_private_key, eth_private_key_4, instant_handle, user_handle
+)
 
 
 class Test006LinkAccountTest(unittest.TestCase):
@@ -19,10 +20,10 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False)
-        
+
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response['web_debit_verified'])
-        
+
         payload = {
             "user_handle": user_handle,
             "account_name": "unlink",
@@ -33,7 +34,7 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False)
-        
+
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
         payload = {
@@ -46,30 +47,19 @@ class Test006LinkAccountTest(unittest.TestCase):
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, False)
-        
+
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
-    def test_link_account_instant_ach(self):
+    def test_link_account_instant(self):
         payload = {
-            "user_handle": instant_ach_handle,
+            "user_handle": instant_handle,
             "account_name": "default_plaid",
             "plaid_token": "sandbox"
         }
 
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key_4, True)
-        
-        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
-    def test_link_account_sardine(self):
-        payload = {
-            "user_handle": sardine_handle,
-            "account_name": "default_plaid",
-            "plaid_token": "sandbox"
-        }
-
-        response = silasdk.User.linkAccount(
-            app, payload, eth_private_key_6, True)
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
     def test_link_account_plaid_200(self):
@@ -96,7 +86,7 @@ class Test006LinkAccountTest(unittest.TestCase):
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, True)
 
-        
+
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response['account_owner_name'])
 
@@ -113,7 +103,7 @@ class Test006LinkAccountTest(unittest.TestCase):
         response = silasdk.User.linkAccount(
             app, payload, eth_private_key, True)
 
-        
+
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response['account_owner_name'])
 
