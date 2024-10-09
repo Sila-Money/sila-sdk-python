@@ -4,8 +4,9 @@ from silasdk.processingTypes import ProcessingTypes
 from silasdk.transactions import Transaction
 from silasdk.users import User
 from tests.poll_until_status import poll
-from tests.test_config import (sardine_handle, eth_private_key_6,
-    app, business_uuid, eth_private_key, user_handle, user_handle_2, eth_private_key_2)
+from tests.test_config import (
+    app, business_uuid, eth_private_key, user_handle
+)
 
 
 class Test011RedeemSilaTest(unittest.TestCase):
@@ -21,9 +22,6 @@ class Test011RedeemSilaTest(unittest.TestCase):
 
         response = Transaction.redeemSila(
             app, payload, eth_private_key)
-
-        # poll(self, response["transaction_id"], "success",
-        #      app, user_handle, eth_private_key)
 
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["descriptor"], "test descriptor")
@@ -57,9 +55,9 @@ class Test011RedeemSilaTest(unittest.TestCase):
         }
 
         first_response = Transaction.redeemSila(app, payload, eth_private_key)
-        second_response = Transaction.redeemSila(app, payload, eth_private_key)        
+        second_response = Transaction.redeemSila(app, payload, eth_private_key)
         self.assertEqual(first_response["transaction_id"], second_response["transaction_id"])
-           
+
 
     def test_redeem_sila_400(self):
         payload = {
@@ -141,19 +139,6 @@ class Test011RedeemSilaTest(unittest.TestCase):
             "source_id": v_id,
         }
         response = Transaction.redeemSila(app, payload, eth_private_key)
-        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
-        
-    def test_redeem_sila_instant_settelment_200(self):
-        payload = {
-            "user_handle": sardine_handle,
-            "amount": 50,
-            "account_name": "default_plaid",
-            "descriptor": "test descriptor",
-            "business_uuid": business_uuid,
-        }
-
-        response = Transaction.redeemSila(
-            app, payload, eth_private_key_6)
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
 
 

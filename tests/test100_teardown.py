@@ -63,20 +63,12 @@ class Test100Teardown(unittest.TestCase):
             app, payload, eth_private_key)\
 
         payload = {
-            "user_handle": instant_ach_handle,
+            "user_handle": instant_handle,
             "account_name": "default_plaid"
         }
 
         User.delete_account(
             app, payload, eth_private_key_4)
-
-        payload = {
-            "user_handle": sardine_handle,
-            "account_name": "default_plaid"
-        }
-
-        User.delete_account(
-            app, payload, eth_private_key_6)
 
         payload = {
             "user_handle": user_handle,
@@ -120,7 +112,7 @@ class Test100Teardown(unittest.TestCase):
 
         User.deleteRegistrationData(
             app, RegistrationFields.ADDRESS, payload, eth_private_key)
-        
+
         payload = {
             "user_handle": user_handle,
             "uuid": phone_uuid

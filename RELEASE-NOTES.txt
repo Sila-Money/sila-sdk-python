@@ -1,3 +1,7 @@
+v1.1.1
+    Enhancements:
+        - Updated tests and removed obsolete code
+
 v1.1.0
     Deprecations:
         Removed support for Python 3.7

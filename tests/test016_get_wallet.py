@@ -26,7 +26,7 @@ class Test016GetWalletTest(unittest.TestCase):
 
     def test_get_wallet_401(self):
         payload = {
-            "user_handle": user_handle.replace("1", "2"),
+            "user_handle": user_handle[:-2],
             "crypto": "ETHS"
         }
 

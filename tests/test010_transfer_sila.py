@@ -4,7 +4,7 @@ from silasdk.transactions import Transaction
 from silasdk.users import User
 from tests.poll_until_status import poll
 from silasdk.processingTypes import ProcessingTypes
-from tests.test_config import ( sardine_handle, eth_private_key_6,
+from tests.test_config import ( instant_handle, eth_private_key_4,
     app, business_uuid, eth_private_key, user_handle, user_handle_2)
 
 
@@ -19,7 +19,7 @@ class Test010TransferSilaTest(unittest.TestCase):
         }
 
         response = Transaction.transferSila(
-            app, payload, eth_private_key)      
+            app, payload, eth_private_key)
         poll(self, response["transaction_id"], "success", app, user_handle, eth_private_key)
 
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
@@ -27,7 +27,7 @@ class Test010TransferSilaTest(unittest.TestCase):
         self.assertIsNotNone(response["transaction_id"])
 
     def test_transfer_sila_idempotency_200(self):
-        payload = {            
+        payload = {
             "user_handle": user_handle,
             "destination": user_handle_2,
             "amount": 100,
@@ -165,7 +165,7 @@ def test_transfer_sila_v2block_chain_200(self):
             "descriptor": "test descriptor",
             "business_uuid": business_uuid
         }
-        
+
         response = Transaction.transferSila(
             app, payload, eth_private_key)
 
@@ -175,11 +175,11 @@ def test_transfer_sila_v2block_chain_200(self):
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertEqual(response["descriptor"], "test descriptor")
         self.assertIsNotNone(response["transaction_id"])
-    
+
 
 def test_transfer_sila_instant_settelment_200(self):
     payload = {
-        "user_handle": sardine_handle,
+        "user_handle": instant_handle,
         "destination": user_handle_2,
         "amount": 100,
         "descriptor": "test descriptor",
@@ -187,8 +187,9 @@ def test_transfer_sila_instant_settelment_200(self):
     }
 
     response = Transaction.transferSila(
-        app, payload, eth_private_key_6)
+        app, payload, eth_private_key_4)
     self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
+
 
 if __name__ == '__main__':
     unittest.main()

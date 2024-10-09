@@ -4,15 +4,6 @@ from tests.test_config import *
 
 
 class Test013PlaidSameDayAuthTest(unittest.TestCase):
-    # def test_plaid_same_day_auth_200(self):
-    #     payload = {
-    #         "user_handle": user_handle,
-    #         "account_name": "default_plaid"
-    #     }
-    #
-    #     response = silasdk.Transaction.plaidSamedayAuth(app, payload, eth_private_key)
-    #     self.assertEqual(response["status"], "SUCCESS")
-
     def test_plaid_same_day_auth_400(self):
         payload = {
             "user_handle": user_handle,
