@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='silasdk',
 
-    version='1.1.1',
+    version='1.1.2',
 
     description='Sila Python library for message signing and api wrapper',
 
@@ -19,25 +19,27 @@ setup(
         # How stable is your project?
         #   3 - Alpha, 4 - Beta,5 - Production/Stable
 
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
 
         'Intended Audience :: Developers',
 
         'License :: OSI Approved :: MIT License',
 
-        'Programming Language :: Python :: 3.9'
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.12'
 
     ],
 
-    keywords='Sila v1.1.1 Rest API',
+    keywords='Sila v1.1.2 Rest API',
 
     packages=find_packages(exclude=["tests", "tests.*"]),
 
     install_requires=[
-        "requests==2.32.2",
-        "pyaml>=15.8.2",
-        "eth-account==0.8.0",
-        "web3==6.5.0"
+        "requests==2.32.3",
+        "pyaml>=24.9.0",
+        "eth-account==0.13.4",
+        "setuptools>=75.6.0",
+        "web3==7.6.0"
     ],
 
     zip_safe=False,

@@ -40,7 +40,7 @@ class EthWallet:
         encrypted = keccak(encoded_message)
         message_hash = Web3.to_hex(encrypted)[2:]
         if key is not None:
-            signed_message = Account.signHash(message_hash, key)
+            signed_message = Account._sign_hash(message_hash, key)
             sig_hx = signed_message.signature.hex()
             return str(sig_hx.replace("0x", ""))
 

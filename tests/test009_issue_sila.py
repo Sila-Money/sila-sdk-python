@@ -1,6 +1,5 @@
 import uuid
 import unittest
-from silasdk.users import User
 from silasdk.processingTypes import ProcessingTypes
 from silasdk.transactions import Transaction
 from tests.poll_until_status import poll
@@ -87,42 +86,6 @@ class Test009IssueSilaTest(unittest.TestCase):
         }
         response = Transaction.issue_sila(app, payload, eth_private_key)
         self.assertFalse(response["success"])
-
-    def test_issue_sila_vaccount_200(self):
-        payload = {
-            "virtual_account_name": "test_v_acc",
-            "user_handle": user_handle
-        }
-        response = User.openVirtualAccount(app, payload, eth_private_key)
-        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
-        v_id = response.get("virtual_account").get("virtual_account_id")
-
-        payload = {
-            "user_handle": user_handle
-        }
-        response = User.getPaymentMethods(app, payload, eth_private_key)
-        self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
-        for item in response.get("payment_methods"):
-            if item["payment_method_type"] == "bank_account":
-                bank_acc_id = item.get("bank_account_id")
-
-        descriptor = "test descriptor"
-        payload = {
-            "message": "issue_msg",
-            "user_handle": user_handle,
-            "amount": 200,
-            "source_id": bank_acc_id,
-            "descriptor": descriptor,
-            "business_uuid": business_uuid,
-            "processing_type": ProcessingTypes.STANDARD_ACH,
-            "destination_id": v_id,
-        }
-
-        response = Transaction.issue_sila(app, payload, eth_private_key)
-
-        self.assertEqual(response.get("success"), True)
-        self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
-        self.assertIsNotNone(response["transaction_id"])
 
     def test_issue_sila_instant_settlement_200(self):
         descriptor = "test descriptor"

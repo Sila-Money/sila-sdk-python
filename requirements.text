@@ -1,4 +1,0 @@
-requests==2.32.2
-pyaml>=15.8.2
-eth-account==0.8.0
-web3==6.5.0

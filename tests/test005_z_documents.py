@@ -48,8 +48,8 @@ class Test005ZDocuments(unittest.TestCase):
         response = silasdk.Documents.getDocument(
             app, payload, eth_private_key)
 
-        self.assertEquals(response['status_code'], 200)
-        self.assertEquals(response['headers']['Content-Type'], 'image/png')
+        self.assertEqual(response['status_code'], 200)
+        self.assertEqual(response['headers']['Content-Type'], 'image/png')
         self.assertIsNotNone(response['content'])
 
     def test_list_documents_200(self):
@@ -79,13 +79,13 @@ class Test005ZDocuments(unittest.TestCase):
         a = open(os.path.dirname(os.path.realpath(__file__)) +
                  "/images/logo-geko.png", "rb")
         fileContents_2 = a.read()
-        a.close()        
+        a.close()
 
-        
+
         payload = {
             "user_handle": user_handle,
             "file_metadata" : {
-                "file_1":{                    
+                "file_1":{
                     "filename": "logo-geko1",
                     "hash": hashlib.sha256(fileContents_1).hexdigest(),
                     "mime_type": "image/png",
@@ -101,14 +101,14 @@ class Test005ZDocuments(unittest.TestCase):
                 }
             }
         }
-        
+
         fileContent = {
             "file_1" : fileContents_1,
             "file_2" : fileContents_2
         }
-        
+
         response = silasdk.Documents.uploadDocuments(
-            app, payload, fileContent, eth_private_key)         
+            app, payload, fileContent, eth_private_key)
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertEqual(response["status"], "SUCCESS", msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["message"])
@@ -120,9 +120,9 @@ class Test005ZDocuments(unittest.TestCase):
         }
 
         response = silasdk.Documents.listDocuments(
-            app, payload, eth_private_key)        
-        self.assertEquals(response['status_code'], 200)
-        self.assertEquals(response['headers']['Content-Type'], 'application/json')
+            app, payload, eth_private_key)
+        self.assertEqual(response['status_code'], 200)
+        self.assertEqual(response['headers']['Content-Type'], 'application/json')
 
 if __name__ == "__main__":
     unittest.main()

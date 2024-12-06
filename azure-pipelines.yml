@@ -7,11 +7,11 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-20.04'
+  vmImage: 'ubuntu-latest'
 strategy:
   matrix:
     Python39:
-      python.version: '3.9'
+      python.version: '3.12'
 
 steps:
 - task: UsePythonVersion@0
@@ -21,7 +21,7 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r requirements.text
+    pip install -r requirements.txt
   displayName: 'Install dependencies $(python.version)'
 
 - task: SonarCloudPrepare@1
