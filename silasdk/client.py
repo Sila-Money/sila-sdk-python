@@ -3,14 +3,13 @@ import requests
 from typing import Optional
 from .ethwallet import EthWallet
 from .endpoints import endPoints
-from .errors import Errors
 from .schema import Schema
 
 
 class App():
 
     def __init__(self, tier, app_private_key, app_handle, debug: bool = False):
-        """Initalize the application 
+        """Initalize the application
             This lets users initialize the application by providing the tier, application privatekey and application handle
         Args:
             tier  : SANDBOX,PROD etc
@@ -54,7 +53,7 @@ class App():
         """makes a post request to the sila_apis
         Args:
             path : path to the endpoint being called
-            payload : json msg to be posted 
+            payload : json msg to be posted
             header  : contains the usersignature and authsignature
         """
         url = self.getUrl()
@@ -70,7 +69,7 @@ class App():
             endpoint,
             data=data1,
             headers=header)
-        else: 
+        else:
             response = self.session.post(
                 endpoint,
                 data=data1,
@@ -157,7 +156,7 @@ class App():
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
         header = {
             "authsignature": appsignature,
-            "User-Agent": 'SilaSDK-python/0.2.51'
+            "User-Agent": 'SilaSDK-python/1.1.2'
         }
         if content_type is not None and content_type == 'multipart/form-data':
             pass

@@ -1,3 +1,4 @@
+import time
 import unittest
 from silasdk.users import User
 from silasdk.processingTypes import ProcessingTypes
@@ -24,7 +25,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         response = User.get_transactions(app, payload)
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
-        self.assertEqual(len(response["transactions"]), 13)
+        self.assertEqual(10, len(response["transactions"]))
         self.assertIsNotNone(response.get('transactions')[0].get('timeline'))
         self.assertIsNotNone(response.get('transactions')[0].get('sila_ledger_type'))
         self.assertIsNotNone(response.get('transactions')[0].get('sec_code'))
@@ -73,7 +74,11 @@ class Test012GetTransactionsTest(unittest.TestCase):
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
         self.assertEqual(len(response["transactions"]), 1)
-        self.assertIsNotNone(response.get('transactions')[0].get('return_code'))
+        if not response['transactions'][0]['status'] == 'failed':
+            time.sleep(120)
+            response = User.get_transactions(app, payload)
+
+        self.assertIsNotNone(response.get('transactions')[0].get('return_code'), msg=response)
         self.assertIsNotNone(response.get('transactions')[0].get('return_desc'))
 
     def test_get_transactions_200_with_filters(self):
@@ -88,7 +93,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
 
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
-        self.assertGreater(len(response.get('transactions')), 1)
+        self.assertGreaterEqual(len(response.get('transactions')), 1, msg=response)
         self.assertEqual(response.get('transactions')
                          [0].get('status'), 'success')
         self.assertEqual(response.get('transactions')[

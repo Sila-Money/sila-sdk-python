@@ -19,10 +19,13 @@ def poll(test: TestCase, transaction_id: str, expected_status: str, app: App, us
 
     time.sleep(30)
 
-    while status == "queued" or status == "pending":
+    max_timeout_seconds = 120
+    time_waited = 0
+    while status == "queued" or status == "pending" and time_waited < max_timeout_seconds:
         time.sleep(5)
         response = User.get_transactions(
             app, payload, eth_private_key)
         status = response["transactions"][0]["status"]
+        time_waited += 5
 
     test.assertEqual(status, expected_status)
