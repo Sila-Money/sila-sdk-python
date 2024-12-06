@@ -10,9 +10,9 @@ class EthWallet:
 
     @staticmethod
     def create(entropy=''):
-        """Create an Ethereum wallet for a user.
+        """Create a wallet for a user.
 
-        This will generate a private key and ethereum address, that can be used for transaction,
+        This will generate a private key and address, that can be used for transaction,
         however this not a recommended way to create your wallets
         Args:
         entropy : provide randomness to generate the wallet
@@ -24,7 +24,7 @@ class EthWallet:
 
     @staticmethod
     def signMessage(msg: Union[str, Dict], key=None):
-        """Sign the message using an Ethereum private key.
+        """Sign the message using a private key.
 
         This method signs the message for the user authentication mechanism
         Args:

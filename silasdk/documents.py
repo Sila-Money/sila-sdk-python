@@ -5,11 +5,12 @@ from silasdk import message
 class Documents():
     def uploadDocument(self, payload, file, user_private_key):
         """
+        Upload a single document.
         Args:
             payload: document data
             user_private_key
         Returns:
-            dict: response body (entity information)
+            dict: response body
         """
         path = endPoints["documents"]
         msg_type = "documents_msg"
@@ -19,11 +20,12 @@ class Documents():
 
     def uploadDocuments(self, payload, file, user_private_key):
         """
+        Upload multiple documents.
         Args:
             payload: document data
             user_private_key
         Returns:
-            dict: response body (entity information)
+            dict: response body
         """
         path = endPoints["documents"]
         msg_type = "documents_msg"
@@ -33,11 +35,12 @@ class Documents():
 
     def listDocuments(self, payload, user_private_key, page=None, per_page=None, order=None):
         """
+        List uploaded documents.
         Args:
-            payload: document data
+            payload: search criteria
             user_private_key
         Returns:
-            dict: response body (entity information)
+            dict: response body
         """
         path = endPoints["list_documents"] + \
             ('&page=' + str(page) if page is not None else '') + \
@@ -50,11 +53,12 @@ class Documents():
 
     def getDocument(self, payload, user_private_key):
         """
+        Get uploaded document.
         Args:
-            payload: document data
+            payload: {document_id: document_id}
             user_private_key
         Returns:
-            dict: response body (entity information)
+            dict: response body
         """
         path = endPoints["get_document"]
         msg_type = "get_document_msg"
@@ -72,11 +76,10 @@ class Documents():
 
     def listSupportedDocuments(self, page=None, per_page=None):
         """
+        Returns a list of supported document types.
         Args:
-            payload: document data
-            user_private_key
         Returns:
-            dict: response body (entity information)
+            dict: response body
         """
         payload = {}
         path = endPoints["list_supported_documents"] + \

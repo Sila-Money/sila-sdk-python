@@ -4,16 +4,13 @@ from silasdk.client import App
 from silasdk.utils.url_parameters import UrlParameters
 from typing import Optional
 import warnings
-import json
-import requests
 
 
 class User():
     def checkHandle(self, payload):
         """Check if the user handle is available.
-        These endpoint returns the validity of a user handle
         Args:
-        payload : Required user_handle to check if its available
+        payload: Required user_handle to check if its available
         Returns:
         dict: response body (a confirmation message)
         """
@@ -24,9 +21,8 @@ class User():
 
     def register(self, payload):
         """Register a new user.
-           This user will be kyced and ethereum address will be registered with sila
         Args:
-            payload : info about user like name,ssn, dob,ethereum address, ethereum handle etc
+            payload: info about user like name, ssn, dob, wallet address, user handle etc
         Returns:
             dict: response body (a confirmation message)
         """
@@ -36,10 +32,10 @@ class User():
         return response
 
     def requestKyc(self, payload, user_private_key, use_kyc_level=False):
-        """Request kyc for a user by handle
-           This user will be kyced and ethereum address will be registered with sila
+        """Request KYC/KYB for a user by handle
         Args:
-            payload : info about user like name,ssn, dob,ethereum address, ethereum handle etc
+            payload:
+                kyc_level: Optional - omit for KYB - Desired KYC level, e.g. 'KYC-STANDARD'
         Returns:
             dict: response body (a confirmation message)
         """
@@ -50,11 +46,10 @@ class User():
         return response
 
     def linkAccount(self, payload, user_private_key, plaid=False, mx=False):
-        """link the bank account of user using plad
-           This users bank account will be linked
+        """Link the user's bank account
         Args:
-            payload : need user handle and plad token
-            user_private_key: users ethereum private key
+            payload: need user handle and processor token
+            user_private_key: user's private key
         Returns:
             dict: response body (a confirmation message)
         """
@@ -78,12 +73,10 @@ class User():
         return response
 
     def checkKyc(self, payload, user_private_key):
-        """check if the user has been kyced.
-            The user will be checked if the they have been kyced
+        """Check if the user has been KYCed.
         Args:
-            payload : includes
         Returns:
-            dict: response body (a confirmation message)
+            dict: response body (identity verification data)
         """
         path = endPoints["checkKyc"]
         msg_type = "header_msg"
@@ -92,11 +85,10 @@ class User():
         return response
 
     def addIdentity(self, payload, user_private_key):
-        """change the info about user like change ssn, email ,etc.
-            The used will be checked if the they have been kyced
+        """Add new Identity for user. Identity is an EIN or SSN.
         Args:
-            payload : includes information to be edited and usee handle
-            user_private_key: users ethereum private key
+            payload : includes information to be edited and user handle
+            user_private_key: user's private key
         Returns:
             dict: response body (a confirmation message)
         """
@@ -107,13 +99,12 @@ class User():
         return response
 
     def getAccounts(self, payload, user_private_key):
-        """get the accounts of users registered with sila
-            The user will be checked if they have been kyced, along with app
+        """Get the accounts of users registered with Sila
         Args:
-            user_hanlde: users handle registered with app
-            user_private_key: user private key asscoicated with crypto address
+            payload: user_handle
+            user_private_key: user's private key
         Returns:
-            dict: response body (a confirmation message)
+            dict: response body (account information)
         """
         path = endPoints["getAccounts"]
         msg_type = "get_accounts_msg"
@@ -122,12 +113,12 @@ class User():
         return response
 
     def getAccountBalance(self, payload, user_private_key):
-        """get the account balance of a user registered with sila
+        """Get the account balance of an account registered with Sila
         Args:
-            user_hanlde: users handle registered with app
-            user_private_key: user private key asscoicated with crypto address
+            payload: user_handle
+            user_private_key: user's private key
         Returns:
-            dict: response body (a confirmation message)
+            dict: response body (account balance information)
         """
         path = endPoints["getAccountBalance"]
         msg_type = "account_name_msg"
@@ -136,11 +127,10 @@ class User():
         return response
 
     def openVirtualAccount(self, payload, user_private_key):
-        """open virtual account for a user
+        """Open virtual account for a user
         Args:
-            user_hanlde: users handle registered with app
-            payload : includes virtual_account_name, ach_credit_enabled, ach_debit_enabled
-            user_private_key: user private key asscoicated with crypto address
+            payload : includes user_handle, virtual_account_name, ach_credit_enabled, ach_debit_enabled
+            user_private_key: user's private key
         Returns:
             dict: response body (a confirmation message)
         """
@@ -151,13 +141,12 @@ class User():
         return response
 
     def getVirtualAccount(self, payload, user_private_key):
-        """get the virtual account of users registered with sila
+        """Get the virtual account registered with Sila
         Args:
-            user_hanlde: users handle registered with app
             payload: virtual_account_id
-            user_private_key: user private key asscoicated with crypto address
+            user_private_key: user's private key
         Returns:
-            dict: response body (a confirmation message)
+            dict: response body (vAcct info)
         """
         path = endPoints["getVirtualAccount"]
         msg_type = "get_virtual_acc"
@@ -166,12 +155,11 @@ class User():
         return response
 
     def getVirtualAccounts(self, payload, user_private_key):
-        """get virtual accounts of users registered with sila
+        """Get virtual accounts of users registered with Sila
         Args:
-            user_hanlde: users handle registered with app
-            user_private_key: user private key asscoicated with crypto address
+            user_private_key: user's private key
         Returns:
-            dict: response body (a confirmation message)
+            dict: response body (vAcct info)
         """
         path = endPoints["getVirtualAccounts"]
         msg_type = "get_virtual_accounts_msg"
@@ -180,11 +168,10 @@ class User():
         return response
 
     def updateVirtualAccount(self, payload, user_private_key):
-        """update virtual account of users registered with sila
+        """Update virtual account of vAcct registered with Sila
         Args:
-            user_hanlde: users handle registered with app
             payload: virtual_account_id, virtual_account_name, active, ach_debit_enabled, ach_credit_enabled
-            user_private_key: user private key asscoicated with crypto address
+            user_private_key: user's private key
         Returns:
             dict: response body (a confirmation message)
         """
@@ -195,11 +182,10 @@ class User():
         return response
 
     def closeVirtualAccount(self, payload, user_private_key):
-        """close virtual account of users registered with sila
+        """Close virtual account registered with Sila
         Args:
-            user_hanlde: users handle registered with app
             payload: virtual_account_id, account_number
-            user_private_key: user private key asscoicated with crypto address
+            user_private_key: user's private key
         Returns:
             dict: response body (a confirmation message)
         """
@@ -210,11 +196,10 @@ class User():
         return response
 
     def testVirtualAaccountAchTransaction(self, payload, user_private_key):
-        """test transaction for virtual account(works only with sandbox)
+        """Creates test transaction for virtual account (only works in sandbox)
         Args:
-            user_hanlde: users handle registered with app
             payload: amount, virtual_account_number, effective_date, tran_code, entity_name, ced, ach_name
-            user_private_key: user private key asscoicated with crypto address
+            user_private_key: user's private key
         Returns:
             dict: response body (a confirmation message)
         """
@@ -225,13 +210,11 @@ class User():
         return response
 
     def getPaymentMethods(self, payload, user_private_key):
-        """get payment methods of users registered with sila
-            The user will be checked if they have been kyced, along with app
+        """Get payment methods of users registered with Sila
         Args:
-            user_hanlde: users handle registered with app
-            user_private_key: user private key asscoicated with crypto address
+            user_private_key: user's private key
         Returns:
-            dict: response body (a confirmation message)
+            dict: response body (payment method information)
         """
         path = endPoints["getPaymentMethods"]
         msg_type = "get_payment_methods"
@@ -241,13 +224,12 @@ class User():
 
     @staticmethod
     def getTransactions(app: App, payload: dict, user_private_key: str) -> dict:
-        """get the users transactions registered with ur app
-           The user will be checked if they have been kyced, along with app
+        """Get the user's transactions
         Args:
-            user_hanlde: users handle registered with app
-            user_private_key: user private key asscoicated with crypto address
+            payload: search criteria
+            user_private_key: user's private key
         Returns:
-            dict: response body (a confirmation message)
+            dict: response body (transaction information)
         """
         warnings.warn(
             'This method has been deprecated in favor of get_transactions', DeprecationWarning)
@@ -264,30 +246,12 @@ class User():
             app, path, msg_type, payload)
         return response
 
-    def silaBalance(self, address):
-        """get sila balance of the addresses registered with sila
-           The user will be checked if they have been kyced, along with app
-        Args:
-            address: requires valid ethereum address
-        Returns:
-            dict: response body (a confirmation message)
-        """
-        data = json.dumps({"address": str(address)})
-        header = {'content-type': 'application/json'}
-        if self.tier == "prod":
-            endpoint = endPoints["silaBalanceProd"]
-        elif self.tier == "sandbox":
-            endpoint = endPoints["silaBalanceSandbox"]
-        response = requests.post(endpoint, data=data, headers=header)
-        return response.json()
-
     def getSilaBalance(self, address):
-        """get sila balance of the addresses registered with sila
-           The user will be checked if they have been kyced, along with app
+        """Get balance of the wallet registered with Sila
         Args:
-            address: requires valid ethereum address
+            address: requires valid wallet address
         Returns:
-            dict: response body (a confirmation message)
+            dict: response body (balance info)
         """
         payload = {"address": str(address)}
         path = endPoints["getSilaBalance"]
@@ -315,7 +279,7 @@ class User():
 
     @staticmethod
     def getEntity(app: App, payload: dict, user_private_key: str, pretty_dates: Optional[bool] = None) -> dict:
-        """
+        """Get information on a single end-user registered with the customer application.
         Args:
             app (App): The current app configuration
             payload (dict): filters information
@@ -330,7 +294,7 @@ class User():
 
     @staticmethod
     def get_entity(app: App, payload: dict, user_private_key: str, pretty_dates: Optional[bool] = None) -> dict:
-        """
+        """Get information on a single end-user registered with the customer application.
         Args:
             app (App): The current app configuration
             payload (dict): Filters information
@@ -355,7 +319,7 @@ class User():
             payload: registration data
             user_private_key
         Returns:
-            dict: response body (entity information)
+            dict: response body (confirmation message)
         """
         warnings.warn(
             'This method has been deprecated in favor of add_registration_data', DeprecationWarning)
@@ -378,7 +342,7 @@ class User():
             payload (dict): registration data
             user_private_key (str): The user's private key to sign the message
         Returns:
-            dict: response body (entity information)
+            dict: response body (confirmation message)
         """
         warnings.warn(
             'This method has been deprecated in favor of update_registration_data', DeprecationWarning)
@@ -398,7 +362,7 @@ class User():
             payload: registration data
             user_private_key
         Returns:
-            dict: response body (entity information)
+            dict: response body (confirmation message)
         """
         path = endPoints["deleteRegistrationData"] + registration_field
         msg_type = "delete_registration_data_msg"
@@ -505,7 +469,7 @@ class User():
                payload (dict): Filters information
                user_private_key (str): The user's private key to sign the message
            Returns:
-               dict: response body (entity information)
+               dict: response body (statement information)
            """
         path = "/get_statements_data"
         msg_type = "get_statements_data_msg"
@@ -520,7 +484,7 @@ class User():
               payload (dict): Filters information
               user_private_key (str): The user's private key to sign the message
           Returns:
-              dict: response body (entity information)
+              dict: response body (statement information)
           """
         path = "/get_wallet_statement_data"
         msg_type = "get_wallet_statement_data_msg"
@@ -535,7 +499,7 @@ class User():
               payload (dict): Filters information
               user_private_key (str): The user's private key to sign the message
           Returns:
-              dict: response body (entity information)
+              dict: response body (statement information)
           """
         path = endPoints['statements']
         msg_type = "statements_msg"
@@ -550,7 +514,7 @@ class User():
               payload (dict): Filters information
               user_private_key (str): The user's private key to sign the message
           Returns:
-              dict: response body (entity information)
+              dict: response body (confirmation message)
           """
         statement_id = payload["statement_id"]
         payload.pop("statement_id")
@@ -567,7 +531,7 @@ class User():
               payload (dict): Filters information
               user_private_key (str): The user's private key to sign the message
           Returns:
-              dict: response body (entity information)
+              dict: response body (CKO token)
           """
         path = endPoints["createCkoTestingToken"]
         msg_type = "create_cko_testing_token_msg"
