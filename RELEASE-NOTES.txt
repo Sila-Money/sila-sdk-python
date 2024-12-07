@@ -3,6 +3,7 @@ v1.1.2
         - Removed support for Python 3.8
     Enhancements:
         - Updated packages
+        - Fixed docstrings
 
 v1.1.1
     Enhancements:

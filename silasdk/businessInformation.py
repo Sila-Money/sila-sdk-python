@@ -33,7 +33,7 @@ class BusinessInformation():
         """
         Args:
         Returns:
-            dict: response body (business roles)
+            dict: response body
         """
         path = endPoints["getNaicsCategories"]
         msg_type = "naics_categories_msg"

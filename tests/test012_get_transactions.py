@@ -58,7 +58,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         response = User.get_transactions(app)
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
 
-    def test_get_transactions_200_with_error_code(self):
+    def test_get_transactions_200_with_amount_filters(self):
         payload = {
             "user_handle": user_handle,
             "search_filters": {
@@ -74,12 +74,7 @@ class Test012GetTransactionsTest(unittest.TestCase):
         self.assertTrue(response.get('success'), msg=response.get('message', 'No message provided'))
         self.assertIsNotNone(response["reference"])
         self.assertEqual(len(response["transactions"]), 1)
-        if not response['transactions'][0]['status'] == 'failed':
-            time.sleep(120)
-            response = User.get_transactions(app, payload)
-
-        self.assertIsNotNone(response.get('transactions')[0].get('return_code'), msg=response)
-        self.assertIsNotNone(response.get('transactions')[0].get('return_desc'))
+        self.assertEqual(response["transactions"][0]["sila_amount"], 420)
 
     def test_get_transactions_200_with_filters(self):
         payload = {

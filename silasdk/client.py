@@ -10,11 +10,12 @@ class App():
 
     def __init__(self, tier, app_private_key, app_handle, debug: bool = False):
         """Initalize the application
-            This lets users initialize the application by providing the tier, application privatekey and application handle
+            This lets users initialize the application by providing the tier,
+            application private key and application handle
         Args:
-            tier  : SANDBOX,PROD etc
-            app_private_key : ethereum privat key for the application
-            app_handle  : application sila handle (app.silamoney.eth)
+            tier  : SANDBOX, PROD etc
+            app_private_key : private key for the application
+            app_handle  : application's handle (my_app)
         """
         self.session = requests.Session()
         self.tier = tier.lower()
@@ -40,7 +41,7 @@ class App():
     def getUrl(self):
         """construct the url endpoint to make api calls
         Args:
-            app: the initialized applications
+            app: the initialized application
         """
         url = endPoints["apiUrl"]
         if self.tier == "prod":
@@ -50,7 +51,7 @@ class App():
         return apiurl
 
     def post(self, path, payload, header, method='post'):
-        """makes a post request to the sila_apis
+        """makes a post request to the Sila API
         Args:
             path : path to the endpoint being called
             payload : json msg to be posted
@@ -122,7 +123,7 @@ class App():
             return response.json()
 
     def postPlaid(self, url, payload):
-        """makes a post request to the sila_apis
+        """makes a post request to the Sila API
         Args:
             path : path to the endpoint being called
             payload : json msg to be posted
@@ -150,7 +151,7 @@ class App():
     def setHeader(self, msg, key: Optional[str] = None, business_key: Optional[str] = None, content_type: Optional[str] = None):
         """set the application header with usersignature and authsignature
         Args:
-            key : ethereum private key for the user
+            key : private key for the user
             msg : message being sent should be signed by user
         """
         appsignature = EthWallet.signMessage(msg, self.app_private_key)

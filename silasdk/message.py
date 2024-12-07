@@ -7,6 +7,7 @@ from .schema import Schema
 from silasdk.client import App
 
 
+# noinspection DuplicatedCode
 def createBody(bodyStructure, fields):
     for field in fields:
         if field in bodyStructure.keys():
@@ -89,12 +90,13 @@ def createMessage(self, payload, msg_type):
     return inpt
 
 
+# noinspection DuplicatedCode
 def postRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional[str] = None, business_key: Optional[str] = None, content_type=None, file_contents=None):
-    """post the message and return response
+    """post the message using POST request and return response
     Args:
-        payload:customer message
-        path : endpoint
-        key :user_private_key
+        payload: customer message
+        path: endpoint
+        key: user_private_key
     """
     data = createMessage(app, payload, msg_type)
     header = app.setHeader(data, key, business_key, content_type)
@@ -103,27 +105,27 @@ def postRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional
     return response
 
 def getRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional[str] = None, business_key: Optional[str] = None, content_type=None):
-    """post the message and return response
+    """post the message using GET request and return response
     Args:
-        payload:customer message
-        path : endpoint
-        key :user_private_key
+        payload: customer message
+        path: endpoint
+        key: user_private_key
     """
     data = createMessage(app, payload, msg_type)
     header = app.setHeader(data, key, business_key, content_type)
-    response = app.post(path, data, header, 'get') 
+    response = app.post(path, data, header, 'get')
     return response
 
 def putRequest(app: App, path: str, msg_type: str, payload: dict, key: Optional[str] = None, business_key: Optional[str] = None, content_type=None):
-    """post the message and return response
+    """post the message using PUT request and return response
     Args:
-        payload:customer message
-        path : endpoint
-        key :user_private_key
+        payload: customer message
+        path: endpoint
+        key: user_private_key
     """
     data = createMessage(app, payload, msg_type)
     header = app.setHeader(data, key, business_key, content_type)
-    response = app.post(path, data, header, 'put') 
+    response = app.post(path, data, header, 'put')
     return response
 
 def postGetFile(self, path: str, msg_type: str, payload: dict, key: str) -> requests.Response:
