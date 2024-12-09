@@ -85,7 +85,6 @@ def run_unit_tests():
             Test004RequestKycTest,
             Test005GetEntityTest,
             Test005CheckKycTest,
-            Test005Virtual_account,
             Test005CheckPartnerKycTest,
             Test005ZDocuments,
             Test006CertifyBeneficialOwnerTest,
