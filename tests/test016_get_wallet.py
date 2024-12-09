@@ -18,7 +18,6 @@ class Test016GetWalletTest(unittest.TestCase):
     def test_get_wallet_400(self):
         payload = {
             "user_handle": "",
-            "crypto": "ETHS"
         }
 
         response = silasdk.Wallet.getWallet(app, payload, eth_private_key)
@@ -27,7 +26,6 @@ class Test016GetWalletTest(unittest.TestCase):
     def test_get_wallet_401(self):
         payload = {
             "user_handle": user_handle[:-2],
-            "crypto": "ETHS"
         }
 
         response = silasdk.Wallet.getWallet(app, payload, eth_private_key)

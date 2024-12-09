@@ -48,30 +48,6 @@ class Test100Teardown(unittest.TestCase):
         }
 
         User.delete_account(
-            app, payload, eth_private_key)\
-
-        payload = {
-            "user_handle": instant_handle,
-            "account_name": "default_plaid"
-        }
-
-        User.delete_account(
-            app, payload, eth_private_key_4)
-
-        payload = {
-            "user_handle": user_handle,
-            "account_name": "default_plaid"
-        }
-
-        User.delete_account(
-            app, payload, eth_private_key)
-
-        payload = {
-            "user_handle": user_handle,
-            "account_name": "default_plaid2"
-        }
-
-        User.delete_account(
             app, payload, eth_private_key)
 
         payload = {

@@ -15,7 +15,7 @@ class Test009IssueSilaTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "amount": 200,
-            "account_name": "default_plaid"
+            "account_name": "default_mx"
         }
 
         response = Transaction.issue_sila(app, payload, eth_private_key)
@@ -30,7 +30,7 @@ class Test009IssueSilaTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "amount": 420,
-            "account_name": "default_plaid"
+            "account_name": "default_mx"
         }
 
         response = Transaction.issue_sila(app, payload, eth_private_key)
@@ -51,7 +51,7 @@ class Test009IssueSilaTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "amount": 200,
-            "account_name": "default_plaid",
+            "account_name": "default_mx",
             "transaction_idempotency_id": str(uuid.uuid4())
         }
 

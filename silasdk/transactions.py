@@ -59,21 +59,6 @@ class Transaction():
             self, path, msg_type, payload, user_private_key)
         return response
 
-    def plaidSamedayAuth(self, payload, user_private_key):
-        """ Handle a request for a Plaid public_token in order to complete
-            Plaid's Same Day Microdeposit Authentication
-        Args:
-            payload : user handle and amount
-            user_private_key: user's private key
-        Returns:
-            dict: response body (a confirmation message)
-        """
-        path = endPoints["plaidSameDayAuth"]
-        msg_type = "account_name_msg"
-        response = postRequest(
-            self, path, msg_type, payload, user_private_key)
-        return response
-
     def cancelTransaction(self, payload, user_private_key):
         """ Cancel a pending transaction under certain circumstances
 

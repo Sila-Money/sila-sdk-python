@@ -14,8 +14,7 @@ strng_4 = ''.join(random.choice(letters) for i in range(10))
 strng_5 = ''.join(random.choice(letters) for i in range(10))
 strng_6 = ''.join(random.choice(letters) for i in range(10))
 
-# app_hanlde = "digital_geko_e2e"
-# app_private_key = "e60a5c57130f4e82782cbdb498943f31fe8f92ab96daac2cc13cbbbf9c0b4d9e"
+
 app_hanlde = "arc_sandbox_test_app01"
 app_private_key = "9c17e7b767b8f4a63863caf1619ef3e9967a34b287ce58542f3eb19b5a72f076"
 user_handle = strng
@@ -25,16 +24,8 @@ instant_handle = strng_4
 basic_individual_handle = strng_5
 business_handle_2 = strng_6
 
-#STAGING
-#business_uuid = "ec5d1366-b56c-4442-b6c3-c919d548fcb5"
 #SANDBOX
 business_uuid = "9f280665-629f-45bf-a694-133c86bffd5e"
-android_package_name = "com.sila.package"
-
-# Generate plaid legacy token
-plaid_token_for_card_url = 'https://sso.sandbox.tabapay.com:8443/v2/SSOEncrypt'
-plaid_token_for_card_payload = "cBm0RU8eASGfSxLYJjsG73Q\tn9010111999999992\te202205\ts2545"
-
 
 app = App("sandbox", app_private_key, app_hanlde)
 

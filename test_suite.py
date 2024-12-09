@@ -23,8 +23,6 @@ from tests.test006_certify_business import Test006CertifyBusinessTest
 from tests.test006_link_account import Test006LinkAccountTest
 from tests.test006_create_cko_testing_token import Test006CreateCkoTestingToken
 from tests.test006_link_card_with_cko_testing_token import Test006LinkCardWithCkoTestingToken
-from tests.test006_plaid_link_token import Test006PlaidLinkTokenTest
-from tests.test006_plaid_update_link_token import Test006PlaidUpdateLinkTokenTest
 from tests.test007_get_accounts import Test007GetAccountsTest
 from tests.test007_get_cards import Test007GetCardsTest
 from tests.test007_delete_account import Test007DeleteAccountTest
@@ -37,7 +35,6 @@ from tests.test010_transfer_sila import Test010TransferSilaTest
 from tests.test011_cancel_transaction import Test011CancelTransactionTest
 from tests.test011_redeem_sila import Test011RedeemSilaTest
 from tests.test012_get_transactions import Test012GetTransactionsTest
-from tests.test013_plaid_same_day_auth import Test013PlaidSameDayAuthTest
 from tests.test014_register_wallet import Test014RegisterWalletTest
 from tests.test015_get_wallets import Test015GetWalletsTest
 from tests.test016_get_wallet import Test016GetWalletTest
@@ -92,8 +89,6 @@ def run_unit_tests():
             Test006LinkAccountTest,
             Test006CreateCkoTestingToken,
             Test006LinkCardWithCkoTestingToken,
-            Test006PlaidLinkTokenTest,
-            Test006PlaidUpdateLinkTokenTest,
             Test007DeleteAccountTest,
             Test007UpdateAccountTest,
             Test007GetAccountsTest,
@@ -106,7 +101,6 @@ def run_unit_tests():
             Test011RedeemSilaTest,
             Test011CancelTransactionTest,
             Test012GetTransactionsTest,
-            Test013PlaidSameDayAuthTest,
             Test014RegisterWalletTest,
             Test015GetWalletsTest,
             Test016GetWalletTest,

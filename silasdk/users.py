@@ -371,17 +371,6 @@ class User():
         return response
 
     @staticmethod
-    def plaid_link_token(app: App, user_handle: str, android_package_name: str = None) -> dict:
-        path = endPoints["plaid_link_token"]
-        msg_type = "plaid_link_token_msg"
-        payload = {"user_handle": user_handle}
-        if android_package_name is not None:
-            payload["android_package_name"] = android_package_name
-        response = message.postRequest(
-            app, path, msg_type, payload)
-        return response
-
-    @staticmethod
     def delete_account(app: App, payload: dict, user_private_key: str) -> dict:
         path = endPoints["delete_account"]
         msg_type = "delete_account"
@@ -403,14 +392,6 @@ class User():
         msg_type = "update_account"
         response = message.postRequest(
             app, path, msg_type, payload, user_private_key)
-        return response
-
-    @staticmethod
-    def plaid_update_link_token(app: App, payload: dict) -> dict:
-        path = endPoints["plaid_update_link_token"]
-        msg_type = "plaid_update_link_token"
-        response = message.postRequest(
-            app, path, msg_type, payload)
         return response
 
     @staticmethod

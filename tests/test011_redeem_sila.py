@@ -12,7 +12,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "amount": 50,
-            "account_name": "default_plaid",
+            "account_name": "default_mx",
             "descriptor": "test descriptor",
             "business_uuid": business_uuid,
             "processing_type": ProcessingTypes.STANDARD_ACH
@@ -45,7 +45,7 @@ class Test011RedeemSilaTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "amount": 50,
-            "account_name": "default_plaid",
+            "account_name": "default_mx",
             "descriptor": "test descriptor",
             "business_uuid": business_uuid,
             "processing_type": ProcessingTypes.STANDARD_ACH,

@@ -11,7 +11,7 @@ class Test011CancelTransactionTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "amount": 200,
-            "account_name": "default_plaid",
+            "account_name": "default_mx",
             "descriptor": "test descriptor",
             "business_uuid": business_uuid,
             "processing_type": ProcessingTypes.STANDARD_ACH

@@ -1,6 +1,7 @@
 v1.1.2
     Deprecations:
         - Removed support for Python 3.8
+        - Removed obsolete endpoints
     Enhancements:
         - Updated packages
         - Fixed docstrings
