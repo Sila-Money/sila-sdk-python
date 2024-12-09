@@ -1,8 +1,6 @@
 from .endpoints import endPoints
 from silasdk import message
 from silasdk.client import App
-import json
-import requests
 import warnings
 
 
@@ -10,7 +8,7 @@ class Wallet():
     def registerWallet(self, payload, user_private_key):
         """Register a new wallet
         Args:
-        payload : Required user_handle to check if its available
+        payload: wallet data
         Returns:
         dict: response body (a confirmation message)
         """
@@ -23,9 +21,9 @@ class Wallet():
     def getWallets(self, payload, user_private_key):
         """Get wallet list
         Args:
-        payload : Required user_handle to check if its available
+        payload: search filters
         Returns:
-        dict: response body (a confirmation message)
+        dict: response body (wallet info)
         """
         path = endPoints["getWallets"]
         msg_type = "get_wallets_msg"
@@ -36,9 +34,9 @@ class Wallet():
     def getWallet(self, payload, user_private_key):
         """Get a user wallet
         Args:
-        payload : Required user_handle to check if its available
+        payload:
         Returns:
-        dict: response body (a confirmation message)
+        dict: response body (wallet info)
         """
         path = endPoints["getWallet"]
         msg_type = "no_content_msg"
@@ -51,7 +49,7 @@ class Wallet():
         """Update a wallet
         Args:
             app (App): The app configuration object
-            payload (dict) : Required user_handle to check if its available
+            payload (dict): wallet info
             user_private_key (str): The user handle's private key to sign the request
         Returns:
             dict: response body (a confirmation message)
@@ -65,7 +63,7 @@ class Wallet():
         """Update a wallet
         Args:
             app (App): The app configuration object
-            payload (dict) : Required user_handle to check if its available
+            payload (dict): wallet info
             user_private_key (str): The user handle's private key to sign the request
         Returns:
             dict: response body (a confirmation message)
@@ -79,7 +77,7 @@ class Wallet():
     def deleteWallet(self, payload, user_private_key):
         """Delete a wallet
         Args:
-        payload : Required user_handle to check if its available
+        payload : wallet_id
         Returns:
         dict: response body (a confirmation message)
         """

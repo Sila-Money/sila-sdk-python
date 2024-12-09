@@ -7,4 +7,3 @@ class RegistrationFields(str, Enum):
     IDENTITY = 'identity',
     ADDRESS = 'address',
     ENTITY = 'entity',
-    DEVICE = 'device'
