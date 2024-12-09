@@ -6,7 +6,6 @@ Schema = [
             "user_handle": None,
             "app_handle": None,
             "version": "0.2",
-            "crypto": "ETH"
         },
         "message": "header_msg",
         "kyc_level": None,
@@ -18,7 +17,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": "link_account_msg",
@@ -33,7 +31,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": "link_account_msg",
@@ -49,7 +46,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": "link_account_msg",
@@ -74,7 +70,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": "transfer_msg",
@@ -95,7 +90,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": "issue_msg",
@@ -115,7 +109,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": "redeem_msg",
@@ -135,7 +128,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         }
     }},
@@ -145,7 +137,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "nickname": None,
@@ -158,13 +149,14 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "wallet_verification_signature": None,
         "wallet": {
             "blockchain_address": None,
-            "blockchain_network": "ETH",
+            "wallet_address": None,
+            "blockchain_network": None,
+            "network": None,
             "nickname": None,
             "default": None,
             "statements_enabled": None
@@ -176,7 +168,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "search_filters": {
@@ -184,7 +175,9 @@ Schema = [
             "per_page": None,
             "sort_ascending": None,
             "blockchain_network": None,
+            "network": None,
             "blockchain_address": None,
+            "wallet_address": None,
             "nickname": None,
             "wallet_id":None
         }
@@ -195,7 +188,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": "get_accounts_msg"
@@ -230,7 +222,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": "entity_msg",
@@ -254,8 +245,11 @@ Schema = [
         },
         "crypto_entry": {
             "crypto_alias": None,
-            "crypto_code": "ETH",
             "crypto_address": None
+        },
+        "wallet_entry": {
+            "wallet_alias": None,
+            "wallet_address": None
         },
         "entity": {
             "first_name": None,
@@ -328,7 +322,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": None,
-            "crypto": None,
             "reference": None
         },
         "message": "get_transactions_msg",
@@ -356,7 +349,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": None,
-            "crypto": None,
             "reference": None
         },
         "transaction_id": None
@@ -425,7 +417,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "message": None,
@@ -443,7 +434,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": None,
-            "crypto": None,
             "reference": None
         },
         "message": None,
@@ -459,7 +449,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": None,
-            "crypto": None,
             "reference": None
         },
         "document_id": None
@@ -469,18 +458,8 @@ Schema = [
             "created": None,
             "app_handle": None,
             "version": None,
-            "crypto": None,
             "reference": None
         }
-    }},
-    {"plaid_link_token_msg": {
-        "header": {
-            "created": None,
-            "app_handle": None,
-            "user_handle": None,
-            "reference": None
-        },
-        "android_package_name": None
     }},
     {"delete_account": {
         "header": {
@@ -488,7 +467,6 @@ Schema = [
             "app_handle": None,
             "user_handle": None,
             "version": "0.2",
-            "crypto": "ETH",
             "reference": None
         },
         "account_name": None
@@ -499,7 +477,6 @@ Schema = [
                 "created": None,
                 "app_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             },
             "query_app_handle": None,
@@ -513,22 +490,11 @@ Schema = [
                 "app_handle": None,
                 "user_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             },
             "account_name": None,
             "new_account_name": None,
             "active": None
-        }
-    },
-    {
-        "plaid_update_link_token": {
-            "header": {
-                "created": None,
-                "app_handle": None,
-                "user_handle": None
-            },
-            "account_name": None,
         }
     },
     {
@@ -554,7 +520,6 @@ Schema = [
                 "app_handle": None,
                 "user_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             },
             "message": "header_msg",
@@ -596,7 +561,6 @@ Schema = [
                 "app_handle": None,
                 "user_handle": None,
                 "version": None,
-                "crypto": None,
                 "reference": None
             },
             "transaction_id": None
@@ -610,7 +574,6 @@ Schema = [
                 "user_handle": None,
                 "reference": None,
                 "version": "0.2",
-                "crypto": "ETH"
             },
             "message": "header_msg",
             "search_filters": {
@@ -635,7 +598,6 @@ Schema = [
                 "user_handle": None,
                 "reference": None,
                 "version": "0.2",
-                "crypto": "ETH"
             },
             "message": "header_msg",
             "event_uuid": None,
@@ -649,7 +611,6 @@ Schema = [
                 "app_handle": None,
                 "user_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             },
             "virtual_account_name": None,
@@ -666,7 +627,6 @@ Schema = [
                 "user_handle": None,
                 "app_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             },
             "virtual_account_id": None
@@ -680,7 +640,6 @@ Schema = [
                 "user_handle": None,
                 "app_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             }
         }
@@ -693,7 +652,6 @@ Schema = [
                 "user_handle": None,
                 "app_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             },
             "virtual_account_id": None,
@@ -722,7 +680,6 @@ Schema = [
                 "user_handle": None,
                 "app_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             },
             "virtual_account_id": None,
@@ -737,7 +694,6 @@ Schema = [
                 "user_handle": None,
                 "app_handle": None,
                 "version": "0.2",
-                "crypto": "ETH",
                 "reference": None
             },
             "amount": None,
@@ -756,7 +712,6 @@ Schema = [
         "app_handle": None,
         "user_handle": None,
         "version": "0.2",
-        "crypto": "ETH",
         "reference":  None
       },
        "search_filters":{
@@ -773,7 +728,6 @@ Schema = [
         "app_handle": None,
         "user_handle":None,
         "version": "0.2",
-        "crypto": "ETH",
         "reference": None
       },
        "wallet_id": None,
@@ -792,7 +746,6 @@ Schema = [
         "app_handle": None,
         "user_handle": None,
         "version": "0.2",
-        "crypto": "ETH",
         "reference":  None
     },
     "search_filters":{
@@ -817,7 +770,6 @@ Schema = [
         "app_handle": None,
         "user_handle":None,
         "version": "0.2",
-        "crypto": "ETH",
         "reference":None
     },
     "email":None
@@ -831,7 +783,6 @@ Schema = [
         "app_handle": None,
         "user_handle":None,
         "version": "0.2",
-        "crypto": "ETH",
         "reference": None
       },
     "transaction_id": None
@@ -845,7 +796,6 @@ Schema = [
         "app_handle": None,
         "user_handle":None,
         "version": "0.2",
-        "crypto": "ETH",
         "reference": None
       },
     "card_number": None,

@@ -17,7 +17,7 @@ class EthWallet:
         Args:
         entropy : provide randomness to generate the wallet
         Returns:
-        tuple: response body with ethereum address and private key
+        tuple: response body with wallet address and private key
         """
         account = Account.create(entropy)
         return {"eth_private_key": Web3().to_hex(account._private_key), "eth_address": account.address}
@@ -56,7 +56,7 @@ class EthWallet:
         msg: original message
         sign : the signed hash obtained after signing the message with private key
         Returns:
-        string: returns the Ethereum address corresponding to the private key the message was signed with
+        string: returns the wallet address corresponding to the private key the message was signed with
         """
         if isinstance(msg, str):
             encoded_message = msg.encode('utf-8')

@@ -31,8 +31,8 @@ class Test002RegisterTest(unittest.TestCase):
             "city": 'New City',
             "state": 'OR',
             "postal_code": 97204,
-            "crypto_address": eth_address,
-            "crypto_alias": "python_wallet_1",
+            "wallet_address": eth_address,
+            "wallet_alias": "python_wallet_1",
             "birthdate": "1990-05-19"
         }
 
@@ -51,8 +51,8 @@ class Test002RegisterTest(unittest.TestCase):
             "city": 'New City 2',
             "state": 'OR',
             "postal_code": 97204,
-            "crypto_address": eth_address_2,
-            "crypto_alias": "python_wallet_2",
+            "wallet_address": eth_address_2,
+            "wallet_alias": "python_wallet_2",
             "birthdate": "1990-05-12"
         }
 
@@ -71,8 +71,8 @@ class Test002RegisterTest(unittest.TestCase):
             "city": 'New City',
             "state": 'OR',
             "postal_code": 97204,
-            "crypto_address": eth_address_4,
-            "crypto_alias": "default",
+            "wallet_address": eth_address_4,
+            "wallet_alias": "default",
             "birthdate": "1994-01-08",
         }
 
@@ -89,8 +89,8 @@ class Test002RegisterTest(unittest.TestCase):
             "city": 'New City 2',
             "state": 'OR',
             "postal_code": 97204,
-            "crypto_address": eth_address_3,
-            "crypto_alias": "python_wallet_2",
+            "wallet_address": eth_address_3,
+            "wallet_alias": "python_wallet_2",
             "type": "business",
             "business_type": "corporation",
             "business_website": "https://www.yourbusinesscustomer.com",
@@ -111,8 +111,8 @@ class Test002RegisterTest(unittest.TestCase):
             "city": 'New City 2',
             "state": 'OR',
             "postal_code": 97204,
-            "crypto_address": eth_address_6,
-            "crypto_alias": "python_wallet_2",
+            "wallet_address": eth_address_6,
+            "wallet_alias": "python_wallet_2",
             "type": "business",
             "business_type": "corporation",
             "business_website": "https://www.yourbusinesscustomer.com",
@@ -151,7 +151,7 @@ class Test002RegisterTest(unittest.TestCase):
     def test_register_200_basic(self):
         basic_individual = {
             'user_handle': basic_individual_handle,
-            'crypto_address': eth_address_5,
+            'wallet_address': eth_address_5,
             'first_name': 'Basic',
             'last_name': 'Test'
         }
@@ -175,8 +175,8 @@ class Test002RegisterTest(unittest.TestCase):
             "city": 'New City',
             "state": 'OR',
             "postal_code": 97204,
-            "crypto_address": eth_address,
-            "crypto_alias": "python_wallet_1",
+            "wallet_address": eth_address,
+            "wallet_alias": "python_wallet_1",
             "birthdate": "1990-05-19"
         }
 

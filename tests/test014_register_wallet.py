@@ -10,8 +10,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
             "user_handle": user_handle,
             "wallet_verification_signature": verification_signature,
             "wallet": {
-                "blockchain_address": wallet_address,
-                "blockchain_network": "ETH",
+                "wallet_address": wallet_address,
                 "nickname": "wallet_python_new",
                 "default": True,
                 "statements_enabled": True
@@ -27,8 +26,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
             "user_handle": user_handle,
             "wallet_verification_signature": verification_signature,
             "wallet": {
-                "blockchain_address": wallet_address_signed_verified,
-                "blockchain_network": "ETH",
+                "wallet_address": wallet_address_signed_verified,
                 "nicknames": "wallet_python",
                 "default": True
             }
@@ -42,8 +40,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
             "user_handle": "",
             "wallet_verification_signature": verification_signature,
             "wallet": {
-                "blockchain_address": wallet_address_signed_verified,
-                "blockchain_network": "ETH",
+                "wallet_address": wallet_address_signed_verified,
                 "nickname": "wallet_python",
                 "default": True
             }
@@ -57,8 +54,7 @@ class Test014RegisterWalletTest(unittest.TestCase):
             "user_handle": user_handle,
             "wallet_verification_signature": "",
             "wallet": {
-                "blockchain_address": wallet_address_signed_verified,
-                "blockchain_network": "ETH",
+                "wallet_address": wallet_address_signed_verified,
                 "nickname": "wallet_python",
                 "default": True
             }

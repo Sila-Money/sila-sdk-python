@@ -10,8 +10,7 @@ class Test015GetWalletsTest(unittest.TestCase):
                 "page": 1,
                 "per_page": 20,
                 "sort_ascending": False,
-                "blockchain_network": "ETH",
-                "blockchain_address": wallet_address,
+                "wallet_address": wallet_address,
                 "nickname": "wallet_python"
             }
         }
@@ -39,8 +38,7 @@ class Test015GetWalletsTest(unittest.TestCase):
                 "page": 0,
                 "per_page": 20,
                 "sort_ascending": False,
-                "blockchain_network": "ETHS",
-                "blockchain_address": wallet_address,
+                "wallet_address": wallet_address,
                 "nicknames": "wallet_python"
             }
         }
@@ -55,8 +53,7 @@ class Test015GetWalletsTest(unittest.TestCase):
                 "page": 1,
                 "per_page": 20,
                 "sort_ascending": False,
-                "blockchain_network": "ETH",
-                "blockchain_address": wallet_address,
+                "wallet_address": wallet_address,
                 "nickname": "wallet_python"
             }
         }

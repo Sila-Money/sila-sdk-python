@@ -4,7 +4,7 @@ from silasdk.users import User
 import time
 
 
-def poll(test: TestCase, transaction_id: str, expected_status: str, app: App, user_handle: str, eth_private_key: str):
+def poll(test: TestCase, transaction_id: str, expected_status: str, app: App, user_handle: str, private_key: str):
     payload = {
         "user_handle": user_handle,
         "search_filters": {
@@ -14,7 +14,7 @@ def poll(test: TestCase, transaction_id: str, expected_status: str, app: App, us
         }
     }
 
-    response = User.get_transactions(app, payload, eth_private_key)
+    response = User.get_transactions(app, payload, private_key)
     status = response["transactions"][0]["status"]
 
     time.sleep(30)
@@ -24,7 +24,7 @@ def poll(test: TestCase, transaction_id: str, expected_status: str, app: App, us
     while status == "queued" or status == "pending" and time_waited < max_timeout_seconds:
         time.sleep(5)
         response = User.get_transactions(
-            app, payload, eth_private_key)
+            app, payload, private_key)
         status = response["transactions"][0]["status"]
         time_waited += 5
 

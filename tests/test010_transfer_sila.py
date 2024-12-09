@@ -42,7 +42,6 @@ class Test010TransferSilaTest(unittest.TestCase):
         payload = {
             "user_handle": user_handle,
             "destination": user_handle_2,
-            "crypto": "ETHS",
         }
 
         response = Transaction.transferSila(
@@ -53,7 +52,6 @@ class Test010TransferSilaTest(unittest.TestCase):
         payload = {
             "user_handle": "",
             "destination": user_handle_2,
-            "crypto": "ETH",
             "amount": 1000
         }
 
