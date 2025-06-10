@@ -35,7 +35,7 @@ setup(
     packages=find_packages(exclude=["tests", "tests.*"]),
 
     install_requires=[
-        "requests==2.32.3",
+        "requests==2.32.4",
         "pyaml>=24.9.0",
         "eth-account==0.13.4",
         "setuptools>=75.6.0",
