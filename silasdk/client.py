@@ -1,6 +1,8 @@
 import json
 import requests
 from typing import Optional
+
+from setup import CURRENT_VERSION
 from .ethwallet import EthWallet
 from .endpoints import endPoints
 from .schema import Schema
@@ -157,7 +159,7 @@ class App():
         appsignature = EthWallet.signMessage(msg, self.app_private_key)
         header = {
             "authsignature": appsignature,
-            "User-Agent": 'SilaSDK-python/1.1.2'
+            "User-Agent": f'SilaSDK-python/{CURRENT_VERSION}'
         }
         if content_type is not None and content_type == 'multipart/form-data':
             pass

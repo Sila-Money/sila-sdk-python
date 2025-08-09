@@ -1,9 +1,12 @@
 from setuptools import setup, find_packages
 
+CURRENT_VERSION = '1.1.3'
+
+
 setup(
     name='silasdk',
 
-    version='1.1.2',
+    version=CURRENT_VERSION,
 
     description='Sila Python library for message signing and api wrapper',
 
@@ -30,16 +33,16 @@ setup(
 
     ],
 
-    keywords='Sila v1.1.2 Rest API',
+    keywords=f'Sila v{CURRENT_VERSION} Rest API',
 
     packages=find_packages(exclude=["tests", "tests.*"]),
 
     install_requires=[
-        "requests==2.32.3",
+        "requests==2.32.4",
         "pyaml>=24.9.0",
-        "eth-account==0.13.4",
+        "eth-account==0.13.7",
         "setuptools>=75.6.0",
-        "web3==7.6.0"
+        "web3==7.13.0"
     ],
 
     zip_safe=False,
