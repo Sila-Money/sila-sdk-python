@@ -41,6 +41,7 @@ def _setup():
             "requests==2.32.4",
             "pyaml>=24.9.0",
             "eth-account==0.13.7",
+            "setuptools>=75.6.0",
             "web3==7.13.0",
         ],
 
