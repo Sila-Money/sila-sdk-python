@@ -1,9 +1,18 @@
+import os
+import re
+
 from setuptools import setup, find_packages
+
+# get version string from version.py
+version_file = os.path.join(os.path.dirname(__file__), "silasdk/version.py")
+version_regex = r"__version__ = ['\"]([^'\"]*)['\"]"
+with open(version_file, encoding="utf-8") as f:
+    version = re.search(version_regex, f.read(), re.M).group(1)
 
 setup(
     name='silasdk',
 
-    version='1.1.2',
+    version=version,
 
     description='Sila Python library for message signing and api wrapper',
 
@@ -30,16 +39,16 @@ setup(
 
     ],
 
-    keywords='Sila v1.1.2 Rest API',
+    keywords=f'Sila v{version} Rest API',
 
     packages=find_packages(exclude=["tests", "tests.*"]),
 
     install_requires=[
         "requests==2.32.4",
         "pyaml>=24.9.0",
-        "eth-account==0.13.4",
+        "eth-account==0.13.7",
         "setuptools>=75.6.0",
-        "web3==7.6.0"
+        "web3==7.13.0",
     ],
 
     zip_safe=False,
