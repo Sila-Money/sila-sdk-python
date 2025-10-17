@@ -247,12 +247,19 @@ class User():
         return response
 
     def getSilaBalance(self, address):
-        """Get balance of the wallet registered with Sila
+        """********DEPRECATED********
+
+        Get balance of the wallet registered with Sila
         Args:
             address: requires valid wallet address
         Returns:
             dict: response body (balance info)
         """
+        warnings.warn(
+            'getSilaBalance has been deprecated. This endpoint will be removed from the SDK in'
+            ' version 1.1.4.',
+            DeprecationWarning
+        )
         payload = {"address": str(address)}
         path = endPoints["getSilaBalance"]
         msg_type = "sila_balance_msg"
